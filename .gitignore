@@ -1,0 +1,10 @@
+# Ignore Windows desktop.ini files
+desktop.ini
+Desktop.ini
+
+# Ignore Microsoft Word documents and temporary Word files
+*.doc
+*.docx
+*.docm
+~$*
+
