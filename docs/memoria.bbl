@@ -1,0 +1,174 @@
+\begin{thebibliography}{10}
+
+\bibitem{kddFrugalAI}
+{ACM SIGKDD Explorations}.
+\newblock Frugal ai: Introduction, concepts, development and open questions.
+\newblock \url{https://kdd.org/exploration_files/p72-Frugal_AI.pdf}, 2020.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{arxivTFIDF2308}
+{arXiv}.
+\newblock A comparative study on tf-idf feature weighting method and its
+  analysis using unstructured dataset.
+\newblock \url{https://arxiv.org/abs/2308.04037}, 2023.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{bortolot2005}
+Zachary~J Bortolot and Randolph~H Wynne.
+\newblock Estimating forest biomass using small footprint lidar data: An
+  individual tree-based approach that incorporates training data.
+\newblock {\em ISPRS Journal of Photogrammetry and Remote Sensing},
+  59(6):342--360, 2005.
+
+\bibitem{edgeVsCloudClarifai}
+{Clarifai}.
+\newblock Edge vs cloud ai: Key differences, benefits \& hybrid future.
+\newblock \url{https://www.clarifai.com/blog/edge-vs-cloud-ai}, 2024.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{adaCloneDhiWise}
+{DhiWise}.
+\newblock Build ada health app clone: A detailed development guide.
+\newblock
+  \url{https://www.dhiwise.com/post/building-ai-health-assistant-like-ada-health-app},
+  2024.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{automatedTriageDiva2020}
+{DIVA Portal}.
+\newblock Automated triage in digital primary care.
+\newblock
+  \url{https://www.diva-portal.org/smash/get/diva2:1452894/FULLTEXT01.pdf},
+  2020.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{svmVsLlmDiva2024}
+{DIVA Portal}.
+\newblock Bachelor degree project: Svm vs llm: A comparative analysis on text
+  classification.
+\newblock
+  \url{https://lnu.diva-portal.org/smash/get/diva2:1975221/FULLTEXT01.pdf},
+  2024.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{babylonFierce2023}
+{Fierce Healthcare}.
+\newblock Once a 'unicorn,' babylon health sells uk business to emed via
+  bankruptcy process.
+\newblock
+  \url{https://www.fiercehealthcare.com/digital-health/babylon-closes-us-business-lays-employees-after-mindmaze-take-private-deal-collapses},
+  2023.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{babylonHospitalogy2023}
+{Hospitalogy}.
+\newblock The downfall of babylon health.
+\newblock
+  \url{https://hospitalogy.com/articles/2023-05-16/downfall-of-babylon-health/},
+  2023.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{jmirAI2024triageNotes}
+{JMIR AI}.
+\newblock Traditional machine learning, deep learning, and bert (large language
+  model) approaches for predicting hospitalizations from nurse triage notes:
+  Comparative evaluation of resource management.
+\newblock \url{https://ai.jmir.org/2024/1/e52190}, 2024.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{localVsCloudKonvoy}
+{Konvoy Ventures}.
+\newblock Local vs cloud ai.
+\newblock \url{https://www.konvoy.vc/newsletters/local-vs-cloud-ai}, 2024.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{koza92}
+John~R. Koza.
+\newblock {\em Genetic Programming: On the Programming of Computers by Means of
+  Natural Selection}.
+\newblock MIT Press, 1992.
+
+\bibitem{mdpiLLMHealthcare}
+{MDPI}.
+\newblock Recent advances in large language models for healthcare.
+\newblock \url{https://www.mdpi.com/2673-7426/4/2/62}, 2024.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{mediumSVDNLP}
+{Medium}.
+\newblock Natural language processing: Applying svd on term-document matrices.
+\newblock
+  \url{https://medium.com/@RobuRishabh/understanding-term-document-matrices-and-singular-value-decomposition-svd-in-nlp-3e08789073f6},
+  2020.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{barometroSanitario2024}
+{Ministerio de Sanidad (España)}.
+\newblock Informe barómetro sanitario 2024.
+\newblock
+  \url{https://www.sanidad.gob.es/estadEstudios/estadisticas/BarometroSanitario/Barom_Sanit_2024/BS_2024_Totales/Informe_BS_2024.pdf},
+  2024.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{nguyen2022triageErrors}
+Hai Nguyen, Andras Meczner, Krista Burslam-Dawe, and Benedict Hayhoe.
+\newblock Triage errors in primary and pre--primary care.
+\newblock {\em Journal of Medical Internet Research}, 24(6):e37209, 2022.
+
+\bibitem{oxfordJAMIA2025llmLessEffective}
+{Oxford Academic}.
+\newblock Large language models are less effective at clinical prediction tasks
+  than locally trained machine learning models.
+\newblock \url{https://academic.oup.com/jamia/article/32/5/811/8064348}, 2025.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{symptomCheckerAppsPharmaphorum}
+{pharmaphorum}.
+\newblock Study finds big differences between top symptom checker apps.
+\newblock
+  \url{https://pharmaphorum.com/news/study-finds-big-differences-between-top-symptom-spotting-apps},
+  2020.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{emergenciasSaturacionUrgencias2015}
+{Revista Emergencias}.
+\newblock La saturación en los servicios de urgencias hospitalarios.
+\newblock
+  \url{https://revistaemergencias.org/wp-content/uploads/2023/08/Emergencias-2015_27_2_113-120-120.pdf},
+  2015.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{smileFrugalAI}
+{SMILE (EU)}.
+\newblock Frugal ai: sustainable, responsible and high-performance artificial
+  intelligence.
+\newblock
+  \url{https://smile.eu/en/publications-and-events/frugal-ai-sustainable-responsible-and-high-performance-artificial},
+  2021.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{waitTimeUS2025}
+{TechTarget (PatientEngagement)}.
+\newblock Average patient appointment wait time is 31 days in 2025.
+\newblock
+  \url{https://www.techtarget.com/patientengagement/news/366624919/Average-patient-appointment-wait-time-is-31-days-in-2025},
+  2025.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{snsAPUnivadis2024}
+{Univadis}.
+\newblock Informe del sistema nacional de salud 2024: aspectos relevantes de la
+  atención primaria.
+\newblock
+  \url{https://www.univadis.es/viewarticle/informe-del-sistema-nacional-sud-2024-aspectos-relevantes-2025a1000yrm?uuid=1861de44-d0eb-4f80-9226-e0f4aae4e000},
+  2024.
+\newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{wiki:latex}
+Wikipedia.
+\newblock Latex --- wikipedia{,} la enciclopedia libre.
+\newblock
+  \url{https://es.wikipedia.org/w/index.php?title=LaTeX&oldid=84209252}, 2015.
+\newblock [Internet; descargado 30-septiembre-2015].
+
+\end{thebibliography}

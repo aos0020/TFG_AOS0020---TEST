@@ -1,3 +1,123 @@
 \capitulo{2}{Objetivos del proyecto}
+\capitulo{2}{Objetivos del proyecto}
 
-Este apartado explica de forma precisa y concisa cuales son los objetivos que se persiguen con la realización del proyecto. Se puede distinguir entre los objetivos marcados por los requisitos del software a construir y los objetivos de carácter técnico que plantea a la hora de llevar a la práctica el proyecto.
+\section{Objetivos del proyecto}
+
+\subsection{Objetivo general}
+
+Desarrollar y validar un \textbf{prototipo \gls{standalone}} en Python capaz de \textbf{clasificar síntomas descritos en lenguaje natural} y \textbf{asignar una categoría/especialidad médica orientada a la gestión de citas}, manteniendo la ejecución \textbf{local} (sin dependencia de servicios externos) y priorizando criterios de \textbf{eficiencia, trazabilidad y privacidad por diseño}.
+
+El objetivo se concreta en:
+
+\begin{itemize}
+	\item Construir un sistema ejecutable que incorpore un flujo completo de NLP (preprocesado \textrightarrow{} representación \textrightarrow{} entrenamiento \textrightarrow{} predicción).
+	\item Implementar y comparar, bajo un protocolo homogéneo, tres enfoques: \gls{tfidf} (base), \gls{tfidf} + \gls{svd} (reducción de dimensionalidad para capturar estructura latente) y \gls{svm} como clasificador supervisado.
+	\item Evaluar el rendimiento predictivo y el rendimiento operativo (tiempos, memoria) para determinar el \textbf{mejor equilibrio práctico} entre precisión y coste computacional.
+	\item Demostrar su \textbf{aplicabilidad} como componente autónomo de apoyo al triaje/derivación de demanda en escenarios con restricciones de conectividad y con necesidad de minimizar exposición de datos.
+\end{itemize}
+
+\subsection{Objetivos funcionales}
+
+Los objetivos funcionales describen \textbf{qué hace el sistema} y se formulan como metas técnicas \textbf{medibles y verificables}.
+
+\subsubsection*{F1. Ingesta, validación y preparación del conjunto de datos}
+\begin{itemize}
+	\item Definir el esquema operativo de datos (\texttt{texto\_síntomas} \textrightarrow{} \texttt{categoría}) y desarrollar carga desde fichero local (p.\,ej., CSV), con validaciones automáticas: valores nulos, duplicados, etiquetas fuera de catálogo y control de distribución de clases.
+	\item Dividir los datos siempre del mismo modo (entrenamiento/prueba y, cuando proceda, validación cruzada estratificada) para que todos los modelos se evalúen con las mismas particiones y la comparación sea justa.
+\end{itemize}
+
+\subsubsection*{F2. Pipeline completo de procesamiento de lenguaje natural (NLP)}
+\begin{itemize}
+	\item Implementar un pipeline configurable de preprocesado (normalización, limpieza, tokenización y n-gramas; lematización/stemming solo si aporta mejora cuantificable).
+	\item Garantizar consistencia entre entrenamiento y predicción mediante persistencia de transformaciones (vectorizador, normalización y parámetros).
+\end{itemize}
+
+\subsubsection*{F3. Modelo base basado en \gls{tfidf}}
+\begin{itemize}
+	\item Implementar una línea base con \gls{tfidf} como representación y un clasificador supervisado apropiado para texto (p.\,ej., \gls{regresion_logistica} o \gls{naive_bayes}) para establecer una referencia sólida.
+	\item Medir sensibilidad a parámetros clave (rango de n-gramas, \texttt{min\_df/max\_df}, normalización) y documentar su impacto en métricas y coste.
+\end{itemize}
+
+\subsubsection*{F4. Reducción de dimensionalidad mediante \gls{truncatedsvd}}
+\begin{itemize}
+	\item Integrar \gls{truncatedsvd} sobre la matriz \gls{tfidf} y entrenar un clasificador sobre el espacio reducido.
+	\item Definir un criterio de selección del número de componentes (por validación) y cuantificar: (i) variación de rendimiento (F1 macro/micro), (ii) reducción de tiempo/memoria y (iii) robustez ante variaciones lingüísticas.
+\end{itemize}
+
+\subsubsection*{F5. Clasificador \gls{svm}}
+\begin{itemize}
+	\item Implementar un modelo \gls{svm} (preferentemente lineal si el compromiso coste-rendimiento lo justifica) entrenado sobre \gls{tfidf} y, cuando proceda, sobre \gls{tfidf} + \gls{svd}.
+	\item Ajustar hiperparámetros (p.\,ej., \texttt{C}, \texttt{class\_weight}) con validación cruzada y criterios de selección explícitos (p.\,ej., optimización de macro-F1 en presencia de desbalanceo).
+\end{itemize}
+
+\subsubsection*{F6. Predicción operativa a partir de texto libre}
+\begin{itemize}
+	\item Desarrollar una interfaz de predicción (CLI o aplicación ligera) que reciba texto libre y devuelva:
+	\begin{itemize}
+		\item Categoría predicha.
+		\item Indicador de confianza o puntuación (p.\,ej., margen/score; probabilidad calibrada si es viable).
+		\item Opcional: top-k categorías con puntuación para facilitar análisis y depuración.
+	\end{itemize}
+\end{itemize}
+
+\subsubsection*{F7. Comparación experimental controlada y análisis por escenarios}
+\begin{itemize}
+	\item Comparar los enfoques bajo el mismo protocolo, reportando \textbf{precisión, \gls{recall}, F1-score (macro y micro)}, matrices de confusión y métricas por clase.
+	\item Evaluar comportamiento ante distintos tipos de entrada: textos muy breves vs.\ descriptivos, ruido ortográfico, abreviaturas y variabilidad de vocabulario.
+	\item Identificar fortalezas y debilidades prácticas de cada enfoque a partir de errores observados (análisis de fallos y patrones de confusión entre categorías).
+\end{itemize}
+
+\subsection{Objetivos no funcionales}
+
+Los objetivos no funcionales definen cómo se construye el software para asegurar robustez y aplicabilidad real.
+
+\subsubsection*{NF1. Arquitectura modular orientada a extensión}
+\begin{itemize}
+	\item Diseñar una estructura por módulos (datos, preprocesado, características, modelos, evaluación, predicción) con interfaces claras para facilitar mantenimiento y futuras ampliaciones.
+\end{itemize}
+
+\subsubsection*{NF2. Desarrollo en Python con dependencias acotadas}
+\begin{itemize}
+	\item Implementar el sistema en Python apoyándose en librerías consolidadas (scikit-learn, numpy, pandas) para maximizar portabilidad y estabilidad del entorno.
+\end{itemize}
+
+\subsubsection*{NF3. Reproducibilidad y trazabilidad experimental}
+\begin{itemize}
+	\item Controlar aleatoriedad (semillas), registrar configuración de experimentos y versiones de dependencias, y asegurar que los resultados puedan replicarse en otro equipo.
+\end{itemize}
+
+\subsubsection*{NF4. Metodología experimental rigurosa}
+\begin{itemize}
+	\item Aplicar validación cruzada estratificada y un esquema de búsqueda de hiperparámetros (grid/random) con límites de coste realistas.
+	\item Establecer criterios de selección transparentes (métrica objetivo, tratamiento del desbalanceo, calibración si se aplica).
+\end{itemize}
+
+\subsubsection*{NF5. Stand alone y minimización de exposición de datos}
+\begin{itemize}
+	\item Garantizar ejecución local sin APIs ni servicios cloud, reduciendo dependencia de internet y favoreciendo privacidad y control del flujo de datos.
+\end{itemize}
+
+\subsubsection*{NF6. Eficiencia computacional}
+\begin{itemize}
+	\item Medir y optimizar tiempos de entrenamiento y predicción y consumo de memoria. Justificar decisiones (p.\,ej., \gls{svm} lineal vs.\ kernel) en función del equilibrio precisión-coste.
+\end{itemize}
+
+\subsubsection*{NF7. Calidad de código y documentación}
+\begin{itemize}
+	\item Mantener claridad del código (estructura, nombres, logging), documentación de uso (entrenar, evaluar, predecir) y guía de reproducción de experimentos.
+	\item Incluir pruebas básicas de componentes críticos del pipeline para evitar regresiones.
+\end{itemize}
+
+\subsubsection*{NF8. Preparación para integración futura con voz}
+\begin{itemize}
+	\item Desacoplar la capa de entrada para que la fuente de texto sea intercambiable (teclado/fichero/transcripción), dejando definida una interfaz para incorporar reconocimiento de voz en iteraciones futuras sin alterar el núcleo de modelado.
+\end{itemize}
+
+\subsection{Objetivos personales}
+
+\begin{itemize}
+	\item Consolidar una comprensión aplicada de \textbf{clasificación supervisada} en texto clínico, incluyendo errores típicos, desbalanceo y evaluación por clases.
+	\item Comprender de forma operativa la contribución de cada etapa: \gls{tfidf} (representación), \gls{svd} (reducción/captura de estructura latente) y \gls{svm} (fronteras de decisión), y aprender a decidir cuándo compensan sus costes.
+	\item Aplicar técnicas de NLP a un caso de uso sanitario con restricciones realistas (autonomía, privacidad, eficiencia), diseñando el pipeline de forma reutilizable para otros ámbitos de clasificación de texto y para futuras variantes del canal de entrada (p.\,ej., transcripción de llamadas telefónicas para la obtención/gestión de citas), evitando soluciones dependientes de servicios externos.
+	\item Culminar el TFG con un \textbf{producto funcional demostrable} y una memoria técnica sólida, cumpliendo los requisitos académicos necesarios para \textbf{finalizar el Grado en Ingeniería Informática}, facilitando la progresión en la carrera profesional.
+\end{itemize}

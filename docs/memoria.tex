@@ -29,6 +29,8 @@
 
 %%% USo : de otros \acrshort{cod} debido : RESPETA MAYUSC
 %%% TAmbién \acrfull{gui}  y nos aprece todo
+%%% Y en el texto, en vez de \gls{tfidf} puedes usar \acrshort{tfidf} (o \acrfull{tfidf} la primera vez).
+
 \newacronym{cod}{CoT}{\textit{Cadena de pensamiento}}
 \newacronym{crud}{CRUD}{\textit{Create, Read, Update, Delete}}
 \newacronym{gui}{GUI}{\textit{{Interfaz Gráfica de Usuario}}}
@@ -37,16 +39,40 @@
 
 % Acrónimos en inglés
 \newacronym{llme}{LLM}{\textit{Large Language Models}}
-
+% --- Acrónimos ---
+\newacronym{tfidf}{TF-IDF}{\textit{Term Frequency--Inverse Document Frequency}}
+\newacronym{svd}{SVD}{\textit{Singular Value Decomposition}}
+\newacronym{svm}{SVM}{\textit{Support Vector Machine}}
 
 % Glosario
 % \gls{zero-shot} 
 % \gls{ingenieria_prompt} 
-\newglossaryentry{ingenieria_prompt}
-{
-	name=Ingeniería del prompt,
-	description={Proceso de optimización y diseño de instrucciones (prompts) para mejorar las respuestas de los modelos de lenguaje a gran escala (LLM)}
+% --- Glosario (términos) ---
+\newglossaryentry{standalone}{
+	name={stand alone},
+	description={Propiedad de un sistema que puede ejecutarse de forma autónoma en un entorno local, sin depender de servicios externos o conexión a internet}
 }
+
+\newglossaryentry{recall}{
+	name={Recall (sensibilidad)},
+	description={Métrica que cuantifica la proporción de casos reales de una clase identificados correctamente por el modelo; se calcula como TP/(TP+FN)}
+}
+
+\newglossaryentry{truncatedsvd}{
+	name={TruncatedSVD},
+	description={Técnica de reducción de dimensionalidad que aproxima la descomposición en valores singulares conservando solo k componentes principales; se aplica frecuentemente sobre matrices TF-IDF para obtener representaciones latentes}
+}
+
+\newglossaryentry{regresion_logistica}{
+	name={Regresión logística},
+	description={Modelo de clasificación supervisada que estima la probabilidad de pertenencia a una clase a partir de una combinación lineal de características}
+}
+
+\newglossaryentry{naive_bayes}{
+	name={Naive Bayes},
+	description={Familia de clasificadores probabilísticos basada en el teorema de Bayes y en la asunción de independencia condicional entre características}
+}
+
 
 
 % Ecuaciones
