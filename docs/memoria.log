@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.20)  22 FEB 2026 11:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.20)  22 FEB 2026 12:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1022,7 +1022,7 @@ Package hyperref Info: Link coloring ON on input line 421.
 \@outlinefile=\write4
 \openout4 = `memoria.out'.
 
-<./img/cabecera.pdf, id=87, 617.67549pt x 135.51413pt>
+<./img/cabecera.pdf, id=91, 617.67549pt x 135.51413pt>
 File: ./img/cabecera.pdf Graphic file (type pdf)
 <use ./img/cabecera.pdf>
 Package pdftex.def Info: ./img/cabecera.pdf  used on input line 423.
@@ -1057,7 +1057,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 423.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 423.
-<./img/escudoInfor.pdf, id=88, 618.11432pt x 737.07487pt>
+<./img/escudoInfor.pdf, id=92, 618.11432pt x 737.07487pt>
 File: ./img/escudoInfor.pdf Graphic file (type pdf)
 <use ./img/escudoInfor.pdf>
 Package pdftex.def Info: ./img/escudoInfor.pdf  used on input line 423.
@@ -1217,24 +1217,11 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2 \capitulo{2}{Objetivos del proyecto}
-                                         [5]
-pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2 \capitulo{2}{Objetivos del proyecto}
-                                         [6
-
-]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \hskip 5.87491pt
-(hyperref)                replaced by space on input line 2.
-
-[7]
+l.20 \subsubsection
+                   *{F1. Ingesta, validación y preparación del conjunto de...
+[5]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-5.
+2.
  (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1243,26 +1230,32 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (17.38866pt too wide) in paragraph at lines 38--39
+Overfull \hbox (17.38866pt too wide) in paragraph at lines 35--36
 []\T1/lmr/m/n/12 (-20) Medir sen-si-bi-li-dad a pa-r�-me-tros cla-ve (ran-go de
  n-gramas, \T1/lmtt/m/n/12 min_df/max_df\T1/lmr/m/n/12 (-20) ,
  []
 
-LaTeX Info: Redefining \. on input line 45.
-LaTeX Info: Redefining \% on input line 45.
-[8]
-LaTeX Info: Redefining \. on input line 74.
-LaTeX Info: Redefining \% on input line 74.
- [9]
-LaTeX Info: Redefining \. on input line 103.
-LaTeX Info: Redefining \% on input line 103.
- [10]
-LaTeX Info: Redefining \. on input line 123.
-LaTeX Info: Redefining \% on input line 123.
- [11])
+LaTeX Info: Redefining \. on input line 42.
+LaTeX Info: Redefining \% on input line 42.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.42 \end{itemize}
+                   [6]
+LaTeX Info: Redefining \. on input line 71.
+LaTeX Info: Redefining \% on input line 71.
+ [7]
+LaTeX Info: Redefining \. on input line 100.
+LaTeX Info: Redefining \% on input line 100.
+ [8]
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+ [9])
 LaTeX Info: Redefining \. on input line 520.
 LaTeX Info: Redefining \% on input line 520.
- [12]
+ [10]
 \openout2 = `./tex/3_Conceptos_teoricos.aux'.
 
  (tex/3_Conceptos_teoricos.tex
@@ -1281,7 +1274,7 @@ File: ./img/escudoInfor.pdf Graphic file (type pdf)
 <use ./img/escudoInfor.pdf>
 Package pdftex.def Info: ./img/escudoInfor.pdf  used on input line 29.
 (pdftex.def)             Requested size: 191.5pt x 228.35588pt.
-[13
+[11
 
 
 
@@ -1289,13 +1282,27 @@ Package pdftex.def Info: ./img/escudoInfor.pdf  used on input line 29.
 ]
 LaTeX Info: Redefining \. on input line 83.
 LaTeX Info: Redefining \% on input line 83.
- [14])
+ [12])
 LaTeX Info: Redefining \. on input line 521.
 LaTeX Info: Redefining \% on input line 521.
- [15]
+ [13]
 \openout2 = `./tex/4_Tecnicas_y_herramientas.aux'.
 
- (tex/4_Tecnicas_y_herramientas.tex [16
+ (tex/4_Tecnicas_y_herramientas.tex [14
+
+
+
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \hskip 5.87491pt
+(hyperref)                replaced by space on input line 1.
+
+) [15]
+\openout2 = `./tex/5_Aspectos_relevantes_del_desarrollo_del_proyecto.aux'.
+
+ (tex/5_Aspectos_relevantes_del_desarrollo_del_proyecto.tex [16
 
 
 
@@ -1307,9 +1314,9 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                replaced by space on input line 1.
 
 ) [17]
-\openout2 = `./tex/5_Aspectos_relevantes_del_desarrollo_del_proyecto.aux'.
+\openout2 = `./tex/6_Trabajos_relacionados.aux'.
 
- (tex/5_Aspectos_relevantes_del_desarrollo_del_proyecto.tex [18
+ (tex/6_Trabajos_relacionados.tex [18
 
 
 
@@ -1321,23 +1328,9 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                replaced by space on input line 1.
 
 ) [19]
-\openout2 = `./tex/6_Trabajos_relacionados.aux'.
-
- (tex/6_Trabajos_relacionados.tex [20
-
-
-
-
-]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \hskip 5.87491pt
-(hyperref)                replaced by space on input line 1.
-
-) [21]
 \openout2 = `./tex/7_Conclusiones_Lineas_de_trabajo_futuras.aux'.
 
- (tex/7_Conclusiones_Lineas_de_trabajo_futuras.tex [22
+ (tex/7_Conclusiones_Lineas_de_trabajo_futuras.tex [20
 
 
 
@@ -1348,7 +1341,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \hskip 5.87491pt
 (hyperref)                replaced by space on input line 1.
 
-) [23] [24
+) [21] [22
 
 
 
@@ -1357,20 +1350,20 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package glossaries Info: Preparing to sort glossary `acronym' (total number of
 (glossaries)             referenced entries: 5)
 
-[25
+[23
 
 
-] [26
+] [24
 
 ]
 
 Package glossaries Info: Preparing to sort glossary `main' (total number of
 (glossaries)             referenced entries: 5)
 
-(memoria.bbl [27
+(memoria.bbl [25
 
 
-] [28
+] [26
 
 ]
 bibitemlist
@@ -1392,7 +1385,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 55--62
  lays -[] employees -[]
  []
 
-[29]
+[27]
 Underfull \hbox (badness 10000) in paragraph at lines 64--70
 \T1/lmtt/m/n/12 com / articles / 2023 -[] 05 -[] 16 / downfall -[] of -[] babyl
 on -[] health/$[][]\T1/lmr/m/n/12 (+20) , 2023.
@@ -1428,7 +1421,7 @@ LaTeX Info: Redefining \% on input line 132.
 Overfull \vbox (0.85403pt too high) has occurred while \output is active []
 
 
-[30]
+[28]
 Underfull \hbox (badness 10000) in paragraph at lines 142--149
 \T1/lmr/m/n/12 (+20) ar-ti-fi-cial in-te-lli-gen-ce.  [][]$\T1/lmtt/m/n/12 http
 s : / / smile . eu / en / publications -[]
@@ -1495,7 +1488,7 @@ LaTeX Info: Redefining \% on input line 545.
 Overfull \vbox (0.85403pt too high) has occurred while \output is active []
 
 
-[31]
+[29]
 \tf@toc=\write5
 \openout5 = `memoria.toc'.
 
@@ -1524,13 +1517,13 @@ L3 programming layer <2020/03/25>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `memoria.out' has not changed.
-(rerunfilecheck)             Checksum: B7B7529E677C31BFC0E8576E776F8064;3924.
+(rerunfilecheck)             Checksum: F0A3166561B530096584D7AF5A553D2B;4050.
  ) 
 Here is how much of TeX's memory you used:
- 25580 strings out of 467870
- 470920 string characters out of 5418355
- 1002499 words of memory out of 5000000
- 53753 multiletter control sequences out of 15000+600000
+ 25576 strings out of 467870
+ 470887 string characters out of 5418355
+ 1002496 words of memory out of 5000000
+ 53754 multiletter control sequences out of 15000+600000
  730784 words of font info for 191 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,12n,93p,2497b,863s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1547,9 +1540,9 @@ C:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:
 /Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:
 /Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><
 C:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on memoria.pdf (43 pages, 799119 bytes).
+Output written on memoria.pdf (41 pages, 798104 bytes).
 PDF statistics:
- 945 PDF objects out of 1000 (max. 8388607)
- 135 named destinations out of 1000 (max. 500000)
- 60083 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 936 PDF objects out of 1000 (max. 8388607)
+ 130 named destinations out of 1000 (max. 500000)
+ 60091 words of extra memory for PDF output out of 61914 (max. 10000000)
 
