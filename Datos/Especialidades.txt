@@ -1,0 +1,85 @@
+- Urgencias
+URGENCIAS A DOMICILIO
+URGENCIAS HOSPITALARIAS. . . . . . . . . . . . . . . . . 33
+URGENCIAS GINECOLÓGICAS Y/O
+OBSTETRICAS. . . . . . . . . . . . . . . . . . . . . . . . . . 	33
+URGENCIAS NEUROCIRUGÍA. . . . . . . . . . . . . . 33
+URGENCIAS O.R.L.. . . . . . . . . . . . . . . . . . . . . . 	33
+URGENCIAS PEDIÁTRICAS. . . . . . . . . . . . . . . . 	33
+URGENCIAS TRAUMATOLÓGICAS. . . . . . . . . . 	33
+Ambulancias y otros traslados
+sanitarios 33
+Clínicas y hospitales concertados 33
+HOSPITALES GENERALES. . . . . . . . . . . . . . . . . . . 33
+- Atención primaria
+MEDICINA GENERAL . . . . . . . . . . . . . . . . . . . . . . . 34
+PEDIATRÍA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+ENFERMERÍA. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+SOLO ATENCIÓN DOMICILIARIA. . . . . . . . . . . 	40
+MATRONA. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+PREPARACIÓN AL PARTO . . . . . . . . . . . . . . . . 	40
+FISIOTERAPIA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+PREPARACIÓN AL PARTO . . . . . . . . . . . . . . . . 	40
+REHABILITACIÓN DEL SUELO PÉLVICO. . . . . 	40
+ODONTOLOGÍA - ESTOMATOLOGÍA . . . . . . . . . . . . 41
+- Atención especializada
+ALERGOLOGÍA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+ALERGOLOGÍA INFANTIL. . . . . . . . . . . . . . . . . 	43
+ANÁLISIS CLÍNICOS . . . . . . . . . . . . . . . . . . . . . . . . 43
+ANATOMÍA PATOLÓGICA. . . . . . . . . . . . . . . . . . . . . 44
+ANGIOLOGÍA Y CIRUGÍA VASCULAR. . . . . . . . . . . . 45
+APARATO DIGESTIVO. . . . . . . . . . . . . . . . . . . . . . . . 45
+ENDOSCOPIA DIGESTIVA. . . . . . . . . . . . . . . . . 	46
+CARDIOLOGÍA. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+CARDIOLOGÍA INFANTIL. . . . . . . . . . . . . . . . . . 	47
+HEMODINÁMICA. . . . . . . . . . . . . . . . . . . . . . . . 	47
+CIRUGÍA CARDIOVASCULAR. . . . . . . . . . . . . . . . . . 47
+CIRUGÍA GENERAL Y DEL APARATO DIGESTIVO . 47
+CIRUGÍA DE LA MAMA. . . . . . . . . . . . . . . . . . . 	48
+CIRUGÍA ORAL Y MAXILOFACIAL . . . . . . . . . . . . . . 48
+CIRUGÍA PEDIÁTRICA. . . . . . . . . . . . . . . . . . . . . . . 49
+CIRUGÍA PLÁSTICA, ESTÉTICA Y REPARADORA . 49
+CIRUGÍA TORÁCICA. . . . . . . . . . . . . . . . . . . . . . . . . 49
+DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y
+VENEREO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+ENDOCRINOLOGÍA Y NUTRICIÓN . . . . . . . . . . . . . 51
+GINECOLOGÍA Y OBSTETRICIA . . . . . . . . . . . . . . . 52
+DIAGNÓSTICO PRENATAL / AMNIOCENTÉSIS 56
+HEMATOLOGÍA Y HEMOTERAPIA. . . . . . . . . . . . . . 56
+LOGOPEDIA Y FONIATRÍA . . . . . . . . . . . . . . . . . . . . 56
+MEDICINA FÍSICA Y REHABILITACIÓN. . . . . . . . . . 57
+MEDICINA INTERNA . . . . . . . . . . . . . . . . . . . . . . . . 57
+NEFROLOGÍA. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+NEUMOLOGÍA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+NEUROCIRUGÍA. . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
+NEUROFISIOLOGÍA CLÍNICA. . . . . . . . . . . . . . . . . . 58
+ELECTROENCEFALOGRAMA. . . . . . . . . . . . . . 	58
+ELECTROMIOGRAMA. . . . . . . . . . . . . . . . . . . . 	58
+POTENCIALES EVOCADOS. . . . . . . . . . . . . . . . 	58
+UNIDAD DE SUEÑO / POLISOMNOGRAFÍA. . . 	58
+NEUROLOGÍA. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+OFTALMOLOGÍA . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+CIRUGÍA DE POLO ANTERIOR (CÓRNEA Y
+CATARATA). . . . . . . . . . . . . . . . . . . . . . . . . . . . . 	60
+CIRUGÍA DEL GLAUCOMA. . . . . . . . . . . . . . . . 	60
+CIRUGÍA PLÁSTICA OCULAR. . . . . . . . . . . . . . 	60
+CIRUGÍA REFRACTIVA Y PRESBICIA. . . . . . . . 	60
+CIRUGÍA VÍTREO-RETINA Y MÁCULA. . . . . . . 	60
+OFTALMOLOGÍA INFANTIL Y ESTRABISMO . . 	60
+ONCOLOGÍA MÉDICA. . . . . . . . . . . . . . . . . . . . . . . . 60
+ONCOLOGÍA RADIOTERÁPICA . . . . . . . . . . . . . . . . 61
+OTORRINOLARINGOLOGÍA . . . . . . . . . . . . . . . . . . . 61
+PSICOLOGÍA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+PSIQUIATRÍA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+RADIODIAGNÓSTICO. . . . . . . . . . . . . . . . . . . . . . . . 63
+DENSITOMETRÍA ÓSEA . . . . . . . . . . . . . . . . . . 	63
+ECOGRAFÍA. . . . . . . . . . . . . . . . . . . . . . . . . . . . 	64
+MAMOGRAFÍA. . . . . . . . . . . . . . . . . . . . . . . . . . 	64
+RADIOLOGÍA INTERVENCIONISTA. . . . . . . . . . 	64
+RESONANCIA MAGNÉTICA . . . . . . . . . . . . . . . 	64
+T.A.C. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 	64
+RADIOLOGÍA INTERVENCIONISTA. . . . . . . . . . . . . 65
+REUMATOLOGÍA. . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA . . . . . 65
+TRAUMATOLOGÍA INFANTIL. . . . . . . . . . . . . . . 	68
+UROLOGÍA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 68
