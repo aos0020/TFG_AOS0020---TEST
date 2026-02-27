@@ -1,6 +1,7 @@
 # Ignore Windows desktop.ini files
 desktop.ini
 Desktop.ini
+Thumbs.db
 
 # Ignore Microsoft Word documents and temporary Word files
 *.doc
