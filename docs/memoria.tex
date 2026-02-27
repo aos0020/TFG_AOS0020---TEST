@@ -29,6 +29,8 @@
 
 %%% USo : de otros \acrshort{cod} debido : RESPETA MAYUSC
 %%% TAmbién \acrfull{gui}  y nos aprece todo
+%%% Y en el texto, en vez de \gls{tfidf} puedes usar \acrshort{tfidf} (o \acrfull{tfidf} la primera vez).
+
 \newacronym{cod}{CoT}{\textit{Cadena de pensamiento}}
 \newacronym{crud}{CRUD}{\textit{Create, Read, Update, Delete}}
 \newacronym{gui}{GUI}{\textit{{Interfaz Gráfica de Usuario}}}
@@ -37,16 +39,40 @@
 
 % Acrónimos en inglés
 \newacronym{llme}{LLM}{\textit{Large Language Models}}
-
+% --- Acrónimos ---
+\newacronym{tfidf}{TF-IDF}{\textit{Term Frequency--Inverse Document Frequency}}
+\newacronym{svd}{SVD}{\textit{Singular Value Decomposition}}
+\newacronym{svm}{SVM}{\textit{Support Vector Machine}}
 
 % Glosario
 % \gls{zero-shot} 
 % \gls{ingenieria_prompt} 
-\newglossaryentry{ingenieria_prompt}
-{
-	name=Ingeniería del prompt,
-	description={Proceso de optimización y diseño de instrucciones (prompts) para mejorar las respuestas de los modelos de lenguaje a gran escala (LLM)}
+% --- Glosario (términos) ---
+\newglossaryentry{standalone}{
+	name={stand alone},
+	description={Propiedad de un sistema que puede ejecutarse de forma autónoma en un entorno local, sin depender de servicios externos o conexión a internet}
 }
+
+\newglossaryentry{recall}{
+	name={Recall (sensibilidad)},
+	description={Métrica que cuantifica la proporción de casos reales de una clase identificados correctamente por el modelo; se calcula como TP/(TP+FN)}
+}
+
+\newglossaryentry{truncatedsvd}{
+	name={TruncatedSVD},
+	description={Técnica de reducción de dimensionalidad que aproxima la descomposición en valores singulares conservando solo k componentes principales; se aplica frecuentemente sobre matrices TF-IDF para obtener representaciones latentes}
+}
+
+\newglossaryentry{regresion_logistica}{
+	name={Regresión logística},
+	description={Modelo de clasificación supervisada que estima la probabilidad de pertenencia a una clase a partir de una combinación lineal de características}
+}
+
+\newglossaryentry{naive_bayes}{
+	name={Naive Bayes},
+	description={Familia de clasificadores probabilísticos basada en el teorema de Bayes y en la asunción de independencia condicional entre características}
+}
+
 
 
 % Ecuaciones
@@ -100,420 +126,420 @@
 % 4 --> Etiqueta (label) para referencias
 % 5 --> Opciones que queramos pasarle al \includegraphics
 % 6 --> Opciones de posicionamiento a pasarle a \begin{figure}
-\newcommand{\figuraConPosicion}[6]{%
-  \setlength{\anchoFloat}{#1\textwidth}%
-  \addtolength{\anchoFloat}{-4\fboxsep}%
-  \setlength{\anchoFigura}{\anchoFloat}%
-  \begin{figure}[#6]
-    \begin{center}%
-      \Ovalbox{%
-        \begin{minipage}{\anchoFloat}%
-          \begin{center}%
-            \includegraphics[width=\anchoFigura,#5]{#2}%
-            \caption{#3}%
-            \label{#4}%
-          \end{center}%
-        \end{minipage}
-      }%
-    \end{center}%
-  \end{figure}%
-}
-
-%
-% Comando para incluir imágenes en formato apaisado (sin marco).
-\newcommand{\figuraApaisadaSinMarco}[5]{%
-  \begin{figure}%
-    \begin{center}%
-    \includegraphics[angle=90,height=#1\textheight,#5]{#2}%
-    \caption{#3}%
-    \label{#4}%
-    \end{center}%
-  \end{figure}%
-}
-% Para las tablas
-\newcommand{\otoprule}{\midrule [\heavyrulewidth]}
-%
-% Nuevo comando para tablas pequeñas (menos de una página).
-\newcommand{\tablaSmall}[5]{%
- \begin{table}
-  \begin{center}
-   \rowcolors {2}{gray!35}{}
-   \begin{tabular}{#2}
-    \toprule
-    #4
-    \otoprule
-    #5
-    \bottomrule
-   \end{tabular}
-   \caption{#1}
-   \label{tabla:#3}
-  \end{center}
- \end{table}
-}
-
-%
-% Nuevo comando para tablas pequeñas (menos de una página).
-\newcommand{\tablaSmallSinColores}[5]{%
- \begin{table}[H]
-  \begin{center}
-   \begin{tabular}{#2}
-    \toprule
-    #4
-    \otoprule
-    #5
-    \bottomrule
-   \end{tabular}
-   \caption{#1}
-   \label{tabla:#3}
-  \end{center}
- \end{table}
-}
-
-\newcommand{\tablaApaisadaSmall}[5]{%
-\begin{landscape}
-  \begin{table}
-   \begin{center}
-    \rowcolors {2}{gray!35}{}
-    \begin{tabular}{#2}
-     \toprule
-     #4
-     \otoprule
-     #5
-     \bottomrule
-    \end{tabular}
-    \caption{#1}
-    \label{tabla:#3}
-   \end{center}
-  \end{table}
-\end{landscape}
-}
-
-%
-% Nuevo comando para tablas grandes con cabecera y filas alternas coloreadas en gris.
-\newcommand{\tabla}[6]{%
-  \begin{center}
-    \tablefirsthead{
-      \toprule
-      #5
-      \otoprule
-    }
-    \tablehead{
-      \multicolumn{#3}{l}{\small\sl continúa desde la página anterior}\\
-      \toprule
-      #5
-      \otoprule
-    }
-    \tabletail{
-      \hline
-      \multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
-    }
-    \tablelasttail{
-      \hline
-    }
-    \bottomcaption{#1}
-    \rowcolors {2}{gray!35}{}
-    \begin{xtabular}{#2}
-      #6
-      \bottomrule
-    \end{xtabular}
-    \label{tabla:#4}
-  \end{center}
-}
-
-%
-% Nuevo comando para tablas grandes con cabecera.
-\newcommand{\tablaSinColores}[6]{%
-  \begin{center}
-    \tablefirsthead{
-      \toprule
-      #5
-      \otoprule
-    }
-    \tablehead{
-      \multicolumn{#3}{l}{\small\sl continúa desde la página anterior}\\
-      \toprule
-      #5
-      \otoprule
-    }
-    \tabletail{
-      \hline
-      \multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
-    }
-    \tablelasttail{
-      \hline
-    }
-    \bottomcaption{#1}
-    \begin{xtabular}{#2}
-      #6
-      \bottomrule
-    \end{xtabular}
-    \label{tabla:#4}
-  \end{center}
-}
-
-%
-% Nuevo comando para tablas grandes sin cabecera.
-\newcommand{\tablaSinCabecera}[5]{%
-  \begin{center}
-    \tablefirsthead{
-      \toprule
-    }
-    \tablehead{
-      \multicolumn{#3}{l}{\small\sl continúa desde la página anterior}\\
-      \hline
-    }
-    \tabletail{
-      \hline
-      \multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
-    }
-    \tablelasttail{
-      \hline
-    }
-    \bottomcaption{#1}
-  \begin{xtabular}{#2}
-    #5
-   \bottomrule
-  \end{xtabular}
-  \label{tabla:#4}
-  \end{center}
-}
-
-
-
-\definecolor{cgoLight}{HTML}{EEEEEE}
-\definecolor{cgoExtralight}{HTML}{FFFFFF}
-
-%
-% Nuevo comando para tablas grandes sin cabecera.
-\newcommand{\tablaSinCabeceraConBandas}[5]{%
-  \begin{center}
-    \tablefirsthead{
-      \toprule
-    }
-    \tablehead{
-      \multicolumn{#3}{l}{\small\sl continúa desde la página anterior}\\
-      \hline
-    }
-    \tabletail{
-      \hline
-      \multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
-    }
-    \tablelasttail{
-      \hline
-    }
-    \bottomcaption{#1}
-    \rowcolors[]{1}{cgoExtralight}{cgoLight}
-
-  \begin{xtabular}{#2}
-    #5
-   \bottomrule
-  \end{xtabular}
-  \label{tabla:#4}
-  \end{center}
-}
-
-
-
-\graphicspath{ {./img/} }
-
-% Capítulos
-\chapterstyle{bianchi}
-\newcommand{\capitulo}[2]{
-	\setcounter{chapter}{#1}
-	\setcounter{section}{0}
-	\setcounter{figure}{0}
-	\setcounter{table}{0}
-	\chapter*{\thechapter.\enskip #2}
-	\addcontentsline{toc}{chapter}{\thechapter.\enskip #2}
-	\markboth{#2}{#2}
-}
-
-% Apéndices
-\renewcommand{\appendixname}{Apéndice}
-\renewcommand*\cftappendixname{\appendixname}
-
-\newcommand{\apendice}[1]{
-	%\renewcommand{\thechapter}{A}
-	\chapter{#1}
-}
-
-\renewcommand*\cftappendixname{\appendixname\ }
-
-% Formato de portada
-\makeatletter
-\usepackage{xcolor}
-\newcommand{\tutor}[1]{\def\@tutor{#1}}
-\newcommand{\course}[1]{\def\@course{#1}}
-\definecolor{cpardoBox}{HTML}{E6E6FF}
-\def\maketitle{
-  \null
-  \thispagestyle{empty}
-  % Cabecera ----------------
-\noindent\includegraphics[width=\textwidth]{cabecera}\vspace{1cm}%
-  \vfill
-  % Título proyecto y escudo informática ----------------
-  \colorbox{cpardoBox}{%
-    \begin{minipage}{.8\textwidth}
-      \vspace{.5cm}\Large
-      \begin{center}
-      \textbf{TFG del Grado en Ingeniería Informática}\vspace{.6cm}\\
-      \textbf{\LARGE\@title{}}
-      \end{center}
-      \vspace{.2cm}
-    \end{minipage}
-
-  }%
-  \hfill\begin{minipage}{.20\textwidth}
-    \includegraphics[width=\textwidth]{escudoInfor}
-  \end{minipage}
-  \vfill
-  % Datos de alumno, curso y tutores ------------------
-  \begin{center}%
-  {%
-    \noindent\LARGE
-    Presentado por \@author{}\\ 
-    en Universidad de Burgos --- \@date{}\\
-    Tutor: \@tutor{}\\
-  }%
-  \end{center}%
-  \null
-  \cleardoublepage
-  }
-\makeatother
-
-
-
-\newcommand{\nombre}{Ángel Ortiz de Lejarazu Sánchez} %%% cambio de comando
-
-
-% Datos de portada
-\title{título del TFG}
-\author{\nombre}
-\tutor{nombre tutor}
-\date{\today}
-
-\begin{document}
-
-\maketitle
-
-
-\newpage\null\thispagestyle{empty}\newpage
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\thispagestyle{empty}
-
-
-\noindent\includegraphics[width=\textwidth]{cabecera}\vspace{1cm}
-
-\noindent D. nombre tutor, profesor del departamento de nombre departamento, área de nombre área.
-
-\noindent Expone:
-
-\noindent Que el alumno D. \nombre, con DNI 32702325M, ha realizado el Trabajo final de Grado en Ingeniería Informática titulado título de TFG. 
-
-\noindent Y que dicho trabajo ha sido realizado por el alumno bajo la dirección del que suscribe, en virtud de lo cual se autoriza su presentación y defensa.
-
-\begin{center} %\large
-En Burgos, {\large \today}
-\end{center}
-
-\vfill\vfill\vfill
-
-% Author and supervisor
-\begin{minipage}{0.45\textwidth}
-\begin{flushleft} %\large
-Vº. Bº. del Tutor:\\[2cm]
-D. nombre tutor
-\end{flushleft}
-\end{minipage}
-\hfill
-\begin{minipage}{0.45\textwidth}
-\begin{flushleft} %\large
-Vº. Bº. del co-tutor:\\[2cm]
-D. nombre co-tutor
-\end{flushleft}
-\end{minipage}
-\hfill
-
-\vfill
-
-% para casos con solo un tutor comentar lo anterior
-% y descomentar lo siguiente
-%Vº. Bº. del Tutor:\\[2cm]
-%D. nombre tutor
-
-
-\newpage\null\thispagestyle{empty}\newpage
-
-
-
-
-\frontmatter
-
-% Abstract en castellano
-\renewcommand*\abstractname{Resumen}
-\begin{abstract}
-En este primer apartado se hace una \textbf{breve} presentación del tema que se aborda en el proyecto.
-\end{abstract}
-
-\renewcommand*\abstractname{Descriptores}
-\begin{abstract}
-Palabras separadas por comas que identifiquen el contenido del proyecto Ej: servidor web, buscador de vuelos, android \ldots
-\end{abstract}
-
-\clearpage
-
-% Abstract en inglés
-\renewcommand*\abstractname{Abstract}
-\begin{abstract}
-A \textbf{brief} presentation of the topic addressed in the project.
-\end{abstract}
-
-\renewcommand*\abstractname{Keywords}
-\begin{abstract}
-keywords separated by commas.
-\end{abstract}
-
-\clearpage
-
-% Indices
-\tableofcontents
-
-\clearpage
-
-\listoffigures
-
-\clearpage
-
-\listoftables
-\clearpage
-
-\mainmatter
-\include{./tex/1_Introduccion}
-\include{./tex/2_Objetivos_del_proyecto}
-\include{./tex/3_Conceptos_teoricos}
-\include{./tex/4_Tecnicas_y_herramientas}
-\include{./tex/5_Aspectos_relevantes_del_desarrollo_del_proyecto}
-\include{./tex/6_Trabajos_relacionados}
-\include{./tex/7_Conclusiones_Lineas_de_trabajo_futuras}
-
-
-\cleardoublepage
-\phantomsection
-\printnoidxglossary[type=\acronymtype, title={Acrónimos}]
-
-\cleardoublepage
-\phantomsection
-\printnoidxglossary[title={Glosario}]
-%\printacronyms
-%\printglossary
-%\printnoidxglossary[type=\acronymtype]
-%\printglossary[type=\acronymtype]
-%\printglossary
-
-
-\bibliographystyle{plain}
-\bibliography{bibliografia}
-
-\end{document}
+	\newcommand{\figuraConPosicion}[6]{%
+		\setlength{\anchoFloat}{#1\textwidth}%
+		\addtolength{\anchoFloat}{-4\fboxsep}%
+		\setlength{\anchoFigura}{\anchoFloat}%
+		\begin{figure}[#6]
+			\begin{center}%
+				\Ovalbox{%
+					\begin{minipage}{\anchoFloat}%
+						\begin{center}%
+							\includegraphics[width=\anchoFigura,#5]{#2}%
+							\caption{#3}%
+							\label{#4}%
+						\end{center}%
+					\end{minipage}
+				}%
+			\end{center}%
+		\end{figure}%
+	}
+	
+	%
+	% Comando para incluir imágenes en formato apaisado (sin marco).
+	\newcommand{\figuraApaisadaSinMarco}[5]{%
+		\begin{figure}%
+			\begin{center}%
+				\includegraphics[angle=90,height=#1\textheight,#5]{#2}%
+				\caption{#3}%
+				\label{#4}%
+			\end{center}%
+		\end{figure}%
+	}
+	% Para las tablas
+	\newcommand{\otoprule}{\midrule [\heavyrulewidth]}
+	%
+	% Nuevo comando para tablas pequeñas (menos de una página).
+	\newcommand{\tablaSmall}[5]{%
+		\begin{table}
+			\begin{center}
+				\rowcolors {2}{gray!35}{}
+				\begin{tabular}{#2}
+					\toprule
+					#4
+					\otoprule
+					#5
+					\bottomrule
+				\end{tabular}
+				\caption{#1}
+				\label{tabla:#3}
+			\end{center}
+		\end{table}
+	}
+	
+	%
+	% Nuevo comando para tablas pequeñas (menos de una página).
+	\newcommand{\tablaSmallSinColores}[5]{%
+		\begin{table}[H]
+			\begin{center}
+				\begin{tabular}{#2}
+					\toprule
+					#4
+					\otoprule
+					#5
+					\bottomrule
+				\end{tabular}
+				\caption{#1}
+				\label{tabla:#3}
+			\end{center}
+		\end{table}
+	}
+	
+	\newcommand{\tablaApaisadaSmall}[5]{%
+		\begin{landscape}
+			\begin{table}
+				\begin{center}
+					\rowcolors {2}{gray!35}{}
+					\begin{tabular}{#2}
+						\toprule
+						#4
+						\otoprule
+						#5
+						\bottomrule
+					\end{tabular}
+					\caption{#1}
+					\label{tabla:#3}
+				\end{center}
+			\end{table}
+		\end{landscape}
+	}
+	
+	%
+	% Nuevo comando para tablas grandes con cabecera y filas alternas coloreadas en gris.
+	\newcommand{\tabla}[6]{%
+		\begin{center}
+			\tablefirsthead{
+				\toprule
+				#5
+				\otoprule
+			}
+			\tablehead{
+				\multicolumn{#3}{l}{\small\sl continúa desde la página anterior}\\
+				\toprule
+				#5
+				\otoprule
+			}
+			\tabletail{
+				\hline
+				\multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
+			}
+			\tablelasttail{
+				\hline
+			}
+			\bottomcaption{#1}
+			\rowcolors {2}{gray!35}{}
+			\begin{xtabular}{#2}
+				#6
+				\bottomrule
+			\end{xtabular}
+			\label{tabla:#4}
+		\end{center}
+	}
+	
+	%
+	% Nuevo comando para tablas grandes con cabecera.
+	\newcommand{\tablaSinColores}[6]{%
+		\begin{center}
+			\tablefirsthead{
+				\toprule
+				#5
+				\otoprule
+			}
+			\tablehead{
+				\multicolumn{#3}{l}{\small\sl continúa desde la página anterior}\\
+				\toprule
+				#5
+				\otoprule
+			}
+			\tabletail{
+				\hline
+				\multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
+			}
+			\tablelasttail{
+				\hline
+			}
+			\bottomcaption{#1}
+			\begin{xtabular}{#2}
+				#6
+				\bottomrule
+			\end{xtabular}
+			\label{tabla:#4}
+		\end{center}
+	}
+	
+	%
+	% Nuevo comando para tablas grandes sin cabecera.
+	\newcommand{\tablaSinCabecera}[5]{%
+		\begin{center}
+			\tablefirsthead{
+				\toprule
+			}
+			\tablehead{
+				\multicolumn{#3}{l}{\small\sl continúa desde la página anterior}\\
+				\hline
+			}
+			\tabletail{
+				\hline
+				\multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
+			}
+			\tablelasttail{
+				\hline
+			}
+			\bottomcaption{#1}
+			\begin{xtabular}{#2}
+				#5
+				\bottomrule
+			\end{xtabular}
+			\label{tabla:#4}
+		\end{center}
+	}
+	
+	
+	
+	\definecolor{cgoLight}{HTML}{EEEEEE}
+	\definecolor{cgoExtralight}{HTML}{FFFFFF}
+	
+	%
+	% Nuevo comando para tablas grandes sin cabecera.
+	\newcommand{\tablaSinCabeceraConBandas}[5]{%
+		\begin{center}
+			\tablefirsthead{
+				\toprule
+			}
+			\tablehead{
+				\multicolumn{#3}{l}{\small\sl continúa desde la página anterior}\\
+				\hline
+			}
+			\tabletail{
+				\hline
+				\multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
+			}
+			\tablelasttail{
+				\hline
+			}
+			\bottomcaption{#1}
+			\rowcolors[]{1}{cgoExtralight}{cgoLight}
+			
+			\begin{xtabular}{#2}
+				#5
+				\bottomrule
+			\end{xtabular}
+			\label{tabla:#4}
+		\end{center}
+	}
+	
+	
+	
+	\graphicspath{ {./img/} }
+	
+	% Capítulos
+	\chapterstyle{bianchi}
+	\newcommand{\capitulo}[2]{
+		\setcounter{chapter}{#1}
+		\setcounter{section}{0}
+		\setcounter{figure}{0}
+		\setcounter{table}{0}
+		\chapter*{\thechapter.\enskip #2}
+		\addcontentsline{toc}{chapter}{\thechapter.\enskip #2}
+		\markboth{#2}{#2}
+	}
+	
+	% Apéndices
+	\renewcommand{\appendixname}{Apéndice}
+	\renewcommand*\cftappendixname{\appendixname}
+	
+	\newcommand{\apendice}[1]{
+		%\renewcommand{\thechapter}{A}
+		\chapter{#1}
+	}
+	
+	\renewcommand*\cftappendixname{\appendixname\ }
+	
+	% Formato de portada
+	\makeatletter
+	\usepackage{xcolor}
+	\newcommand{\tutor}[1]{\def\@tutor{#1}}
+	\newcommand{\course}[1]{\def\@course{#1}}
+	\definecolor{cpardoBox}{HTML}{E6E6FF}
+	\def\maketitle{
+		\null
+		\thispagestyle{empty}
+		% Cabecera ----------------
+		\noindent\includegraphics[width=\textwidth]{cabecera}\vspace{1cm}%
+		\vfill
+		% Título proyecto y escudo informática ----------------
+		\colorbox{cpardoBox}{%
+			\begin{minipage}{.8\textwidth}
+				\vspace{.5cm}\Large
+				\begin{center}
+					\textbf{TFG del Grado en Ingeniería Informática}\vspace{.6cm}\\
+					\textbf{\LARGE\@title{}}
+				\end{center}
+				\vspace{.2cm}
+			\end{minipage}
+			
+		}%
+		\hfill\begin{minipage}{.20\textwidth}
+			\includegraphics[width=\textwidth]{escudoInfor}
+		\end{minipage}
+		\vfill
+		% Datos de alumno, curso y tutores ------------------
+		\begin{center}%
+			{%
+				\noindent\LARGE
+				Presentado por \@author{}\\ 
+				en Universidad de Burgos --- \@date{}\\
+				Tutor: \@tutor{}\\
+			}%
+		\end{center}%
+		\null
+		\cleardoublepage
+	}
+	\makeatother
+	
+	
+	
+	\newcommand{\nombre}{Ángel Ortiz de Lejarazu Sánchez} %%% cambio de comando
+	
+	
+	% Datos de portada
+	\title{título del TFG}
+	\author{\nombre}
+	\tutor{nombre tutor}
+	\date{\today}
+	
+	\begin{document}
+		
+		\maketitle
+		
+		
+		\newpage\null\thispagestyle{empty}\newpage
+		
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\thispagestyle{empty}
+		
+		
+		\noindent\includegraphics[width=\textwidth]{cabecera}\vspace{1cm}
+		
+		\noindent D. nombre tutor, profesor del departamento de nombre departamento, área de nombre área.
+		
+		\noindent Expone:
+		
+		\noindent Que el alumno D. \nombre, con DNI 32702325M, ha realizado el Trabajo final de Grado en Ingeniería Informática titulado título de TFG. 
+		
+		\noindent Y que dicho trabajo ha sido realizado por el alumno bajo la dirección del que suscribe, en virtud de lo cual se autoriza su presentación y defensa.
+		
+		\begin{center} %\large
+			En Burgos, {\large \today}
+		\end{center}
+		
+		\vfill\vfill\vfill
+		
+		% Author and supervisor
+		\begin{minipage}{0.45\textwidth}
+			\begin{flushleft} %\large
+				Vº. Bº. del Tutor:\\[2cm]
+				D. nombre tutor
+			\end{flushleft}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.45\textwidth}
+			\begin{flushleft} %\large
+				Vº. Bº. del co-tutor:\\[2cm]
+				D. nombre co-tutor
+			\end{flushleft}
+		\end{minipage}
+		\hfill
+		
+		\vfill
+		
+		% para casos con solo un tutor comentar lo anterior
+		% y descomentar lo siguiente
+		%Vº. Bº. del Tutor:\\[2cm]
+		%D. nombre tutor
+		
+		
+		\newpage\null\thispagestyle{empty}\newpage
+		
+		
+		
+		
+		\frontmatter
+		
+		% Abstract en castellano
+		\renewcommand*\abstractname{Resumen}
+		\begin{abstract}
+			En este primer apartado se hace una \textbf{breve} presentación del tema que se aborda en el proyecto.
+		\end{abstract}
+		
+		\renewcommand*\abstractname{Descriptores}
+		\begin{abstract}
+			Palabras separadas por comas que identifiquen el contenido del proyecto Ej: servidor web, buscador de vuelos, android \ldots
+		\end{abstract}
+		
+		\clearpage
+		
+		% Abstract en inglés
+		\renewcommand*\abstractname{Abstract}
+		\begin{abstract}
+			A \textbf{brief} presentation of the topic addressed in the project.
+		\end{abstract}
+		
+		\renewcommand*\abstractname{Keywords}
+		\begin{abstract}
+			keywords separated by commas.
+		\end{abstract}
+		
+		\clearpage
+		
+		% Indices
+		\tableofcontents
+		
+		\clearpage
+		
+		\listoffigures
+		
+		\clearpage
+		
+		\listoftables
+		\clearpage
+		
+		\mainmatter
+		\include{./tex/1_Introduccion}
+		\include{./tex/2_Objetivos_del_proyecto}
+		\include{./tex/3_Conceptos_teoricos}
+		\include{./tex/4_Tecnicas_y_herramientas}
+		\include{./tex/5_Aspectos_relevantes_del_desarrollo_del_proyecto}
+		\include{./tex/6_Trabajos_relacionados}
+		\include{./tex/7_Conclusiones_Lineas_de_trabajo_futuras}
+		
+		
+		\cleardoublepage
+		\phantomsection
+		\printnoidxglossary[type=\acronymtype, title={Acrónimos}]
+		
+		\cleardoublepage
+		\phantomsection
+		\printnoidxglossary[title={Glosario}]
+		%\printacronyms
+		%\printglossary
+		%\printnoidxglossary[type=\acronymtype]
+		%\printglossary[type=\acronymtype]
+		%\printglossary
+		
+		
+		\bibliographystyle{plain}
+		\bibliography{bibliografia}
+		
+	\end{document}
