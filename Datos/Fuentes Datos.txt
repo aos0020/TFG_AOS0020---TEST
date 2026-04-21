@@ -1,0 +1,87 @@
+https://www.kaggle.com/datasets/choongqianzheng/disease-and-symptoms-dataset : Creo que este lo utilizo más.
+
+Esta separado por comas los sintomas, 
+
+
+
+
+A GEMNIni : Generación DAtos medicos para TFG
+
+Te voy a pasar un fichero de especialidades en txt, y dos ficheros csv, uno con las columnas id , symptoms, disease y speciality , el otro fichero tiene la columna disease y hasta 17 columnas con symptoms. Lo que quiero es generar un fichero parecido al primer .csv con columna id , sytoms , disease y speciality. Esto entra dentro del TFG que voy hacer. Puedes añadir mas registros si quieres.
+- Especialidades.txt
+- id_sytoms_disease_speciality.csv  333 Registros Esta en castellano, es generado con CHAT GPT  <-- Generado  :
+ - Le paso especialidades y le digo "y serías capaz de generarme un datasheet con enfermedades, sintomas y especialidad"
+
+
+- Disease_Symptoms_colunmas  , esta en ingles, 4922 registros , descargado de https://www.kaggle.com/datasets/choongqianzheng/disease-and-symptoms-dataset
+es el DiseasAndSymtomps.csv
+
+
+
+
+Notas sobre el mapeo de especialidades para tu TFG:
+Enfermedades Infecciosas: Las patologías como Malaria, Dengue o Typhoid las he asignado a MEDICINA INTERNA, ya que es la especialidad que gestiona procesos infecciosos sistémicos en adultos.
+Dermatología: Fungal infection e Impetigo se han asignado a DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO por ser afecciones cutáneas primarias.
+Urgencias: Patologías críticas como Heart attack (Ataque al corazón) se derivan directamente a URGENCIAS HOSPITALARIAS por la gravedad inmediata descrita en el estilo de tu primer archivo.
+Endocrinología: He mantenido la coherencia para Diabetes e Hypothyroidism
+
+
+---> si, traduce todo al español
+
+
+
+He consolidado la información de tus archivos para generar un listado unificado en español, mapeando las enfermedades del archivo de síntomas con las especialidades oficiales  y traduciendo los síntomas a un lenguaje natural.
+
+
+Resumen del mapeo realizado para tu TFG:
+Mapeo de Especialidades: Se han utilizado los nombres exactos del catálogo proporcionado.
+Medicina Interna: Se asignaron enfermedades infecciosas sistémicas como Malaria, Dengue, SIDA y Fiebre Tifoidea a esta especialidad por su manejo integral en adultos.Aparato Digestivo: Se incluyeron todas las patologías gástricas y hepáticas (Hepatitis, Ictericia, ERGE).
+Dermatología: Se asignaron todas las afecciones cutáneas como Acné, Psoriasis e Infecciones fúngicas.
+Urgencias: Las patologías con compromiso neurológico agudo o vital fueron asignadas a las secciones de Urgencias correspondientes (Hospitalarias o Neurocirugía).
+
+¿Te gustaría que amplíe el número de registros para alguna especialidad concreta o que añada variables de intensidad de síntomas para enriquecer el conjunto de datos?
+
+><NO POR AHORA ----
+
+
+Entendido. He procesado la información de los archivos proporcionados para generar el nuevo fichero consolidado totalmente en español.He traducido las enfermedades y síntomas del archivo Disease_Symptoms_colunmas.csv y los he mapeado con las especialidades correspondientes del listado oficial Especialidades.txt , manteniendo el formato de lenguaje natural del primer archivo CSV .Aquí tienes los nuevos registros para tu TFG (empezando desde el ID 333 para continuar la serie):
+
+Siento la confusión anterior. He generado el archivo consolidado para tu TFG utilizando Python para procesar y traducir toda la información de los tres ficheros originales.
+
+ dataset_completo_TFG 
+CSV
+
+He realizado las siguientes acciones para crear el conjunto de datos:
+
+
+Traducción Completa: He traducido al español tanto los nombres de las patologías como la lista de síntomas de Disease_Symptoms_colunmas.csv .
+
+
+Mapeo de Especialidades: He asignado cada enfermedad a la especialidad médica correcta basándome exclusivamente en el listado oficial de Especialidades.txt .
+
+
+Generación de Lenguaje Natural: He transformado las columnas de síntomas en frases descriptivas (ej: "Presento estos síntomas: picor, sarpullido...") para mantener la coherencia con el formato de tu primer archivo CSV .
+
+Unificación: El archivo final incluye los registros originales en español y los nuevos registros procesados, todos con un ID único correlativo.
+
+Puedes descargar el archivo generado aquí:
+
+dataset_completo_TFG.csv
+
+
+me gusta, he encontrado un .csv con enfermedades y síntomas, que quizás puedas agregar también la primera columna esta la enfermedad, en el resto de las columnas están los síntomas (creo que este https://www.kaggle.com/datasets/niyarrbarman/symptom2disease)
+
+Genero --> Disease Symptoms colunmas
+
+Disease_Symptoms_colunmas.csv <- el mas largo de todos , que pone los sintomas en columnas, descargado de la página web.
+
+
+
+
+
+
+https://www.kaggle.com/datasets/niyarrbarman/symptom2disease
+
+
+
+Las Especialidades estan cogidas de un cuadro médico de Asisa 2026
