@@ -1,0 +1,4 @@
+ Create a Virtual Environment (3.12.3)?
+
+C:/Users/NOR0074M/AppData/Local/Microsoft/WindowsApps/python3.12.exe -m pip install streamlit
+PS C:\Users\NOR0074M\Documents\GitHub\TFG_AOS0020---TEST> C:/Users/NOR0074M/AppData/Local/Microsoft/WindowsApps/python3.12.exe -m streamlit run app.py
