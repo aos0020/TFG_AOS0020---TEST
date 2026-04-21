@@ -1,10 +1,17 @@
 import streamlit as st
+from TF_IDF.tf_idf import tf_idf
+
 
 # --- FUNCIONES DE LOS CLASIFICADORES (Lógica de Python) ---
 # Aquí es donde integrarías tus modelos reales de Machine Learning
 def clasificar_tfidf(texto):
-    # Simulación de lógica TF-IDF
-    return "Especialidad sugerida (TF-IDF): Medicina Interna"
+    try:
+        # Llamamos a la función de Python directamente
+        # Es instantáneo y no abre procesos externos
+        resultado = tf_idf(texto)
+        return resultado
+    except Exception as e:
+        return f"Error al ejecutar el módulo: {e}"
 
 def clasificar_svd(texto):
     # Simulación de lógica SVD
@@ -45,7 +52,7 @@ if st.button("Realizar triaje"):
                 resultado = clasificar_svd(input_sintomas)
             else:
                 resultado = clasificar_svm(input_sintomas)
-        
+
         # 3.4) Caja con el resultado debajo del botón
         st.success("Resultado del análisis:")
         st.info(resultado)
