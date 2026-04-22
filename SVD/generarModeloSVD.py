@@ -9,7 +9,11 @@ logging.disable(logging.CRITICAL)
 
 import pandas as pd
 import nltk
+from nltk.corpus import stopwords
+from nltk.stem import SnowballStemmer
+import re
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.decomposition import TruncatedSVD
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from joblib import dump
@@ -19,20 +23,30 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(ROOT_DIR)
 sys.path.insert(0, PROJECT_ROOT)
 
-from TF_IDF.tf_idf import preprocess_text
-
 # Configuración de NLTK
 try:
     nltk.data.find('corpora/stopwords')
 except LookupError:
     nltk.download('stopwords', quiet=True)
 
+stemmer = SnowballStemmer('spanish')
+stopwords_spanish = stopwords.words('spanish')
+
 CSV_PATH = os.path.join(PROJECT_ROOT, 'Datos', 'Dataset.5000.Registros.Marz.ID.Sintomas.Enfermedad.Especialidad.csv')
-MODEL_FILE = os.path.join(ROOT_DIR, 'tfidf_model.joblib')
+MODEL_FILE = os.path.join(ROOT_DIR, 'svd_model.joblib')
 
 
-def generar_modelo_tfidf():
-    """Entrena y guarda el modelo TF-IDF + Logistic Regression."""
+def preprocess_text(text):
+    """Limpia y prepara el texto para el modelo."""
+    text = str(text).lower()
+    text = re.sub(r'[^a-záéíóúüñ\s]', '', text)
+    words = text.split()
+    words = [stemmer.stem(word) for word in words if word not in stopwords_spanish]
+    return ' '.join(words)
+
+
+def generar_modelo_svd():
+    """Entrena y guarda el modelo TF-IDF + SVD + Logistic Regression."""
     if not os.path.exists(CSV_PATH):
         raise FileNotFoundError(f"No se encontró el archivo de datos: {CSV_PATH}")
 
@@ -43,13 +57,16 @@ def generar_modelo_tfidf():
     X_tfidf = tfidf_vectorizer.fit_transform(df['symptoms_processed'])
     y = df['specialty']
 
-    X_train, _, y_train, _ = train_test_split(X_tfidf, y, test_size=0.2, random_state=42)
-    model = LogisticRegression(max_iter=1000, random_state=42)
-    model.fit(X_train, y_train)
+    svd_model = TruncatedSVD(n_components=100, random_state=42)
+    X_svd = svd_model.fit_transform(X_tfidf)
+
+    X_train_svd, _, y_train, _ = train_test_split(X_svd, y, test_size=0.2, random_state=42)
+    classifier_model = LogisticRegression(max_iter=1000, random_state=42)
+    classifier_model.fit(X_train_svd, y_train)
 
     os.makedirs(os.path.dirname(MODEL_FILE), exist_ok=True)
-    dump((tfidf_vectorizer, model), MODEL_FILE)
+    dump((tfidf_vectorizer, svd_model, classifier_model), MODEL_FILE)
 
 
 if __name__ == '__main__':
-    generar_modelo_tfidf()
+    generar_modelo_svd()
