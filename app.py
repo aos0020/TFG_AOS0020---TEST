@@ -1,5 +1,6 @@
 import streamlit as st
 from TF_IDF.tf_idf import tf_idf
+from SVD.SVD import svd
 
 
 # --- FUNCIONES DE LOS CLASIFICADORES (Lógica de Python) ---
@@ -8,14 +9,19 @@ def clasificar_tfidf(texto):
     try:
         # Llamamos a la función de Python directamente
         # Es instantáneo y no abre procesos externos
-        resultado = tf_idf(texto)
-        return resultado
+        especialidad, confianza = tf_idf(texto)
+        return f"Especialidad sugerida (TF-IDF): {especialidad} (Confianza: {confianza:.2f}%)"
     except Exception as e:
         return f"Error al ejecutar el módulo: {e}"
 
 def clasificar_svd(texto):
-    # Simulación de lógica SVD
-    return "Especialidad sugerida (SVD): Cardiología"
+    try:
+        # Llamamos a la función de Python directamente
+        # Es instantáneo y no abre procesos externos
+        especialidad, confianza = svd(texto)
+        return f"Especialidad sugerida (SVD): {especialidad} (Confianza: {confianza:.2f}%)"
+    except Exception as e:
+        return f"Error al ejecutar el módulo: {e}"
 
 def clasificar_svm(texto):
     # Simulación de lógica SVM
