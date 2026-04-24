@@ -1,13 +1,13 @@
 record_id;symptoms_text;disease;specialty
 1;Desde hace 2 días me pasa esto: dolor de garganta fuerte, ojos llorosos intenso. A ratos, congestión nasal.;Resfriado común;MEDICINA GENERAL
-2;Llevo 2 días con estornudos y dolor de garganta intenso; además, tos leve.;Resfriado común;MEDICINA GENERAL
+2;"Llevo 2 días con estornudos y dolor de garganta intenso; además, tos leve.";Resfriado común;MEDICINA GENERAL
 3;Tengo estornudos y tos leve desde hace 1 día, y últimamente también malestar general.;Resfriado común;MEDICINA GENERAL
-4;Llevo 1 día con congestión nasal y dolor de garganta; además, mocos.;Resfriado común;MEDICINA GENERAL
+4;"Llevo 1 día con congestión nasal y dolor de garganta; además, mocos.";Resfriado común;MEDICINA GENERAL
 5;Me empezó hace 5 días: ojos llorosos intenso, estornudos fuerte y congestión nasal.;Resfriado común;MEDICINA GENERAL
-6;Llevo 14 días con mocos y tos leve; además, congestión nasal intenso.;Resfriado común;MEDICINA GENERAL
+6;"Llevo 14 días con mocos y tos leve; además, congestión nasal intenso.";Resfriado común;MEDICINA GENERAL
 7;Desde hace 5 días tengo mocos fuerte, ojos llorosos y dolor de garganta. También noto tos leve.;Resfriado común;MEDICINA GENERAL
 8;En los últimos 5 días he tenido estornudos, mocos y ojos llorosos.;Resfriado común;MEDICINA GENERAL
-9;Llevo 1 día con mocos y congestión nasal moderado; además, malestar general.;Resfriado común;MEDICINA GENERAL
+9;"Llevo 1 día con mocos y congestión nasal moderado; además, malestar general.";Resfriado común;MEDICINA GENERAL
 10;Desde hace 4 días noto mocos. Se acompaña de dolor de garganta y malestar general fuerte.;Resfriado común;MEDICINA GENERAL
 11;Me empezó hace 5 días: cansancio intenso, tos seca y dolor de garganta fuerte.;Gripe (influenza);MEDICINA GENERAL
 12;En los últimos 5 días he tenido fiebre alta, dolor de cabeza y dolor de garganta.;Gripe (influenza);MEDICINA GENERAL
@@ -18,13 +18,13 @@ record_id;symptoms_text;disease;specialty
 17;En los últimos 3 días he tenido tos seca, dolor muscular y escalofríos.;Gripe (influenza);MEDICINA GENERAL
 18;Desde hace 5 días noto cansancio intenso. Se acompaña de fiebre alta y dolor muscular.;Gripe (influenza);MEDICINA GENERAL
 19;Desde hace 2 días noto escalofríos leve. Se acompaña de dolor de garganta y tos seca.;Gripe (influenza);MEDICINA GENERAL
-20;Llevo 3 días con tos seca y fiebre alta; además, dolor de cabeza.;Gripe (influenza);MEDICINA GENERAL
+20;"Llevo 3 días con tos seca y fiebre alta; además, dolor de cabeza.";Gripe (influenza);MEDICINA GENERAL
 21;Desde hace 2 días noto dolor de garganta. Se acompaña de cansancio y dolor de cabeza moderado.;COVID-19 (sospecha);MEDICINA GENERAL
 22;Desde hace 3 días noto pérdida de olfato o gusto. Se acompaña de tos fuerte y dolor de garganta moderado.;COVID-19 (sospecha);MEDICINA GENERAL
 23;Desde hace 10 días tengo tos, dolor de cabeza y cansancio. También noto fiebre.;COVID-19 (sospecha);MEDICINA GENERAL
 24;Tengo dolor de garganta leve y fiebre desde hace 10 días, y últimamente también congestión fuerte.;COVID-19 (sospecha);MEDICINA GENERAL
 25;En los últimos 10 días he tenido dolor de garganta fuerte, tos y fiebre.;COVID-19 (sospecha);MEDICINA GENERAL
-26;Llevo 3 días con dolor de garganta y cansancio intenso; además, congestión moderado.;COVID-19 (sospecha);MEDICINA GENERAL
+26;"Llevo 3 días con dolor de garganta y cansancio intenso; además, congestión moderado.";COVID-19 (sospecha);MEDICINA GENERAL
 27;Tengo fiebre leve y dolor de cabeza desde hace 1 día, y últimamente también pérdida de olfato o gusto.;COVID-19 (sospecha);MEDICINA GENERAL
 28;Desde hace 5 días noto pérdida de olfato o gusto leve. Se acompaña de fiebre y congestión.;COVID-19 (sospecha);MEDICINA GENERAL
 29;Desde hace 10 días me pasa esto: fiebre, cansancio fuerte. A ratos, dolor de garganta al tragar.;Faringitis;MEDICINA GENERAL
@@ -37,8 +37,8 @@ record_id;symptoms_text;disease;specialty
 36;Desde hace 3 días tengo mal aliento, cansancio y placas en la garganta leve. También noto mal aliento.;Faringitis;MEDICINA GENERAL
 37;Desde hace 3 días noto debilidad intenso. Se acompaña de fiebre y náuseas.;Gastroenteritis aguda;APARATO DIGESTIVO
 38;Tengo diarrea fuerte y náuseas desde hace 7 días, y últimamente también retortijones moderado.;Gastroenteritis aguda;APARATO DIGESTIVO
-39;Llevo 10 días con retortijones y debilidad; además, fiebre.;Gastroenteritis aguda;APARATO DIGESTIVO
-40;Llevo 7 días con fiebre y diarrea; además, retortijones.;Gastroenteritis aguda;APARATO DIGESTIVO
+39;"Llevo 10 días con retortijones y debilidad; además, fiebre.";Gastroenteritis aguda;APARATO DIGESTIVO
+40;"Llevo 7 días con fiebre y diarrea; además, retortijones.";Gastroenteritis aguda;APARATO DIGESTIVO
 41;Desde hace 14 días me pasa esto: dolor abdominal intenso, diarrea. A ratos, fiebre intenso.;Gastroenteritis aguda;APARATO DIGESTIVO
 42;Desde hace 1 día me pasa esto: náuseas intenso, diarrea. A ratos, debilidad intenso.;Gastroenteritis aguda;APARATO DIGESTIVO
 43;Me empezó hace 14 días: debilidad, fiebre y retortijones.;Gastroenteritis aguda;APARATO DIGESTIVO
@@ -62,14 +62,14 @@ record_id;symptoms_text;disease;specialty
 61;Me empezó hace 7 días: diarrea intermitente, hinchazón y cambios en el ritmo intestinal moderado.;Síndrome de intestino irritable;APARATO DIGESTIVO
 62;Desde hace 1 día tengo gases, hinchazón y cambios en el ritmo intestinal. También noto estreñimiento intermitente moderado.;Síndrome de intestino irritable;APARATO DIGESTIVO
 63;Desde hace 5 días tengo tos, mal aliento leve y congestión nasal. También noto dolor o presión facial.;Sinusitis;OTORRINOLARINGOLOGÍA
-64;Llevo 2 días con mucosidad espesa moderado y tos leve; además, dolor de cabeza.;Sinusitis;OTORRINOLARINGOLOGÍA
+64;"Llevo 2 días con mucosidad espesa moderado y tos leve; además, dolor de cabeza.";Sinusitis;OTORRINOLARINGOLOGÍA
 65;Desde hace 3 días tengo mal aliento intenso, congestión nasal y dolor de cabeza. También noto dolor o presión facial.;Sinusitis;OTORRINOLARINGOLOGÍA
 66;Me empezó hace 4 días: mal aliento leve, mucosidad espesa fuerte y dolor o presión facial.;Sinusitis;OTORRINOLARINGOLOGÍA
 67;Desde hace 2 días me pasa esto: dolor de cabeza, mal aliento leve. A ratos, tos.;Sinusitis;OTORRINOLARINGOLOGÍA
 68;Desde hace 10 días noto tos. Se acompaña de dolor o presión facial fuerte y mal aliento.;Sinusitis;OTORRINOLARINGOLOGÍA
 69;En los últimos 5 días he tenido dolor o presión facial intenso, dolor de cabeza y congestión nasal.;Sinusitis;OTORRINOLARINGOLOGÍA
 70;Me empezó hace 2 días: mal aliento, mucosidad espesa leve y dolor o presión facial intenso.;Sinusitis;OTORRINOLARINGOLOGÍA
-71;Llevo 3 días con mareo y disminución de audición; además, sensación de oído taponado.;Otitis media;OTORRINOLARINGOLOGÍA
+71;"Llevo 3 días con mareo y disminución de audición; además, sensación de oído taponado.";Otitis media;OTORRINOLARINGOLOGÍA
 72;En los últimos 14 días he tenido secreción por el oído leve, disminución de audición y sensación de oído taponado.;Otitis media;OTORRINOLARINGOLOGÍA
 73;Desde hace 4 días tengo dolor de oído intenso, disminución de audición y mareo. También noto sensación de oído taponado.;Otitis media;OTORRINOLARINGOLOGÍA
 74;Tengo secreción por el oído intenso y dolor de oído fuerte desde hace 3 días, y últimamente también sensación de oído taponado.;Otitis media;OTORRINOLARINGOLOGÍA
@@ -81,13 +81,13 @@ record_id;symptoms_text;disease;specialty
 80;Desde hace 4 días me pasa esto: dificultad para hablar por falta de aire moderado, pitidos al respirar. A ratos, empeora por la noche.;Asma (crisis);NEUMOLOGÍA
 81;Desde hace 7 días noto pitidos al respirar. Se acompaña de falta de aire moderado y opresión en el pecho.;Asma (crisis);NEUMOLOGÍA
 82;Tengo tos y falta de aire fuerte desde hace 5 días, y últimamente también empeora por la noche.;Asma (crisis);NEUMOLOGÍA
-83;Llevo 10 días con empeora por la noche y pitidos al respirar; además, tos.;Asma (crisis);NEUMOLOGÍA
+83;"Llevo 10 días con empeora por la noche y pitidos al respirar; además, tos.";Asma (crisis);NEUMOLOGÍA
 84;Desde hace 4 días tengo tos, opresión en el pecho y empeora por la noche moderado. También noto pitidos al respirar.;Asma (crisis);NEUMOLOGÍA
 85;Desde hace 10 días me pasa esto: dificultad para hablar por falta de aire fuerte, opresión en el pecho. A ratos, pitidos al respirar.;Asma (crisis);NEUMOLOGÍA
 86;Desde hace 10 días tengo dificultad para hablar por falta de aire, falta de aire y tos. También noto pitidos al respirar moderado.;Asma (crisis);NEUMOLOGÍA
 87;Tengo escalofríos y cansancio moderado desde hace 10 días, y últimamente también fiebre moderado.;Neumonía;NEUMOLOGÍA
 88;Tengo escalofríos intenso y fiebre desde hace 3 días, y últimamente también dolor torácico al respirar intenso.;Neumonía;NEUMOLOGÍA
-89;Llevo 10 días con cansancio y dolor torácico al respirar; además, tos con flema.;Neumonía;NEUMOLOGÍA
+89;"Llevo 10 días con cansancio y dolor torácico al respirar; además, tos con flema.";Neumonía;NEUMOLOGÍA
 90;Desde hace 2 días tengo fiebre, tos con flema y falta de aire leve. También noto falta de aire.;Neumonía;NEUMOLOGÍA
 91;Desde hace 14 días me pasa esto: cansancio, fiebre. A ratos, falta de aire.;Neumonía;NEUMOLOGÍA
 92;Me empezó hace 2 días: dolor torácico al respirar, cansancio moderado y fiebre.;Neumonía;NEUMOLOGÍA
@@ -105,7 +105,7 @@ record_id;symptoms_text;disease;specialty
 104;En los últimos 14 días he tenido sensibilidad al ruido, visión borrosa y aura visual.;Migraña;NEUROLOGÍA
 105;En los últimos 4 días he tenido visión borrosa leve, dolor de cabeza pulsátil y sensibilidad al ruido.;Migraña;NEUROLOGÍA
 106;Desde hace 7 días tengo náuseas, sensibilidad a la luz fuerte y sensibilidad al ruido leve. También noto aura visual.;Migraña;NEUROLOGÍA
-107;Llevo 5 días con náuseas fuerte y sensibilidad al ruido moderado; además, sensibilidad a la luz.;Migraña;NEUROLOGÍA
+107;"Llevo 5 días con náuseas fuerte y sensibilidad al ruido moderado; además, sensibilidad a la luz.";Migraña;NEUROLOGÍA
 108;Tengo náuseas leve y aura visual leve desde hace 14 días, y últimamente también sensibilidad a la luz.;Migraña;NEUROLOGÍA
 109;Desde hace 5 días noto visión borrosa. Se acompaña de dolor de cabeza pulsátil fuerte y sensibilidad al ruido.;Migraña;NEUROLOGÍA
 110;Tengo visión borrosa y náuseas desde hace 1 día, y últimamente también dolor de cabeza pulsátil.;Migraña;NEUROLOGÍA
@@ -123,19 +123,19 @@ record_id;symptoms_text;disease;specialty
 122;Desde hace 14 días me pasa esto: no siempre da síntomas, zumbido de oídos. A ratos, palpitaciones.;Hipertensión arterial;CARDIOLOGÍA
 123;En los últimos 3 días he tenido no siempre da síntomas, palpitaciones y visión borrosa leve.;Hipertensión arterial;CARDIOLOGÍA
 124;Tengo no siempre da síntomas y zumbido de oídos intenso desde hace 14 días, y últimamente también dolor de cabeza leve.;Hipertensión arterial;CARDIOLOGÍA
-125;Llevo 5 días con dolor de cabeza moderado y visión borrosa intenso; además, no siempre da síntomas.;Hipertensión arterial;CARDIOLOGÍA
+125;"Llevo 5 días con dolor de cabeza moderado y visión borrosa intenso; además, no siempre da síntomas.";Hipertensión arterial;CARDIOLOGÍA
 126;Desde hace 1 día tengo no siempre da síntomas, zumbido de oídos y visión borrosa moderado. También noto no siempre da síntomas.;Hipertensión arterial;CARDIOLOGÍA
 127;En los últimos 3 días he tenido zumbido de oídos, visión borrosa y palpitaciones intenso.;Hipertensión arterial;CARDIOLOGÍA
 128;Me empezó hace 5 días: mareos, palpitaciones y visión borrosa.;Hipertensión arterial;CARDIOLOGÍA
 129;Desde hace 1 día tengo opresión en el pecho, sensación de latidos irregulares y palpitaciones fuerte. También noto opresión en el pecho.;Arritmia (palpitaciones);CARDIOLOGÍA
 130;Me empezó hace 14 días: mareo, falta de aire y cansancio.;Arritmia (palpitaciones);CARDIOLOGÍA
-131;Llevo 10 días con cansancio y mareo; además, sensación de latidos irregulares intenso.;Arritmia (palpitaciones);CARDIOLOGÍA
+131;"Llevo 10 días con cansancio y mareo; además, sensación de latidos irregulares intenso.";Arritmia (palpitaciones);CARDIOLOGÍA
 132;En los últimos 5 días he tenido falta de aire leve, cansancio y opresión en el pecho fuerte.;Arritmia (palpitaciones);CARDIOLOGÍA
 133;En los últimos 5 días he tenido opresión en el pecho, mareo fuerte y cansancio intenso.;Arritmia (palpitaciones);CARDIOLOGÍA
-134;Llevo 1 día con cansancio leve y sensación de latidos irregulares leve; además, mareo moderado.;Arritmia (palpitaciones);CARDIOLOGÍA
+134;"Llevo 1 día con cansancio leve y sensación de latidos irregulares leve; además, mareo moderado.";Arritmia (palpitaciones);CARDIOLOGÍA
 135;En los últimos 14 días he tenido sensación de latidos irregulares intenso, palpitaciones intenso y cansancio.;Arritmia (palpitaciones);CARDIOLOGÍA
 136;Desde hace 10 días me pasa esto: mareo intenso, palpitaciones intenso. A ratos, sensación de latidos irregulares fuerte.;Arritmia (palpitaciones);CARDIOLOGÍA
-137;Llevo 1 día con dolor u opresión en el pecho y dolor que se irradia al brazo o mandíbula; además, náuseas.;Angina de pecho;CARDIOLOGÍA
+137;"Llevo 1 día con dolor u opresión en el pecho y dolor que se irradia al brazo o mandíbula; además, náuseas.";Angina de pecho;CARDIOLOGÍA
 138;En los últimos 3 días he tenido empeora con el esfuerzo, dolor u opresión en el pecho y dolor que se irradia al brazo o mandíbula fuerte.;Angina de pecho;CARDIOLOGÍA
 139;Desde hace 4 días tengo dolor u opresión en el pecho, falta de aire fuerte y empeora con el esfuerzo. También noto dolor que se irradia al brazo o mandíbula.;Angina de pecho;CARDIOLOGÍA
 140;Desde hace 4 días tengo empeora con el esfuerzo fuerte, náuseas y sudor frío. También noto dolor u opresión en el pecho.;Angina de pecho;CARDIOLOGÍA
@@ -144,13 +144,13 @@ record_id;symptoms_text;disease;specialty
 143;Tengo dolor u opresión en el pecho y náuseas leve desde hace 14 días, y últimamente también sudor frío.;Angina de pecho;CARDIOLOGÍA
 144;Desde hace 5 días me pasa esto: falta de aire, náuseas. A ratos, dolor que se irradia al brazo o mandíbula intenso.;Angina de pecho;CARDIOLOGÍA
 145;En los últimos 10 días he tenido orina turbia fuerte, necesidad frecuente de orinar y escozor al orinar.;Cistitis;UROLOGÍA
-146;Llevo 10 días con escozor al orinar y orina turbia leve; además, urgencia miccional.;Cistitis;UROLOGÍA
+146;"Llevo 10 días con escozor al orinar y orina turbia leve; además, urgencia miccional.";Cistitis;UROLOGÍA
 147;Desde hace 3 días me pasa esto: mal olor de la orina intenso, dolor bajo vientre. A ratos, necesidad frecuente de orinar leve.;Cistitis;UROLOGÍA
 148;Tengo necesidad frecuente de orinar leve y escozor al orinar desde hace 14 días, y últimamente también dolor bajo vientre.;Cistitis;UROLOGÍA
 149;Desde hace 2 días noto mal olor de la orina. Se acompaña de orina turbia y urgencia miccional moderado.;Cistitis;UROLOGÍA
 150;Desde hace 5 días tengo escozor al orinar, urgencia miccional fuerte y dolor bajo vientre. También noto necesidad frecuente de orinar.;Cistitis;UROLOGÍA
 151;Tengo orina turbia y escozor al orinar desde hace 3 días, y últimamente también mal olor de la orina moderado.;Cistitis;UROLOGÍA
-152;Llevo 2 días con orina turbia y dolor bajo vientre; además, escozor al orinar.;Cistitis;UROLOGÍA
+152;"Llevo 2 días con orina turbia y dolor bajo vientre; además, escozor al orinar.";Cistitis;UROLOGÍA
 153;Me empezó hace 7 días: orina turbia, dolor bajo vientre y urgencia miccional.;Cistitis;UROLOGÍA
 154;Desde hace 4 días noto urgencia miccional. Se acompaña de mal olor de la orina y dolor bajo vientre.;Cistitis;UROLOGÍA
 155;Tengo inquietud y náuseas desde hace 5 días, y últimamente también sangre en la orina.;Cólico renal;UROLOGÍA
@@ -164,12 +164,12 @@ record_id;symptoms_text;disease;specialty
 163;Desde hace 4 días noto dificultad para concentrarme intenso. Se acompaña de cansancio y náuseas moderado.;Insuficiencia renal crónica;NEFROLOGÍA
 164;Desde hace 4 días tengo dificultad para concentrarme, orina espumosa y hinchazón de tobillos. También noto picor.;Insuficiencia renal crónica;NEFROLOGÍA
 165;Tengo dificultad para concentrarme intenso y orina espumosa desde hace 7 días, y últimamente también cansancio fuerte.;Insuficiencia renal crónica;NEFROLOGÍA
-166;Llevo 4 días con cansancio y picor; además, hinchazón de tobillos.;Insuficiencia renal crónica;NEFROLOGÍA
+166;"Llevo 4 días con cansancio y picor; además, hinchazón de tobillos.";Insuficiencia renal crónica;NEFROLOGÍA
 167;Me empezó hace 1 día: picor, hinchazón de tobillos moderado y cansancio.;Insuficiencia renal crónica;NEFROLOGÍA
 168;En los últimos 3 días he tenido cansancio moderado, picor y náuseas fuerte.;Insuficiencia renal crónica;NEFROLOGÍA
 169;Desde hace 1 día noto dificultad para concentrarme. Se acompaña de cansancio y náuseas leve.;Insuficiencia renal crónica;NEFROLOGÍA
 170;Me empezó hace 2 días: cansancio fuerte, dificultad para concentrarme y náuseas intenso.;Insuficiencia renal crónica;NEFROLOGÍA
-171;Llevo 1 día con pérdida de peso intenso y hambre excesiva; además, mucha sed.;Diabetes (hiperglucemia);ENDOCRINOLOGÍA Y NUTRICIÓN
+171;"Llevo 1 día con pérdida de peso intenso y hambre excesiva; además, mucha sed.";Diabetes (hiperglucemia);ENDOCRINOLOGÍA Y NUTRICIÓN
 172;En los últimos 1 día he tenido cansancio, hambre excesiva fuerte y visión borrosa.;Diabetes (hiperglucemia);ENDOCRINOLOGÍA Y NUTRICIÓN
 173;En los últimos 2 días he tenido visión borrosa fuerte, mucha sed y cansancio.;Diabetes (hiperglucemia);ENDOCRINOLOGÍA Y NUTRICIÓN
 174;Tengo pérdida de peso y hambre excesiva desde hace 5 días, y últimamente también orinar con frecuencia.;Diabetes (hiperglucemia);ENDOCRINOLOGÍA Y NUTRICIÓN
@@ -177,8 +177,8 @@ record_id;symptoms_text;disease;specialty
 176;Me empezó hace 3 días: cansancio, pérdida de peso y orinar con frecuencia.;Diabetes (hiperglucemia);ENDOCRINOLOGÍA Y NUTRICIÓN
 177;Desde hace 10 días noto pérdida de peso moderado. Se acompaña de hambre excesiva y mucha sed.;Diabetes (hiperglucemia);ENDOCRINOLOGÍA Y NUTRICIÓN
 178;Tengo visión borrosa y cansancio moderado desde hace 4 días, y últimamente también orinar con frecuencia fuerte.;Diabetes (hiperglucemia);ENDOCRINOLOGÍA Y NUTRICIÓN
-179;Llevo 7 días con frío constante intenso y cansancio intenso; además, aumento de peso.;Hipotiroidismo;ENDOCRINOLOGÍA Y NUTRICIÓN
-180;Llevo 10 días con piel seca moderado y caída de cabello leve; además, frío constante.;Hipotiroidismo;ENDOCRINOLOGÍA Y NUTRICIÓN
+179;"Llevo 7 días con frío constante intenso y cansancio intenso; además, aumento de peso.";Hipotiroidismo;ENDOCRINOLOGÍA Y NUTRICIÓN
+180;"Llevo 10 días con piel seca moderado y caída de cabello leve; además, frío constante.";Hipotiroidismo;ENDOCRINOLOGÍA Y NUTRICIÓN
 181;Desde hace 4 días noto caída de cabello intenso. Se acompaña de frío constante y estreñimiento.;Hipotiroidismo;ENDOCRINOLOGÍA Y NUTRICIÓN
 182;Tengo cansancio y estreñimiento desde hace 1 día, y últimamente también piel seca.;Hipotiroidismo;ENDOCRINOLOGÍA Y NUTRICIÓN
 183;Tengo piel seca y caída de cabello intenso desde hace 1 día, y últimamente también cansancio.;Hipotiroidismo;ENDOCRINOLOGÍA Y NUTRICIÓN
@@ -188,7 +188,7 @@ record_id;symptoms_text;disease;specialty
 187;Desde hace 3 días noto dificultad para cerrar el puño. Se acompaña de dolor articular en manos y dolor en muñecas intenso.;Artritis reumatoide;REUMATOLOGÍA
 188;Me empezó hace 10 días: fatiga, dolor articular en manos y rigidez matutina moderado.;Artritis reumatoide;REUMATOLOGÍA
 189;Tengo dificultad para cerrar el puño y fatiga moderado desde hace 1 día, y últimamente también hinchazón en articulaciones.;Artritis reumatoide;REUMATOLOGÍA
-190;Llevo 4 días con dolor articular en manos y fatiga; además, dolor en muñecas intenso.;Artritis reumatoide;REUMATOLOGÍA
+190;"Llevo 4 días con dolor articular en manos y fatiga; además, dolor en muñecas intenso.";Artritis reumatoide;REUMATOLOGÍA
 191;Desde hace 4 días tengo dificultad para cerrar el puño, fatiga y dolor en muñecas fuerte. También noto rigidez matutina.;Artritis reumatoide;REUMATOLOGÍA
 192;Me empezó hace 5 días: rigidez matutina leve, dolor articular en manos y hinchazón en articulaciones.;Artritis reumatoide;REUMATOLOGÍA
 193;Desde hace 3 días noto dolor articular en manos. Se acompaña de dificultad para cerrar el puño fuerte y fatiga.;Artritis reumatoide;REUMATOLOGÍA
@@ -201,15 +201,15 @@ record_id;symptoms_text;disease;specialty
 200;En los últimos 2 días he tenido episodios que aparecen de repente, hinchazón fuerte y dolor al roce.;Gota;REUMATOLOGÍA
 201;Desde hace 14 días noto hinchazón. Se acompaña de calor local fuerte y dolor intenso en el dedo gordo del pie.;Gota;REUMATOLOGÍA
 202;Desde hace 7 días noto episodios que aparecen de repente intenso. Se acompaña de enrojecimiento y calor local.;Gota;REUMATOLOGÍA
-203;Llevo 1 día con dolor al moverlo y dolor en el tobillo; además, moratón.;Esguince de tobillo;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
+203;"Llevo 1 día con dolor al moverlo y dolor en el tobillo; además, moratón.";Esguince de tobillo;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
 204;Tengo dolor al moverlo y moratón leve desde hace 3 días, y últimamente también sensación de inestabilidad intenso.;Esguince de tobillo;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
 205;Me empezó hace 4 días: dificultad para apoyar, hinchazón leve y dolor en el tobillo leve.;Esguince de tobillo;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
 206;Desde hace 2 días noto moratón fuerte. Se acompaña de hinchazón y dolor al moverlo.;Esguince de tobillo;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
 207;Desde hace 3 días me pasa esto: dolor en el tobillo intenso, dificultad para apoyar. A ratos, hinchazón.;Esguince de tobillo;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
 208;Desde hace 2 días tengo sensación de inestabilidad, hinchazón y dolor al moverlo. También noto moratón.;Esguince de tobillo;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
 209;Me empezó hace 4 días: sensación de inestabilidad, dolor en el tobillo fuerte y moratón fuerte.;Esguince de tobillo;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
-210;Llevo 5 días con hinchazón y moratón; además, sensación de inestabilidad.;Esguince de tobillo;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
-211;Llevo 2 días con hinchazón y dolor muy fuerte tras un golpe; además, hematoma.;Fractura (sospecha);URGENCIAS TRAUMATOLÓGICAS
+210;"Llevo 5 días con hinchazón y moratón; además, sensación de inestabilidad.";Esguince de tobillo;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
+211;"Llevo 2 días con hinchazón y dolor muy fuerte tras un golpe; además, hematoma.";Fractura (sospecha);URGENCIAS TRAUMATOLÓGICAS
 212;Tengo hinchazón fuerte y hematoma desde hace 7 días, y últimamente también dolor al tacto fuerte.;Fractura (sospecha);URGENCIAS TRAUMATOLÓGICAS
 213;Desde hace 2 días noto dolor muy fuerte tras un golpe. Se acompaña de deformidad y dolor al tacto.;Fractura (sospecha);URGENCIAS TRAUMATOLÓGICAS
 214;Me empezó hace 5 días: dolor muy fuerte tras un golpe, imposibilidad de mover intenso y hematoma.;Fractura (sospecha);URGENCIAS TRAUMATOLÓGICAS
@@ -223,15 +223,15 @@ record_id;symptoms_text;disease;specialty
 222;Tengo dolor que empeora con esfuerzos y rigidez intenso desde hace 7 días, y últimamente también espasmos musculares intenso.;Lumbalgia;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
 223;Me empezó hace 10 días: molestia al estar sentado, rigidez leve y dolor al agacharme.;Lumbalgia;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
 224;Desde hace 1 día me pasa esto: espasmos musculares moderado, dolor en la zona baja de la espalda. A ratos, dolor que empeora con esfuerzos.;Lumbalgia;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
-225;Llevo 4 días con espasmos musculares y rigidez; además, molestia al estar sentado.;Lumbalgia;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
+225;"Llevo 4 días con espasmos musculares y rigidez; además, molestia al estar sentado.";Lumbalgia;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
 226;Desde hace 10 días me pasa esto: dolor al agacharme, espasmos musculares. A ratos, dolor que empeora con esfuerzos.;Lumbalgia;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
 227;Desde hace 2 días me pasa esto: inflamación, granitos. A ratos, lesiones en espalda fuerte.;Acné;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
 228;Desde hace 10 días noto granitos. Se acompaña de puntos negros y piel grasa intenso.;Acné;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
 229;Desde hace 7 días me pasa esto: lesiones en cara, puntos negros intenso. A ratos, lesiones en espalda.;Acné;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
-230;Llevo 10 días con puntos negros leve y inflamación; además, lesiones en espalda intenso.;Acné;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
+230;"Llevo 10 días con puntos negros leve y inflamación; además, lesiones en espalda intenso.";Acné;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
 231;Desde hace 3 días noto puntos negros. Se acompaña de piel grasa y lesiones en cara.;Acné;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
 232;En los últimos 4 días he tenido piel grasa, lesiones en cara leve y lesiones en espalda.;Acné;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
-233;Llevo 2 días con inflamación y piel grasa; además, lesiones en espalda.;Acné;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
+233;"Llevo 2 días con inflamación y piel grasa; además, lesiones en espalda.";Acné;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
 234;Tengo lesiones en espalda y lesiones en cara desde hace 5 días, y últimamente también inflamación.;Acné;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
 235;Tengo enrojecimiento y descamación desde hace 14 días, y últimamente también picor intenso.;Dermatitis atópica;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
 236;En los últimos 1 día he tenido enrojecimiento leve, lesiones en pliegues y irritación.;Dermatitis atópica;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
@@ -250,7 +250,7 @@ record_id;symptoms_text;disease;specialty
 249;Desde hace 7 días tengo uñas engrosadas leve, picor leve y grietas en la piel. También noto picor.;Psoriasis;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
 250;En los últimos 3 días he tenido descamación, lesiones en codos y rodillas y placas rojas.;Psoriasis;DERMATOLOGÍA MÉDICO-QUIRÚRGICA Y VENEREO
 251;Desde hace 2 días tengo ronchas leve, picor y enrojecimiento. También noto ronchas fuerte.;Urticaria;ALERGOLOGÍA
-252;Llevo 5 días con ronchas y enrojecimiento leve; además, picor.;Urticaria;ALERGOLOGÍA
+252;"Llevo 5 días con ronchas y enrojecimiento leve; además, picor.";Urticaria;ALERGOLOGÍA
 253;Tengo habones y enrojecimiento desde hace 2 días, y últimamente también ronchas.;Urticaria;ALERGOLOGÍA
 254;Desde hace 10 días tengo ronchas fuerte, enrojecimiento fuerte y hinchazón leve. También noto aparece y desaparece.;Urticaria;ALERGOLOGÍA
 255;Tengo ronchas y habones desde hace 3 días, y últimamente también hinchazón leve.;Urticaria;ALERGOLOGÍA
@@ -258,10 +258,10 @@ record_id;symptoms_text;disease;specialty
 257;Desde hace 2 días me pasa esto: aparece y desaparece moderado, enrojecimiento moderado. A ratos, picor.;Urticaria;ALERGOLOGÍA
 258;Desde hace 1 día tengo aparece y desaparece, habones y enrojecimiento. También noto hinchazón leve.;Urticaria;ALERGOLOGÍA
 259;En los últimos 3 días he tenido picor vaginal, mal olor intenso y dolor durante las relaciones.;Vaginitis;GINECOLOGÍA Y OBSTETRICIA
-260;Llevo 1 día con flujo anormal leve y picor vaginal; además, molestias al orinar.;Vaginitis;GINECOLOGÍA Y OBSTETRICIA
+260;"Llevo 1 día con flujo anormal leve y picor vaginal; además, molestias al orinar.";Vaginitis;GINECOLOGÍA Y OBSTETRICIA
 261;Desde hace 2 días me pasa esto: picor vaginal, mal olor. A ratos, dolor durante las relaciones leve.;Vaginitis;GINECOLOGÍA Y OBSTETRICIA
 262;Me empezó hace 3 días: escozor moderado, mal olor moderado y dolor durante las relaciones.;Vaginitis;GINECOLOGÍA Y OBSTETRICIA
-263;Llevo 14 días con picor vaginal y mal olor fuerte; además, flujo anormal.;Vaginitis;GINECOLOGÍA Y OBSTETRICIA
+263;"Llevo 14 días con picor vaginal y mal olor fuerte; además, flujo anormal.";Vaginitis;GINECOLOGÍA Y OBSTETRICIA
 264;Desde hace 3 días tengo picor vaginal, flujo anormal y dolor durante las relaciones intenso. También noto mal olor leve.;Vaginitis;GINECOLOGÍA Y OBSTETRICIA
 265;Tengo dolor durante las relaciones y molestias al orinar desde hace 5 días, y últimamente también mal olor.;Vaginitis;GINECOLOGÍA Y OBSTETRICIA
 266;En los últimos 2 días he tenido escozor, flujo anormal moderado y molestias al orinar.;Vaginitis;GINECOLOGÍA Y OBSTETRICIA
@@ -270,19 +270,19 @@ record_id;symptoms_text;disease;specialty
 269;Me empezó hace 5 días: dolor en bajo vientre, dolor menstrual fuerte y dolor lumbar intenso.;Dismenorrea;GINECOLOGÍA Y OBSTETRICIA
 270;Desde hace 2 días tengo cansancio moderado, dolor menstrual fuerte y dolor lumbar leve. También noto náuseas.;Dismenorrea;GINECOLOGÍA Y OBSTETRICIA
 271;Desde hace 4 días me pasa esto: mareo, cansancio. A ratos, náuseas.;Dismenorrea;GINECOLOGÍA Y OBSTETRICIA
-272;Llevo 10 días con náuseas intenso y dolor en bajo vientre; además, dolor menstrual fuerte.;Dismenorrea;GINECOLOGÍA Y OBSTETRICIA
+272;"Llevo 10 días con náuseas intenso y dolor en bajo vientre; además, dolor menstrual fuerte.";Dismenorrea;GINECOLOGÍA Y OBSTETRICIA
 273;Desde hace 3 días noto cansancio intenso. Se acompaña de dolor lumbar intenso y mareo fuerte.;Dismenorrea;GINECOLOGÍA Y OBSTETRICIA
 274;Desde hace 2 días me pasa esto: dolor en bajo vientre leve, náuseas. A ratos, dolor lumbar moderado.;Dismenorrea;GINECOLOGÍA Y OBSTETRICIA
 275;Tengo dolor pélvico y ansiedad por el sangrado fuerte desde hace 3 días, y últimamente también dolor tipo cólico.;Sangrado en embarazo (primer trimestre);URGENCIAS GINECOLÓGICAS Y/O OBSTETRICAS
 276;Desde hace 5 días tengo dolor tipo cólico, sangrado vaginal y dolor pélvico. También noto mareo.;Sangrado en embarazo (primer trimestre);URGENCIAS GINECOLÓGICAS Y/O OBSTETRICAS
 277;Desde hace 10 días tengo dolor pélvico, dolor tipo cólico moderado y debilidad. También noto ansiedad por el sangrado.;Sangrado en embarazo (primer trimestre);URGENCIAS GINECOLÓGICAS Y/O OBSTETRICAS
 278;Desde hace 2 días noto dolor pélvico. Se acompaña de debilidad y sangrado vaginal.;Sangrado en embarazo (primer trimestre);URGENCIAS GINECOLÓGICAS Y/O OBSTETRICAS
-279;Llevo 5 días con dolor tipo cólico y sangrado vaginal; además, debilidad fuerte.;Sangrado en embarazo (primer trimestre);URGENCIAS GINECOLÓGICAS Y/O OBSTETRICAS
+279;"Llevo 5 días con dolor tipo cólico y sangrado vaginal; además, debilidad fuerte.";Sangrado en embarazo (primer trimestre);URGENCIAS GINECOLÓGICAS Y/O OBSTETRICAS
 280;Desde hace 14 días me pasa esto: sangrado vaginal intenso, ansiedad por el sangrado. A ratos, dolor pélvico.;Sangrado en embarazo (primer trimestre);URGENCIAS GINECOLÓGICAS Y/O OBSTETRICAS
 281;Desde hace 1 día me pasa esto: ansiedad por el sangrado, dolor pélvico. A ratos, dolor tipo cólico.;Sangrado en embarazo (primer trimestre);URGENCIAS GINECOLÓGICAS Y/O OBSTETRICAS
 282;Desde hace 4 días me pasa esto: sangrado vaginal intenso, dolor pélvico. A ratos, mareo.;Sangrado en embarazo (primer trimestre);URGENCIAS GINECOLÓGICAS Y/O OBSTETRICAS
 283;Desde hace 7 días tengo tos, fiebre baja y respiración rápida. También noto pitidos.;Bronquiolitis;PEDIATRÍA
-284;Llevo 4 días con pitidos y respiración rápida; además, rechazo de tomas leve.;Bronquiolitis;PEDIATRÍA
+284;"Llevo 4 días con pitidos y respiración rápida; además, rechazo de tomas leve.";Bronquiolitis;PEDIATRÍA
 285;Desde hace 4 días me pasa esto: mocos, fiebre baja. A ratos, tos.;Bronquiolitis;PEDIATRÍA
 286;Desde hace 7 días noto mocos. Se acompaña de respiración rápida y fiebre baja.;Bronquiolitis;PEDIATRÍA
 287;Desde hace 5 días noto fiebre baja. Se acompaña de rechazo de tomas y tos.;Bronquiolitis;PEDIATRÍA
@@ -291,17 +291,17 @@ record_id;symptoms_text;disease;specialty
 290;Desde hace 2 días tengo fiebre baja, mocos y pitidos. También noto rechazo de tomas moderado.;Bronquiolitis;PEDIATRÍA
 291;Tengo lesiones que aparecen por fases y fiebre desde hace 14 días, y últimamente también malestar.;Varicela;PEDIATRÍA
 292;Desde hace 5 días me pasa esto: cansancio moderado, lesiones que aparecen por fases. A ratos, malestar fuerte.;Varicela;PEDIATRÍA
-293;Llevo 5 días con picor y fiebre moderado; además, lesiones que aparecen por fases.;Varicela;PEDIATRÍA
+293;"Llevo 5 días con picor y fiebre moderado; además, lesiones que aparecen por fases.";Varicela;PEDIATRÍA
 294;Me empezó hace 14 días: cansancio leve, picor y lesiones que aparecen por fases.;Varicela;PEDIATRÍA
 295;Tengo picor y cansancio desde hace 3 días, y últimamente también sarpullido con ampollas intenso.;Varicela;PEDIATRÍA
-296;Llevo 7 días con sarpullido con ampollas y cansancio; además, malestar.;Varicela;PEDIATRÍA
+296;"Llevo 7 días con sarpullido con ampollas y cansancio; además, malestar.";Varicela;PEDIATRÍA
 297;Desde hace 3 días me pasa esto: cansancio, lesiones que aparecen por fases fuerte. A ratos, fiebre.;Varicela;PEDIATRÍA
 298;Desde hace 4 días noto cansancio intenso. Se acompaña de malestar y fiebre leve.;Varicela;PEDIATRÍA
-299;Llevo 5 días con respira con esfuerzo y labios azulados moderado; además, respiración muy rápida.;Dificultad respiratoria en niño;URGENCIAS PEDIÁTRICAS
-300;Llevo 10 días con respira con esfuerzo y no quiere comer; además, somnolencia.;Dificultad respiratoria en niño;URGENCIAS PEDIÁTRICAS
+299;"Llevo 5 días con respira con esfuerzo y labios azulados moderado; además, respiración muy rápida.";Dificultad respiratoria en niño;URGENCIAS PEDIÁTRICAS
+300;"Llevo 10 días con respira con esfuerzo y no quiere comer; además, somnolencia.";Dificultad respiratoria en niño;URGENCIAS PEDIÁTRICAS
 301;Desde hace 7 días noto labios azulados. Se acompaña de no quiere comer y respira con esfuerzo intenso.;Dificultad respiratoria en niño;URGENCIAS PEDIÁTRICAS
-302;Llevo 2 días con respira con esfuerzo y labios azulados; además, no quiere comer.;Dificultad respiratoria en niño;URGENCIAS PEDIÁTRICAS
-303;Llevo 2 días con somnolencia intenso y respiración muy rápida; además, no quiere comer.;Dificultad respiratoria en niño;URGENCIAS PEDIÁTRICAS
+302;"Llevo 2 días con respira con esfuerzo y labios azulados; además, no quiere comer.";Dificultad respiratoria en niño;URGENCIAS PEDIÁTRICAS
+303;"Llevo 2 días con somnolencia intenso y respiración muy rápida; además, no quiere comer.";Dificultad respiratoria en niño;URGENCIAS PEDIÁTRICAS
 304;Desde hace 5 días noto labios azulados intenso. Se acompaña de somnolencia intenso y respiración muy rápida.;Dificultad respiratoria en niño;URGENCIAS PEDIÁTRICAS
 305;Desde hace 5 días noto no quiere comer intenso. Se acompaña de somnolencia intenso y se le hunden las costillas al respirar fuerte.;Dificultad respiratoria en niño;URGENCIAS PEDIÁTRICAS
 306;Desde hace 14 días tengo respiración muy rápida, somnolencia fuerte y se le hunden las costillas al respirar. También noto respira con esfuerzo.;Dificultad respiratoria en niño;URGENCIAS PEDIÁTRICAS
@@ -318,16 +318,16 @@ record_id;symptoms_text;disease;specialty
 317;Desde hace 1 día tengo sensación de ahogo leve, palpitaciones y sensación de perder el control. También noto temblores.;Crisis de pánico;PSIQUIATRÍA
 318;Desde hace 1 día tengo sensación de ahogo, miedo intenso y palpitaciones fuerte. También noto palpitaciones.;Crisis de pánico;PSIQUIATRÍA
 319;Desde hace 2 días tengo miedo intenso, temblores moderado y sensación de perder el control. También noto miedo intenso.;Crisis de pánico;PSIQUIATRÍA
-320;Llevo 2 días con miedo intenso y palpitaciones; además, sensación de perder el control leve.;Crisis de pánico;PSIQUIATRÍA
+320;"Llevo 2 días con miedo intenso y palpitaciones; además, sensación de perder el control leve.";Crisis de pánico;PSIQUIATRÍA
 321;Desde hace 3 días me pasa esto: sensación de perder el control, sudoración. A ratos, temblores.;Crisis de pánico;PSIQUIATRÍA
 322;Desde hace 7 días tengo sudoración, sensación de perder el control y palpitaciones. También noto sudoración moderado.;Crisis de pánico;PSIQUIATRÍA
 323;En los últimos 5 días he tenido temblores intenso, sensación de perder el control fuerte y sensación de ahogo.;Crisis de pánico;PSIQUIATRÍA
 324;En los últimos 14 días he tenido palpitaciones intenso, miedo intenso y sudoración leve.;Crisis de pánico;PSIQUIATRÍA
 325;Desde hace 2 días tengo palidez, cansancio y mareos. También noto palidez.;Anemia ferropénica;HEMATOLOGÍA Y HEMOTERAPIA
-326;Llevo 2 días con uñas frágiles y cansancio moderado; además, palidez.;Anemia ferropénica;HEMATOLOGÍA Y HEMOTERAPIA
+326;"Llevo 2 días con uñas frágiles y cansancio moderado; además, palidez.";Anemia ferropénica;HEMATOLOGÍA Y HEMOTERAPIA
 327;Me empezó hace 10 días: dolor de cabeza, mareos y falta de aire al esfuerzo.;Anemia ferropénica;HEMATOLOGÍA Y HEMOTERAPIA
 328;Desde hace 2 días tengo dolor de cabeza, uñas frágiles y mareos intenso. También noto falta de aire al esfuerzo.;Anemia ferropénica;HEMATOLOGÍA Y HEMOTERAPIA
-329;Llevo 1 día con dolor de cabeza leve y palidez; además, cansancio.;Anemia ferropénica;HEMATOLOGÍA Y HEMOTERAPIA
+329;"Llevo 1 día con dolor de cabeza leve y palidez; además, cansancio.";Anemia ferropénica;HEMATOLOGÍA Y HEMOTERAPIA
 330;Desde hace 14 días me pasa esto: uñas frágiles leve, falta de aire al esfuerzo. A ratos, palidez.;Anemia ferropénica;HEMATOLOGÍA Y HEMOTERAPIA
 331;Desde hace 1 día me pasa esto: palidez, falta de aire al esfuerzo fuerte. A ratos, mareos.;Anemia ferropénica;HEMATOLOGÍA Y HEMOTERAPIA
 332;Desde hace 1 día tengo mareos, cansancio y dolor de cabeza. También noto palidez.;Anemia ferropénica;HEMATOLOGÍA Y HEMOTERAPIA
