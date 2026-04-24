@@ -1,31 +1,33 @@
 import streamlit as st
 from TF_IDF.tf_idf import tf_idf
 from SVD.SVD import svd
+from SVM.SVM import svm
 
 
 # --- FUNCIONES DE LOS CLASIFICADORES (Lógica de Python) ---
 # Aquí es donde integrarías tus modelos reales de Machine Learning
-def clasificar_tfidf(texto):
+def clasificar_tfidf(sintoma):
     try:
         # Llamamos a la función de Python directamente
         # Es instantáneo y no abre procesos externos
-        especialidad, confianza = tf_idf(texto)
+        especialidad, confianza = tf_idf(sintoma)
         return f"Especialidad sugerida (TF-IDF): {especialidad} (Confianza: {confianza:.2f}%)"
     except Exception as e:
         return f"Error al ejecutar el módulo: {e}"
 
-def clasificar_svd(texto):
+def clasificar_svd(sintoma):
     try:
         # Llamamos a la función de Python directamente
         # Es instantáneo y no abre procesos externos
-        especialidad, confianza = svd(texto)
+        especialidad, confianza = svd(sintoma)
         return f"Especialidad sugerida (SVD): {especialidad} (Confianza: {confianza:.2f}%)"
     except Exception as e:
         return f"Error al ejecutar el módulo: {e}"
 
-def clasificar_svm(texto):
-    # Simulación de lógica SVM
-    return "Especialidad sugerida (SVM): Neurología"
+def clasificar_svm(sintoma):
+    # Llamamos a la función SVM
+    especialidad, confianza = svm(sintoma)
+    return f"Especialidad sugerida (SVM): {especialidad} (Confianza: {confianza:.2f}%)"
 
 # --- INTERFAZ GRÁFICA ---
 
@@ -36,7 +38,7 @@ st.title("Triaje de especialidad médica a partir de síntomas")
 st.subheader("Clasificadores: TF-IDF, SVD y SVM")
 
 # 3) Cuerpo
-# 3.1) Caja de texto para síntomas (3 líneas aproximadamente)
+# 3.1) Caja de sintoma para síntomas (3 líneas aproximadamente)
 input_sintomas = st.text_area("Introduce los síntomas del paciente:", height=100, placeholder="Ej: Dolor persistente en el pecho y dificultad para respirar...")
 
 # 3.2) Lista desplegable

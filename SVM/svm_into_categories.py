@@ -22,6 +22,7 @@ stemmer = SnowballStemmer('spanish')
 stopwords_spanish = stopwords.words('spanish')
 
 MODEL_FILE = os.path.join(os.path.dirname(__file__), 'svm_model.joblib')
+
 CSV_FILE = os.path.abspath(
     os.path.join(
         os.path.dirname(__file__),
