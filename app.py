@@ -1,27 +1,11 @@
 import streamlit as st
-from streamlit_mic_recorder import mic_recorder
-import speech_recognition as sr
-import io
+from streamlit_mic_recorder import speech_to_text
 
 # Importaciones de tus modelos
 from TF_IDF.tf_idf import tf_idf
 from SVD.SVD import svd
 from SVM.SVM import svm
 from RNA.RNA import rna
-
-# --- LÓGICA DE VOZ ---
-def procesar_voz(audio_bytes):
-    """Convierte los bytes de audio grabados por Streamlit en texto."""
-    r = sr.Recognizer()
-    # Convertir bytes a un archivo de audio que SpeechRecognition entienda
-    audio_file = io.BytesIO(audio_bytes)
-    with sr.AudioFile(audio_file) as source:
-        audio = r.record(source)
-    try:
-        texto = r.recognize_google(audio, language="es-ES")
-        return texto
-    except Exception as e:
-        return f"Error al procesar voz: {e}"
 
 # --- FUNCIONES DE LOS CLASIFICADORES ---
 def clasificar_tfidf(sintoma):
@@ -55,17 +39,16 @@ if 'texto_voz' not in st.session_state:
 
 # --- SECCIÓN DE ENTRADA POR VOZ ---
 st.write("🎤 **¿Prefieres dictar los síntomas?**")
-audio_grabado = mic_recorder(
+texto_transcrito = speech_to_text(
+    language='es',
     start_prompt="Hacer clic para grabar",
     stop_prompt="Detener grabación",
     just_once=True,
     key='grabador_voz'
 )
 
-if audio_grabado:
-    with st.spinner("Transcribiendo audio..."):
-        texto_transcrito = procesar_voz(audio_grabado['bytes'])
-        st.session_state.texto_voz = texto_transcrito
+if texto_transcrito:
+    st.session_state.texto_voz = texto_transcrito
 
 # 3.1) Caja de síntomas (se actualiza con la voz si existe)
 input_sintomas = st.text_area(
