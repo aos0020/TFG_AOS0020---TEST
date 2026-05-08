@@ -1,0 +1,199 @@
+A.1. Introducción . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+A.2. Planificación temporal . . . . . . . . . . . . . . . . . . . . . 2
+A.3. Estudio de viabilidad . . . . . . . . . . . . . . . . . . . . . . 18
+
+
+A.1. Introducción
+El Plan de Proyecto Software es el documento clave que dirige el proceso
+de desarrollo de la aplicación móvil creada. Este apéndice tiene como objetivo
+detallar los aspectos críticos de la planificación y gestión del proyecto, asegurando
+una implementación eficiente y efectiva. La planificación temporal
+del proyecto se ha llevado a cabo con el uso de la metodología ágil buscando
+dividir el desarrollo en tareas, sprints e hitos que producen un resultado
+iterativos y bien estructurado, lo que conlleva a una mayor flexibilidad y a
+la adaptación más efectiva frente los cambios.
+A continuación, se determinará la viabilidad, que reflejará los recursos
+humanos y materiales, así como los costes asociados necesarios para su
+valoración. La viabilidad incluirá una estimación de los fondos que se basarán
+en el salario de un trabajador simulado, así como un análisis de los posibles
+riesgos y su mitigación. Los aspectos económicos y técnicos de la viabilidad
+son fundamentales, ya que de ellos depende de que el proyecto esté en los
+límites establecidos y cumpla con los objetivos propuestos.
+Este plan es esencial para la gestión del proyecto ya que sirve como
+una guía detallada, ayudando así a identificar y mitigar riesgos así como
+a la utilización eficaz de los recursos. Con el enfoque estructurado y ágil,
+proporcionado por este plan, el equipo de desarrollo podría entregar un
+producto de alta calidad que, además, cumplirá con el nivel de satisfacción
+alcanzado entre los usuarios o clientes.
+
+A.2. Planificación temporal
+Como se ha mencionado anteriormente, la planificación temporal del
+proyecto se ha llevado a cabo con el uso de metodología ágil: se basa en la
+división del desarrollo en tareas, sprints e hitos que producen un resultado
+iterativo y bien estructurado. Esto conlleva una mayor flexibilidad y a la
+adaptación más efectiva frente a los cambios.
+Algunas herramientas utilizadas para la planificación temporal han sido
+GitHub y Zube. Ésta última ha permitido la organización de las tareas en
+tableros Kanban o el uso de métricas ágiles con gráficos que sirven para
+evaluar el desarrollo del proyecto. Algunos de los artefactos más relevantes
+usados son los siguientes:
+Gráficos burnup / burndown: muestran a lo largo del tiempo de
+un sprint la evolución de tareas realizadas por el equipo de desarrollo.
+En la explicación de los sprints se pueden ver los gráficos asociados al
+mismo
+
+Gráfico de velocidad: permite comprobar el trabajo realizado en
+los diferentes sprints de manera que resulte lo más constante posible.
+
+continuación veremos como la planificación temporal se ha llevado a cabo
+en diferentes sprints, cómo se ha ido iterando en las diferentes partes del
+proyecto y cómo se han ido cumpliendo los hitos propuestos. Para ello se
+mostrarán diferentes diagramas basadas en métricas ágiles.
+Cada tarea se ha dividido en diferentes historias de usuario, que se han
+ido completando en cada sprint. Cada sprint ha tenido una duración media
+de dos semanas, y se han ido completando las tareas propuestas en cada
+uno de ellos. Un ejemplo se puede observar en la siguiente figura A.3
+
+Gracias también al uso de Zube, se ha podido llevar un control de las
+tareas a realizar, las tareas completadas y las tareas pendientes. Además,
+se ha podido llevar un control de los hitos propuestos y de las historias de
+usuario completadas en cada sprint. Un ejemplo de ello se puede observar
+en la siguiente figura A.4
+
+
+Hitos
+Los hitos o milestones son puntos de referencia que marcan el final de
+un conjunto de tareas. En este proyecto se han definido los siguientes hitos:
+Kick-off Completado el 30 de julio de 2024. Puesta en marcha del
+proyecto. A partir de las reuniones mantenidas con el tutor, se necesita
+tener todas las herramientas preparadas para empezar a desarrollar
+tanto la aplicación como su documentación.
+MPV - Mínimo Producto Viable Completado el 2 de septiembre
+de 2024. Se define el MVP como una aplicación móvil que sobre un
+mapa OSM muestre la ubicación de usuario, obtenga unos PDI básicos
+y una ruta que las una.
+Checkpoint 1 de documentación Completado el 2 de septiembre
+de 2024. Este milestone agrupa las tareas relacionadas con la creación
+y actualización de la documentación del proyecto hasta la reunión con
+el tutor el 1 de septiembre de 2024.
+El objetivo es tener una documentación suficiente para que el tutor
+pueda dar feedback acerca de la misma y poder corregir errores.
+Prototipo con tours generados por LLM Completado el 1 de
+octubre de 2024. El objetivo es transitar desde una aplicación inicial
+capaz de mostrar lugares y rutas en un mapa, hacia una aplicación
+que sea capaz de conseguir que estos mismos marcadores y polilíneas
+sean generados a través de un LLM.
+Prototipo Prompting Completado el 15 de octubre de 2024. Este
+prototipo se puede realizar en un cuaderno Jupyter y su objetivo es
+mostrar la evolución en el prompt que dará como resultado unos PDI
+de mayor calidad.
+Desarrollo de aplicación completo Completado el 12 de noviembre
+de 2024. Se consideran todas las funcionalidades que debe tener la
+aplicación a presentar como completadas.
+Finalización TFG: Completado el 16 de enero de 2025. Se deja el
+proyecto en estado de entrega, completamente finalizado.
+
+
+Organización en Sprints
+Al comenzar este proyecto durante periodo no lectivo se realizaron los
+Sprint con variación de tiempo de una o dos semanas en función de la
+planificación personal. Una vez comenzado el curso y con la ayuda del
+tutor se realizaron reuniones que han servido para, siguiendo la metodología
+Agile, revisar el Sprint anterior, planificar el siguiente y hacer una pequeña
+retrospectiva para mejorar el trabajo conjunto.
+Sprint 0 - Kick-off(22/07/2024 - 29/07/2024)
+Después de las reuniones con el tutor, se establecen los objetivos del
+proyecto y se comienza a trabajar en la puesta en marcha del proyecto.
+Se establecen las herramientas a utilizar y se comienza a trabajar en la
+documentación del proyecto. 33 puntos de historia en 5 tareas:
+1. Organización de repositorio.
+2. Configuración de herramientas y equipos.
+3. Trabajo en memoria I.
+4. Investigación previa sobre LLM.
+5. Determinación de ODS implicados.
+
+Sprint 1 - Investigación LLM y desarrollo básico de aplicación con
+mapa (29/07/2024 - 05/08/2024)
+Con las herramientas y una idea previa establecida, es el momento de
+empezar a desarrollar.
+Objetivos: seguir formándome en LLM y las opciones que pueda implementar
+en el prototipo de prompt. Empezar a desarrollar la aplicación móvil
+con las características básicas. Aprender a documentar sprints, indicar qué
+elementos tendré que documentar y aquellos que tenga claro ir documentando
+para hacer un avance significativo que pueda evaluar mi tutor. 35 puntos
+de historia en 8 tareas:
+1. Creación y organización proyecto base.
+2. Bloc permiso GPS.
+3. Bloc ubicación.
+4. Mapa base OSM.
+5. Intro, resumen y palabras clave.
+6. Prompt sencillo en cuaderno Jupyter.
+7. Probar modelo de ejemplo LangChain.
+8. Documentación del Kick-off sprint.
+
+
+A.3. Estudio de viabilidad
+En esta sección se analizan los aspectos clave para determinar si la
+implementación del proyecto y el desarrollo de la aplicación móvil Eco City
+Tours es viable desde un punto de vista legal y económico. Se destacan
+los valores positivos de la aplicación, como su independencia de intereses
+particulares y su enfoque sostenible, que la convierten en una propuesta
+valiosa en el mercado del fomento del turismo sostenible. Se evaluará si los
+beneficios esperados compensan los costes de desarrollo, el mantenimiento de
+los servicios y los posibles problemas legales, determinando así su viabilidad.
+Viabilidad económica
+Costes de personal
+El desarrollo de la aplicación se realiza con un grupo de trabajo de un
+solo empleado de categoría profesional equivalente a la de un Ingeniero
+Informático. Según el XVIII Convenio Colectivo Estatal de Empresas de
+Consultoría, Tecnologías de la Información y Estudios de Mercado y de la
+Opinión Pública, publicado en el BOE el 26 de julio de 2023 [1] podría estar
+entorno a los 2.000 € antes de impuestos.
+
+Coste de hardware
+Para calcular el coste de los equipos se supone un período de amortización
+de 3 años para todo el hardware. Para realizar Eco City Tours se usará un
+ordenador de sobremesa con procesador i7 y 16 Gb de memoria RAM capaz
+de utilizar los programas necesarios para el desarrollo de manera fluida.
+Se tienen en cuenta también periféricos para dicho equipo y un teléfono
+móvil Android para pruebas de implementación en un dispositivo real no
+virtualizado. Por tanto y a modo resumen tenemos
+
+Asociado a estos costes también podremos asociar el uso de Internet
+necesario para poder desarrollar sin problemas buscando información o
+descargando paquetes necesarios del repositorio de Flutter. Un servicio
+básico de este tipo puede costar 30-60 euros dependiendo de la velocidad
+del mismo o de otros productos asociados al cliente.
+Coste de software
+El software utilizado para el proyecto es libre. Visual Studio Code como
+IDE de desarrollo único, libre y gratuito y Android Studio en su versión
+gratuita para poder instalar emuladores de dispositivos móviles. El paquete
+SDK de Flutter no supone tampoco ningún gasto por parte del desarrollador.
+
+Como sistema operativo se sugiere Ubuntu 22.04 LTS ya que tiene soporte
+a largo plazo, se trata de un entorno estable, confiable y se trata de una
+versión de código abierto. La herramienta y extensión de Visual Studio Code
+Copilot aunque útil no es imprescindible pudiendo usar . El resto de software
+para prototipado como Langflow o LMStudio son también gratuitos.
+Coste de los Servicios Google
+Durante el desarrollo de la aplicación la empresa incurrirá en gastos por
+uso de estos servicios. Una forma de pago tiene que estar asociada al proyecto
+y sobre el mismo se podrán asociar todas las API y servicios asociados al
+mismo: Firebase, Google Directions, Google Maps, Generative AI tienen
+gastos asociados. Sin embargo, el desarrollador tendrá un período de prueba
+de 3 meses donde no se cargará ningún gasto siempre que no supere los 300
+euros.Desde la experiencia durante el desarrollo las peticiones están lejos de
+incurrir en gastos. En el período de pruebas donde se realizaron las mayores
+peticiones a los servicios como se puede ver en la imagen A.17 el coste
+llegó a los 40 euros, muy lejos de los 300 que supondrían un gasto para el
+desarrollador.
+
+Conclusiones
+El desarrollo de la aplicación se estima en 4 meses por el equipo
+auto gestionado por un solo desarrollador. No se tienen en cuenta alquileres
+de oficinas o co-working ya que se plantea la posibilidad de teletrabajar,
+pudiendo trabajar de manera deslocalizada ahorrando así costes. Teniendo
+en cuenta lo anteriormente citado obtenemos la siguiente tabla resumen:
+
+
+

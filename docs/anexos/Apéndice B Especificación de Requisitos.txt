@@ -1,0 +1,5 @@
+Apéndice B Especificación de Requisitos 27
+B.1. Introducción . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+B.2. Objetivos generales . . . . . . . . . . . . . . . . . . . . . . . 27
+B.3. Catálogo de requisitos . . . . . . . . . . . . . . . . . . . . . 28
+B.4. Especificación de requisitos . . . . . . . . . . . . . . . . . . . 31
