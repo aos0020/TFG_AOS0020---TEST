@@ -1,0 +1,1377 @@
+Plan de Proyecto Software
+A.1. Introducción
+La realización de la planificación de este proyecto software ha sido
+gestionada a través de la Metodología ágil dividiendo el trabajo en hitos,
+Milestones, y éstos a su vez en Sprints.
+Esta división del proyecto en tareas, permite desarrollo flexible y adaptativo,
+produciendo entregas parciales del producto en cada entrega de
+Sprint.
+En particular en este proyecto se ha utilizado una mezcla de metodologías;
+Scrum, que prioriza el desarrollo en Sprints, con sus roles y eventos definidos
+y Kanban, que se centra en la visualización de los flujos de trabajo en un
+tablero con columnas, etiquetadas con las diferentes fases del desarrollo, en
+las cuales se van colocando tarjetas con las tareas que se están realizando y
+que se han asociado a los Sprints.
+Para una mejor organización temporal, se han establecido una serie de
+hitos (Milestones), y éstos a su vez en Sprints, que agrupan un conjunto de
+Sprints reflejando las diferentes etapas del proyecto, como comprobamos en
+la planificación temporal siguiente:
+A.2. Plan temporal
+Como se ha indicado anteriormente para una mejor gestión de tiempos
+se ha dividido el proyecto en diferentes hitos, Sprints y todo ello gestionado
+a través del Kanban:
+1
+2 Apéndice A. Plan de Proyecto Software
+Kanban
+El tablero Kanban ha sido una de las herramientas fundamentales para el
+desarrollo de esta aplicación. Gestionado por la plataforma Zube e integrado
+con GitHub, permite un control de las diferentes tareas. Para ello se dividen
+en varios estados, en el caso de este proyecto; inbox (entrada por defecto),
+backlog (lista inicial de trabajos a realizar por el equipo), ready (marca el
+inicio del Sprint para esa tarjeta), in progress (durante el desarrollo), in
+review (revisión del sprint) y finalmente done, cuando se cierra ese Sprint.
+Vemos un ejemplo del Kanban del proyecto.
+Figura A.1: Detalle del tablero kanban al inicio del proyecto
+Milestone
+Kick-off: Puesta en marcha del proyecto: Completado el 16 de
+junio. Una vez reunido con el tutor y definidas las líneas generales del
+proyecto se procede a recopilar e instalar las herramientas necesarias
+para el desarrollo y la documentación. Este hito hubo que extender
+hasta el 23, por el upgrade a APEX2402
+Prototipo: Completado el 30 de junio. Aunque se han ido realizando
+diversas .entregas", se establece un prototipo que sirva de base para
+que el üsuario"verifique si se está yendo en la dirección correcta en el
+desarrollo. Simplemente se muestran las primeras funcionalidades y
+los diversos menús que se podrán usar. Queda reflejado como el 1er
+Release
+MPV:Mínimo producto viable: Completado el 14 de julio. Este
+2º Release, ya presentan prácticamente todas las funcionalidades
+A.2. Plan temporal 3
+de la aplicación, pudiendo observar los usuarios, si es ajustado a sus
+requerimientos.
+Desarrollo completo: Completado el 15 de agosto. Se ha finaliza la
+aplicación (3er Release) y despliega en Oracle cloud, siendo funcional
+a todos los efectos.
+Documentación: Se prepara, completa y revisa toda la documentación
+del proyecto; memoria, anexos, vídeos y el resto de documentos
+para presentar.
+Sprints
+Para la ejecución del proyecto se han realizado los siguientes Sprints,
+algunos coincidentes en el tiempo dentro del mismo hito:
+Kick-off: Puesta en marcha del proyecto hasta 16 de junio:
+Análisis: en este Sprint se realizaron las tareas de análisis de
+datos de la hoja de cálculo excel y su Normalización, definición
+las entidades y sus relaciones para finalmente crear las distintas
+tablas con sus campos, definiendo PK y FK
+Instalación de herramientas: Se abrió el repositorio en GitHub
+para el proyecto, instalándose en modo local, APEX 5.01 y Oracle
+9, herramientas que se habían utilizado en la asignatura de Sistemas
+de Gestión de Bases de Datos. También se instaló TestCafé para la
+ejecución de test, con el complemento (Allure) así como el editor de
+LaTex, TexStudio.
+Figura A.2: Milestone: Kick-Off
+Prototipo: hasta el 30/06:
+4 Apéndice A. Plan de Proyecto Software
+Creación pantalla de inicio: Se crea la pantalla de log-in y la
+página de entrada principal, así como el primer módulo de Administración,
+que contendrá los datos de los proyectos de los responsables.
+Como los datos obrantes en el sistema son privados, es preciso la
+creación para las pruebas de Datos MOCK.
+Módulos y test: En este Sprint se diseña un programa en Phyton
+para rellenar las tablas de responsables y proyectos con datos de prueba
+y se rellenas las tablas correspondientes para poder realizar los test. Se
+diseñan los primeros Test para los menús creados que son la base del
+prototipo. Se realiza la migración de HTTP a HTTPS, debiéndose
+obtener un certificado a través de OpenSSL
+Figura A.3: Milestone: Prototipo
+MPV: hasta el 14/07:
+Creación Contrato:Se crean la utilidad principal para efectuar
+un contrato a un solicitante. El proceso debe crear las nóminas correspondientes
+en la tabla NOMINAS.
+Creación de renovación y renuncias: Se crean los módulos de
+renovación, que amplía la fecha de fin de contrato y añade las nóminas
+correspondientes y el de renuncia, que recorta la fecha de contrato y
+elimina la nóminas desde esa fecha hasta el final del contrato anterior.
+Test de usabilidad: Se testean estas nuevas funcionalidades,
+comprobando que se actualizan correctamente las fechas y las nóminas.
+Figura A.4: Mileston: MPV
+A.2. Plan temporal 5
+Desarrollo Completo: hasta 15 de agosto:
+Creación de informes: Se crean los informes pendientes, Nóminames,
+Vencimientos y Nóminas periodo.
+Creación de cuenta Oracle Cloud: Se crea la cuenta de OCI y
+las instancias para la BD y APEX. Se efectúa el traspaso de la base
+de datos local a Cloud y se instala la aplicación MPV, para su prueba.
+Revisión de Test e informes: Se crea e instala APEX Office
+Print (AOP). Se realizan los test de éstos últimos informes, para
+comprobar que se generan correctamente y se emite el informe en PDF
+a través de AOP
+Creación de Oracle Cloud Infrastructure (OCI): Se finaliza
+el desarrollo de la aplicación y se despliega en OCI. En este caso no
+hace falta certificado SSL ni para Cloud y AOP, ya que al ser el mismo
+proveedor confía en su entorno.
+Figura A.5: Milestone: Desarrollo Completo
+Documentación: hasta el 5 de septiembre:
+Generación de documentación: Se finaliza La memoria del
+proyecto, documento creciente que se va desarrollando a lo largo del
+proyecto, pero es en este punto final cuando se invierte la mayoría
+del tiempo en su finalización, plasmándose los Objetivos de Desarrollo
+Sostenible (ODS). Para la realización de la memoria y los anexos ha
+sido imprescindible el aprendizaje de LATEX. Finalizado el proyecto
+se crea el manual de uso y se sube al wiki de GitHub. Para finalizar
+la documentación se crean los vídeos de funcionamiento de la app
+GeNomIn y de presentación del TFG
+6 Apéndice A. Plan de Proyecto Software
+Figura A.6: Milestone: Documentación
+Gráfica de Velocidad: en la siguiente gráfica podemos ver cómo se
+han ido realizando los diferentes Sprints, manteniendo una constancia
+relativa. Se puede observar, que la tarea de verficación y despliegue
+ha sido más laboriosa, ya que comprendía la finalización y trasvase de
+datos a Cloud.
+Figura A.7: Gráfica de Velocidad de los Sprints
+A.2. Plan temporal 7
+Figura A.8: Tarea #2:Instalación de herramientas en GitHub
+Vemos también, en la imagen, como las tareas han sido sincronizadas
+con el repositorio de GitHub, incluyendo su Sprint y Milestone asignados.
+8 Apéndice A. Plan de Proyecto Software
+A.3. Estudio de Viabilidad
+Viabilidad Técnica
+Este proyecto ha sido realizado siguiendo la filosofía de software libre y
+coste cero, lo que garantiza su viabilidad técnica, no obstante se incluyen los
+costes reales de implantación. Hay que tener en cuenta que la Universidad
+de Burgos tiene licencia con Oracle y servidores propios.
+Herramienta Función Licencia / Coste
+real
+Oracle 23ai BD relacional Desde 43.700 € proc. +
+22% mant. anual
+SQL Developer Diseño BD Gratuito
+Oracle APEX
+24.02
+Desarrollo web Free en local/Desde
+112.24 €/mes en OCI
+AOP Informes PDF personalizados
+100 inf. gratis, luego
+desde 35 €/mes
+TestCafe Pruebas Gratuito
+Oracle Cloud
+Free Tier
+Despliegue Cloud Gratuito (limitado) /
+Desde 110.4 €/mes
+TeXstudio Redacción técnica Gratuito
+Tabla A.1: Coste real estimado de herramientas utilizadas en el proyecto
+GeNomIn
+Viabilidad Económica
+Para el desarrollo del proyecto se estiman unas 300 horas a un precio
+estimado de 25 €/hora para un técnico cualificado, más las cuotas de
+autónomo. Además se incluye el alquiler de local y los gastos asociados de
+luz. Para el equipamiento se ha calculado sobre una amortización de 4 años
+del equipamiento y la licencia de AOP n producción. El coste de la licencia
+MIT de la aplicación es gratuita.
+Viabilidad Legal
+Propiedad intelectual: Este desarrollo ha sido realizado por el autor
+del TFG, sin restricciones.
+A.3. Estudio de Viabilidad 9
+Concepto Importe €
+Horas de desarrollo (300 h x
+25 €/h)
+7.500,00 €
+Cuota autónomos (4 meses
+x 230 €/mes)
+920,00 €
+Alquiler espacio de trabajo
+(4 meses x 250 €/mes)
+1.000,00 €
+Electricidad (4 meses x 20
+€/mes)
+80,00 €
+Amortización portátil (4 meses)
+100,00 €
+Licencia de la app (MIT) 0,00 €
+AOP – Apex Office Print (4
+meses x 35 €/mes)
+140,00 €
+Total 9.740,00 €
+Tabla A.2: Coste económico actualizado del proyecto GeNomIn
+Protección de datos: Los datos son gestionados por la Universidad
+de Burgos, dentro de su marco legal, cumpliéndo se con el RGPD.
+Licencias: Todas las herramientas utilizadas en el desarrollo del proyecto
+son de código abierto o están cubiertas por licencias institucionales
+de la Universidad de Burgos, salvo el componente AOP, que requiere
+licencia comercial si se supera el límite gratuito.
+En cuanto a la aplicación GeNomIn, se ha publicado en un repositorio
+público en GitHub bajo la licencia MIT, reconocida por la Open
+Source Initiative (OSI). Esta licencia permite:
+• Uso libre del software, tanto personal como comercial.
+• Modificación y redistribución del código.
+• Conservación de la autoría original.
+La licencia se ha aplicado mediante la inclusión del archivo LICENSE
+en el repositorio, y se ha indicado en la documentación (README.md).
+No se requiere registro ni pago para aplicar esta licencia, lo que
+garantiza la viabilidad legal y económica del proyecto.
+10 Apéndice A. Plan de Proyecto Software
+Viabilidad de Implantanción
+Entorno Local: La Universidad dispone de las herramientas y capacidad
+para la instalación, con licencias de Oracle.
+Escalabilidad: como ya se ha demostrado al escalarlo al entorno de
+Oracle Cloud, no habría problema en el uso de servidores de la propia
+red.
+Mantenimiento: Las tecnologías usadas pueden ser mantenidas por
+el personal técnico interno.
+Conclusiones
+: La aplicación web GeNomIn, es viable tanto técnica como legalmente,
+con un coste contenido y un despliegue seguro en los servidores de la
+Universidad, cumpliendo con el objetivo inicial de facilitar el trabajo al
+Servicio en cargado de la gestión de contratos con cargo a proyectos de
+Investigación.
+
+
+
+
+
+ESTE es otro proyecto
+
+
+
+Plan de Proyecto Software
+A.1. Introducción
+El Plan de Proyecto Software es el documento clave que dirige el proceso
+de desarrollo de la aplicación móvil creada. Este apéndice tiene como objetivo
+detallar los aspectos críticos de la planificación y gestión del proyecto, asegurando
+una implementación eficiente y efectiva. La planificación temporal
+del proyecto se ha llevado a cabo con el uso de la metodología ágil buscando
+dividir el desarrollo en tareas, sprints e hitos que producen un resultado
+iterativos y bien estructurado, lo que conlleva a una mayor flexibilidad y a
+la adaptación más efectiva frente los cambios.
+A continuación, se determinará la viabilidad, que reflejará los recursos
+humanos y materiales, así como los costes asociados necesarios para su
+valoración. La viabilidad incluirá una estimación de los fondos que se basarán
+en el salario de un trabajador simulado, así como un análisis de los posibles
+riesgos y su mitigación. Los aspectos económicos y técnicos de la viabilidad
+son fundamentales, ya que de ellos depende de que el proyecto esté en los
+límites establecidos y cumpla con los objetivos propuestos.
+Este plan es esencial para la gestión del proyecto ya que sirve como
+una guía detallada, ayudando así a identificar y mitigar riesgos así como
+a la utilización eficaz de los recursos. Con el enfoque estructurado y ágil,
+proporcionado por este plan, el equipo de desarrollo podría entregar un
+producto de alta calidad que, además, cumplirá con el nivel de satisfacción
+alcanzado entre los usuarios o clientes.
+1
+2 Apéndice A. Plan de Proyecto Software
+A.2. Planificación temporal
+Como se ha mencionado anteriormente, la planificación temporal del
+proyecto se ha llevado a cabo con el uso de metodología ágil: se basa en la
+división del desarrollo en tareas, sprints e hitos que producen un resultado
+iterativo y bien estructurado. Esto conlleva una mayor flexibilidad y a la
+adaptación más efectiva frente a los cambios.
+Algunas herramientas utilizadas para la planificación temporal han sido
+GitHub y Zube. Ésta última ha permitido la organización de las tareas en
+tableros Kanban o el uso de métricas ágiles con gráficos que sirven para
+evaluar el desarrollo del proyecto. Algunos de los artefactos más relevantes
+usados son los siguientes:
+Gráficos burnup / burndown: muestran a lo largo del tiempo de
+un sprint la evolución de tareas realizadas por el equipo de desarrollo.
+En la explicación de los sprints se pueden ver los gráficos asociados al
+mismo
+Figura A.1: Gráfico Burnup del Sprint 6
+1
+Gráfico de velocidad: permite comprobar el trabajo realizado en
+los diferentes sprints de manera que resulte lo más constante posible.
+A.2. Planificación temporal 3
+Figura A.2: Gráfico de velocidad de los sprints 1-10
+A continuación veremos como la planificación temporal se ha llevado a cabo
+en diferentes sprints, cómo se ha ido iterando en las diferentes partes del
+proyecto y cómo se han ido cumpliendo los hitos propuestos. Para ello se
+mostrarán diferentes diagramas basadas en métricas ágiles.
+Cada tarea se ha dividido en diferentes historias de usuario, que se han
+ido completando en cada sprint. Cada sprint ha tenido una duración media
+de dos semanas, y se han ido completando las tareas propuestas en cada
+uno de ellos. Un ejemplo se puede observar en la siguiente figura A.3
+4 Apéndice A. Plan de Proyecto Software
+Figura A.3: Tarea 12 mostrada en GitHub con la descripción, hito y etiquetas
+de la tarea a realizar.
+Gracias también al uso de Zube, se ha podido llevar un control de las
+tareas a realizar, las tareas completadas y las tareas pendientes. Además,
+se ha podido llevar un control de los hitos propuestos y de las historias de
+usuario completadas en cada sprint. Un ejemplo de ello se puede observar
+en la siguiente figura A.4
+Figura A.4: Tablero Kanban de Zube con la gestión de tareas del Sprint 1.
+A.2. Planificación temporal 5
+Hitos
+Los hitos o milestones son puntos de referencia que marcan el final de
+un conjunto de tareas. En este proyecto se han definido los siguientes hitos:
+Kick-off Completado el 30 de julio de 2024. Puesta en marcha del
+proyecto. A partir de las reuniones mantenidas con el tutor, se necesita
+tener todas las herramientas preparadas para empezar a desarrollar
+tanto la aplicación como su documentación.
+MPV - Mínimo Producto Viable Completado el 2 de septiembre
+de 2024. Se define el MVP como una aplicación móvil que sobre un
+mapa OSM muestre la ubicación de usuario, obtenga unos PDI básicos
+y una ruta que las una.
+Checkpoint 1 de documentación Completado el 2 de septiembre
+de 2024. Este milestone agrupa las tareas relacionadas con la creación
+y actualización de la documentación del proyecto hasta la reunión con
+el tutor el 1 de septiembre de 2024.
+El objetivo es tener una documentación suficiente para que el tutor
+pueda dar feedback acerca de la misma y poder corregir errores.
+Prototipo con tours generados por LLM Completado el 1 de
+octubre de 2024. El objetivo es transitar desde una aplicación inicial
+capaz de mostrar lugares y rutas en un mapa, hacia una aplicación
+que sea capaz de conseguir que estos mismos marcadores y polilíneas
+sean generados a través de un LLM.
+Prototipo Prompting Completado el 15 de octubre de 2024. Este
+prototipo se puede realizar en un cuaderno Jupyter y su objetivo es
+mostrar la evolución en el prompt que dará como resultado unos PDI
+de mayor calidad.
+Desarrollo de aplicación completo Completado el 12 de noviembre
+de 2024. Se consideran todas las funcionalidades que debe tener la
+aplicación a presentar como completadas.
+Finalización TFG: Completado el 16 de enero de 2025. Se deja el
+proyecto en estado de entrega, completamente finalizado.
+6 Apéndice A. Plan de Proyecto Software
+Organización en Sprints
+Al comenzar este proyecto durante periodo no lectivo se realizaron los
+Sprint con variación de tiempo de una o dos semanas en función de la
+planificación personal. Una vez comenzado el curso y con la ayuda del
+tutor se realizaron reuniones que han servido para, siguiendo la metodología
+Agile, revisar el Sprint anterior, planificar el siguiente y hacer una pequeña
+retrospectiva para mejorar el trabajo conjunto.
+Sprint 0 - Kick-off(22/07/2024 - 29/07/2024)
+Después de las reuniones con el tutor, se establecen los objetivos del
+proyecto y se comienza a trabajar en la puesta en marcha del proyecto.
+Se establecen las herramientas a utilizar y se comienza a trabajar en la
+documentación del proyecto. 33 puntos de historia en 5 tareas:
+1. Organización de repositorio.
+2. Configuración de herramientas y equipos.
+3. Trabajo en memoria I.
+4. Investigación previa sobre LLM.
+5. Determinación de ODS implicados.
+Figura A.5: Figura burndown del Sprint Kick-off.
+A.2. Planificación temporal 7
+Sprint 1 - Investigación LLM y desarrollo básico de aplicación con
+mapa (29/07/2024 - 05/08/2024)
+Con las herramientas y una idea previa establecida, es el momento de
+empezar a desarrollar.
+Objetivos: seguir formándome en LLM y las opciones que pueda implementar
+en el prototipo de prompt. Empezar a desarrollar la aplicación móvil
+con las características básicas. Aprender a documentar sprints, indicar qué
+elementos tendré que documentar y aquellos que tenga claro ir documentando
+para hacer un avance significativo que pueda evaluar mi tutor. 35 puntos
+de historia en 8 tareas:
+1. Creación y organización proyecto base.
+2. Bloc permiso GPS.
+3. Bloc ubicación.
+4. Mapa base OSM.
+5. Intro, resumen y palabras clave.
+6. Prompt sencillo en cuaderno Jupyter.
+7. Probar modelo de ejemplo LangChain.
+8. Documentación del Kick-off sprint.
+8 Apéndice A. Plan de Proyecto Software
+Figura A.6: Figura burndown del Sprint 1.
+Sprint 2 - Implementación solución GIS (05/08/2024 -
+12/08/2024):
+A partir del concepto básico, se añaden pequeñas mejoras en los tres
+aspectos del proyecto.
+Objetivos: mejorar el prototipo de prompting del cuaderno Jupyter
+hasta incorporar un sistema RAG, incluir marcadores al mapa en cuanto
+al desarrollo y continuar con la documentación. 26 puntos de historia en 6
+tareas:
+1. Redacción de los objetivos del proyecto.
+2. Representación de marcadores en mapa.
+3. Inicio de Trabajos relacionados.
+4. Mostrar ubicación de usuario en el mapa.
+5. Wikivoyage como agente para RAG.
+6. Ingeniería del Prompting (cont.).
+A.2. Planificación temporal 9
+Figura A.7: Figura burndown del Sprint 2.
+Dificultades encontradas: la documentación me hizo perder mucho tiempo
+debido a problemas con las librerías, después de mucho tiempo reinicié el
+proyecto desde la plantilla dada, insertando el texto, lo que solucionó el
+problema. En cuanto al diseño de la aplicación, el desarrollo fue lento al
+tener que evaluar diferentes opciones ya que la mayoría de fuentes utilizan
+mapas de Google, opción que se quería descartar.
+Sprint 3 - MPV(12/08/2024 - 22/08/2024):
+Este sprint fue más largo que los anteriores para mejorar el resultado
+final ya que la intención era dejar el proyecto en un estado de revisión lo más
+completo posible para afrontar la reunión prevista para inicio de septiembre
+con el tutor del mismo. Al intentar desarrollar la tecnología de enrutado
+del usuario se comprendió lo que ya se intuía en el sprint anterior y es que
+basar el trabajo en servicios de Google iba a reportar en un desarrollo más
+fácil y un resultado más robusto y fiable como se justifica en la sección 5 de
+la memoria de este TFG. 42 puntos de historia en 5 tareas:
+1. Obtención de marcadores POI.
+2. Crear ruta entre dos puntos.
+3. Trabajo inicial - Conceptos teóricos.
+4. Agent RAG.
+10 Apéndice A. Plan de Proyecto Software
+5. Adaptación a servicios Google.
+Figura A.8: Figura burndown del Sprint 3.
+Sprint 4 - Servicios MapBox y LLM, preparación reunión inicio
+curso.(22/08/2024 - 02/09/2024)
+El objetivo es mostrar la versión más completa de la aplicación, la
+documentación y ahondar en el uso de nuevas herramientas como Figma,
+una herramienta de diseño de aplicaciones y LangFlow a la hora de utilizar
+otro modelo de prototipo. 31 puntos de historia en 5 tareas:
+1. Diseño de interfaz con Figma.
+2. Uso de Mapbox como geocoding.
+3. Marcadores POI y finalización MPV.
+4. Documentación para Checkpoint 1.
+5. LangFlow para Agent RAG.
+A.2. Planificación temporal 11
+Figura A.9: Figura burndown del Sprint 4.
+Sprint 5 - Aplicación con origen de datos LLM (Preparación y
+documentación) (04/09/2024 - 14/09/2024)
+Después de la reunión con el tutor de inicio de septiembre y habiendo
+cumplido los objetivos de los primeros hitos se decide continuar intentando
+alcanzar el hito A.2. Para ello se prepara y documenta primero en este sprint
+el desarrollo necesario. 28 puntos de historia en 6 tareas:
+1. Revisión documentación memoria - resumen.
+2. Conceptos teóricos. Memoria.
+3. Técnicas y Herramientas. Mem. C.4.
+4. Modelo LLM en local.
+5. Route Optimization dependientes del medio.
+6. Generar icono y nombre de aplicación.
+12 Apéndice A. Plan de Proyecto Software
+Figura A.10: Figura burndown del Sprint 5.
+Sprint 6 - Desarrollo y Finalización prototipo
+google_generative_ai como LLM (18/09/2024-01/10/2024)
+Habiendo encontrado una solución óptima al modelo LLM a utilizar se
+propone realizar un prototipo que implemente la interfaz de usuario y su
+conexión con el modelo LLM. En este sprint de gran avance en el desarrollo
+de la aplicación se consiguió reestructurar todo el código centralizando
+labores de gestión del tour generado y sus PDI manteniendo la modularidad
+del código. 43 puntos de historia en 6 tareas:
+1. Añadir tema a la aplicación.
+2. Loading screen.
+3. Modificar InfoWindow por Bottom Sheet.
+4. Marcador básico de POI a marcador con imágenes.
+5. Revisión documentación memoria v0.2.
+6. Rehacer 3.3 Conceptos acerca de los modelos.
+7. Estudiar guardado de rutas.
+8. Reorganización de proyecto: Clase Eco City.
+A.2. Planificación temporal 13
+Figura A.11: Figura burndown del Sprint 6.
+S7 - Consolidación y Calidad (02/10/2024 - 22/10/2024)
+Habiendo cumplido el hito A.2 y teniendo una aplicación con muchas
+funcionalidades implementadas, durante este sprint se busca consolidar
+el código y dotarlo de una calidad y mantenimiento con herramientas de
+soporte como Sonar Cloud o Logger. 39 puntos de historia en 9 tareas:
+1. Establecer Requisitos.
+2. Límite a la extensión del Eco City Tour.
+3. Tour Screen: pantalla de resumen del tour.
+4. Diagramas de paquetes/componentes.
+5. Finalización prototipo Langflow.
+6. Finalización prototipo Jupyter Notebook.
+7. Instalación de Logger.
+8. Integración de Sonar Cloud.
+9. Convocatoria Prototipos Orientados al Mercado.
+14 Apéndice A. Plan de Proyecto Software
+Figura A.12: Figura burndown del Sprint 7.
+S8 - Cobertura de tests y guardado de rutas (23/10/2024 -
+12/11/2024)
+Se procede a implementar las últimas funcionalidades del desarrollo de la
+aplicación. Además, se busca que la integración con sonarcloud confirme que
+se trabaja con un standard de calidad para lo que se necesita la cobertura
+de tests y por último se retoma el trabajo de documentación. 29 puntos de
+historia en 7 tareas:
+1. Configurar tarea de despliegue continuo Flutter.
+2. Guardar Eco City Tour.
+3. Corrección de diagramas.
+4. Revisión de memoria/anexos.
+5. Guardado de log compartido.
+6. Investigación de opciones Google para base de datos.
+7. Tests de aplicación / Cobertura.
+A.2. Planificación temporal 15
+Figura A.13: Figura burndown del Sprint 8.
+S9 - Testing y selección de perfil de asistente IA (13/11/2024 -
+03/12/2024)
+En este sprint se exploró la posibilidad de generar diferentes perfiles de
+asistente, asignando al modelo roles específicos para personalizar las respuestas
+generadas. También se avanzó significativamente en la evaluación del
+código mediante la implementación de tests. Además, se inició la redacción
+de algunos apartados de los anexos relacionados con la documentación del
+proyecto. 56 puntos de historia distribuidos en 10 tareas:
+1. Test: servicios, modelos, repositorios. Pruebas.
+2. Anexo E - Documentación de usuario.
+3. Anexo D - Documentación T. de programación.
+4. Anexo A3 - Estudio de viabilidad.
+5. Refinamiento final de prompting.
+6. Limpieza de repositorio.
+7. Test: gestor de estados Bloc.
+8. Añadir selección de asistente AI.
+9. Apéndice C.
+16 Apéndice A. Plan de Proyecto Software
+10. Revisión final memoria.
+Figura A.14: Figura burndown del Sprint 9.
+S10 - Wiki, internacionalización, anexos, workflow ci (16/12/2024
+- 20/12/2024)
+Se estudia la posibilidad de generar diferentes asistentes dándole al
+modelo distintos roles. Se pretende realizar el test que llevará la aplicación
+en este sprint. En cuanto a documentación se trabajará en avanzar el
+contenido aclarado con el profesor en cuanto a anexos se refiere. 34 puntos
+de historia en 8 tareas:
+1. Wiki.
+2. Internacionalización.
+3. Documentación de la programación (código).
+4. Limpieza de repositorio.
+5. Workflow Integración Continua.
+6. Integración continua a manual de programador.
+7. Mejoras en anexos.
+8. Anexo de Diseño.
+A.2. Planificación temporal 17
+Figura A.15: Figura burndown del Sprint 10.
+S11 - Finalización TFG (23/12/2024 - 09/01/2025)
+Último sprint dedicado a finalizar las últimas funcionalidades, terminar
+la documentación y realizar los vídeos, en definitiva todos los elementos
+preparados para la entrega del Trabajo de Fin de Grado (TFG). 39 puntos
+de historia en 7 tareas:
+1. Revisión Anexo: planificación y análisis.
+2. Internacionalización 2.
+3. Mejora del README.md: Añadir insignias de herramientas
+utilizadas.
+4. Video de presentación.
+5. Video de demostración.
+6. Revisión anexo de diseño y manual de usuario.
+7. Adaptación de Memoria a la longitud permitida.
+18 Apéndice A. Plan de Proyecto Software
+Figura A.16: Figura burndown del Sprint 11.
+A.3. Estudio de viabilidad
+En esta sección se analizan los aspectos clave para determinar si la
+implementación del proyecto y el desarrollo de la aplicación móvil Eco City
+Tours es viable desde un punto de vista legal y económico. Se destacan
+los valores positivos de la aplicación, como su independencia de intereses
+particulares y su enfoque sostenible, que la convierten en una propuesta
+valiosa en el mercado del fomento del turismo sostenible. Se evaluará si los
+beneficios esperados compensan los costes de desarrollo, el mantenimiento de
+los servicios y los posibles problemas legales, determinando así su viabilidad.
+Viabilidad económica
+Costes de personal
+El desarrollo de la aplicación se realiza con un grupo de trabajo de un
+solo empleado de categoría profesional equivalente a la de un Ingeniero
+Informático. Según el XVIII Convenio Colectivo Estatal de Empresas de
+Consultoría, Tecnologías de la Información y Estudios de Mercado y de la
+Opinión Pública, publicado en el BOE el 26 de julio de 2023 [1] podría estar
+entorno a los 2.000 € antes de impuestos.
+A.3. Estudio de viabilidad 19
+Concepto Coste
+Salario Desarrollador 1.500€
+Retenciones y Seguridad Social 500
+Total 4 meses 8.000€
+Tabla A.1: Costes de personal
+Coste de hardware
+Para calcular el coste de los equipos se supone un período de amortización
+de 3 años para todo el hardware. Para realizar Eco City Tours se usará un
+ordenador de sobremesa con procesador i7 y 16 Gb de memoria RAM capaz
+de utilizar los programas necesarios para el desarrollo de manera fluida.
+Se tienen en cuenta también periféricos para dicho equipo y un teléfono
+móvil Android para pruebas de implementación en un dispositivo real no
+virtualizado. Por tanto y a modo resumen tenemos:
+Concepto Coste Coste amortizado
+Ordenador 1.200€ 400€
+Periféricos 240€ 80€
+Teléfono móvil Android 300 100
+Total 1.740€ 580€
+Tabla A.2: Costes de hardware
+Asociado a estos costes también podremos asociar el uso de Internet
+necesario para poder desarrollar sin problemas buscando información o
+descargando paquetes necesarios del repositorio de Flutter. Un servicio
+básico de este tipo puede costar 30-60 euros dependiendo de la velocidad
+del mismo o de otros productos asociados al cliente.
+Coste de software
+El software utilizado para el proyecto es libre. Visual Studio Code como
+IDE de desarrollo único, libre y gratuito y Android Studio en su versión
+gratuita para poder instalar emuladores de dispositivos móviles. El paquete
+SDK de Flutter no supone tampoco ningún gasto por parte del desarrollador.
+20 Apéndice A. Plan de Proyecto Software
+Como sistema operativo se sugiere Ubuntu 22.04 LTS ya que tiene soporte
+a largo plazo, se trata de un entorno estable, confiable y se trata de una
+versión de código abierto. La herramienta y extensión de Visual Studio Code
+Copilot aunque útil no es imprescindible pudiendo usar . El resto de software
+para prototipado como Langflow o LMStudio son también gratuitos.
+Coste de los Servicios Google
+Durante el desarrollo de la aplicación la empresa incurrirá en gastos por
+uso de estos servicios. Una forma de pago tiene que estar asociada al proyecto
+y sobre el mismo se podrán asociar todas las API y servicios asociados al
+mismo: Firebase, Google Directions, Google Maps, Generative AI tienen
+gastos asociados. Sin embargo, el desarrollador tendrá un período de prueba
+de 3 meses donde no se cargará ningún gasto siempre que no supere los 300
+euros.
+Figura A.17: Tráfico de peticiones durante el desarrollo de Eco City Tours
+Desde la experiencia durante el desarrollo las peticiones están lejos de
+incurrir en gastos. En el período de pruebas donde se realizaron las mayores
+peticiones a los servicios como se puede ver en la imagen A.17 el coste
+llegó a los 40 euros, muy lejos de los 300 que supondrían un gasto para el
+desarrollador.
+A.3. Estudio de viabilidad 21
+Figura A.18: Interfaz de Facturación de Cloud Console.
+Pasado el período de tres meses, la cantidad que supone un umbral de
+coste se reduce a los 200 euros. En la imagen A.18 se puede ver como se
+inicia otro proceso de facturación diferente. Supondría por tanto algo a
+tener en cuenta si se despliega la aplicación en versiones tempranas en el
+repositorio de aplicaciones de Android puesto que las peticiones no serían
+solo de una persona, en este caso el desarrollador sino del público en general.
+La misma consideración habría que hacer si durante el desarrollo se cede
+el proceso de pruebas a varias personas que puedan hacer la función de
+beta-testers disparando el consumo de peticiones y por tanto el gasto. Para
+el caso de Eco City Tours se supone que el desarrollo y el mayor volumen de
+peticiones se concentran en los tres primeros meses donde el umbral de gasto
+es más alto, las pruebas las realiza el propio desarrollador que tendrá acceso
+al panel de Google Cloud para controlar los posibles gastos y la publicación
+de la aplicación será en un momento en el que el propio beneficio generado
+contrarreste los gastos en los que se pueda incurrir.
+Conclusiones
+El desarrollo de la aplicación se estima en 4 meses por el equipo
+auto gestionado por un solo desarrollador. No se tienen en cuenta alquileres
+de oficinas o co-working ya que se plantea la posibilidad de teletrabajar,
+pudiendo trabajar de manera deslocalizada ahorrando así costes. Teniendo
+en cuenta lo anteriormente citado obtenemos la siguiente tabla resumen:
+22 Apéndice A. Plan de Proyecto Software
+Concepto Coste
+Mano de obra 8.000€
+Hardware 580€
+Internet 135€
+Software 0€
+Servicios Google 0€
+Revisión y auditoría del tutor 750€
+Total 9.465 €
+Tabla A.3: Costes totales de Eco City Tours
+Se ha incluido un coste estimado de 750 € por las tareas de revisión y
+auditoría realizadas por el tutor. Este coste considera una dedicación
+de 30 horas, remuneradas a un coste promedio de 25 €/hora, que incluye
+reuniones, revisiones parciales y finales del proyecto.
+Una vez analizado los costes devengados de la creación de la aplicación
+el beneficio de su explotación debe ser mayor al gasto ocasionado por
+su creación. Además, una vez publicada la aplicación en la Play Store el
+beneficio obtenido por su explotación debe compensar el tiempo requerido
+por el personal en horas de mantenimiento de los posibles problemas que
+pueda experimentar como por ejemplo problemas por actualización de los
+componentes claves como modelos LLM, que puedan quedar obsoletos. El
+beneficio de la aplicación puede provenir de varias fuentes en función del
+modelo de explotación que se eligiese:
+Ingresos por descarga: si la aplicación tiene un precio por descarga,
+los ingresos corresponderían al dinero obtenido menos una comisión del
+15% cobrada por Google por cada venta [7]. Inicialmente, se propone
+un precio aproximado de lanzamiento de 5 euros, considerando que se
+obtendrían aproximadamente 4,40 euros como beneficio por descarga.
+Este precio se estima razonable para incentivar descargas durante la
+fase inicial. Tras un periodo de prueba, el precio podría ajustarse en
+función del número de descargas y del comportamiento de los usuarios.
+Los gastos derivados del uso de servicios externos, como peticiones a
+APIs, se compensarían con un equilibrio entre usuarios que realicen
+menos consultas y aquellos más demandantes, garantizando siempre
+un beneficio estimado en el modelo económico.
+A.3. Estudio de viabilidad 23
+Publicidad: empresas o entidades colaboradoras podrían financiar el
+desarrollo con publicidad siempre que ésta no suponga una perdida
+de independencia en los resultados de los modelos, fomente el turismo
+ecológico y no sea invasiva ni perjudique la experiencia de usuario.
+Viabilidad legal
+Al utilizar los servicios ofrecidos por Google, la compañía se convierte
+en un socio en el que se delegan muchas de las responsabilidades legales,
+técnicas y de cumplimiento normativo. Esto simplifica la implementación
+de Eco City Tours, a la vez que se adquieren ciertos compromisos con el
+gigante tecnológico.
+Licencias de uso de las API de Google
+Cada API tiene sus propios términos de uso [6] y se tiene que tener en
+cuenta los siguientes aspectos:
+Uso permitido: Las API deben ser utilizadas únicamente para finalidades
+relacionadas con el proyecto.
+Prohibiciones: Se prohíbe el scraping, almacenamiento de datos más
+allá de los límites permitidos o redistribución no autorizada.
+Restricciones específicas:
+Generative AI: Regulada por políticas relacionadas con el uso de datos
+generados, especialmente en contextos comerciales.
+Places API y Directions API: Restringen el almacenamiento y redistribución
+de los datos obtenidos.
+Maps SDK for Android: Requiere incluir el logotipo de Google y
+atribuciones visibles en la interfaz.
+Los servicios de Google tienen modelos de precios basados en uso para
+lo que es legalmente obligatorio registrar un método de pago válido
+en tu cuenta de Google Cloud para garantizar la continuidad del servicio.
+24 Apéndice A. Plan de Proyecto Software
+Privacidad de datos
+El cumplimiento de normativas sobre protección de datos es fundamental:
+GDPR: Si se cumplen algunos de los trabajos futuros de la aplicación,
+ésta recogería datos del usuario, si es un ciudadano europeo debe:
+• Firmar un Acuerdo de Procesamiento de Datos (DPA) con Google.
+• La aplicación debe mostrar cómo se manejan los datos obtenidos.
+Se debe informar a los usuarios que los datos están sujetos a las Políticas
+de privacidad de Google.
+Restricciones geográficas
+Algunas API tienen restricciones en determinados países debido a leyes
+locales o sanciones internacionales.
+Propiedad intelectual
+Los datos obtenidos a través de las API de Google (como mapas y lugares)
+son propiedad intelectual de Google.
+Prohibiciones:
+• No se puede almacenar ni redistribuir datos más allá de los límites
+permitidos.
+• No se puede usar los datos para minería o análisis masivo sin
+autorización.
+Cumplimiento con normas de publicación
+Para poder publicar la aplicación en el repositorio de aplicaciones Android
+hay que especificar claramente la política de privacidad y detallar el uso de
+los servicios.
+Lista a cumplir para viabilidad legal
+1. Revisar términos de uso de cada API.
+2. Registrar método de pago.
+A.3. Estudio de viabilidad 25
+3. Cumplir con las normativas de privacidad (GDPR, CCPA).
+4. Incluir atribuciones visibles en la interfaz de usuario.
+5. Respetar las restricciones de almacenamiento y uso de datos.
+6. Desarrollar y publicar una política de privacidad clara para los usuarios.
+Respetando el uso ético de la aplicación y cumpliendo con estos requisitos
+la viabilidad legal de Eco City Tours estaría cumplida y no supondría un
+impedimento para su ejecución.
+
+
+
+
+ESTE ES OTRO PROYECTO
+
+Plan de Proyecto Software
+A.1. Introducción
+En esta sección se va a comentar la evolución temporal del proyecto, la cual
+ha sido controlado mediante metodología ágil, y las viabilidades económicas y
+legales del proyecto.
+A.2. Planificación temporal
+El proyecto se divide en sprints y a la vez estos en tareas individuales.
+Todo esto es controlado desde un repositorio creado específicamente para este
+proyecto en GitHub.
+Se mostraran gráficas que muestren la duración de los sprints más relevantes.
+Esto se realizará a través de:
+Control chart: esta gráfica muestra la duración de las tareas hasta su
+cierre y la media de estas durante todo el proyecto.
+Cumulative flow: esta gráfica muestra la evolución del estado de las
+tareas en cada momento, si están abiertas, se crean o se cierran.
+Sprint 0: Recogida de información (27/12/21 - 16/01/22)
+Este sprint consistía en familiarizarse con la encuesta de Stack Overflow y
+las herramientas que se iban a utilizar.
+Las tareas que comprenden el sprint 0 son:
+1
+2 Apéndice A. Plan de Proyecto Software
+Networkx: En esta tarea se iba a buscar información sobre Networkx, la
+creación de grafos y las posibilidades que nos ofrece al juntarlo con otras
+librerías como pandas.
+Generador HTML en Python: Se empezaría a buscar como crear una
+página web desde Python para ejecutarlo en modo local.
+Sistema de evaluación del TFG: Esta tarea se basa en la búsqueda de
+información acerca de todo lo que había que hacer y presentar (proyecto,
+memoria y anexos, en que se basaba la presentación, etc) al centro y al
+tribunal para poderme ir organizando y controlarlo.
+GitHub Desktop: Se clonaría el proyecto en local con el fin de subir todos
+los cambios que se fueran realizando del proyecto al repositorio de GitHub.
+Sprint 1: Primeros pasos (17/1/22 - 29/1/22)
+En este sprint se va a iniciar el proyecto de Python y se va a tener el primer
+contacto con la encuesta a trabajar.
+Las tareas correspondientes a este sprint son:
+Importación de paquetes: Se importaron todos aquellos paquetes con los
+que se iba a trabajar en las primeras semanas del proyecto.
+Descarga del CSV: Se descargaría el archivo .csv que contiene los resultados
+de la encuesta de Stack Overflow.
+Primeros vistazos del CSV: Se importó el archivo al código Python y se
+miraron los índices de las columnas con el fin de decidir con cual de ellas
+trabajar.
+Primeras redes: Una vez se decidieron las columnas y con cual empezar
+(lenguajes con los que habían trabajado los encuestados), se crearon
+distintas redes sencillas, formadas por unos pocos encuestados, para ver
+su contenido . Una vez dado el visto bueno, se creó el primer grafo
+completo.
+Sprint 2: Primeros pasos (30/1/22 - 12/3/22)
+Se calculan las distintas métricas del grafo y sus nodos y se empieza a buscar
+una alternativa a Networkx para el mostrado del grafo, ya que este no permitía
+la interacción con el usuario.
+Las tareas correspondientes a este sprint son:
+A.2. Planificación temporal 3
+Calculo de métricas: Se calcularon métricas de los nodos como su influencia,
+su centralidad e importancia, cuales eran los vecinos más importantes
+de estos, y métricas de la red como la densidad del grafo.
+Búsqueda de mejores resultados: Hasta ahora se había trabajado con el
+grafo al completo y los resultados no eran útiles, por lo que se empezó a
+buscar alternativas en busca de mejores resultados.
+Búsqueda de alternativas a Networkx para la generación de grafos: Se
+empezó a investigar acerca de librerías que permitieran crear grafos
+interactivos y visualmente atractivos para el cliente.
+La siguiente figura muestra el desarrollo de las issues en este sprint. A.1.
+Figura A.1: Gráfica control chart - Sprint 2
+Sprint 3: Mejora de código 1/3/22 - 21/3/22
+Este sprint comenzaría antes de finalizar el anterior ya que se seguía buscando
+librerías alternativas a Networkx y no quería dejar parado el proyecto, ya que
+quería empezar a mejorar el código.
+Este sprint esta formado por las siguientes tareas:
+4 Apéndice A. Plan de Proyecto Software
+Comunidades: Se creó un método que permite calcular las comunidades
+de nodos del grafo.
+Mejora de código: Esta mejora se basó en crear un método que poda el
+grafo dependiendo de un umbral dictaminado por el usuario. De esta
+forma se cumpliría el requisito de que el cliente pudiera interactuar con
+el grafo adaptándolo a sus necesidades.
+Cursos básicos de HTML: Empecé una serie de cursos para aprender el
+lenguaje y así poder utilizarlo.
+Estudio de Bokeh: Me decidí por utilizar la librería Bokeh para sustituir
+a Networkx. De esta forma se cerraría el sprint anterior.
+La siguiente imagen muestra la evolución de la apertura y cierre de las
+issues que componen los sprints hasta este momento. A.2.
+Figura A.2: Gráfica evolución - Sprint 0-3
+Sprint 4: Creación página web 21/3/22 - 4/4/22
+Durante este tiempo se buscaron distintas maneras de crear una página web
+desde Python. A tavés de la librería webbrowser se encontró una solución. Este
+sprint está formado por el estudio, las pruebas y su posterior implementación
+de la librería en el proyecto, creando de esta forma una página web a la que
+podría añadir el grafo interactivo de Bokeh.
+A.2. Planificación temporal 5
+Una vez creada la página web en local, se desplegó en Visual Studio con el
+fin de conseguir una página editable gráficamente y fuera más profesional.
+Sprint 5: Despliegue en Heroku (21/3/22 - 6/4/22)
+Mientras se iba creando la aplicación web en Visual Studio, se estaba
+buscando la manera de desplegarla en un servidor web. El elegido fue Heroku.
+Además, se añadieron cambios al código Python, añadiendo el método que
+crea el sistema de recomendación de tecnologías.
+Las tareas de este sprint son:
+Búsqueda de servidores web: Se buscaron diferentes plataformas en la
+que desplegar la aplicación. Se buscó información sobre Plotly y Heroku,
+decantándome por la segunda.
+Desplegar la aplicación en Heroku: Inicialmente se desplegó el HTML
+que creaba Python ya que no se había finalizado la aplicación de Visual
+Studio para comprobar su funcionamiento.
+Opción de cambio de umbral en la aplicación: Se ha añadido la opción al
+usuario de poder cambiar el umbral desde una pestaña en la aplicación.
+Creación del sistema de recomendación: En el código Python, añadí un
+método que creará una tabla con los lenguajes y sus recomendaciones
+según el umbral seleccionado por el usuario.
+Guardar imágenes y grafos necesarios: Creé en aquellos métodos que creaban
+imágenes para añadir al proyecto el comando que permite guardarlo
+en el sistema.
+Mejora de la presentación web: Con la ayuda de CSS se mejoró el diseño
+de la página web.
+La siguiente figura muestra el desarrollo de las issues en este sprint. A.3.
+6 Apéndice A. Plan de Proyecto Software
+Figura A.3: Gráfica control chart - Sprint 5
+Sprint 6: Finalización página de lenguajes (15/4/22 -
+29/4/22)
+Es este sprint se finalizó la página al completo de lenguajes.
+Este sprint está formado por las siguientes tareas:
+Rediseño del sistema de recomendación: Tras una tutoría con los tutores
+se acordó la idea de cambiar el diseño, ya que se mostraba una tabla con
+todas las recomendaciones. En el nuevo diseño solo se muestran como
+máximo las 3 mejores.
+Creación de un filtro de búsqueda: Al poder haber múltiples tecnologías
+que dificultaban la búsqueda de la buscada, creé un método que permite
+buscar la tecnología que se desea rápidamente.
+Creación tabla de tecnologías restantes: Con la posibilidad de cambiar el
+umbral nos dimos cuenta que muchas tecnologías se perdían, por lo que
+decidí crear una tabla en la que aparecieran estas tecnologías junto un
+filtro de búsqueda.
+A.2. Planificación temporal 7
+Unión de la página de lenguajes y el cambio de umbral: Ya que el cambio
+de umbral se realizaba desde una pestaña aparte, decidí aumentar la
+usabilidad de la aplicación añadiendo el cambio de umbral en la misma
+página y acotándolo entre números enteros de 0 a 100.
+Cambio de nombres en la página: El uso de nombres técnicos tanto en
+los gráficos como en el grafo podían dificultar a usuarios principiantes,
+por lo que estos nombres se cambiaron por unos menos complejos.
+Cambio de implementación en Heroku: Con la página ya creada ya se
+podía cambiar la forma de desplegar la aplicación en Heroku a la versión
+creada en Visual Studio.
+La siguiente figura muestra el desarrollo de las issues en este sprint. A.4.
+Figura A.4: Gráfica control chart - Sprint 6
+Sprint 7: Crear resto de páginas de las tecnologías
+(24/4/22 - 3/5/22)
+Este sprint se basó en la creación del resto de las pestañas, las cuales estarían
+formadas por las distintas tecnologías.
+8 Apéndice A. Plan de Proyecto Software
+Este sprint está compuesto por 7 tareas, siendo 6 de la creación de pestañas
+con cada una de las tareas:
+Creación de pestañas: Como se ha comentado, se crearon para cada
+tecnología una pestañas completa al igual que la de lenguajes creada en
+los anteriores sprints. Esto se ha realizado copiando el código que se tenía
+y adaptando los nombres del código a cada una de las tecnologías, creando
+en la template "base.htmlçada una de las pestañas y en "main.py.el código
+para que redirecciones la pestaña a la página de esa tecnología.
+Juntar las pestañas de marcos de trabajo y otros marcos de trabajo en solo
+una pestaña: Al implementar todas las tecnologías decidí que a pesar que
+en la encuesta los marcos de trabajo los separe en 2 apartados diferentes
+sería mejor si en el recomendador de lenguajes apareciesen todos juntos,
+ya que todos ellos forman parte de la misma tecnología. Se borró la página
+de otros marcos de trabajo y sus opciones de "base.html 2 "main.py 2 se creó
+una modificación en el código de marcos de trabajo para que relacionara
+cada uno de los marcos de trabajo tanto con los de su columna como con
+la otra.
+La siguiente imagen muestra la evolución de la apertura y cierre de las
+issues que compone el sprint. A.5.
+Figura A.5: Gráfica evolución - Sprint 7
+A.2. Planificación temporal 9
+Sprint 8: Crear página de Inicio y finalización de la
+aplicación (4/5/22 - 11/5/22)
+En este último sprint se realizan 4 tareas muy diferenciadas que van a tener
+un fin común, la finalización de la aplicación:
+Mejora del código de las tecnologías: Se corrigió diferentes fallos que se
+encontraron en la creación de cada una de las páginas, como nombres mal
+escritos, llamadas a la red equivocada en las imágenes o grafos, variables,
+así como la eliminación de la variable umbral en ciertos métodos la cual
+no se utilizaba desde la versión de Jupyter Notebook.
+Finalización de la página de .Acerca de": Se finalizó la página que ayuda
+y explica fácilmente el proyecto y cómo se utiliza.
+No permitir no seleccionar ningún valor en el umbral: Se producía un
+error si un usuario no rellenaba el formulario del umbral y ejecutaba la
+aplicación para ver los resultados. Esto se ha corregido obligando siempre
+al usuario a no dejar ese campo vacío si quiere ejecutar la página.
+Crear página de Inicio: Se ha creado una página de inicio y que de esta
+forma sirva a modo de presentación del trabajo.
+La siguiente figura muestra el desarrollo de las issues en este sprint. A.6.
+10 Apéndice A. Plan de Proyecto Software
+Figura A.6: Gráfica control chart - Sprint 8
+A.3. Estudio de viabilidad
+Antes de empezar con el proyecto se va a estudiar la viabilidad tanto
+económica como legal que tendría el proyecto en el mercado, estimar sus costes
+y beneficios.
+Viabilidad económica
+En este apartado se realizará un estudio de los costes y beneficios del
+proyecto.
+Costes personales
+Se va a calcular el gasto que le supondría a la empresa de manera mensual
+y anual el llevar a cabo este proyecto.
+El desarrollo del proyecto ha sido realizado solo por un alumno y dos
+profesores.
+A.3. Estudio de viabilidad 11
+Se estima que se ha trabajado unas 600 horas durante 5 meses, es decir,
+unas 120 horas/mes aproximadamente. Por hora el alumno cobra 15€ brutos,
+lo que significa que cobraría 1800€/mes.
+Concepto Coste (€)
+Salario mensual neto 1458
+Retención IRPF (12 %) 216
+Seguridad social (7 %) 126
+Salario mensual bruto 1800
+Salario total bruto(5 meses) 9000
+Tabla A.1: Costes salario alumno
+En cuanto a los profesores digamos que tienen un salario de 30€/hora y
+trabajan 1 hora/semana, lo que supone 120€/mes brutos por profesor, a los
+cuales hay que sumar los impuestos.
+Concepto Coste (€)
+Salario mensual neto 97.2
+Retención IRPF (12 %) 14.4
+Seguridad social (7 %) 8.4
+Salario mensual bruto 120
+Salario total bruto por profesor(5
+meses)
+600
+Tabla A.2: Costes salario profesor
+Estos cálculos corresponden con el salario del alumno y los profesores, pero
+no con el coste que le supone a la empresa. A este valor hay que sumarle los
+impuestos que paga la empresa por él. Esto se puede consultar en la página
+oficial de la seguridad social. [6]
+Estos impuestos son los siguientes:
+23.6% de contingencias
+5.5% de desempleo
+12 Apéndice A. Plan de Proyecto Software
+0.2% de FOGASA
+0.6% de formación profesional
+Figura A.7: Régimen General de la Seguridad Social
+A.3. Estudio de viabilidad 13
+Esto supone unos costes a la empresa de:
+Concepto Coste (€)
+Salario mensual bruto 1800
+Contingencias (23.6 %) 424.8
+Desempleo (5.5 %) 99
+FOGASA (0.2 %) 3.6
+Formación (0.6 %) 10.8
+Coste total mensual 2338.2
+Coste total (5 meses) 11691
+Tabla A.3: Costes del alumno a la empresa
+Concepto Coste (€)
+Salario mensual bruto 120
+Contingencias (23.6 %) 28.32
+Desempleo (5.5 %) 6.6
+FOGASA (0.2 %) 0.24
+Formación (0.6 %) 0.72
+Coste total mensual por profesor 155.88
+Coste total por profesor(5 meses) 779.4
+Coste total ambos profesores(5 meses)
+1558.8
+Tabla A.4: Costes de los profesores a la empresa
+Costes hardware
+Se ha empleado un ordenador de sobremesa que se compró al principio
+del proyecto para la realización del mismo. Se supone que la amortización del
+mismo es de 5 años.
+Concepto Coste Amortización
+Ordenador 800 € 67 €
+Tabla A.5: Costes hardware
+14 Apéndice A. Plan de Proyecto Software
+Costes software
+Estos costes están compuestos por los costes asociados a las licencias software
+no gratuitas, en este caso la única licencia no gratuita es la del sistema operativo
+Windows 10 Home. Se supone que la amortización del mismo es de 5 años.
+Concepto Coste Amortización
+Windows 10 Home 145 € 12 €
+Tabla A.6: Costes software
+El resto de las herramientas utilizadas para la realización el proyecto, como
+GitHub, Heroku o Visual Studio son de software libre y por tanto gratuitas. Se
+ha priorizado este tipo de herramientas sobre las de pago.
+Costes totales
+Concepto Coste Amortización
+Alumno 11691 € -
+Profesores 1558.8 € -
+Ordenador 800 € 67 €
+Windows 10 Home 145 € 12 €
+Total 14194.8 € 79 €
+Tabla A.7: Costes totales
+Beneficios
+Este proyecto al ser un trabajo final de grado no está pensado para su
+comercialización, por lo que no se recibirían beneficios.
+Viabilidad legal
+Todo proyecto debe cumplir una serie de obligaciones legales. En este caso
+son las licencias software.
+A.3. Estudio de viabilidad 15
+Software Licencia
+VirtualBox Privativa / GPLv2
+Git Privativa / GPLv2
+Heroku ISC
+Tabla A.8: Viabilidad legal
+Además, el proyecto ha utilizado la licencia MIT, que permite el uso comercial,
+modificación, distribución y uso privado.
+
+Este es otro proyecto
+
+Plan de Proyecto Software
+A.1. Introducción
+La fase de planificación es parte fundamental y necesaria en todos los
+proyectos.
+Esta fase sive para ir evaluando la viabilidad del proyecto a lo largo de su
+vida, pudiendo prevenir o adelantarse a posibles inconvenientes que surgan
+durante la fase de desarrollo. Tener medidas de forma correcta las tareas que
+se van realizando y su implicación en el total del proyecto es fundamental
+para un desarrollo sostenible, tanto económica como temporalmente.
+Se ha decidido dividir esta fase en dos etapas:
+Planificación temporal.
+Estudio de viabilidad.
+La planificación temporal tratará sobre la gestión y aprovechamiento del
+tiempo, así como la división del proyecto en pequeños hitos, siguiendo una
+metodología ágil.
+El estudio de viabilidad se descompone a su vez en:
+Viabilidad económica: Inversión necesaria para acometer el proyecto y
+posible obtención de beneficios.
+Viabilidad legal: Todos los programas software conllevan unas implicaciones
+legales.
+1
+2 Apéndice A. Plan de Proyecto Software
+A.2. Planificación temporal
+Para llevar a cabo una correcta planificación temporal se ha gestionado
+el proyecto siguiendo la metodología ágil que plantea Scrum, (poner enlace y
+bibliografía a Scrum) de forma “reducida” ya que el equipo de desarrolladores
+solo ha tenido un integrante, y las labores de “Scrum Master” y “Product
+Owner” han recaído en el tutor del TFG, Raúl Marticorena Sánchez.
+Para el seguimiento del desarrollo incremental del proyecto software se
+ha divido la planificación en una serie de sprints (enlace y referencia).
+Para la visualización de los sprint se tenía intención de incluir los gráficos
+de “Burndown” pero debido a que han sido unos sprint vivos, donde se han
+ido incluyendo o desglosando tareas más genéricas en partes más específicas,
+se ha decidido utilizar los gráficos ”Burnup“ que representan de forma más
+real el número total de tareas completadas en cada sprint.
+Reunión de Kick-off
+Del 12/02/2024 - 1 hora
+La reunión de kick-off fue la toma de contacto con el proyecto, donde
+se trataron los aspectos básicos y se definieron varias herramientas para el
+desarrollo del mismo.
+Temas tratados durante el Kick-off:
+Análisis inicial de la página de https://app.riskreal.eu/.
+Borradores con la estructura de los cuestionarios.
+Valorar la carga de los cuestionarios en bases de datos o en ficheros de
+tipo json.
+Definición básica del proyecto:
+1. Web que lea los cuestionarios.
+2. Usuarios separados por sesiones.
+3. Creación de cuestionarios desde la web.
+Diseño responsive: Permite el renderizado para otros dispositivos.
+Documentación y gestión adecuada del proyecto.
+A.2. Planificación temporal 3
+Uso de Spring Boot.
+Github o ZenHub para la gestión de tareas.
+Sprint 1 - Base del proyecto
+Del 27/02/2024 al 11/03/2024 - 20 horas
+Se estima una dedicación total de 20 horas de trabajo. Se cumple con la
+estimación inicial de horas para completar todas las tareas.
+Temas tratados durante el Sprint:
+Uso e integración de zube.io con GitHub.
+Registro en https://app.riskreal.eu/ para analizar la parte “privada”
+de la aplicación.
+Esquema json:
+• Posibilidad de imagen en cada respuesta
+• Atributo idioma en el cuestionario
+Empezar a valorar y tener en cuenta la posibilidad de cuestionarios
+“Multi-idioma”.
+Investigar sobre Thymeleaf y Spring Tools.
+Cargar un json de prueba en la app.
+Representación en una web del json.
+Posible estructura de directorios de la aplicación.
+Abordar la generación dinámica del contenido respecto al json.
+4 Apéndice A. Plan de Proyecto Software
+Tareas cerradas a lo largo del sprint:
+Figura A.1: Sprint 1 - Base del proyecto - Tareas
+Gráfico de Burnup del sprint:
+Figura A.2: Sprint 1 - Base del proyecto - Gráfico
+A.2. Planificación temporal 5
+Sprint 2 - Evolución del prototipo
+Del 11/03/2024 al 25/03/2024 - 20 horas
+Se estima una dedicación total de 20 horas de trabajo. Se cumple con la
+estimación inicial de horas para completar todas las tareas.
+Temas tratados durante el Sprint:
+Inclusión de más preguntas y respuestas en el cuestionario.
+Tratar las preguntas como independientes en la web (permitir transición
+entre preguntas).
+Recoger y mostrar valoraciones al terminar el cuestionario.
+Concepto de sesión web, para que no se mezclen datos de varios
+usuarios.
+Primer acercamiento a un framework de estilo, bootstrap o similar.
+6 Apéndice A. Plan de Proyecto Software
+Tareas cerradas a lo largo del sprint:
+Figura A.3: Sprint 2 - Evolución del prototipo - Tareas
+Gráfico de Burnup del sprint:
+Figura A.4: Sprint 2 - Evolución del prototipo - Gráfico
+A.2. Planificación temporal 7
+Sprint 3 - Evolución del prototipo 2
+Del 25/03/2024 al 24/04/2024 - 60 horas
+Se estima una dedicación total de 20 horas de trabajo. Tras encontrar
+diversos problemas a la hora de integrar la seguridad de Spring Security
+“referencia” en la app, no solo no se cumple con la planificación inicial sino
+que se extiende el mismo spring dos semanas más, ampliando la carga de
+trabajo con más tareas y teniendo que emplear finalmente 60 horas de
+trabajo para cumplir con casi todas las tareas. La tarea que queda pendiente
+se solucionará en el sprint 5.
+Temas tratados durante el Sprint:
+Independizar las sesiones de los usuarios.
+Integración de la seguridad en la aplicación.
+Integrar la funcionalidad de envío de correo electrónico desde la web.
+Enviar la información del cuestionario con el método POST para que
+no vayan los datos en claro.
+Internacionalización de los distintos menús de la app web.
+Integración de framework CSS para utilizar un diseño “responsive” en
+la web.
+Recoger datos de puntuación de las preguntas.
+Mostrar una puntuación tras finalizar el cuestionario.
+8 Apéndice A. Plan de Proyecto Software
+Tareas cerradas a lo largo del sprint:
+Figura A.5: Sprint 3 - Evolución del prototipo 2 - Tareas
+Gráfico de Burnup del sprint:
+Figura A.6: Sprint 3 - Evolución del prototipo 2 - Gráfico
+A.2. Planificación temporal 9
+Sprint 4 - Evolución y finalización de la parte del
+cuestionario
+Del 24/04/2024 al 06/05/2024 - 23 horas
+Se estima una duración inicial de 20 horas de trabajo, aunque finalmente
+se emplean 23 horas para cumplir con 4 de las 6 tareas previstas. La tarea
+de implementar el registro de usuarios a través de una base de datos llevó
+más tiempo del esperado, de ahí la necesidad de horas adicionales y el no
+poder cumplir con todas las tareas previstas. Las 2 tareas pendientes se
+completarán en el sprint 5.
+Temas tratados durante el Sprint:
+Gestión de usuarios y roles.
+Mostrar información del usuario logueado.
+Creación de un formulario de registro de usuarios.
+Almacenar los datos de score en un fichero, para futuros análisis.
+Introducción al uso de roles para acceder a distintas partes de la
+aplicación.
+10 Apéndice A. Plan de Proyecto Software
+Tareas cerradas a lo largo del sprint:
+Figura A.7: Sprint 4 - Evolución y finalización de la parte del cuestionario -
+Tareas
+Gráfico de Burnup del sprint:
+Figura A.8: Sprint 4 - Evolución y finalización de la parte del cuestionario -
+Gráfico
+A.2. Planificación temporal 11
+Sprint 5 - Evolución y finalización de la parte del
+cuestionario 2
+Del 06/05/2024 al 22/05/2024 - 40 horas
+Se estima una dedicación total de 40 horas de trabajo. Se cumple con la
+estimación inicial de horas para completar todas las tareas. En este sprint
+se han completado las tareas que quedaron pendientes del sprint 3 y 4, por
+eso la carga de trabajo y de horas ha sido mayor que en los anteriores.
+Temas tratados durante el Sprint:
+Investigar sitio para alojar un test de la aplicación –> https://www.
+heroku.com/. Guardar el score por pregunta y el total.
+Descarga de resultados en CSV.
+Array de imágenes en las preguntas.
+Diseño de datos bbdd y json. Código de la aplicación.
+Revisar información para incluir en el arquitectónico.
+Revisar diagramas para incluir en el diseño procedimental.
+12 Apéndice A. Plan de Proyecto Software
+Tareas cerradas a lo largo del sprint:
+Figura A.9: Sprint 5 - Evolución y finalización de la parte del cuestionario 2
+- Tareas
+Gráfico de Burnup del sprint:
+Figura A.10: Sprint 5 - Base del proyecto - Gráfico
+A.2. Planificación temporal 13
+Sprint 6 - Carga de cuestionarios y documentación
+Del 22/05/2024 al 30/05/2024 - 25 horas
+Se estima una dedicación total de 20 horas de trabajo. Es necesario
+ampliar la estimación inicial en 5 horas, y aun así, no se cumplen con
+todos los objetivos marcados, quedando el objetivo de Documentar de forma
+adecuada y en inglés el código de java, que se pospone al Sprint 6.
+Temas tratados durante el Sprint:
+Carga de cuestionarios desde una carpeta definida en configuración.
+Carga de cuestionarios de forma “viva” desde la propia web de la
+aplicación.
+Completar la memoria del proyecto.
+Completar los anexos del proyecto.
+Documentar de forma adecuada y en inglés el código de java.
+14 Apéndice A. Plan de Proyecto Software
+Tareas cerradas a lo largo del sprint:
+Figura A.11: Sprint 6 - Carga de cuestionarios y documentación - Tareas
+Gráfico de Burnup del sprint:
+Figura A.12: Sprint 6 - Carga de cuestionarios y documentación - Gráfico
+A.2. Planificación temporal 15
+Sprint 7 - Primera Release Funcional y Anexos
+Del 30/05/2024 al 07/06/2024 - 30 horas
+Se estima una dedicación total de 20 horas, siendo necesarias al final 30
+horas para completar todas las tareas. Se cumplen con todos los objetivos
+marcados.
+Temas tratados durante el Sprint:
+Subir a github una primera release funcional.
+Completar el Anexo D: Manual del programador.
+Completar el anexo E: Instalación.
+Docker integrado en Spring Boot [14].
+Documentar el código de la aplicacion.
+Control de errores en la aplicación:
+• No permitir el registro si ya se está registrado.
+• Controlar la excepción de que no haya cuestionarios cargados o
+pendientes de cargar.
+• Comprobar la integridad del json a cargar en la aplicación.
+Mostrar las imágenes asociadas a cuestionarios, preguntas y respuestas.
+16 Apéndice A. Plan de Proyecto Software
+Tareas cerradas a lo largo del sprint:
+Figura A.13: Sprint 7 - Primera Release Funcional y Anexos - Tareas
+Gráfico de Burnup del sprint:
+Figura A.14: Sprint 7 - Primera Release Funcional y Anexos - Gráfico
+A.2. Planificación temporal 17
+Sprint 8 - Memoria, Anexos y Release Completa
+Del 03/05/2024 al 10/06/2024 - 30 horas
+Se estima una duración total de 30 horas, siendo necesarias 40 horas
+para completar todas las tareas. Al ser el último sprint, se han incluido más
+hitos, para terminar de cerrar cualquier posible tema pendiente relacionado
+tanto con la aplicación como con la documentación del proyecto.
+Temas tratados durante el Sprint:
+Completar Anexos: A, B, C, D, y E.
+Completar Memoria: Todos los apartados.
+Realizar vídeo presentación de la aplicación.
+Realizar vídeo explicación del proyecto.
+Realizar PowerPoint de soporte para la explicación del proyecto.
+Cargar cuestionario con imágenes simples en las preguntas.
+Cargar cuestionario con multi-imágenes en las preguntas.
+Unificar la estética de la web, para que tenga un aspecto uniforme al
+navegar por sus páginas.
+Ventana de gestión de “roles” de usuarios que sea accesible por el
+administrador.
+Cargar un usuario inicial administrador en la aplicación, si este no
+existe.
+Rol por defecto para todos los usuarios que se registren: USER.
+18 Apéndice A. Plan de Proyecto Software
+Tareas cerradas a lo largo del sprint:
+Figura A.15: Sprint 8 - Memoria, Anexos y Release Completa - Tareas
+Gráfico de Burnup del sprint:
+Figura A.16: Sprint 8 - Memoria, Anexos y Release Completa - Gráfico
+A.3. Estudio de viabilidad 19
+A.3. Estudio de viabilidad
+Viabilidad económica
+A lo largo de este apartado se van a simular los costes/beneficios del
+proyecto, si este hubiese sido llevado a cabo en una empresa real.
+Costes
+Los costes se han desglosado en dos categorías:
+Costes de personal
+Costes de recursos
+Costes de personal
+Se ha simulado la contratación de un programador web durante los 5
+meses que ha durado el proyecto.
+En la siguiente tabla se desglosan los datos de retenciones y tributación
+de la empresa a la seguridad social. Se han utilizado las siguientes referencias
+para hacer la estimación [1], [2], [4].
+Concepto Coste
+Salario mensual bruto 2.000,00 €
+Retención IRPF (13,55 %) 217,00 €
+Seguridad social (36,25 %) 1.450,00 €
+Salario mensual neto 1.602,00 €
+Coste total para la empresa 3.323,00 €
+Total 5 meses 16.615,00 €
+Tabla A.1: Coste de personal
+Costes de recursos
+Solo se ha tenido en cuenta el material necesario para el nuevo empleado,
+no se considera ni el alquiler del espacio, ni el acceso a internet ni el mobiliario,
+ya que gracias al trabajo híbrido (presencial + teletrabajo) todo esto no ha
+supuesto ningún gasto adicional para la empresa.
+20 Apéndice A. Plan de Proyecto Software
+A continuación se detalla de forma breve el material hardware que se ha
+tenido en cuenta:
+Ordenador portátil: Dell Inspiron 14 Plus 1.098,99 € - 908,26 € sin
+IVA [5].
+Monitor adicional: Dell S Series S2721HS 27"LED IPS FullHD 229,36€
+- 189,55 € SIN IVA [12].
+Combo teclado y ratón: Logitech MK235 39,99 € - 33,05€ SIN IVA
+[3].
+Licencia Windows 11 pro: Incluida en el precio del portátil.
+Debido a que las empresas se deducen el IVA, este no se incluye en el
+cálculo del coste.
+Como la duración del proyecto son 5 meses, se calcula el coste amortizado
+en base a esos 5 meses.
+Los datos para las amortizaciones se han sacado del siguiente enlace [16].
+Teniendo esto en cuenta, los material seguirían las siguientes reglas de
+amortización:
+Ordenador portátil: Coeficiente lineal máximo del 26 %.
+Resto de materiales: Coeficiente lineal máximo del 30 %.
+El coste amortizado se ha calculado mediante la siguiente fórmula: Base
+imponible (precio sin IVA) * coeficiente lineal máximo / 12 meses
+* 5 meses de proyecto.
+Concepto Coste Coste amortizado
+Ordenador portátil 908,26 € 98,39 €
+Monitor adicional 189,55 € 23,69 €
+Combo teclado y ratón 33,05€ 4,13 €
+S.O. Windows 11 Pro - € - €
+Total 1.130,86 € 126,21 €
+Tabla A.2: Coste de recursos
+A.3. Estudio de viabilidad 21
+Costes Total
+La siguiente tabla recoge el coste total que supondría a la empresa la
+realización del proyecto.
+Concepto Coste
+Coste de personal 16.615,00 €
+Coste de material 126,21 €
+Total 16.741,21 €
+Tabla A.3: Coste Total
+Beneficios
+La obtención de beneficio con el producto software se realizaría de la
+siguiente forma.
+1. Venta como servicio de pago mensual por cuestionario: Se ofrece el
+acceso a la plataforma y se tiene que abonar una cuota mensual de
+5€ por cuestionario que se incluya, con 1 usuario administrador y 10
+usuarios normales de base. Se pagaría un suplemento de 5€ por cada
+usuario administrador necesario y otros 5€ por cada paquete de 10
+usuarios normales extra.
+2. Solución standalone con soporte y actualizaciones: Se ofrecería un
+docker en el que estaría corriendo la aplicación y se tendrían diferentes
+tarifas en nivel del soporte y actualizaciones que se contratase.
+22 Apéndice A. Plan de Proyecto Software
+Viabilidad legal
+Esta sección tratará sobre el tema de la licencia, tanto del software como
+de la documentación.
+Se han recopilado las siguientes tecnologías junto con la licencia que
+aplica en cada una:
+Spring Boot, Spring Data JPA, Spring Security, Spring Web, Thymeleaf:
+Apache License 2.0
+Docker Engine: Apache License 2.0
+Eclipse IDE: Eclipse Public License 2.0
+Bootstrap: MIT License
+MySQL: GNU General Public License (GPL) 2.0
+Del listado anterior, la licencia más restrictiva es la GPL de MySQL, por
+lo tanto, para la distribución del software se podrían dar 2 escenarios:
+1. Ofrecer la aplicación sin la parte de MySQL y establecerlo como
+requisito para funcionar pero sin incluirlo.
+2. Ofrecer la aplicación como un todo, con MySQL integrado.
+En el primer caso, se podría optar por una licencia MIT [10], que es la
+más permisiva y engloba a todas las demás.
+El uso de esta licencia permitiría que cualquiera pueda añadir mejoras o
+modificar el código de la aplicación.
+En el segundo caso, se optaría por la licencia GPL 2.0 [9], teniendo en
+cuenta que cualquier otra versión de la aplicación también sería considerado
+software libre.
+
+
+
+
+
+

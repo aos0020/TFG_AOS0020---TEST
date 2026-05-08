@@ -1,3 +1,6 @@
 streamlit
+streamlit-mic-recorder
 scikit-learn
 pandas
+nltk
+joblib
