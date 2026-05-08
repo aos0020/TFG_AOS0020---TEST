@@ -1,0 +1,5 @@
+Apéndice B Especificación de Requisitos 27
+B.1. Introducción 
+B.2. Objetivos generales 
+B.3. Catálogo de requisitos 
+B.4. Especificación de requisitos

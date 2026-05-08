@@ -1,0 +1,5 @@
+Apéndice C Especificación de diseño 53
+C.1. Introducción . . . . . . . . . . . . . . . . . . . . . . . . . . . 53
+C.2. Diseño de datos . . . . . . . . . . . . . . . . . . . . . . . . . 53
+C.3. Diseño arquitectónico . . . . . . . . . . . . . . . . . . . . . . 55
+C.4. Diseño procedimental . . . . . . . . . . . . . . . . . . . . . . 63

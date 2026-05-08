@@ -1,0 +1,35 @@
+\capitulo{1}{Introducción}
+
+\section{La crisis de accesibilidad y la necesidad de un triaje frugal}
+
+La medicina actual vive una paradoja cada vez más evidente: mientras los avances terapéuticos y diagnósticos han alcanzado un grado de complejidad y desarrollo sin precedentes, el acceso básico al sistema sanitario se ha deteriorado hasta convertirse en un problema operativo de primer orden. En este contexto, la denominada ``puerta de entrada'' al sistema ---los procesos de triaje y asignación de citas--- se ha transformado en un cuello de botella que afecta tanto a la seguridad y la privacidad del paciente como a la eficiencia de las instituciones sanitarias.
+
+Los datos correspondientes al periodo 2024--2025 describen un escenario de saturación estructural. En el contexto español, el Barómetro Sanitario indica que aproximadamente el 70\% de los pacientes debe esperar más de un día para ser atendido en Atención Primaria, con demoras medias que oscilan entre los 8,7 y los 9,78 días. Esta latencia desvirtúa el carácter preventivo del primer nivel asistencial y deriva en un desplazamiento de la demanda hacia los servicios de urgencias, que terminan absorbiendo patologías de baja complejidad \cite{barometroSanitario2024,emergenciasSaturacionUrgencias2015,snsAPUnivadis2024}. De forma paralela, en Estados Unidos el tiempo medio de espera para una primera cita médica se ha incrementado de manera sostenida, alcanzando un máximo histórico de 31 días en 2025 \cite{waitTimeUS2025}.
+
+Este colapso asistencial se ve agravado por la falibilidad inherente al triaje manual. La literatura científica reciente señala que la clasificación inicial de la demanda clínica presenta tasas de error relevantes, oscilando entre el 10\% y el 19\% tanto para el sobre-triaje ---que implica un uso ineficiente de recursos--- como para el infra-triaje, que conlleva riesgos clínicos por retrasos en la atención \cite{nguyen2022triageErrors}. En este escenario, la automatización del procesamiento de síntomas expresados en lenguaje natural deja de ser una mera mejora tecnológica para convertirse en una necesidad operativa crítica para la sostenibilidad del sistema \cite{automatedTriageDiva2020}.
+
+\section{Estado del arte: De los enfoques centralizados a la IA sostenible}
+
+La respuesta tecnológica dominante ante esta crisis ha estado marcada por la adopción de modelos cada vez más complejos y de gran escala, junto con una fuerte dependencia del \textit{cloud computing}. Sin embargo, un análisis crítico de las soluciones actuales revela limitaciones estructurales que justifican la exploración de enfoques alternativos.
+
+El caso de Babylon Health, empresa referente en salud digital que se declaró en bancarrota en 2023, ilustra los riesgos de modelos opacos (``cajas negras'') que carecen de una validación clínica robusta frente a la variabilidad del mundo real \cite{babylonFierce2023,babylonHospitalogy2023}. Por otro lado, plataformas consolidadas como Ada Health, aunque ofrecen una elevada precisión diagnóstica, presentan una arquitectura centralizada dependiente de la conectividad a internet \cite{symptomCheckerAppsPharmaphorum,adaCloneDhiWise}. Esta dependencia no solo limita su uso en zonas rurales o con infraestructura deficiente, sino que introduce vectores de riesgo en la privacidad al requerir la transmisión de datos sensibles a servidores externos \cite{edgeVsCloudClarifai,localVsCloudKonvoy}.
+
+Asimismo, la irrupción de Modelos de Lenguaje Grande (LLMs) como GPT-4 plantea desafíos de sostenibilidad. Estudios recientes advierten que el coste computacional y energético de estos modelos dificulta su despliegue masivo en la sanidad pública, configurando lo que se ha denominado ``IA Roja''. A esto se suma el riesgo de ``alucinaciones'' y la exposición de datos privados a terceros \cite{mdpiLLMHealthcare,oxfordJAMIA2025llmLessEffective,jmirAI2024triageNotes}.
+
+Frente a este panorama, este Trabajo de Fin de Grado se alinea con el paradigma de la IA Frugal (\textit{Frugal AI}) y la computación en el borde (\textit{Edge AI}). La IA frugal busca maximizar el valor funcional minimizando el consumo de recursos computacionales y energéticos \cite{kddFrugalAI,smileFrugalAI}. Por su parte, el \textit{Edge AI} permite ejecutar la inferencia directamente en el dispositivo local, reduciendo la latencia y garantizando que los datos médicos nunca salgan del entorno del paciente, devolviendo así la soberanía del dato a la institución y al usuario \cite{edgeVsCloudClarifai,localVsCloudKonvoy}.
+
+\section{Justificación tecnológica y enfoque del proyecto}
+
+Con el objetivo de dar respuesta a los problemas identificados, este trabajo propone el diseño, desarrollo y validación de una aplicación de triaje clínico \textit{stand alone}, basada en la combinación sinérgica de tres técnicas consolidadas: TF-IDF, SVD y SVM. Esta arquitectura responde a una estrategia de ingeniería orientada a la eficiencia y la explicabilidad:
+
+\begin{itemize}
+	\item \textbf{TF-IDF (\textit{Term Frequency -- Inverse Document Frequency}):} se emplea como mecanismo de filtrado semántico para identificar términos clínicamente relevantes (ej. ``disnea'', ``dolor torácico'') dentro del ruido del lenguaje natural, ponderando la especificidad sobre la frecuencia \cite{arxivTFIDF2308}.
+	\item \textbf{SVD (\textit{Singular Value Decomposition}):} se incorpora para abordar la sinonimia y polisemia médica. Mediante la reducción de dimensionalidad y la extracción de ``conceptos latentes'', permite al sistema reconocer patrones patológicos incluso cuando el vocabulario del paciente no coincide exactamente con el del entrenamiento, optimizando el rendimiento computacional \cite{mediumSVDNLP}.
+	\item \textbf{SVM (\textit{Support Vector Machines}):} se selecciona como motor de decisión por su robustez matemática en espacios de alta dimensionalidad y la claridad de sus fronteras de decisión (hiperplanos). A diferencia de las redes neuronales profundas, las SVM ofrecen un equilibrio superior entre precisión y transparencia, facilitando la auditoría clínica de las decisiones \cite{svmVsLlmDiva2024}.
+\end{itemize}
+
+El alcance de este Trabajo de Fin de Grado trasciende el análisis teórico para materializarse en un prototipo funcional. El objetivo principal es demostrar que un sistema ligero, privado y operativo sin conexión a internet puede clasificar eficazmente la demanda asistencial. Este enfoque aspira a contribuir a la reducción de la carga administrativa, la homogeneización del triaje y la asignación eficiente de citas, todo ello bajo un marco de privacidad por diseño y sostenibilidad tecnológica.
+
+Pruebas : Glosario
+USo : de otros \acrshort{cod} debido
+TAmbién \acrfull{gui}  y nos aprece todo
