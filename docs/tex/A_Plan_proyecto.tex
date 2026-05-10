@@ -2,12 +2,248 @@
 
 \section{Introducción}
 
+La gestión de este proyecto software ha seguido una metodología ágil, organizando el trabajo en \textit{Sprints} que permiten un desarrollo incremental y adaptativo. Dado que el proyecto se desarrolla de forma individual como Trabajo de Fin de Grado, la metodología adoptada es una variante simplificada de \textit{Scrum}: se mantienen los Sprints como unidad de planificación y entrega, pero se prescinde de roles adicionales y de ceremonias formales como \textit{daily standups}.
+
+El seguimiento de tareas se ha realizado mediante un tablero Kanban gestionado a través de la plataforma \textit{Zube.io} \cite{zube_io}, integrada con el repositorio de GitHub. Las tarjetas se organizan en los estados propios de Zube.io: \textit{Inbox} (entrada por defecto), \textit{Backlog}, \textit{Ready}, \textit{In Progress}, \textit{In Review} y \textit{Done}, permitiendo un control visual del avance de cada Sprint. No se han utilizado Epics; en su lugar, los Sprints agrupan directamente las tareas relacionadas con cada componente del sistema.
+
+El proyecto se articula en torno a cuatro bloques técnicos de modelado ---representación \gls{tfidf}, reducción de dimensionalidad \gls{svd}, clasificación \gls{svm} y una red neuronal como cuarto modelo comparativo--- a los que se añaden las fases de configuración inicial, obtención de datos, desarrollo del frontal de usuario y documentación. La memoria y los anexos se han elaborado de forma paralela al desarrollo.
+
 \section{Planificación temporal}
+
+\subsection*{Visión general de los Sprints}
+
+A continuación se recoge la relación completa de Sprints realizados, con sus fechas de inicio y fin:
+
+\tablaSmall{Resumen de Sprints del proyecto}{l c c}{sprints-resumen}
+{
+	\textbf{Sprint} & \textbf{Inicio} & \textbf{Fin} \\
+}{
+	Introducción y Objetivos                        & 19/02/2026 & 03/03/2026 \\
+	Manejo y Edición con TeXTStudio                 & 19/02/2026 & 03/03/2026 \\
+	Búsqueda y conversión de DataSheets con datos   & 26/02/2026 & 23/04/2026 \\
+	Creación de Script TF-IDF                       & 01/04/2026 & 23/04/2026 \\
+	Creación de Front End                           & 21/04/2026 & 23/04/2026 \\
+	Creación de Script TFIDF-SVD                    & 22/04/2026 & 06/05/2026 \\
+	Creación de Script SVM                          & 26/04/2026 & 06/05/2026 \\
+	Teoría del TFG --- Memoria                      & 03/03/2026 & 06/06/2026 \\
+	Trabajos sobre el Front END                     & 22/04/2026 & 01/06/2026 \\
+	Adaptaciones de Código y Nuevas Funcionalidades & 05/05/2026 & 01/06/2026 \\
+	Anexos del TFG                                  & 06/05/2026 & 01/06/2026 \\
+}
+
+\subsection*{Detalle de los Sprints}
+
+\subsubsection*{Sprint 1 --- Introducción y Objetivos}
+
+\textbf{Periodo:} 19 de febrero de 2026 -- 3 de marzo de 2026.
+
+Sprint inaugural dedicado a establecer la base documental del proyecto. Se definió la estructura de la memoria en \LaTeX{} y se redactó el capítulo de introducción ---incluyendo el análisis de la crisis de accesibilidad sanitaria, el estado del arte y la justificación tecnológica--- así como la formulación de los objetivos generales, funcionales y no funcionales. El cierre se produjo tres días después de la fecha planificada, motivado por la curva de aprendizaje inicial con el entorno de documentación.
+
+\subsubsection*{Sprint 2 --- Manejo y Edición con TeXTStudio}
+
+\textbf{Periodo:} 19 de febrero de 2026 -- 3 de marzo de 2026.
+
+Sprint paralelo al primero, dedicado a la adquisición de competencia en TeXTStudio como herramienta principal de documentación técnica. Se trabajó en el manejo de abreviaturas y glosarios, la gestión de referencias bibliográficas con Bib\TeX{}, la inserción de figuras y tablas, y la compilación del documento completo. El cierre se adelantó dos días respecto a la fecha planificada.
+
+\subsubsection*{Sprint 3 --- Búsqueda y Conversión de DataSheets con Datos}
+
+\textbf{Periodo:} 26 de febrero de 2026 -- 23 de abril de 2026.
+
+Sprint dedicado a la localización, evaluación y transformación del conjunto de datos clínicos, en línea con el objetivo funcional \textbf{F1}. Las tareas realizadas fueron:
+
+\begin{itemize}
+	\item \textit{Búsqueda de Datasheets:} exploración y evaluación de fuentes de datos clínicos públicas con licencia adecuada para el entrenamiento del clasificador.
+	\item \textit{Formato y Traducción:} normalización del formato de los datos, traducción y homogeneización de etiquetas de categorías médicas.
+	\item \textit{Aclaración de fuentes:} documentación de las fuentes seleccionadas, criterios de inclusión/exclusión y características del conjunto de datos definitivo.
+\end{itemize}
+
+Este sprint supuso la mayor desviación temporal del proyecto, cerrándose con casi siete semanas de retraso sobre lo planificado, debido a la escasez de \textit{datasets} clínicos en español con las características requeridas.
+
+\subsubsection*{Sprint 4 --- Creación de Script TF-IDF}
+
+\textbf{Periodo:} 1 de abril de 2026 -- 23 de abril de 2026.
+
+Sprint centrado en el desarrollo del primer modelo de clasificación, correspondiente a los objetivos funcionales \textbf{F2} y \textbf{F3}. Se utilizó la librería scikit-learn \cite{scikitlearn_docs} como base para la implementación del \textit{pipeline}. Las tareas realizadas fueron:
+
+\begin{itemize}
+	\item \textit{Preparación del Entorno:} configuración del entorno de desarrollo Python con las dependencias necesarias (scikit-learn, pandas, numpy).
+	\item \textit{Pruebas en Google Colab:} validación inicial del \textit{pipeline} de \gls{nlp} y del vectorizador \gls{tfidf} en un entorno de experimentación rápida.
+	\item \textit{Programación:} implementación completa del \textit{pipeline} de preprocesado (normalización, eliminación de \textit{stopwords}, tokenización, n-gramas) y del clasificador supervisado base.
+	\item \textit{A Python y Streamlit tf\_idf:} integración del script de clasificación \gls{tfidf} con el entorno de ejecución local y primeras pruebas con Streamlit \cite{streamlit_docs}.
+	\item \textit{Separar el módulo que genera el modelo:} refactorización del código para desacoplar la generación y persistencia del modelo de la lógica de predicción, en línea con el objetivo no funcional \textbf{NF1}.
+\end{itemize}
+
+El sprint se cerró un día antes de lo planificado.
+
+\subsubsection*{Sprint 5 --- Creación de Front End}
+
+\textbf{Periodo:} 21 de abril de 2026 -- 23 de abril de 2026.
+
+Sprint dedicado al desarrollo de la interfaz de usuario con Streamlit \cite{streamlit_docs}, en línea con el objetivo funcional \textbf{F6}:
+
+\begin{itemize}
+	\item \textit{Creación de app.py:} desarrollo del frontal que permite introducir texto libre con la descripción de síntomas y recibir la categoría médica predicha junto con el indicador de confianza.
+\end{itemize}
+
+El sprint se cerró con cinco días de antelación respecto a la fecha planificada.
+
+\subsubsection*{Sprint 6 --- Creación de Script TFIDF-SVD}
+
+\textbf{Periodo:} 22 de abril de 2026 -- 6 de mayo de 2026.
+
+Sprint dedicado a la integración de \gls{truncatedsvd} sobre la representación \gls{tfidf} mediante scikit-learn \cite{scikitlearn_docs}, correspondiente al objetivo funcional \textbf{F4}. Las tareas realizadas fueron:
+
+\begin{itemize}
+	\item \textit{Separar generar Módulo:} desacoplamiento del módulo de generación del modelo SVD para garantizar la persistencia de transformaciones y la consistencia entre entrenamiento y predicción.
+	\item \textit{Implementación en el app.py:} integración del modelo \gls{tfidf}+\gls{svd} en el frontal Streamlit, permitiendo seleccionar el modelo de clasificación activo.
+	\item \textit{Creación del Script:} implementación de \gls{truncatedsvd} sobre la matriz \gls{tfidf}, selección del número de componentes mediante validación cruzada y evaluación del rendimiento (F1 macro/micro) frente al modelo base.
+\end{itemize}
+
+El sprint se cerró con una semana de retraso sobre lo planificado, debido al tiempo requerido para el análisis sistemático de la varianza explicada en función del número de componentes.
+
+\subsubsection*{Sprint 7 --- Creación de Script SVM}
+
+\textbf{Periodo:} 26 de abril de 2026 -- 6 de mayo de 2026.
+
+Sprint dedicado a la implementación del clasificador \gls{svm} con scikit-learn \cite{scikitlearn_docs}, correspondiente al objetivo funcional \textbf{F5}. Las tareas realizadas fueron:
+
+\begin{itemize}
+	\item \textit{Creación:} implementación del clasificador \gls{svm} lineal entrenado sobre las representaciones \gls{tfidf} y \gls{tfidf}+\gls{svd}, con búsqueda de hiperparámetros (\texttt{C}, \texttt{class\_weight}) mediante \texttt{GridSearchCV} y validación cruzada estratificada optimizando macro-F1.
+	\item \textit{Implementación en el Front End:} integración del modelo \gls{svm} en el frontal Streamlit como opción de clasificación seleccionable.
+	\item \textit{Separar Generar Modelo:} refactorización para desacoplar la generación y persistencia del modelo \gls{svm} del módulo de predicción.
+\end{itemize}
+
+El sprint se cerró cuatro días antes de la fecha planificada.
+
+\subsubsection*{Sprint 8 --- Teoría del TFG --- Memoria}
+
+\textbf{Periodo:} 3 de marzo de 2026 -- 6 de junio de 2026.
+
+Sprint de larga duración, planificado en paralelo con el desarrollo, que cubre la redacción del cuerpo teórico de la memoria. Las tareas contempladas son:
+
+\begin{itemize}
+	\item \textit{Búsqueda de Teoría en la red:} recopilación y análisis de fuentes bibliográficas sobre \gls{nlp}, clasificación de texto clínico, \gls{tfidf}, \gls{svd} y \gls{svm}.
+	\item \textit{Conceptos Teóricos:} redacción del capítulo de fundamentos teóricos de la memoria.
+	\item \textit{Añadir Referencias Teoría:} incorporación y revisión de las referencias bibliográficas al documento.
+	\item \textit{Convertir a \LaTeX:} conversión y maquetación del contenido teórico al formato \LaTeX{} de la plantilla del TFG.
+	\item \textit{Técnicas y Herramientas:} redacción del capítulo de técnicas y herramientas utilizadas.
+	\item \textit{Aspectos relevantes del desarrollo del proyecto:} redacción del capítulo de aspectos relevantes del desarrollo.
+	\item \textit{Trabajos Relacionados:} análisis y redacción del capítulo de trabajos relacionados y estado del arte.
+	\item \textit{Conclusiones y Líneas de trabajo Futuras:} redacción del capítulo de conclusiones y trabajo futuro.
+\end{itemize}
+
+\subsubsection*{Sprint 9 --- Trabajos sobre el Front END}
+
+\textbf{Periodo:} 22 de abril de 2026 -- 1 de junio de 2026.
+
+Sprint que extiende el frontal Streamlit \cite{streamlit_docs} con la integración progresiva de los modelos desarrollados y mejoras de usabilidad. Las tareas contempladas son:
+
+\begin{itemize}
+	\item \textit{Inclusión TFIDF:} integración del modelo \gls{tfidf} en la interfaz de usuario como opción de clasificación.
+	\item \textit{Inclusión SVD:} integración del modelo \gls{tfidf}+\gls{svd} en la interfaz.
+	\item \textit{Inclusión SVM en Front End:} integración del clasificador \gls{svm} en la interfaz.
+	\item \textit{Añadir Síntomas - Especialidad en Front End:} mejora de la interfaz para mostrar la especialidad médica asociada a cada categoría predicha y permitir la entrada guiada de síntomas.
+\end{itemize}
+
+\subsubsection*{Sprint 10 --- Adaptaciones de Código y Nuevas Funcionalidades}
+
+\textbf{Periodo:} 5 de mayo de 2026 -- 1 de junio de 2026.
+
+Sprint que recoge mejoras no previstas en el análisis inicial, incluyendo un cuarto modelo de clasificación basado en red neuronal. Las tareas contempladas son:
+
+\begin{itemize}
+	\item \textit{Creación del Módulo Red Neuronal:} implementación de un clasificador basado en red neuronal como cuarto modelo comparativo, añadido a los tres enfoques principales del proyecto (\gls{tfidf}, \gls{svd} y \gls{svm}).
+	\item \textit{Creación Módulo Administrador:} desarrollo de un panel de administración para la gestión del sistema (reentrenamiento de modelos, gestión del catálogo de categorías).
+	\item \textit{Securizar el Módulo Administrador:} implementación de mecanismos de autenticación y control de acceso al panel de administración.
+\end{itemize}
+
+\subsubsection*{Sprint 11 --- Anexos del TFG}
+
+\textbf{Periodo:} 6 de mayo de 2026 -- 1 de junio de 2026.
+
+Sprint dedicado íntegramente a la redacción de los anexos de la memoria. Las tareas contempladas son:
+
+\begin{itemize}
+	\item \textit{Plan de Proyecto:} redacción del presente apéndice A.
+	\item \textit{Especificación de Requisitos:} redacción del apéndice B con el catálogo de requisitos funcionales y no funcionales.
+	\item \textit{Diseño:} redacción del apéndice C con la especificación de diseño arquitectónico y de datos.
+	\item \textit{Manual del Programador:} redacción del apéndice D con la documentación técnica de programación.
+	\item \textit{Manual del Usuario:} redacción del apéndice E con la guía de instalación y uso de la aplicación.
+	\item \textit{Anexo de sostenibilización curricular:} redacción del apéndice F con la reflexión sobre sostenibilidad.
+\end{itemize}
 
 \section{Estudio de viabilidad}
 
 \subsection{Viabilidad económica}
 
+El proyecto se ha desarrollado íntegramente sobre tecnologías de software libre y código abierto, por lo que el coste de licencias es nulo. A continuación se simula el coste real que supondría el desarrollo en un contexto empresarial.
+
+\subsubsection*{Costes de personal}
+
+Se simula la contratación de un ingeniero informático junior durante los aproximadamente 4 meses de desarrollo efectivo (febrero--mayo de 2026). El salario de referencia se ha obtenido del XVIII Convenio Colectivo Estatal de Empresas de Consultoría y Tecnologías de la Información \cite{boe2023_convenio_informatica}, y los tipos de cotización corresponden a los publicados por la Seguridad Social \cite{segsocial_cotizacion} y la Agencia Tributaria \cite{aeat_irpf} para el ejercicio 2026.
+
+\tablaSmallSinColores{Coste de personal}{l r}{coste-personal}
+{
+	\textbf{Concepto} & \textbf{Importe} \\
+}{
+	Salario mensual bruto                          & 1.800,00\,€ \\
+	Retención IRPF (13,55\,\%)                    &   243,90\,€ \\
+	Cotización SS empresa (36,25\,\%)             &   652,50\,€ \\
+	\textbf{Coste mensual para la empresa}         & \textbf{2.452,50\,€} \\
+	\textbf{Total 4 meses}                         & \textbf{9.810,00\,€} \\
+}
+
+\subsubsection*{Costes de recursos hardware}
+
+Se considera únicamente el equipo de trabajo del desarrollador (trabajo desde domicilio), calculando el coste amortizado para los 4 meses de duración del proyecto.
+
+\tablaSmallSinColores{Coste de recursos hardware (amortizado a 4 meses)}{l r r r}{coste-hardware}
+{
+	\textbf{Concepto} & \textbf{Precio sin IVA} & \textbf{Coef.} & \textbf{Coste 4 meses} \\
+}{
+	Ordenador portátil  & 750,00\,€ & 26\,\% & 65,00\,€ \\
+	Monitor adicional   & 160,00\,€ & 30\,\% & 16,00\,€ \\
+	Teclado y ratón     &  30,00\,€ & 30\,\% &  3,00\,€ \\
+	\textbf{Total}      & \textbf{940,00\,€} & --- & \textbf{84,00\,€} \\
+}
+
+\subsubsection*{Coste total del proyecto}
+
+\tablaSmallSinColores{Coste total del proyecto}{l r}{coste-total}
+{
+	\textbf{Concepto} & \textbf{Coste} \\
+}{
+	Coste de personal (4 meses)     & 9.810,00\,€ \\
+	Coste de hardware (amortizado)  &    84,00\,€ \\
+	Herramientas software           &     0,00\,€ \\
+	\textbf{TOTAL}                  & \textbf{9.894,00\,€} \\
+}
+
+\subsubsection*{Beneficios y modelo de explotación}
+
+Aunque el prototipo se desarrolla como TFG sin ánimo de lucro inmediato, se identifican dos vías de explotación potencial en un contexto empresarial:
+
+\begin{itemize}
+	\item \textbf{Servicio SaaS para centros de salud:} la aplicación se ofrecería como servicio alojado con tarifas por volumen de consultas clasificadas (p.\,ej., cuota mensual por centro).
+	\item \textbf{Solución \gls{standalone} con soporte:} distribución del sistema empaquetado (p.\,ej., contenedor Docker) con diferentes niveles de soporte técnico y actualización de modelos.
+\end{itemize}
+
 \subsection{Viabilidad legal}
 
+El proyecto se apoya exclusivamente en librerías de código abierto con licencias compatibles entre sí y con el uso académico y comercial:
 
+\tablaSmallSinColores{Licencias de las tecnologías utilizadas}{l l}{licencias}
+{
+	\textbf{Tecnología} & \textbf{Licencia} \\
+}{
+	Python 3.11                      & PSF License (permisiva, uso comercial permitido) \\
+	scikit-learn, numpy, pandas \cite{scikitlearn_docs} & BSD 3-Clause (permisiva, uso comercial permitido) \\
+	Streamlit \cite{streamlit_docs}  & Apache License 2.0 (permisiva, uso comercial permitido) \\
+	\LaTeX{} / TeXTStudio            & LPPL / GPL (libre para uso académico y personal) \\
+	Zube.io \cite{zube_io}           & Propietaria, plan gratuito para proyectos individuales \\
+	Git                              & GPL v2 (libre) \\
+}
+
+La licencia más restrictiva del conjunto es la GPL, presente solo en herramientas de desarrollo que no forman parte del artefacto distribuible. El código fuente de la aplicación puede distribuirse bajo licencia \textbf{MIT}, al no incorporar componentes GPL en el producto final.
+
+En cuanto a los datos, el conjunto utilizado para el entrenamiento procede de fuentes públicas con licencias que permiten su uso en investigación y proyectos académicos. Para un despliegue en producción con datos reales de pacientes, sería necesario cumplir con el \textbf{Reglamento General de Protección de Datos (RGPD)} y la \textbf{Ley Orgánica de Protección de Datos (LOPD-GDD)}, garantizando la minimización de datos, el consentimiento informado y la anonimización de los registros clínicos.

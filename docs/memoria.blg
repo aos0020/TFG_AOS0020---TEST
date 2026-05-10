@@ -19,44 +19,49 @@ Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: bibliografia.bib
-You've used 23 entries,
+Warning--entry type for "frugal_ai_hub_2025" isn't style-file defined
+--line 537 of file bibliografia.bib
+Warning--empty journal in SVMvsMLP
+Warning--empty journal in dergipark_optimization
+You've used 34 entries,
             2118 wiz_defined-function locations,
-            632 strings with 9052 characters,
-and the built_in function-call counts, 5287 in all, are:
-= -- 528
-> -- 183
+            661 strings with 9836 characters,
+and the built_in function-call counts, 7466 in all, are:
+= -- 733
+> -- 260
 < -- 0
-+ -- 79
-- -- 54
-* -- 189
-:= -- 909
-add.period$ -- 89
-call.type$ -- 23
-change.case$ -- 95
++ -- 112
+- -- 76
+* -- 247
+:= -- 1289
+add.period$ -- 125
+call.type$ -- 34
+change.case$ -- 140
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 174
-empty$ -- 516
-format.name$ -- 54
-if$ -- 1149
+cite$ -- 36
+duplicate$ -- 252
+empty$ -- 732
+format.name$ -- 76
+if$ -- 1614
 int.to.chr$ -- 0
-int.to.str$ -- 23
+int.to.str$ -- 34
 missing$ -- 4
-newline$ -- 138
-num.names$ -- 46
-pop$ -- 176
+newline$ -- 196
+num.names$ -- 68
+pop$ -- 260
 preamble$ -- 1
-purify$ -- 73
+purify$ -- 105
 quote$ -- 0
-skip$ -- 140
+skip$ -- 219
 stack$ -- 0
-substring$ -- 160
-swap$ -- 23
+substring$ -- 190
+swap$ -- 31
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 90
-warning$ -- 0
-while$ -- 49
-width$ -- 25
-write$ -- 274
+type$ -- 136
+warning$ -- 2
+while$ -- 69
+width$ -- 36
+write$ -- 389
+(There were 3 warnings)

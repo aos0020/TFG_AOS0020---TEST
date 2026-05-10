@@ -1,0 +1,30 @@
+% --- Acrónimos ---
+\newacronym{tfidf}{TF-IDF}{\textit{Term Frequency -- Inverse Document Frequency}}
+\newacronym{pln}{PLN}{Procesamiento de Lenguaje Natural}
+\newacronym{rna}{RNA}{Red Neuronal Artificial}
+
+% --- Glosario ---
+\newglossaryentry{mlp}{
+    name=MLP,
+    description={Perceptrón Multicapa (\textit{Multi-layer Perceptron}). Red neuronal artificial feedforward que captura relaciones no lineales mediante capas ocultas y entrenamiento por retropropagación}
+}
+
+\newglossaryentry{gscv}{
+    name=GridSearchCV,
+    description={Búsqueda de rejilla con validación cruzada (\textit{Grid Search Cross-Validation}). Procedimiento de exploración estructurada sobre un conjunto discreto de hiperparámetros para encontrar la combinación óptima}
+}
+
+\newglossaryentry{truncatedsvd}{
+    name=TruncatedSVD,
+    description={Variante de la Descomposición en Valores Singulares que opera sobre matrices dispersas, utilizada para reducción de dimensionalidad en matrices TF-IDF}
+}
+
+\newglossaryentry{stemming}{
+    name=Stemming,
+    description={Proceso lingüístico de reducción de una palabra a su raíz o tallo (\textit{stem}). Técnica de bajo coste computacional comparada con la lematización}
+}
+
+\newglossaryentry{lsa}{
+    name=LSA,
+    description={Análisis Semántico Latente (\textit{Latent Semantic Analysis}). Técnica de procesamiento de lenguaje natural que utiliza SVD para identificar patrones en las relaciones entre términos y conceptos}
+}

@@ -20,6 +20,29 @@
 	allcolors = {red}
 }
 
+% Ácrónimos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[acronym]{glossaries}
+\makenoidxglossaries
+
+\newacronym{tfidf}{TF-IDF}{\textit{Term Frequency -- Inverse Document Frequency}}
+\newacronym{svd}{SVD}{\textit{Singular Value Decomposition}}
+\newacronym{svm}{SVM}{\textit{Support Vector Machine}}
+\newacronym{nlp}{NLP}{\textit{Natural Language Processing}}
+
+% Glosario %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newglossaryentry{truncatedsvd}{
+	name=TruncatedSVD,
+	description={Variante de la Descomposición en Valores Singulares que opera directamente sobre matrices dispersas sin centrarlas, utilizada en NLP para reducción de dimensionalidad sobre matrices TF-IDF}
+}
+
+\newglossaryentry{standalone}{
+	name=standalone,
+	description={Sistema o aplicación que funciona de forma autónoma, sin depender de servicios externos, conexión a internet ni infraestructura adicional}
+}
+
+
 % Ecuaciones
 \usepackage{amsmath}
 
@@ -401,6 +424,8 @@
 \include{./tex/E_Manual_usuario}
 \include{./tex/F_ODS}
 
+\printnoidxglossary[type=\acronymtype]
+\printnoidxglossary[]
 
 \bibliographystyle{plain}
 \bibliography{bibliografiaAnexos}

@@ -6,6 +6,12 @@
 \newblock \url{https://kdd.org/exploration_files/p72-Frugal_AI.pdf}, 2020.
 \newblock [Internet; accedido 29-enero-2026].
 
+\bibitem{afnor_spec_2314}
+{AFNOR}.
+\newblock Afnor spec 2314: Marco general para la ia frugal.
+\newblock Technical report, Association Française de Normalisation, 2024.
+\newblock [Internet; consultado mayo-2026].
+
 \bibitem{arxivTFIDF2308}
 {arXiv}.
 \newblock A comparative study on tf-idf feature weighting method and its
@@ -13,18 +19,25 @@
 \newblock \url{https://arxiv.org/abs/2308.04037}, 2023.
 \newblock [Internet; accedido 29-enero-2026].
 
-\bibitem{bortolot2005}
-Zachary~J Bortolot and Randolph~H Wynne.
-\newblock Estimating forest biomass using small footprint lidar data: An
-  individual tree-based approach that incorporates training data.
-\newblock {\em ISPRS Journal of Photogrammetry and Remote Sensing},
-  59(6):342--360, 2005.
-
 \bibitem{edgeVsCloudClarifai}
 {Clarifai}.
 \newblock Edge vs cloud ai: Key differences, benefits \& hybrid future.
 \newblock \url{https://www.clarifai.com/blog/edge-vs-cloud-ai}, 2024.
 \newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{SVMvsMLP}
+{Codemia}.
+\newblock Svm frente a la red neuronal mlp: Comparación de rendimiento y
+  precisión.
+\newblock 2024.
+\newblock [Internet; consultado mayo-2026].
+
+\bibitem{dergipark_optimization}
+{DergiPark}.
+\newblock Optimización de hiperparámetros y entrenamiento de modelos para
+  diagnóstico clínico.
+\newblock 2024.
+\newblock [Internet; consultado mayo-2026].
 
 \bibitem{adaCloneDhiWise}
 {DhiWise}.
@@ -60,6 +73,11 @@ Zachary~J Bortolot and Randolph~H Wynne.
   2023.
 \newblock [Internet; accedido 29-enero-2026].
 
+\bibitem{frugal_ai_hub_2025}
+{Frugal AI Hub}.
+\newblock Ia frugal: Impulsando la innovación sostenible e inclusiva, 2025.
+\newblock [Internet; consultado mayo-2026].
+
 \bibitem{babylonHospitalogy2023}
 {Hospitalogy}.
 \newblock The downfall of babylon health.
@@ -67,6 +85,21 @@ Zachary~J Bortolot and Randolph~H Wynne.
   \url{https://hospitalogy.com/articles/2023-05-16/downfall-of-babylon-health/},
   2023.
 \newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{ibm_stemming}
+{IBM}.
+\newblock Stemming vs lematización en el procesamiento de texto, 2024.
+\newblock [Internet; consultado mayo-2026].
+
+\bibitem{ibm_clasificacion}
+{IBM}.
+\newblock ¿qué son los modelos de clasificación?, 2024.
+\newblock [Internet; consultado 9-mayo-2026].
+
+\bibitem{interactive_chaos_reg}
+{Interactive Chaos}.
+\newblock Regularización l2 en redes neuronales, 2023.
+\newblock [Internet; consultado mayo-2026].
 
 \bibitem{jmirAI2024triageNotes}
 {JMIR AI}.
@@ -82,11 +115,12 @@ Zachary~J Bortolot and Randolph~H Wynne.
 \newblock \url{https://www.konvoy.vc/newsletters/local-vs-cloud-ai}, 2024.
 \newblock [Internet; accedido 29-enero-2026].
 
-\bibitem{koza92}
-John~R. Koza.
-\newblock {\em Genetic Programming: On the Programming of Computers by Means of
-  Natural Selection}.
-\newblock MIT Press, 1992.
+\bibitem{LópezUbeda2025}
+P.~López-Úbeda et~al.
+\newblock Algoritmos de aprendizaje automático tradicionales para la
+  clasificación de texto médico.
+\newblock {\em MDPI Computers}, 15(1), 2025.
+\newblock [Internet; consultado mayo-2026].
 
 \bibitem{mdpiLLMHealthcare}
 {MDPI}.
@@ -101,6 +135,11 @@ John~R. Koza.
   \url{https://medium.com/@RobuRishabh/understanding-term-document-matrices-and-singular-value-decomposition-svd-in-nlp-3e08789073f6},
   2020.
 \newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{medium_svd_nlp}
+{Medium}.
+\newblock Descomposición en valores singulares en pln explicada, 2023.
+\newblock [Internet; consultado mayo-2026].
 
 \bibitem{barometroSanitario2024}
 {Ministerio de Sanidad (España)}.
@@ -138,6 +177,17 @@ Hai Nguyen, Andras Meczner, Krista Burslam-Dawe, and Benedict Hayhoe.
   2015.
 \newblock [Internet; accedido 29-enero-2026].
 
+\bibitem{scikit_multiclass}
+{Scikit-learn}.
+\newblock Algoritmos multiclase y multietiqueta, 2024.
+\newblock [Internet; consultado mayo-2026].
+
+\bibitem{scikit_mlp}
+{Scikit-learn}.
+\newblock Modelos de redes neuronales (supervisados): Perceptrón multicapa,
+  2024.
+\newblock [Internet; consultado mayo-2026].
+
 \bibitem{smileFrugalAI}
 {SMILE (EU)}.
 \newblock Frugal ai: sustainable, responsible and high-performance artificial
@@ -146,6 +196,16 @@ Hai Nguyen, Andras Meczner, Krista Burslam-Dawe, and Benedict Hayhoe.
   \url{https://smile.eu/en/publications-and-events/frugal-ai-sustainable-responsible-and-high-performance-artificial},
   2021.
 \newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{snowball_org}
+{Snowball}.
+\newblock El algoritmo de stemming snowball, 2022.
+\newblock [Internet; consultado mayo-2026].
+
+\bibitem{snowflake_pln}
+{Snowflake}.
+\newblock Fundamentos de procesamiento de lenguaje natural, 2024.
+\newblock [Internet; consultado mayo-2026].
 
 \bibitem{waitTimeUS2025}
 {TechTarget (PatientEngagement)}.
@@ -164,11 +224,10 @@ Hai Nguyen, Andras Meczner, Krista Burslam-Dawe, and Benedict Hayhoe.
   2024.
 \newblock [Internet; accedido 29-enero-2026].
 
-\bibitem{wiki:latex}
-Wikipedia.
-\newblock Latex --- wikipedia{,} la enciclopedia libre.
-\newblock
-  \url{https://es.wikipedia.org/w/index.php?title=LaTeX&oldid=84209252}, 2015.
-\newblock [Internet; descargado 30-septiembre-2015].
+\bibitem{wikipedia_tfidf}
+{Wikipedia}.
+\newblock Tf–idf: Frecuencia de término – frecuencia inversa de documento,
+  2025.
+\newblock [Internet; consultado mayo-2026].
 
 \end{thebibliography}

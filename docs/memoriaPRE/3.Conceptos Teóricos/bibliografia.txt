@@ -1,0 +1,108 @@
+@misc{scikit_mlp,
+	author = "{Scikit-learn}",
+	title  = "Modelos de redes neuronales (supervisados): Perceptrón multicapa",
+	year   = "2024",
+	url    = "https://scikit-learn.org/stable/modules/neural_networks_supervised.html",
+	note   = "[Internet; consultado mayo-2026]"
+}
+
+@article{LópezUbeda2025,
+	author = "López-Úbeda, P. and others",
+	title  = "Algoritmos de aprendizaje automático tradicionales para la clasificación de texto médico",
+	journal = "MDPI Computers",
+	volume = "15",
+	number = "1",
+	year   = "2025",
+	url    = "https://www.mdpi.com/2073-431X/15/1/7",
+	note   = "[Internet; consultado mayo-2026]"
+}
+
+@techreport{afnor_spec_2314,
+	author = "{AFNOR}",
+	title  = "AFNOR SPEC 2314: Marco general para la IA frugal",
+	institution = "Association Française de Normalisation",
+	year   = "2024",
+	url    = "https://www.boutique.afnor.org/en-gb/standard/afnor-spec-2314/fa208976/421140",
+	note   = "[Internet; consultado mayo-2026]"
+}
+
+@article{SVMvsMLP,
+	author = "{Codemia}",
+	title  = "SVM frente a la red neuronal MLP: Comparación de rendimiento y precisión",
+	year   = "2024",
+	url    = "https://codemia.io/knowledge-hub/path/svm_versus_mlp_neural_network_compared_by_performance_and_prediction_accuracy",
+	note   = "[Internet; consultado mayo-2026]"
+}
+
+@article{dergipark_optimization,
+	author = "{DergiPark}",
+	title  = "Optimización de hiperparámetros y entrenamiento de modelos para diagnóstico clínico",
+	year   = "2024",
+	url    = "https://dergipark.org.tr/tr/download/article-file/4848377",
+	note   = "[Internet; consultado mayo-2026]"
+}
+
+@misc{wikipedia_tfidf,
+	author = "{Wikipedia}",
+	title  = "Tf–idf: Frecuencia de término – Frecuencia inversa de documento",
+	year   = "2025",
+	url    = "https://es.wikipedia.org/wiki/Tf%E2%80%93idf",
+	note   = "[Internet; consultado mayo-2026]"
+}
+
+@whitepaper{frugal_ai_hub_2025,
+	author = "{Frugal AI Hub}",
+	title  = "IA Frugal: Impulsando la innovación sostenible e inclusiva",
+	institution = "Cambridge Judge Business School",
+	year   = "2025",
+	url    = "https://frugalai.org/wp-content/uploads/2025/04/2025-Frugal-AI-Hub-WhitePaper-Final.pdf",
+	note   = "[Internet; consultado mayo-2026]"
+}
+
+@misc{interactive_chaos_reg,
+	author = "{Interactive Chaos}",
+	title  = "Regularización L2 en redes neuronales",
+	year   = "2023",
+	url    = "https://interactivechaos.com/es/manual/tutorial-de-machine-learning/regularizacion-l2",
+	note   = "[Internet; consultado mayo-2026]"
+}
+
+@misc{snowflake_pln,
+	author = "{Snowflake}",
+	title  = "Fundamentos de Procesamiento de Lenguaje Natural",
+	year   = "2024",
+	url    = "https://www.snowflake.com/es/fundamentals/natural-language-processing/",
+	note   = "[Internet; consultado mayo-2026]"
+}
+
+@misc{ibm_stemming,
+	author = "{IBM}",
+	title  = "Stemming vs Lematización en el procesamiento de texto",
+	year   = "2024",
+	url    = "https://www.ibm.com/es-es/think/topics/stemming-lemmatization",
+	note   = "[Internet; consultado mayo-2026]"
+}
+
+@misc{snowball_org,
+	author = "{Snowball}",
+	title  = "El algoritmo de Stemming Snowball",
+	year   = "2022",
+	url    = "http://snowballstem.org/",
+	note   = "[Internet; consultado mayo-2026]"
+}
+
+@misc{scikit_multiclass,
+	author = "{Scikit-learn}",
+	title  = "Algoritmos multiclase y multietiqueta",
+	year   = "2024",
+	url    = "https://scikit-learn.org/stable/modules/multiclass.html",
+	note   = "[Internet; consultado mayo-2026]"
+}
+
+@misc{medium_svd_nlp,
+	author = "{Medium}",
+	title  = "Descomposición en valores singulares en PLN explicada",
+	year   = "2023",
+	url    = "https://medium.com/data-science/svd-in-nlp-explained",
+	note   = "[Internet; consultado mayo-2026]"
+}

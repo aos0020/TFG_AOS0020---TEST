@@ -2,39 +2,449 @@
 
 \section{Introducción}
 
-Una muestra de cómo podría ser una tabla de casos de uso:
+En este anexo se recoge la especificación de requisitos del prototipo \textit{stand alone} desarrollado para la clasificación de síntomas en lenguaje natural y la asignación de la especialidad médica correspondiente. El sistema, ejecutado de forma local y sin dependencias de servicios externos, persigue dar respuesta a la problemática del triaje y de la asignación de citas descrita en el capítulo introductorio de la memoria.
 
-% Caso de Uso 1 -> Consultar Experimentos.
-\begin{table}[p]
+Este documento tiene un objetivo doble: por un lado, servir como referencia funcional para la fase de análisis y diseño del software; por otro, recoger de forma estructurada las funcionalidades y restricciones del sistema, de manera que sea posible verificar su cumplimiento en fases posteriores de validación y pruebas.
+
+La aplicación se compone de dos pestañas claramente diferenciadas: una orientada al \textbf{paciente}, que permite la introducción de síntomas mediante voz o texto y devuelve la especialidad predicha; y otra orientada al \textbf{administrador}, que permite la gestión del catálogo de síntomas, la revisión de los casos no resueltos y el reentrenamiento de los modelos de clasificación (TF-IDF, SVD, SVM y RNA).
+
+\section{Objetivos generales}
+
+El proyecto persigue alcanzar los siguientes objetivos generales, que orientan la definición de los requisitos:
+
+\begin{itemize}
+	\item \textbf{Clasificación automática de síntomas en lenguaje natural:} desarrollar un sistema capaz de procesar descripciones libres del paciente (introducidas por teclado o por voz) y devolver una especialidad médica asociada, junto con un indicador de confianza.
+	\item \textbf{Comparativa de modelos de aprendizaje:} integrar y comparar bajo un mismo protocolo experimental cuatro enfoques: TF-IDF (línea base), TF-IDF + SVD (reducción de dimensionalidad), SVM (clasificador supervisado) y una red neuronal artificial (RNA), permitiendo evaluar el equilibrio entre precisión y coste computacional.
+	\item \textbf{Mecanismo de fallback ante baja confianza:} implementar un flujo de actuación cuando la predicción no alcanza un umbral mínimo de precisión, solicitando síntomas adicionales al paciente y, si tampoco se logra una clasificación fiable, derivando el caso a Atención General y registrándolo en un \textit{log} para revisión posterior.
+	\item \textbf{Gestión administrativa del conocimiento:} ofrecer al administrador la capacidad de ampliar el conjunto de datos de entrenamiento mediante la incorporación de nuevos pares síntoma--especialidad, así como de revisar y resolver los casos almacenados en el \textit{log} de incidencias.
+	\item \textbf{Reentrenamiento bajo demanda:} permitir al administrador regenerar los modelos de clasificación a partir del conjunto de datos actualizado, garantizando que las nuevas aportaciones se reflejen en futuras predicciones.
+	\item \textbf{Ejecución local y privacidad por diseño:} garantizar que toda la operativa (datos, modelos e inferencia) se ejecute en el equipo del usuario, sin transmisión a servicios cloud, en línea con el paradigma de IA frugal.
+	\item \textbf{Modularidad y extensibilidad:} diseñar la aplicación con una arquitectura modular que facilite el mantenimiento y la incorporación futura de nuevas funcionalidades, como canales de entrada alternativos (telefonía) o nuevos modelos.
+\end{itemize}
+
+\section{Catálogo de requisitos}
+
+A continuación se enumeran los requisitos del sistema, separados en dos categorías: requisitos funcionales y requisitos no funcionales.
+
+\subsection*{Requisitos funcionales}
+
+\begin{itemize}
+	\item \textbf{RF-1 Gestión del paciente:} la aplicación debe ofrecer una pestaña destinada al paciente que permita la introducción de síntomas y la consulta de la especialidad asignada.
+	\begin{itemize}
+		\item \textbf{RF-1.1 Entrada de síntomas por texto:} el paciente debe poder introducir sus síntomas escribiéndolos directamente en un campo de texto.
+		\item \textbf{RF-1.2 Entrada de síntomas por voz:} el paciente debe poder dictar sus síntomas mediante un módulo de reconocimiento de voz, que transcribe el audio a texto antes de procesarlo.
+		\item \textbf{RF-1.3 Predicción de especialidad:} el sistema debe devolver al paciente la especialidad médica recomendada en función de los síntomas descritos.
+		\item \textbf{RF-1.4 Mostrar porcentaje de confianza:} la aplicación debe poder mostrar (de forma configurable) el porcentaje de confianza asociado a la predicción.
+		\item \textbf{RF-1.5 Solicitud de síntomas adicionales:} si la confianza de la predicción es inferior al umbral configurado, el sistema debe solicitar al paciente síntomas adicionales antes de emitir un diagnóstico definitivo.
+		\item \textbf{RF-1.6 Derivación a Atención General:} si tras la solicitud de síntomas adicionales la confianza sigue sin alcanzar el umbral, el sistema debe derivar el caso a la categoría de Atención General.
+		\item \textbf{RF-1.7 Registro de casos no resueltos:} el sistema debe almacenar en un \textit{log} de incidencias todos los casos en los que la confianza no haya sido suficiente, para su posterior revisión por el administrador.
+	\end{itemize}
+	\item \textbf{RF-2 Gestión del administrador:} la aplicación debe ofrecer una pestaña destinada al administrador que permita la gestión del conocimiento del sistema.
+	\begin{itemize}
+		\item \textbf{RF-2.1 Añadir nuevos pares síntoma--especialidad:} el administrador debe poder añadir nuevas entradas al catálogo de datos, indicando los síntomas y la especialidad asociada. Estas entradas se almacenarán en un nuevo CSV adicional al original.
+		\item \textbf{RF-2.2 Visualización del log de incidencias:} el administrador debe poder consultar el listado de casos no resueltos almacenados en el \textit{log}.
+		\item \textbf{RF-2.3 Resolución de casos del log:} el administrador debe poder asignar una especialidad a los casos pendientes en el \textit{log}, incorporando esos datos al CSV de aportaciones.
+		\item \textbf{RF-2.4 Reentrenamiento de modelos:} el administrador debe poder regenerar los modelos de clasificación (TF-IDF, SVD, SVM y RNA) a partir del conjunto de datos actualizado mediante un único botón.
+	\end{itemize}
+	\item \textbf{RF-3 Gestión de modelos de clasificación:} la aplicación debe integrar varios modelos de clasificación que puedan ser utilizados de forma independiente o conjunta.
+	\begin{itemize}
+		\item \textbf{RF-3.1 Modelo TF-IDF:} el sistema debe disponer de un modelo basado en representación TF-IDF como línea base.
+		\item \textbf{RF-3.2 Modelo TF-IDF + SVD:} el sistema debe disponer de un modelo que aplique reducción de dimensionalidad mediante SVD sobre la representación TF-IDF.
+		\item \textbf{RF-3.3 Modelo SVM:} el sistema debe disponer de un clasificador SVM entrenado sobre la representación textual.
+		\item \textbf{RF-3.4 Modelo RNA:} el sistema debe disponer de un modelo basado en una red neuronal artificial.
+		\item \textbf{RF-3.5 Persistencia de modelos:} los modelos entrenados deben almacenarse localmente para no requerir reentrenamiento en cada arranque.
+	\end{itemize}
+	\item \textbf{RF-4 Gestión de datos:} la aplicación debe gestionar el conjunto de datos de entrenamiento de forma persistente.
+	\begin{itemize}
+		\item \textbf{RF-4.1 Carga del CSV original:} el sistema debe cargar el CSV original que contiene los pares síntomas--enfermedad--especialidad.
+		\item \textbf{RF-4.2 Mantenimiento de un CSV de ampliación:} las nuevas aportaciones realizadas por el administrador se almacenarán en un CSV adicional, manteniendo intacto el CSV original.
+		\item \textbf{RF-4.3 Combinación de fuentes para entrenamiento:} en el reentrenamiento, el sistema debe combinar el CSV original y el CSV de aportaciones.
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Requisitos no funcionales}
+
+\begin{itemize}
+	\item \textbf{RNF-1 Ejecución \textit{stand alone}:} la aplicación debe ejecutarse de forma totalmente local, sin depender de APIs externas ni servicios en la nube.
+	\item \textbf{RNF-2 Privacidad por diseño:} ningún dato del paciente, sea texto o transcripción de voz, debe abandonar el equipo en el que se ejecuta la aplicación.
+	\item \textbf{RNF-3 Rendimiento:} la aplicación debe ofrecer tiempos de respuesta razonables tanto en la fase de predicción como en el reentrenamiento de modelos.
+	\item \textbf{RNF-4 Usabilidad:} la interfaz debe ser intuitiva y de baja curva de aprendizaje, permitiendo que un paciente sin formación técnica pueda interactuar sin dificultad.
+	\item \textbf{RNF-5 Modularidad y mantenibilidad:} la arquitectura debe estar dividida en módulos (datos, preprocesado, modelos, predicción, interfaz) con interfaces claras que faciliten el mantenimiento y la extensión.
+	\item \textbf{RNF-6 Reproducibilidad:} la aleatoriedad debe controlarse mediante semillas y la configuración experimental debe quedar registrada para que los resultados sean reproducibles.
+	\item \textbf{RNF-7 Trazabilidad:} todas las predicciones por debajo del umbral, así como las acciones del administrador, deben quedar registradas para garantizar trazabilidad.
+	\item \textbf{RNF-8 Portabilidad:} el sistema, desarrollado en Python con dependencias acotadas, debe poder ejecutarse en distintos sistemas operativos sin modificaciones sustanciales.
+	\item \textbf{RNF-9 Escalabilidad funcional:} la arquitectura debe permitir incorporar nuevos modelos o nuevos canales de entrada (por ejemplo, telefonía) sin alterar el núcleo del sistema.
+	\item \textbf{RNF-10 Eficiencia computacional:} el sistema debe priorizar configuraciones que ofrezcan un buen equilibrio entre precisión y coste computacional, en línea con el paradigma de IA frugal.
+\end{itemize}
+
+\section{Especificación de requisitos}
+
+En esta sección se detallan los actores que interactúan con el sistema, el diagrama general de casos de uso y la descripción individual de cada uno de ellos.
+
+\subsection*{Actores del sistema}
+
+\begin{table}[H]
 	\centering
-	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
 		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
+		\textbf{A01}    & \textbf{Paciente}\\
 		\toprule
-		\textbf{Versión}              & 1.0    \\
+		\textbf{Versión}         & 1.0 \\
+		\textbf{Autor}           & Alumno \\
+		\textbf{Descripción}     & Persona que utiliza la aplicación para describir sus síntomas y obtener una recomendación de especialidad médica. \\
+		\textbf{Tipo}            & Usuario \\
+		\textbf{Objetivo}        & Obtener una clasificación fiable de su sintomatología en una especialidad médica para orientar la solicitud de cita. \\
+		\textbf{Responsabilidades} &
+		\begin{itemize}
+			\tightlist
+			\item Introducir sus síntomas mediante voz o texto.
+			\item Aportar síntomas adicionales si el sistema lo solicita.
+			\item Consultar la especialidad asignada.
+		\end{itemize} \\
+		\textbf{Relaciones con casos de uso} & CU-01, CU-02, CU-03, CU-04 \\
+		\bottomrule
+	\end{tabularx}
+	\caption{A01 - Paciente.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
+		\toprule
+		\textbf{A02}    & \textbf{Administrador}\\
+		\toprule
+		\textbf{Versión}         & 1.0 \\
+		\textbf{Autor}           & Alumno \\
+		\textbf{Descripción}     & Usuario con privilegios de gestión que mantiene el catálogo de datos y los modelos del sistema. \\
+		\textbf{Tipo}            & Usuario \\
+		\textbf{Objetivo}        & Garantizar la calidad y el mantenimiento del conocimiento que utiliza el sistema, incorporando nuevos datos y reentrenando los modelos cuando sea necesario. \\
+		\textbf{Responsabilidades} &
+		\begin{itemize}
+			\tightlist
+			\item Añadir nuevos pares síntoma--especialidad.
+			\item Revisar el \textit{log} de incidencias.
+			\item Asignar especialidad a casos no resueltos.
+			\item Reentrenar los modelos.
+		\end{itemize} \\
+		\textbf{Relaciones con casos de uso} & CU-05, CU-06, CU-07, CU-08 \\
+		\bottomrule
+	\end{tabularx}
+	\caption{A02 - Administrador.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
+		\toprule
+		\textbf{A03}    & \textbf{Motor de clasificación}\\
+		\toprule
+		\textbf{Versión}         & 1.0 \\
+		\textbf{Autor}           & Alumno \\
+		\textbf{Descripción}     & Componente interno encargado de procesar el texto y devolver la predicción de especialidad mediante los modelos TF-IDF, SVD, SVM y RNA. \\
+		\textbf{Tipo}            & Sistema \\
+		\textbf{Objetivo}        & Clasificar texto libre en una especialidad médica con su correspondiente puntuación de confianza. \\
+		\textbf{Responsabilidades} &
+		\begin{itemize}
+			\tightlist
+			\item Preprocesar el texto introducido.
+			\item Aplicar los modelos de clasificación.
+			\item Calcular el indicador de confianza.
+		\end{itemize} \\
+		\textbf{Relaciones con casos de uso} & CU-02, CU-03, CU-08 \\
+		\bottomrule
+	\end{tabularx}
+	\caption{A03 - Motor de clasificación.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
+		\toprule
+		\textbf{A04}    & \textbf{Módulo de reconocimiento de voz}\\
+		\toprule
+		\textbf{Versión}         & 1.0 \\
+		\textbf{Autor}           & Alumno \\
+		\textbf{Descripción}     & Componente local encargado de capturar el audio del paciente y transcribirlo a texto, sin envío a servicios externos. \\
+		\textbf{Tipo}            & Sistema \\
+		\textbf{Objetivo}        & Permitir la introducción de síntomas por canal de voz como alternativa al teclado. \\
+		\textbf{Responsabilidades} &
+		\begin{itemize}
+			\tightlist
+			\item Capturar el audio del paciente.
+			\item Transcribir la grabación a texto.
+			\item Entregar la transcripción al motor de clasificación.
+		\end{itemize} \\
+		\textbf{Relaciones con casos de uso} & CU-01 \\
+		\bottomrule
+	\end{tabularx}
+	\caption{A04 - Módulo de reconocimiento de voz.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
+		\toprule
+		\textbf{A05}    & \textbf{Almacenamiento local (CSV y log)}\\
+		\toprule
+		\textbf{Versión}         & 1.0 \\
+		\textbf{Autor}           & Alumno \\
+		\textbf{Descripción}     & Sistema de persistencia local basado en ficheros CSV (datos originales y aportaciones) y en un \textit{log} de incidencias para los casos no resueltos. \\
+		\textbf{Tipo}            & Sistema \\
+		\textbf{Objetivo}        & Garantizar la persistencia y trazabilidad de los datos del sistema sin recurrir a servicios externos. \\
+		\textbf{Responsabilidades} &
+		\begin{itemize}
+			\tightlist
+			\item Almacenar el CSV original y el CSV de aportaciones.
+			\item Registrar los casos no resueltos en el \textit{log}.
+			\item Persistir los modelos entrenados.
+		\end{itemize} \\
+		\textbf{Relaciones con casos de uso} & CU-03, CU-05, CU-06, CU-07, CU-08 \\
+		\bottomrule
+	\end{tabularx}
+	\caption{A05 - Almacenamiento local.}
+\end{table}
+
+\subsection*{Diagrama general de casos de uso}
+
+En la figura siguiente se representa el diagrama general de casos de uso del sistema, en el que se muestran las interacciones entre los actores principales (paciente y administrador) y los componentes internos.
+
+% \imagen{diagrama_casos_uso_general}{Diagrama general de casos de uso del sistema de clasificación de síntomas.}
+
+\subsection*{Casos de uso}
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
+		\toprule
+		\textbf{CU-01}    & \textbf{Introducir síntomas por voz}\\
+		\toprule
+		\textbf{Versión}              & 1.0 \\
 		\textbf{Autor}                & Alumno \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
+		\textbf{Actores}              & A01 Paciente, A04 Módulo de reconocimiento de voz \\
+		\textbf{Requisitos asociados} & RF-1, RF-1.2 \\
+		\textbf{Descripción}          & El paciente describe sus síntomas mediante voz y el sistema los transcribe a texto. \\
+		\textbf{Precondición}         & La aplicación está abierta en la pestaña del paciente y el micrófono se encuentra disponible. \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
-		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
+			\item El paciente accede a la pestaña Paciente.
+			\item Pulsa el botón de grabación.
+			\item Describe verbalmente sus síntomas.
+			\item El módulo de voz transcribe el audio a texto.
+			\item La transcripción se muestra en el campo de síntomas.
+		\end{enumerate} \\
+		\textbf{Postcondición}        & El campo de síntomas contiene la transcripción del audio, lista para su procesamiento. \\
+		\textbf{Excepciones}          & Micrófono no disponible; transcripción vacía o ininteligible. \\
+		\textbf{Importancia}          & Alta \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
+	\caption{CU-01 Introducir síntomas por voz.}
 \end{table}
 
-\section{Objetivos generales}
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
+		\toprule
+		\textbf{CU-02}    & \textbf{Introducir síntomas por texto}\\
+		\toprule
+		\textbf{Versión}              & 1.0 \\
+		\textbf{Autor}                & Alumno \\
+		\textbf{Actores}              & A01 Paciente \\
+		\textbf{Requisitos asociados} & RF-1, RF-1.1 \\
+		\textbf{Descripción}          & El paciente introduce sus síntomas escribiéndolos directamente en el formulario. \\
+		\textbf{Precondición}         & La aplicación está abierta en la pestaña del paciente. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El paciente accede a la pestaña Paciente.
+			\item Escribe sus síntomas en el campo de texto.
+			\item Pulsa el botón de envío.
+		\end{enumerate} \\
+		\textbf{Postcondición}        & El sistema dispone del texto introducido para su procesamiento. \\
+		\textbf{Excepciones}          & Campo vacío al pulsar el botón de envío. \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-02 Introducir síntomas por texto.}
+\end{table}
 
-\section{Catálogo de requisitos}
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
+		\toprule
+		\textbf{CU-03}    & \textbf{Obtener especialidad recomendada}\\
+		\toprule
+		\textbf{Versión}              & 1.0 \\
+		\textbf{Autor}                & Alumno \\
+		\textbf{Actores}              & A01 Paciente, A03 Motor de clasificación, A05 Almacenamiento local \\
+		\textbf{Requisitos asociados} & RF-1.3, RF-1.4, RF-3, RF-3.1, RF-3.2, RF-3.3, RF-3.4 \\
+		\textbf{Descripción}          & El sistema procesa los síntomas y devuelve la especialidad médica recomendada junto con su porcentaje de confianza. \\
+		\textbf{Precondición}         & Existen modelos entrenados disponibles y el paciente ha introducido síntomas. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El sistema preprocesa el texto introducido.
+			\item Aplica los modelos de clasificación (TF-IDF, SVD, SVM y RNA).
+			\item Calcula la especialidad predicha y su nivel de confianza.
+			\item Muestra al paciente la especialidad recomendada y, si procede, el porcentaje de acierto.
+		\end{enumerate} \\
+		\textbf{Postcondición}        & El paciente conoce la especialidad recomendada y el grado de confianza asociado. \\
+		\textbf{Excepciones}          & Modelos no disponibles o corruptos; texto vacío tras el preprocesado. \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-03 Obtener especialidad recomendada.}
+\end{table}
 
-\section{Especificación de requisitos}
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
+		\toprule
+		\textbf{CU-04}    & \textbf{Aportar síntomas adicionales y derivación}\\
+		\toprule
+		\textbf{Versión}              & 1.0 \\
+		\textbf{Autor}                & Alumno \\
+		\textbf{Actores}              & A01 Paciente, A03 Motor de clasificación, A05 Almacenamiento local \\
+		\textbf{Requisitos asociados} & RF-1.5, RF-1.6, RF-1.7 \\
+		\textbf{Descripción}          & Cuando la confianza de la predicción no alcanza el umbral, el sistema solicita síntomas adicionales y, si tampoco se obtiene una predicción fiable, deriva el caso a Atención General y lo registra en el \textit{log}. \\
+		\textbf{Precondición}         & Se ha realizado una primera predicción cuya confianza es inferior al umbral configurado. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El sistema solicita al paciente síntomas adicionales.
+			\item El paciente añade información complementaria.
+			\item El sistema reevalúa la predicción.
+			\item Si la confianza es suficiente, devuelve la especialidad.
+			\item Si la confianza sigue siendo insuficiente, deriva a Atención General.
+			\item Registra el caso completo en el \textit{log} de incidencias.
+		\end{enumerate} \\
+		\textbf{Postcondición}        & El paciente recibe una recomendación (especialidad concreta o Atención General) y el caso queda registrado en el \textit{log} si fue dudoso. \\
+		\textbf{Excepciones}          & El paciente cancela el proceso antes de completar la información adicional. \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-04 Aportar síntomas adicionales y derivación.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
+		\toprule
+		\textbf{CU-05}    & \textbf{Añadir síntomas y especialidad}\\
+		\toprule
+		\textbf{Versión}              & 1.0 \\
+		\textbf{Autor}                & Alumno \\
+		\textbf{Actores}              & A02 Administrador, A05 Almacenamiento local \\
+		\textbf{Requisitos asociados} & RF-2, RF-2.1, RF-4.2 \\
+		\textbf{Descripción}          & El administrador añade nuevos pares síntoma--especialidad al catálogo de datos del sistema. \\
+		\textbf{Precondición}         & El administrador ha accedido a la pestaña de administración. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El administrador accede a la pestaña Administrador.
+			\item Selecciona la opción de añadir nuevo registro.
+			\item Introduce los síntomas y la especialidad asociada.
+			\item Confirma la operación.
+			\item El sistema almacena la nueva entrada en el CSV de aportaciones.
+		\end{enumerate} \\
+		\textbf{Postcondición}        & El CSV de aportaciones contiene una entrada nueva, lista para ser empleada en el próximo reentrenamiento. \\
+		\textbf{Excepciones}          & Datos incompletos o especialidad fuera del catálogo. \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-05 Añadir síntomas y especialidad.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
+		\toprule
+		\textbf{CU-06}    & \textbf{Visualizar log de incidencias}\\
+		\toprule
+		\textbf{Versión}              & 1.0 \\
+		\textbf{Autor}                & Alumno \\
+		\textbf{Actores}              & A02 Administrador, A05 Almacenamiento local \\
+		\textbf{Requisitos asociados} & RF-2.2 \\
+		\textbf{Descripción}          & El administrador consulta los casos no resueltos almacenados en el \textit{log}. \\
+		\textbf{Precondición}         & Existe al menos un caso no resuelto registrado. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El administrador accede a la pestaña Administrador.
+			\item Selecciona la opción de revisión de incidencias.
+			\item El sistema muestra los registros del \textit{log}.
+		\end{enumerate} \\
+		\textbf{Postcondición}        & El administrador dispone de la información necesaria para evaluar los casos pendientes. \\
+		\textbf{Excepciones}          & \textit{Log} vacío o no accesible. \\
+		\textbf{Importancia}          & Media \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-06 Visualizar log de incidencias.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
+		\toprule
+		\textbf{CU-07}    & \textbf{Resolver casos del log}\\
+		\toprule
+		\textbf{Versión}              & 1.0 \\
+		\textbf{Autor}                & Alumno \\
+		\textbf{Actores}              & A02 Administrador, A05 Almacenamiento local \\
+		\textbf{Requisitos asociados} & RF-2.3, RF-4.2 \\
+		\textbf{Descripción}          & El administrador asigna manualmente una especialidad a los casos no resueltos y los incorpora al CSV de aportaciones. \\
+		\textbf{Precondición}         & Existe al menos un caso no resuelto en el \textit{log}. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El administrador selecciona un caso del \textit{log}.
+			\item Asigna la especialidad correspondiente.
+			\item Confirma la operación.
+			\item El sistema añade el caso al CSV de aportaciones y lo retira del \textit{log}.
+		\end{enumerate} \\
+		\textbf{Postcondición}        & El caso queda incorporado al conjunto de datos y eliminado del \textit{log}. \\
+		\textbf{Excepciones}          & Especialidad no válida; fallo en la escritura del CSV. \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-07 Resolver casos del log.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} X }
+		\toprule
+		\textbf{CU-08}    & \textbf{Reentrenar modelos}\\
+		\toprule
+		\textbf{Versión}              & 1.0 \\
+		\textbf{Autor}                & Alumno \\
+		\textbf{Actores}              & A02 Administrador, A03 Motor de clasificación, A05 Almacenamiento local \\
+		\textbf{Requisitos asociados} & RF-2.4, RF-3.5, RF-4.3 \\
+		\textbf{Descripción}          & El administrador inicia el reentrenamiento de los modelos a partir del CSV original y del CSV de aportaciones. \\
+		\textbf{Precondición}         & Existen los CSV de datos accesibles y los modelos pueden ser regenerados. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El administrador pulsa el botón de reentrenamiento.
+			\item El sistema combina el CSV original y el CSV de aportaciones.
+			\item Reentrena los modelos TF-IDF, SVD, SVM y RNA.
+			\item Persiste los nuevos modelos en disco sustituyendo los anteriores.
+			\item Notifica al administrador la finalización del proceso.
+		\end{enumerate} \\
+		\textbf{Postcondición}        & Los modelos persistidos reflejan los datos actualizados, incluyendo las aportaciones del administrador. \\
+		\textbf{Excepciones}          & Datos corruptos; error durante el entrenamiento; fallo de escritura. \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-08 Reentrenar modelos.}
+\end{table}
 
 

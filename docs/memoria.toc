@@ -10,18 +10,24 @@
 \contentsline {chapter}{2.\hskip .5em\relax Objetivos del proyecto}{5}{chapter*.7}%
 \contentsline {section}{\numberline {2.1}Objetivos Generales}{5}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Objetivos funcionales}{6}{section.2.2}%
-\contentsline {subsection}{Objetivos no funcionales}{8}{section*.15}%
-\contentsline {section}{\numberline {2.3}Objetivos personales}{9}{section.2.3}%
-\contentsline {chapter}{3.\hskip .5em\relax Conceptos teóricos}{11}{chapter*.25}%
-\contentsline {section}{\numberline {3.1}Secciones}{11}{section.3.1}%
-\contentsline {subsection}{Subsecciones}{11}{section*.26}%
-\contentsline {subsubsection}{Subsubsecciones}{11}{section*.27}%
-\contentsline {section}{\numberline {3.2}Referencias}{11}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Imágenes}{12}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Listas de items}{12}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Tablas}{13}{section.3.5}%
-\contentsline {chapter}{4.\hskip .5em\relax Técnicas y herramientas}{15}{chapter*.29}%
-\contentsline {chapter}{5.\hskip .5em\relax Aspectos relevantes del desarrollo del proyecto}{17}{chapter*.31}%
-\contentsline {chapter}{6.\hskip .5em\relax Trabajos relacionados}{19}{chapter*.33}%
-\contentsline {chapter}{7.\hskip .5em\relax Conclusiones y Líneas de trabajo futuras}{21}{chapter*.35}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{27}{chapter*.45}%
+\contentsline {section}{\numberline {2.3}Objetivos no funcionales}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Objetivos personales}{9}{section.2.4}%
+\contentsline {chapter}{3.\hskip .5em\relax Conceptos teóricos}{11}{chapter*.24}%
+\contentsline {section}{\numberline {3.1}Clasificación supervisada en texto clínico}{12}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Preprocesamiento lingüístico y normalización}{12}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Representación vectorial mediante \mbox {TF-IDF}}{13}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Reducción de dimensionalidad con TruncatedSVD}{14}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Clasificación mediante Máquinas de Vector de Soporte}{15}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Clasificación mediante Perceptrón Multicapa}{16}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Optimización de hiperparámetros y evaluación}{17}{section.3.7}%
+\contentsline {subsection}{Búsqueda de hiperparámetros con GridSearchCV}{17}{section*.25}%
+\contentsline {subsection}{Métricas de evaluación}{17}{section*.26}%
+\contentsline {section}{\numberline {3.8}Decisión con umbral de confianza y derivación a atención general}{18}{section.3.8}%
+\contentsline {section}{\numberline {3.9}Captura de síntomas por voz}{19}{section.3.9}%
+\contentsline {section}{\numberline {3.10}IA Frugal y Edge AI}{19}{section.3.10}%
+\contentsline {section}{\numberline {3.11}Conclusiones del capítulo}{20}{section.3.11}%
+\contentsline {chapter}{4.\hskip .5em\relax Técnicas y herramientas}{21}{chapter*.28}%
+\contentsline {chapter}{5.\hskip .5em\relax Aspectos relevantes del desarrollo del proyecto}{23}{chapter*.30}%
+\contentsline {chapter}{6.\hskip .5em\relax Trabajos relacionados}{25}{chapter*.32}%
+\contentsline {chapter}{7.\hskip .5em\relax Conclusiones y Líneas de trabajo futuras}{27}{chapter*.34}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{33}{chapter*.44}%

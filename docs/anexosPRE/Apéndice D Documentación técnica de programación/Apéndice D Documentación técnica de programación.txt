@@ -1,6 +1,6 @@
-Apéndice D Documentación técnica de programación 69
-D.1. Introducción . . . . . . . . . . . . . . . . . . . . . . . . . . . 69
-D.2. Estructura de directorios . . . . . . . . . . . . . . . . . . . . 69
-D.3. Manual del programador . . . . . . . . . . . . . . . . . . . . 70
-D.4. Compilación, instalación y ejecución del proyecto . . . . . . 74
-D.5. Pruebas del sistema . . . . . . . . . . . . . . . . . . . . . . . 76
+Apéndice D Documentación técnica de programación
+D.1. Introducción
+D.2. Estructura de directorios
+D.3. Manual del programador 
+D.4. Compilación, instalación y ejecución del proyecto 
+D.5. Pruebas del sistema

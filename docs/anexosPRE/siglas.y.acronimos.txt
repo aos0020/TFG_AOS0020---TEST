@@ -1,0 +1,23 @@
+Te paso los ejemplos que deben estar en archivo anexos.tex
+
+% Acrónimos
+\usepackage[acronym]{glossaries}
+\makenoidxglossaries
+
+\newacronym{llm}{LLM}{\textit{Large Language Models}}
+\newacronym{ods}{ODS}{\textit{Objetivos de Desarrollo Sostenible}}
+
+
+
+% Entrada para LangChain
+\newglossaryentry{langchain}{
+	name=LangChain,
+	description={Framework de inteligencia artificial utilizado para construir aplicaciones que combinan múltiples modelos de lenguaje y agentes}
+}
+
+% Entrada para BLoC
+\newglossaryentry{bloc}{
+	name=BLoC (Business Logic Component),
+	description={Patrón arquitectónico en Flutter que separa la lógica de negocio de la interfaz de usuario}
+} 
+\newcommand{\autor}{Fernando Pisot Serrano}
