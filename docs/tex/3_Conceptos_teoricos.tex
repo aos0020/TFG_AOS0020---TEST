@@ -1,142 +1,127 @@
 \capitulo{3}{Conceptos teóricos}
 
-Este capítulo recoge los conceptos que sustentan el sistema desarrollado: cómo se modela la asignación automática de especialidades médicas, qué transformaciones se aplican al texto del paciente y por qué se han elegido los algoritmos que componen el pipeline. El objetivo no es enumerar definiciones, sino dejar claro el porqué de cada decisión técnica en un contexto de ejecución local y recursos limitados.
+Este capítulo presenta, de forma sencilla, los conceptos que sirven de base al sistema desarrollado. La idea principal del proyecto es que un paciente pueda escribir o dictar sus síntomas y que la aplicación proponga una especialidad médica adecuada. Para conseguirlo, el sistema transforma el texto del paciente en datos que un modelo de aprendizaje automático pueda interpretar y, a partir de ellos, realiza una clasificación.
 
-El sistema implementa cuatro modelos que se pueden seleccionar desde la interfaz del paciente. Todos comparten la misma fase de preprocesamiento y representación inicial, pero combinan los componentes posteriores de forma distinta:
+No se pretende hacer una explicación matemática de cada algoritmo, sino justificar por qué se han utilizado estas técnicas y qué papel cumple cada una dentro del sistema. Todas las decisiones se han tomado buscando un equilibrio entre precisión, sencillez, rapidez de ejecución y posibilidad de funcionar en local, sin depender de servidores externos.
+
+El sistema trabaja con cuatro modelos principales:
 
 \begin{itemize}
-	\item \textbf{TF-IDF.} Vectorización \gls{tfidf} seguida de un clasificador de Regresión Logística.
-	\item \textbf{SVD.} \gls{tfidf} más reducción de dimensionalidad con \gls{truncatedsvd}, también con Regresión Logística como clasificador final.
-	\item \textbf{SVM.} \gls{tfidf} directamente conectado a una Máquina de Vectores de Soporte con kernel lineal.
-	\item \textbf{RNA.} \gls{tfidf} seguido de un Perceptrón Multicapa (\gls{mlp}).
+	\item \textbf{TF-IDF con Regresión Logística.} Es el modelo base. Convierte el texto en números mediante \gls{tfidf} y después aplica un clasificador de Regresión Logística.
+	
+	\item \textbf{TF-IDF con SVD y Regresión Logística.} Añade una reducción de dimensionalidad mediante \gls{truncatedsvd} antes de clasificar.
+	
+	\item \textbf{TF-IDF con SVM.} Utiliza la representación \gls{tfidf} y la conecta directamente con una Máquina de Vectores de Soporte, o \gls{svm}, con kernel lineal.
+	
+	\item \textbf{TF-IDF con RNA.} Utiliza \gls{tfidf} como entrada de una red neuronal artificial sencilla, concretamente un Perceptrón Multicapa o \gls{mlp}.
 \end{itemize}
 
-La elección de Regresión Logística como clasificador en los dos primeros modelos no es casual: su entrenamiento es rápido, devuelve probabilidades calibradas de forma natural y sirve como referencia honesta frente a los modelos más complejos (SVM y \gls{mlp}). Comparar entre sí estas cuatro combinaciones permite observar qué aporta realmente cada componente y dónde compensa el coste adicional.
+Comparar estos cuatro modelos permite observar si realmente compensa utilizar técnicas más complejas o si un modelo más sencillo puede ofrecer resultados suficientemente buenos. Esta comparación es importante porque el objetivo no es construir el sistema más pesado posible, sino uno que funcione bien con recursos limitados.
 
 \section{Clasificación supervisada en texto clínico}
 
-La asignación de una especialidad médica a partir de los síntomas descritos por un paciente se plantea como un problema de clasificación supervisada multiclase~\cite{scikit_multiclass}. Sea $\mathcal{X} \subseteq \mathbb{R}^d$ el espacio de entrada, formado por las representaciones vectoriales de los textos, y sea $\mathcal{Y} = \{y_1, y_2, \dots, y_K\}$ el conjunto discreto de las $K$ especialidades médicas posibles~\cite{LópezUbeda2025}.
+La tarea principal del sistema se plantea como un problema de clasificación supervisada multiclase. Esto significa que el modelo aprende a partir de ejemplos ya etiquetados: cada texto de síntomas del conjunto de entrenamiento tiene asociada una especialidad médica correcta. A partir de esos ejemplos, el sistema aprende patrones que luego utiliza para clasificar nuevos textos escritos por otros pacientes~\cite{ibm_clasificacion, LopezUbeda2025}.
 
-El sistema busca aprender una función $f: \mathcal{X} \to \mathcal{Y}$ que minimice la pérdida empírica regularizada:
+En este proyecto, las clases posibles son las especialidades médicas. Por ejemplo, un texto relacionado con dolor torácico podría estar asociado a Cardiología, mientras que una descripción sobre lesiones en la piel podría relacionarse con Dermatología. El objetivo del modelo es recibir una descripción nueva y elegir la especialidad más probable.
 
-$$\hat{h} = \arg \min_{h \in \mathcal{H}} \frac{1}{n} \sum_{i=1}^{n} \mathcal{L}(h(x_i), y_i) + \lambda \Omega(h)$$
+Un aspecto importante es que el sistema no debe limitarse a memorizar frases del entrenamiento. Dos pacientes pueden describir el mismo problema con palabras diferentes. Por ejemplo, una persona puede escribir ``me falta el aire'' y otra ``tengo sensación de ahogo''. Aunque las frases no sean iguales, el sistema debería aprender que ambas pueden estar relacionadas con un problema respiratorio. Por eso se utilizan técnicas de regularización y evaluación que ayudan a evitar el sobreajuste, es decir, que el modelo funcione muy bien con los ejemplos conocidos pero mal con casos nuevos~\cite{aws_sobreajuste}.
 
-Aquí $\mathcal{L}$ mide el error entre la predicción y la etiqueta real, mientras que $\Omega(h)$ penaliza la complejidad del modelo con un peso $\lambda > 0$. El término de regularización es importante en este dominio porque los pacientes describen los mismos síntomas con vocabularios muy distintos, lo que aumenta el riesgo de sobreajuste si el modelo memoriza palabras concretas en lugar de aprender patrones generales~\cite{interactive_chaos_reg}.
+\section{Preprocesamiento del texto}
 
-\section{Preprocesamiento lingüístico y normalización}
+Antes de aplicar cualquier modelo, el texto escrito por el paciente debe prepararse. Las frases pueden incluir mayúsculas, signos de puntuación, errores ortográficos, palabras sin valor clínico o distintas formas de expresar una misma idea. El preprocesamiento intenta reducir esa variabilidad para que el modelo trabaje con una versión más limpia y homogénea del texto~\cite{snowflake_pln, ibm_stemming}.
 
-Antes de poder aplicar cualquier modelo, el texto libre debe transformarse en datos estructurados. Las descripciones que escribe un paciente contienen mayúsculas, signos, faltas de ortografía y palabras vacías que no aportan información clínica útil. El preprocesado reduce esta variabilidad y, de paso, recorta la dimensionalidad del problema~\cite{snowflake_pln, ibm_stemming}.
+En primer lugar, el texto se convierte a minúsculas y se eliminan caracteres que no aportan información útil. Se conservan las letras propias del español, como las vocales con tilde y la ñ, porque forman parte natural del idioma y pueden afectar al tratamiento posterior de las palabras.
 
-El pipeline aplica las siguientes etapas:
+Después se eliminan las palabras vacías o \textit{stop-words}. Son palabras muy frecuentes, como artículos, preposiciones o conjunciones, que aparecen en casi cualquier frase pero no ayudan demasiado a distinguir una especialidad médica de otra. Por ejemplo, palabras como ``el'', ``la'', ``de'' o ``y'' suelen aportar menos información que términos como ``fiebre'', ``dolor'', ``mareo'' o ``tos''.
 
-\begin{description}
-	\item[Normalización y tokenización] El texto se pasa a minúsculas y se eliminan los caracteres no alfanuméricos mediante una expresión regular que conserva las letras del alfabeto español, incluyendo tildes y la ñ. Mantener los caracteres acentuados antes del stemming es importante: el algoritmo Snowball para español está diseñado para procesar las palabras tal y como aparecen en el idioma, y eliminar las tildes antes de tiempo distorsiona la raíz que termina extrayendo. Tras la limpieza, la cadena se trocea en una secuencia de unidades léxicas $\mathcal{T} = \{t_1, t_2, \dots, t_m\}$~\cite{ibm_stemming}.
-	\item[Filtrado de stop-words] Se descartan determinantes, conjunciones y términos generales que aparecen en casi cualquier descripción, usando la lista de stopwords del español de NLTK. Estas palabras inflan los vectores sin ayudar a distinguir entre especialidades.
-	\item[Stemming con Snowball] Las palabras se reducen a su raíz mediante el algoritmo Snowball para español~\cite{snowball_org}. Frente a la lematización, el \gls{stemming} es más barato computacionalmente y se integra mejor en pipelines ligeros, lo que encaja con el enfoque de IA Frugal del proyecto~\cite{snowflake_pln}.
-\end{description}
+Por último, se aplica \gls{stemming} con el algoritmo Snowball para español. Esta técnica reduce las palabras a una raíz aproximada. Por ejemplo, palabras parecidas pueden quedar representadas de una forma similar, lo que ayuda a agrupar variantes de un mismo término. A diferencia de la lematización, que intenta obtener la forma correcta de una palabra según el idioma, el \gls{stemming} es más simple y rápido~\cite{ibm_stemming}. Esta elección encaja con el enfoque del proyecto, ya que se busca un sistema ligero y fácil de ejecutar en local~\cite{snowflake_pln}.
 
-El resultado de esta fase es una cadena depurada que ya se puede vectorizar. La misma función de preprocesado se aplica tanto al entrenamiento como a la predicción en tiempo real, lo que evita desajustes entre cómo se entrenó el modelo y cómo se le pasa el texto del paciente cuando se usa la aplicación.
+El mismo preprocesamiento se aplica tanto durante el entrenamiento como cuando el paciente utiliza la aplicación. Esto evita que el modelo reciba textos tratados de forma distinta en cada fase.
 
-\section{Representación vectorial mediante \mbox{TF-IDF}}
+\section{Representación del texto mediante TF-IDF}
 
-Una vez normalizado el texto, hace falta convertirlo en vectores numéricos que los modelos puedan procesar. El proyecto utiliza \gls{tfidf}~\cite{wikipedia_tfidf}, una representación clásica con dos ventajas para este caso: es barata de calcular y resulta fácil de interpretar, ya que cada componente del vector se corresponde con un término concreto del vocabulario~\cite{afnor_spec_2314}.
+Una vez limpiado el texto, es necesario convertirlo en números, porque los algoritmos de aprendizaje automático no trabajan directamente con frases. Para ello se utiliza \gls{tfidf}, una técnica clásica de representación de textos~\cite{wikipedia_tfidf}.
 
-El peso $w_{i,j}$ del término $t_i$ en el documento $d_j$ se calcula como el producto de la frecuencia del término en el documento por la frecuencia inversa documental:
+La idea de \gls{tfidf} es dar más importancia a las palabras que son relevantes dentro de un texto, pero que no aparecen en todos los documentos. Por ejemplo, si una palabra aparece en casi todos los textos, probablemente no ayude mucho a diferenciar especialidades. En cambio, términos más concretos como ``arritmia'', ``erupción'', ``migraña'' o ``fractura'' pueden aportar más información para clasificar el caso.
 
-$$w_{i,j} = tf(t_i, d_j) \cdot idf_{smooth}(t_i, D)$$
+Esta representación tiene dos ventajas importantes para el proyecto. La primera es que es sencilla y rápida de calcular. La segunda es que resulta relativamente interpretable, porque cada valor del vector está relacionado con una palabra o conjunto de palabras del vocabulario. Esto permite entender mejor qué términos han influido en la decisión del modelo.
 
-La implementación se apoya en la versión por defecto de \texttt{TfidfVectorizer} de scikit-learn, que aplica dos refinamientos sobre el esquema clásico~\cite{wikipedia_tfidf}:
+En la implementación se utiliza \texttt{TfidfVectorizer} de scikit-learn. Además, se limita el número máximo de términos mediante el parámetro \texttt{max\_features}. Esta limitación evita que el vocabulario crezca demasiado y ayuda a controlar tanto el consumo de memoria como el tiempo de entrenamiento.
 
-\begin{itemize}
-	\item \textbf{IDF suavizado:} $idf_{smooth}(t_i, D) = \log((N+1)/(df(t_i)+1)) + 1$. Da más peso a los términos poco habituales, que en general son los más útiles para discriminar entre especialidades, y evita divisiones por cero al añadir el documento ficticio que aporta el ``+1''.
-	\item \textbf{Normalización L2:} los vectores resultantes se ajustan a norma unitaria. Así la longitud del texto no condiciona la clasificación, algo importante cuando un paciente puede escribir tres palabras o un párrafo entero.
-\end{itemize}
+En algunos modelos se utilizan solo palabras individuales, mientras que en otros también se incluyen combinaciones de dos palabras. Estas combinaciones, llamadas bigramas, pueden ser útiles en expresiones clínicas como ``dolor agudo'', ``insuficiencia renal'' o ``dolor torácico''. Sin embargo, también aumentan el tamaño del vocabulario, por lo que se utilizan principalmente en los modelos donde pueden aportar una mejora real.
 
-El tamaño máximo del vocabulario se acota con el parámetro \texttt{max\_features}: 5.000 términos en los modelos basados en Regresión Logística (TF-IDF base y SVD) y un rango más reducido (1.000 a 5.000) en los que se exploran mediante búsqueda de hiperparámetros (SVM y RNA). En cuanto a los n-gramas, los modelos SVM y RNA combinan unigramas y bigramas para capturar combinaciones clínicas como ``insuficiencia renal'' o ``dolor agudo'', mientras que los modelos TF-IDF base y SVD se quedan en unigramas. Esta diferencia es deliberada: los bigramas multiplican el tamaño del vocabulario y solo compensan cuando el clasificador puede aprovechar esa información extra sin penalizar el tiempo de entrenamiento.
-
-Conviene anotar una característica importante de esta representación: la matriz resultante es dispersa (\textit{sparse}), ya que cada documento solo contiene una pequeña fracción del vocabulario total. \texttt{TfidfVectorizer} la almacena en formato CSR de SciPy en lugar de como matriz densa, lo que reduce considerablemente el consumo de memoria y acelera las operaciones matriciales sobre ella. Esta propiedad es la razón por la que el SVM lineal del proyecto puede entrenar directamente sobre la salida del TF-IDF sin necesidad de reducir antes la dimensionalidad.
+La matriz generada por \gls{tfidf} suele ser dispersa, es decir, contiene muchos valores a cero. Esto ocurre porque cada paciente utiliza solo una pequeña parte de todas las palabras posibles del vocabulario. Esta característica permite almacenar la información de forma eficiente y hace que modelos como el SVM lineal puedan entrenarse directamente sobre esta representación.
 
 \section{Reducción de dimensionalidad con TruncatedSVD}
 
-La matriz \gls{tfidf} suele ser muy ancha: cada columna es un término del vocabulario y la mayoría de las entradas son cero. Para trabajar con un espacio más manejable se aplica \gls{truncatedsvd}, que proyecta la matriz original $X \in \mathbb{R}^{d \times n}$ en un subespacio de rango reducido $k < r$~\cite{medium_svd_nlp}. En la implementación se ha fijado $k=100$ componentes, un valor que ofrece un buen compromiso entre capacidad expresiva y coste de cálculo para el tamaño del corpus de entrenamiento.
+El modelo basado en \gls{truncatedsvd} intenta simplificar la representación generada por \gls{tfidf}. Cuando el vocabulario es grande, cada texto queda representado por muchos valores, aunque la mayoría sean cero. Esto puede hacer que el modelo trabaje con una cantidad de información demasiado grande o repetitiva.
 
-El teorema de Eckart-Young-Mirsky garantiza que la aproximación truncada $X_k = U_k \Sigma_k V_k^T$ es la mejor representación posible de rango $k$. Esta idea conecta con el \gls{lsa}: las componentes resultantes capturan asociaciones semánticas globales entre términos y documentos, lo que ayuda con problemas de sinonimia habituales en lenguaje médico~\cite{medium_svd_nlp, LópezUbeda2025}. En la práctica, dos pacientes pueden describir el mismo cuadro con palabras distintas (por ejemplo, ``ahogo'' frente a ``disnea'') y el sistema sigue reconociéndolos como casos próximos en el espacio reducido.
+\gls{truncatedsvd} reduce ese espacio a un número menor de componentes, conservando la información más relevante. En este proyecto se utilizan 100 componentes, un valor que busca mantener suficiente información para clasificar los síntomas, pero reduciendo el coste de cálculo.
 
-Sobre las 100 componentes resultantes se entrena un clasificador de Regresión Logística. Esta combinación tiene una propiedad útil: la regresión logística devuelve probabilidades calibradas de forma directa, lo que permite mostrar al usuario un porcentaje de confianza junto con la especialidad sugerida y, llegado el caso, derivar a atención general cuando la confianza queda por debajo de un umbral. Comparar este modelo con el TF-IDF base, que usa el mismo clasificador pero sin reducción, deja ver cuánto aporta realmente la SVD en este corpus.
+Esta técnica está relacionada con el Análisis Semántico Latente o \gls{lsa}, que intenta encontrar relaciones generales entre términos y documentos mediante técnicas de reducción de dimensionalidad~\cite{ibm_lsa}. En la práctica, puede ayudar a que textos con palabras distintas pero significado parecido queden más próximos entre sí. Por ejemplo, ``ahogo'' y ``disnea'' no son la misma palabra, pero pueden aparecer en contextos clínicos parecidos.
 
-\section{Clasificación mediante Máquinas de Vector de Soporte}
+Después de aplicar \gls{truncatedsvd}, se utiliza de nuevo un clasificador de Regresión Logística. De esta forma se puede comparar el modelo TF-IDF básico con otro que usa el mismo clasificador, pero trabajando sobre una representación reducida. Así se observa si la reducción de dimensionalidad mejora realmente los resultados o si elimina información útil.
 
-El clasificador SVM se entrena directamente sobre la representación \gls{tfidf}, sin pasar antes por la reducción con \gls{truncatedsvd}. Esto es deliberado: las SVM lineales rinden bien en espacios de alta dimensionalidad y matrices dispersas, así que no hay un beneficio claro en reducir el espacio antes de entrenar~\cite{SVMvsMLP, scikit_multiclass}. Mantener la matriz original también permite contrastar este modelo con el basado en SVD y comprobar si la reducción aporta o no en este corpus concreto.
+\section{Clasificación mediante SVM}
 
-El SVM busca el hiperplano que separa las clases con el mayor margen posible. El problema de optimización con margen blando se formula como:
+El modelo \gls{svm} se utiliza directamente sobre la representación \gls{tfidf}. En este caso no se aplica antes \gls{truncatedsvd}, porque las SVM se utilizan habitualmente en tareas de clasificación supervisada y pueden trabajar con representaciones numéricas de alta dimensionalidad~\cite{ibm_svm, ibm_clasificacion}.
 
-$$\min_{w, b, \xi} \frac{1}{2} \|w\|^2 + C \sum_{i=1}^{n} \xi_i$$
+De forma sencilla, una \gls{svm} intenta separar las clases buscando una frontera de decisión lo más clara posible. En este proyecto, esa frontera sirve para distinguir entre las distintas especialidades médicas. Si el texto de un paciente contiene términos más próximos a los ejemplos de una especialidad concreta, el modelo tenderá a asignarlo a esa especialidad.
 
-El parámetro $C$ controla el equilibrio entre maximizar el margen y permitir errores de clasificación: un $C$ alto penaliza mucho los fallos y puede llevar a sobreajuste, mientras que un $C$ bajo tolera más errores a cambio de un modelo más general. Una propiedad útil del modelo es que la decisión final solo depende de los vectores de soporte, lo que mantiene el coste de inferencia bajo aunque el corpus de entrenamiento sea grande~\cite{SVMvsMLP}.
+Se utiliza un kernel lineal porque es adecuado para problemas de texto con muchas variables. Además, suele ser más eficiente que otros kernels más complejos. Esta decisión encaja con el objetivo del proyecto: obtener un buen rendimiento sin aumentar innecesariamente el coste computacional.
 
-En la implementación se utiliza un kernel lineal, que es el más adecuado cuando la representación de entrada ya tiene muchas dimensiones. Además, el clasificador se entrena con el flag de probabilidad activado para poder devolver al usuario un porcentaje de confianza junto con la especialidad predicha, no solo la etiqueta ganadora. Conviene matizar este punto: las SVM, por construcción, no devuelven probabilidades sino distancias al hiperplano de separación. Las probabilidades se obtienen mediante una calibración posterior sobre las puntuaciones del clasificador, que en scikit-learn se implementa mediante el método de Platt. Esto añade un coste de entrenamiento (la calibración requiere validación cruzada interna), pero es la forma estándar de poder ofrecer al usuario una confianza interpretable en porcentaje.
+El modelo también se configura para devolver una estimación de probabilidad. Esto es importante porque la aplicación no solo muestra la especialidad predicha, sino también un porcentaje de confianza. En el caso de las SVM, esta probabilidad no aparece de forma directa, sino que se obtiene mediante un proceso de calibración posterior. Aunque esto añade algo de coste durante el entrenamiento, permite ofrecer una salida más comprensible para el usuario.
 
-\section{Clasificación mediante Perceptrón Multicapa}
+\section{Clasificación mediante RNA}
 
-Junto al SVM, el sistema incorpora una \gls{rna} de tipo \gls{mlp} para capturar relaciones no lineales entre síntomas que un clasificador lineal no puede modelar~\cite{scikit_mlp}. En la aplicación y en el resto de la memoria este componente se referencia como RNA, ya que el \gls{mlp} es la arquitectura concreta de red neuronal artificial que se ha empleado.
+El cuarto modelo utiliza una \gls{rna}, concretamente un Perceptrón Multicapa o \gls{mlp}. Esta red neuronal recibe como entrada la representación \gls{tfidf} del texto y aprende a relacionarla con las especialidades médicas. Las redes neuronales artificiales se utilizan en aprendizaje automático para aprender relaciones entre datos de entrada y salidas esperadas a partir de ejemplos~\cite{ibm_redes_neuronales, cienciadedatos_redes_neuronales}.
 
-El \gls{mlp} es más caro de entrenar que un SVM lineal, así que el coste se acota por dos vías. La primera es limitar el vocabulario del \gls{tfidf} mediante el parámetro \texttt{max\_features} (entre 1.000 y 2.000 términos en la búsqueda de hiperparámetros), lo que reduce la dimensión efectiva de la entrada a la red. La segunda es activar la parada temprana (\textit{early stopping}), que detiene el entrenamiento cuando la red deja de mejorar sobre un conjunto de validación interno, evitando iteraciones innecesarias~\cite{SVMvsMLP, dergipark_optimization}.
+La ventaja de una red neuronal es que puede capturar relaciones más complejas que un modelo lineal. Sin embargo, también suele requerir más tiempo de entrenamiento y más control para evitar que memorice demasiado los datos. Por eso, en este proyecto se utiliza una red sencilla y se limita el tamaño del vocabulario de entrada.
 
-Para que la red no memorice el conjunto de entrenamiento, se usa el parámetro de regularización Alpha ($\alpha$), que añade una penalización L2 sobre los pesos~\cite{interactive_chaos_reg}. Este control de la complejidad ayuda a generalizar mejor a los textos nuevos del paciente, que casi nunca se parecen literalmente a los de entrenamiento~\cite{frugal_ai_hub_2025}.
+Además, se aplica parada temprana o \textit{early stopping}. Esta técnica detiene el entrenamiento cuando el modelo deja de mejorar sobre un conjunto de validación. Así se evita seguir entrenando sin obtener mejoras reales y se reduce el riesgo de sobreajuste~\cite{aws_sobreajuste}.
 
-\section{Optimización de hiperparámetros y evaluación}
+También se utiliza regularización mediante el parámetro \texttt{alpha}, que ayuda a controlar la complejidad de la red~\cite{interactive_chaos_reg}. En conjunto, estas decisiones permiten probar una técnica más flexible que los modelos lineales, pero manteniendo el sistema dentro de unos límites razonables de coste y simplicidad.
 
-Los modelos descritos son sensibles a su configuración: el número de componentes del SVD, el valor de $C$ en el SVM o el tamaño de las capas ocultas en el MLP afectan claramente al rendimiento. Para no fijar estos valores a ojo, en los modelos más complejos se aplica \gls{gscv}~\cite{dergipark_optimization}.
+\section{Optimización y evaluación de los modelos}
 
-\subsection{Búsqueda de hiperparámetros con GridSearchCV}
+Para que la comparación entre modelos sea justa, no basta con entrenarlos una vez y mirar el resultado. Algunos algoritmos dependen mucho de ciertos parámetros, como el valor de regularización en una \gls{svm}, el tamaño del vocabulario o la estructura de una red neuronal. Por eso, en los modelos más complejos se aplica \gls{gscv}, que prueba varias combinaciones de parámetros y selecciona la que obtiene mejores resultados. Este tipo de ajuste permite comparar configuraciones de forma ordenada en lugar de escoger los valores manualmente~\cite{ibm_clasificacion, cienciadedatos_hiperparametros}.
 
-La búsqueda se aplica sobre los modelos SVM y RNA, que son los que tienen más hiperparámetros relevantes y donde una mala elección penaliza más el resultado. Las combinaciones exploradas son las siguientes:
+La búsqueda de hiperparámetros se aplica principalmente a los modelos \gls{svm} y \gls{mlp}, porque son los que tienen más configuraciones posibles. En el caso de la \gls{svm}, se prueban distintos valores de regularización y diferentes tamaños de vocabulario. En el caso de la \gls{rna}, se prueban distintas arquitecturas, funciones de activación y valores de regularización.
 
-\begin{itemize}
-	\item \textbf{SVM:} valores de $C \in \{0{,}1; 1; 10\}$, \texttt{max\_features} del TF-IDF en $\{1.000;\ 3.000;\ 5.000\}$ y \texttt{min\_df} en $\{1, 2\}$.
-	\item \textbf{RNA:} arquitecturas con una capa oculta de 64 neuronas o dos capas (128 y 64), valores de $\alpha \in \{0{,}0001;\ 0{,}001\}$, funciones de activación \texttt{relu} y \texttt{tanh}, y \texttt{max\_features} del TF-IDF en $\{1.000;\ 2.000\}$.
-\end{itemize}
+Estas combinaciones se evalúan mediante validación cruzada estratificada con cinco particiones. La estratificación es importante porque no todas las especialidades tienen el mismo número de ejemplos. Si se repartieran los datos de forma completamente aleatoria, algunas particiones podrían quedar con muy pocos ejemplos de ciertas clases. La validación estratificada ayuda a mantener una distribución más equilibrada entre las clases~\cite{ibm_clasificacion}.
 
-Cada combinación se evalúa mediante validación cruzada estratificada con 5 particiones. Estratificar es importante en este caso porque el corpus tiene desbalance entre especialidades (algunas categorías agrupan muchos más casos que otras), y un reparto aleatorio podría dejar particiones sin ejemplos de las clases minoritarias~\cite{scikit_multiclass}.
+Los modelos TF-IDF base y SVD se utilizan como modelos de referencia. Por eso se entrenan con una configuración más sencilla, sin una búsqueda exhaustiva de hiperparámetros. Su función principal es servir como punto de comparación frente a modelos más costosos como \gls{svm} y \gls{mlp}.
 
-Los modelos TF-IDF base y SVD prescinden de \gls{gscv} y se entrenan con un único reparto entrenamiento/prueba al 80/20. Esta decisión es coherente con el papel que cumplen en el sistema: actúan como modelos de referencia frente a SVM y RNA, no como candidatos a producción, y entrenarlos sin búsqueda de hiperparámetros mantiene la comparativa razonable en tiempo de cómputo.
+\section{Métricas de evaluación}
 
-\subsection{Métricas de evaluación}
+Para medir el rendimiento se utilizan varias métricas habituales en clasificación supervisada~\cite{ibm_clasificacion, LopezUbeda2025}.
 
-A partir de la matriz de confusión se calculan las métricas habituales en clasificación supervisada~\cite{LópezUbeda2025, dergipark_optimization}:
+La métrica principal es la \textit{accuracy}, que indica el porcentaje total de predicciones correctas. Es fácil de interpretar y permite comparar rápidamente los modelos. Sin embargo, tiene una limitación: si hay clases con muchos más ejemplos que otras, un modelo puede obtener una \textit{accuracy} alta aunque funcione mal en las especialidades menos representadas.
 
-\begin{description}
-	\item[Accuracy] Proporción de aciertos sobre el total. Es la métrica que se usa como criterio de selección durante la búsqueda de hiperparámetros, por su interpretación directa y porque, en este corpus, la diferencia entre los modelos suele ser lo bastante clara como para no requerir métricas más complejas. Su limitación conocida es que, ante desbalance fuerte, un modelo que predice siempre la clase mayoritaria puede aparentar buen rendimiento sin servir para nada.
-	\item[Precision] De los casos que el modelo etiqueta como una especialidad concreta, qué proporción acierta. Penaliza los falsos positivos.
-	\item[\gls{recall}] De los casos que realmente pertenecen a una especialidad, qué proporción detecta el modelo. Penaliza los falsos negativos, que en triaje clínico son especialmente sensibles.
-	\item[F1-macro] Media aritmética de los F1 por clase. Se reporta como métrica complementaria porque trata por igual a todas las especialidades, sin importar cuántos ejemplos haya de cada una~\cite{LópezUbeda2025}, y permite detectar cuándo un modelo con buena \textit{accuracy} en realidad falla en las clases minoritarias.
-\end{description}
+Por eso también se analizan la \textit{precision}, el \textit{recall} y el \textit{F1-macro}. La \textit{precision} indica cuántas de las predicciones realizadas para una especialidad son correctas. El \textit{recall} indica cuántos casos reales de una especialidad consigue detectar el modelo. El \textit{F1-macro} resume el equilibrio entre \textit{precision} y \textit{recall}, dando el mismo peso a todas las clases, aunque unas tengan más ejemplos que otras.
 
-\section{Decisión con umbral de confianza y derivación a atención general}
+En un sistema de orientación médica, estas métricas son especialmente importantes. No basta con acertar muchas veces en general; también interesa saber si el modelo falla demasiado en especialidades con menos ejemplos o si tiende a confundir síntomas que podrían requerir una derivación concreta.
 
-Los modelos no devuelven solo una etiqueta: devuelven una distribución de probabilidad sobre todas las especialidades posibles. La aplicación toma la especialidad con mayor probabilidad y muestra al paciente esa probabilidad como porcentaje de confianza. Cuando el porcentaje queda por debajo de un umbral mínimo, el sistema no se aferra a la predicción: pide al paciente síntomas adicionales y, si después de varios intentos la confianza sigue siendo baja, deriva el caso a atención general y guarda los síntomas en un log para que un administrador los revise más adelante.
+\section{Umbral de confianza y derivación a atención general}
 
-Este planteamiento se conoce como clasificación con umbral de confianza: el modelo puede declinar una predicción incierta en lugar de forzar una respuesta posiblemente errónea. Los clasificadores devuelven una puntuación de confianza entre 0 y 1, y se descartan las predicciones cuya puntuación queda por debajo de un umbral establecido por el sistema~\cite{ibm_clasificacion}. En triaje clínico tiene sentido directo, ya que un infra-triaje (no derivar a tiempo a la especialidad correcta) puede tener consecuencias serias, y vale más reconocer la duda que asignar mal una cita.
+La aplicación no se limita a mostrar una especialidad. También muestra un porcentaje de confianza asociado a la predicción. Si el modelo tiene una confianza alta, se muestra la especialidad sugerida. Si la confianza es baja, el sistema pide al paciente que añada más información sobre sus síntomas.
 
-\section{Captura de síntomas por voz}
+Este mecanismo evita que el sistema fuerce una respuesta cuando no tiene suficiente seguridad. Si después de varios intentos la confianza sigue siendo baja, el caso se deriva a atención general y los síntomas se guardan en un registro para que puedan revisarse posteriormente.
 
-La interfaz de paciente acepta la entrada por dos canales: texto escrito directamente en el formulario o dictado por voz mediante un componente de captura de audio del navegador, que transcribe lo dictado a texto en español. La transcripción se delega al motor de reconocimiento de voz del navegador, por lo que no forma parte del modelo de clasificación desarrollado en este proyecto. Una vez transcrita, la cadena pasa por exactamente la misma cadena de preprocesamiento que cualquier otro texto, así que el modelo no distingue si los síntomas vinieron del teclado o del micrófono.
-
-Esta separación entre el canal de entrada y el núcleo de clasificación se ha mantenido a propósito. Permite añadir más canales en el futuro (por ejemplo, transcripciones automáticas de llamadas telefónicas para gestión de citas) sin tocar la parte de modelado. La transcripción de voz no se considera una pieza central del sistema y por eso no se profundiza en su funcionamiento, pero conviene mencionar que existe porque ya está integrada en la aplicación.
+Este enfoque se basa en la clasificación con umbral de confianza. En lugar de aceptar siempre la clase más probable, el sistema descarta las predicciones que no superan un mínimo de seguridad. Este tipo de umbral permite convertir las puntuaciones del modelo en decisiones más prudentes, especialmente cuando la predicción no alcanza suficiente confianza~\cite{google_umbral_clasificacion}. En un contexto médico, esta decisión es prudente, porque una asignación incorrecta puede ser más problemática que reconocer que el sistema no tiene información suficiente.
 
 \section{IA Frugal y Edge AI}
 
-Las decisiones técnicas anteriores no son neutras: persiguen un sistema útil con el mínimo gasto de recursos. Esta idea se conoce como IA Frugal y está recogida en marcos como AFNOR SPEC 2314~\cite{afnor_spec_2314, frugal_ai_hub_2025}.
+El proyecto se ha diseñado siguiendo una filosofía de IA Frugal. Esto significa que se busca resolver el problema con el menor consumo de recursos posible, evitando modelos innecesariamente grandes o dependencias externas cuando no son imprescindibles. Este enfoque conecta con la idea de reducir el impacto y el coste de los sistemas de inteligencia artificial, manteniendo solo los recursos necesarios para cumplir el objetivo del proyecto~\cite{greenai_es}.
 
-En este proyecto se traduce en dos aspectos concretos:
+En este caso, la IA Frugal se refleja en varias decisiones. Se utiliza \gls{tfidf} porque es una representación ligera y suficiente para una primera aproximación al problema. Se aplica \gls{truncatedsvd} para reducir el tamaño de los datos. Se emplean modelos clásicos como Regresión Logística y \gls{svm}, y la red neuronal se mantiene en una arquitectura sencilla.
 
-\begin{itemize}
-	\item \textbf{Eficiencia técnica.} \gls{tfidf} es una representación barata y, en el modelo SVD, \gls{truncatedsvd} comprime esa representación a 100 componentes antes de clasificar. Los clasificadores escogidos (Regresión Logística, SVM lineal y un \gls{mlp} pequeño) se entrenan en tiempos razonables sobre hardware modesto y caben sin problema en un equipo de consulta médica estándar~\cite{afnor_spec_2314}.
-	\item \textbf{Privacidad y autonomía.} Toda la inferencia ocurre en el dispositivo (Edge AI), sin enviar los síntomas del paciente a un servidor externo. Esto cumple con el principio de privacidad por diseño y, además, hace que el sistema funcione aunque la consulta no tenga conexión a internet~\cite{frugal_ai_hub_2025}.
-\end{itemize}
+Además, el sistema está pensado para funcionar en local, siguiendo el enfoque de Edge AI. Esto significa que la inferencia se realiza en el propio dispositivo, sin enviar los síntomas del paciente a un servidor externo. Esta característica mejora la privacidad, reduce la dependencia de conexión a internet y facilita que el sistema pueda utilizarse en entornos con recursos limitados~\cite{ibm_edge_ai}.
 
 \section{Conclusiones del capítulo}
 
-La combinación de un preprocesamiento común y cuatro modelos con configuraciones distintas (\gls{tfidf} con Regresión Logística, \gls{tfidf} con \gls{truncatedsvd} y Regresión Logística, \gls{tfidf} con SVM lineal y \gls{tfidf} con \gls{mlp}) cumple con los requisitos del proyecto: la arquitectura es ligera, funciona sin conexión y permite trazar las decisiones del modelo término a término. La inclusión de un umbral de confianza con derivación a atención general añade una capa de prudencia que un sistema de producción real necesita.
+Los conceptos explicados en este capítulo justifican la arquitectura del sistema. El texto del paciente se limpia, se transforma mediante \gls{tfidf} y se clasifica utilizando distintos modelos. Cada modelo permite comprobar una hipótesis concreta: si basta con una solución sencilla, si la reducción de dimensionalidad ayuda, si una \gls{svm} mejora el resultado o si una \gls{rna} aporta alguna ventaja adicional.
 
-A cambio, hereda las limitaciones de los modelos basados en bolsa de palabras. La negación (``no tengo fiebre'') no se distingue bien de la afirmación, los matices semánticos se pierden y hay ambigüedades clínicas que un sistema sin conocimiento médico explícito difícilmente puede resolver. Estas carencias se han asumido de forma consciente y quedan apuntadas como líneas de mejora para futuras versiones.
+La propuesta mantiene un equilibrio entre sencillez, interpretabilidad y rendimiento. Además, el uso de un umbral de confianza permite que el sistema actúe con prudencia cuando no tiene seguridad suficiente, derivando el caso a atención general en lugar de forzar una especialidad concreta.
+
+Aun así, el sistema tiene limitaciones. Al basarse en representaciones de tipo bolsa de palabras, no siempre interpreta bien la negación, los matices del lenguaje o expresiones clínicas ambiguas. Por ejemplo, puede resultar difícil diferenciar correctamente entre ``tengo fiebre'' y ``no tengo fiebre'' si el modelo no captura bien el contexto. Estas limitaciones se asumen como parte del alcance del proyecto y quedan abiertas como posibles mejoras futuras.

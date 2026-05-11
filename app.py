@@ -1,6 +1,8 @@
 import csv
 import hmac
 import os
+import subprocess
+import sys
 import tomllib
 
 import pandas as pd
@@ -167,6 +169,24 @@ def guardar_registro(sintomas, especialidad, enfermedad=""):
     return nuevo_id
 
 
+def ejecutar_script_generador(ruta_script):
+    if not os.path.exists(ruta_script):
+        raise FileNotFoundError(f"No se encontró el script de regeneración: {ruta_script}")
+
+    resultado = subprocess.run(
+        [sys.executable, ruta_script],
+        cwd=BASE_DIR,
+        capture_output=True,
+        text=True,
+    )
+
+    if resultado.returncode != 0:
+        salida = resultado.stderr.strip() or resultado.stdout.strip()
+        raise RuntimeError(f"Error al ejecutar {os.path.basename(ruta_script)}:\n{salida}")
+
+    return resultado.stdout.strip()
+
+
 def mostrar_pagina_triaje():
     st.title("Triaje médico inteligente")
     st.subheader("Clasificadores: TF-IDF, SVD, SVM y RNA")
@@ -259,6 +279,35 @@ def mostrar_pagina_administracion():
                 st.success(f"Registro guardado correctamente con ID {nuevo_id}.")
             except Exception as e:
                 st.error(f"No se pudo guardar el registro: {e}")
+
+    st.divider()
+    st.subheader("Regenerar modelos")
+
+    script_paths = {
+        "TF-IDF": os.path.join(BASE_DIR, "TF_IDF", "generarModeloTFIDF.py"),
+        "SVD": os.path.join(BASE_DIR, "SVD", "generarModeloSVD.py"),
+        "SVM": os.path.join(BASE_DIR, "SVM", "generarModeloSVM.py"),
+        "RNA": os.path.join(BASE_DIR, "RNA", "generarModeloRNA.py"),
+    }
+
+    col1, col2 = st.columns(2)
+    acciones = [
+        ("TF-IDF", script_paths["TF-IDF"], col1),
+        ("SVD", script_paths["SVD"], col2),
+        ("SVM", script_paths["SVM"], col1),
+        ("RNA", script_paths["RNA"], col2),
+    ]
+
+    for nombre, ruta, columna in acciones:
+        if columna.button(f"Regenerar {nombre}"):
+            with st.spinner(f"Regenerando modelo {nombre}..."):
+                try:
+                    salida = ejecutar_script_generador(ruta)
+                    st.success(f"Modelo {nombre} regenerado correctamente.")
+                    if salida:
+                        st.code(salida, language="text")
+                except Exception as e:
+                    st.error(f"No se pudo regenerar {nombre}: {e}")
 
     st.divider()
     st.subheader("Últimos registros")

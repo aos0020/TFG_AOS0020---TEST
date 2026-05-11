@@ -15,7 +15,10 @@
 \RequirePackage{multirow}
 
 % Links
-\PassOptionsToPackage{hyphens}{url}\usepackage[colorlinks]{hyperref}
+%\PassOptionsToPackage{hyphens}{url}\usepackage[colorlinks]{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage[colorlinks,plainpages=false,pdfpagelabels,hypertexnames=false]{hyperref}
+
+
 \hypersetup{
 	allcolors = {red}
 }
@@ -42,13 +45,13 @@
 \newacronym{llme}{LLM}{\textit{Large Language Models}}
 \newacronym{tfidf}{TF-IDF}{\textit{Term Frequency--Inverse Document Frequency}}
 \newacronym{svd}{SVD}{\textit{Singular Value Decomposition}}
-\newacronym{svm}{SVM}{\textit{Support Vector Machine}}
 \newacronym{pln}{PLN}{Procesamiento de Lenguaje Natural}
 \newacronym{rna}{RNA}{Red Neuronal Artificial}
 
 % Glosario  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \gls{zero-shot} 
 % \gls{ingenieria_prompt} 
+
 % --- Glosario (términos) ---
 \newglossaryentry{standalone}{
 	name={stand alone},
@@ -65,6 +68,10 @@
 	description={Técnica de reducción de dimensionalidad que aproxima la descomposición en valores singulares conservando solo k componentes principales; se aplica frecuentemente sobre matrices TF-IDF para obtener representaciones latentes}
 }
 
+\newglossaryentry{svm}{
+	name={svm},
+	description={Máquina de Vectores de Soporte, algoritmo de aprendizaje automático supervisado utilizado para tareas de clasificación. Su objetivo es separar las clases mediante una frontera de decisión lo más clara posible}
+}
 \newglossaryentry{regresion_logistica}{
 	name={Regresión logística},
 	description={Modelo de clasificación supervisada que estima la probabilidad de pertenencia a una clase a partir de una combinación lineal de características}
@@ -107,8 +114,24 @@
 \nonzeroparskip
 
 % Huérfanas y viudas
-\widowpenalty100000
-\clubpenalty100000
+\widowpenalty=1000
+\clubpenalty=1000
+
+% No estirar páginas para llegar al margen inferior
+\raggedbottom
+
+% Tolerar pequeños desbordes verticales/horizontales sin avisar
+\vfuzz=2pt
+\hfuzz=2pt
+
+% Silenciar avisos de líneas mal espaciadas en bibliografía
+\hbadness=10000
+
+% Altura del encabezado (evita el aviso "headers too large")
+\setlength{\headheight}{16pt}
+
+
+
 
 % Imágenes
 

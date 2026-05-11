@@ -3,9 +3,11 @@ desktop.ini
 Desktop.ini
 Thumbs.db
 
+# Streamlit local secrets
+.streamlit/secrets.toml
+
 # Ignore Microsoft Word documents and temporary Word files
 *.doc
 *.docx
 *.docm
 ~$*
-

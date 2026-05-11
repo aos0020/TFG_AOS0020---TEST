@@ -6,11 +6,20 @@
 \newblock \url{https://kdd.org/exploration_files/p72-Frugal_AI.pdf}, 2020.
 \newblock [Internet; accedido 29-enero-2026].
 
-\bibitem{afnor_spec_2314}
-{AFNOR}.
-\newblock Afnor spec 2314: Marco general para la ia frugal.
-\newblock Technical report, Association Française de Normalisation, 2024.
+\bibitem{cienciadedatos_hiperparametros}
+Joaquín Amat~Rodrigo.
+\newblock Optimización de hiperparámetros (tuning), 2020.
 \newblock [Internet; consultado mayo-2026].
+
+\bibitem{cienciadedatos_redes_neuronales}
+Joaquín Amat~Rodrigo.
+\newblock Redes neuronales con python, 2021.
+\newblock [Internet; consultado mayo-2026].
+
+\bibitem{aws_sobreajuste}
+{Amazon Web Services}.
+\newblock ¿qué es el sobreajuste?, s.f.
+\newblock Consultado el 11 de mayo de 2026.
 
 \bibitem{arxivTFIDF2308}
 {arXiv}.
@@ -24,20 +33,6 @@
 \newblock Edge vs cloud ai: Key differences, benefits \& hybrid future.
 \newblock \url{https://www.clarifai.com/blog/edge-vs-cloud-ai}, 2024.
 \newblock [Internet; accedido 29-enero-2026].
-
-\bibitem{SVMvsMLP}
-{Codemia}.
-\newblock Svm frente a la red neuronal mlp: Comparación de rendimiento y
-  precisión.
-\newblock 2024.
-\newblock [Internet; consultado mayo-2026].
-
-\bibitem{dergipark_optimization}
-{DergiPark}.
-\newblock Optimización de hiperparámetros y entrenamiento de modelos para
-  diagnóstico clínico.
-\newblock 2024.
-\newblock [Internet; consultado mayo-2026].
 
 \bibitem{adaCloneDhiWise}
 {DhiWise}.
@@ -73,10 +68,15 @@
   2023.
 \newblock [Internet; accedido 29-enero-2026].
 
-\bibitem{frugal_ai_hub_2025}
-{Frugal AI Hub}.
-\newblock Ia frugal: Impulsando la innovación sostenible e inclusiva, 2025.
-\newblock [Internet; consultado mayo-2026].
+\bibitem{google_umbral_clasificacion}
+{Google for Developers}.
+\newblock Clasificación: umbrales, s.f.
+\newblock Consultado el 11 de mayo de 2026.
+
+\bibitem{greenai_es}
+{Green Algorithms}.
+\newblock Green algorithms, s.f.
+\newblock Consultado el 11 de mayo de 2026.
 
 \bibitem{babylonHospitalogy2023}
 {Hospitalogy}.
@@ -95,6 +95,26 @@
 {IBM}.
 \newblock ¿qué son los modelos de clasificación?, 2024.
 \newblock [Internet; consultado 9-mayo-2026].
+
+\bibitem{ibm_lsa}
+{IBM}.
+\newblock ¿qué es el análisis semántico latente?, s.f.
+\newblock Consultado el 11 de mayo de 2026.
+
+\bibitem{ibm_edge_ai}
+{IBM}.
+\newblock ¿qué es la ia en el edge?, s.f.
+\newblock Consultado el 11 de mayo de 2026.
+
+\bibitem{ibm_svm}
+{IBM}.
+\newblock ¿qué son las máquinas de vectores de soporte?, s.f.
+\newblock Consultado el 11 de mayo de 2026.
+
+\bibitem{ibm_redes_neuronales}
+{IBM}.
+\newblock ¿qué son las redes neuronales?, s.f.
+\newblock Consultado el 11 de mayo de 2026.
 
 \bibitem{interactive_chaos_reg}
 {Interactive Chaos}.
@@ -115,7 +135,7 @@
 \newblock \url{https://www.konvoy.vc/newsletters/local-vs-cloud-ai}, 2024.
 \newblock [Internet; accedido 29-enero-2026].
 
-\bibitem{LópezUbeda2025}
+\bibitem{LopezUbeda2025}
 P.~López-Úbeda et~al.
 \newblock Algoritmos de aprendizaje automático tradicionales para la
   clasificación de texto médico.
@@ -127,19 +147,6 @@ P.~López-Úbeda et~al.
 \newblock Recent advances in large language models for healthcare.
 \newblock \url{https://www.mdpi.com/2673-7426/4/2/62}, 2024.
 \newblock [Internet; accedido 29-enero-2026].
-
-\bibitem{mediumSVDNLP}
-{Medium}.
-\newblock Natural language processing: Applying svd on term-document matrices.
-\newblock
-  \url{https://medium.com/@RobuRishabh/understanding-term-document-matrices-and-singular-value-decomposition-svd-in-nlp-3e08789073f6},
-  2020.
-\newblock [Internet; accedido 29-enero-2026].
-
-\bibitem{medium_svd_nlp}
-{Medium}.
-\newblock Descomposición en valores singulares en pln explicada, 2023.
-\newblock [Internet; consultado mayo-2026].
 
 \bibitem{barometroSanitario2024}
 {Ministerio de Sanidad (España)}.
@@ -177,17 +184,6 @@ Hai Nguyen, Andras Meczner, Krista Burslam-Dawe, and Benedict Hayhoe.
   2015.
 \newblock [Internet; accedido 29-enero-2026].
 
-\bibitem{scikit_multiclass}
-{Scikit-learn}.
-\newblock Algoritmos multiclase y multietiqueta, 2024.
-\newblock [Internet; consultado mayo-2026].
-
-\bibitem{scikit_mlp}
-{Scikit-learn}.
-\newblock Modelos de redes neuronales (supervisados): Perceptrón multicapa,
-  2024.
-\newblock [Internet; consultado mayo-2026].
-
 \bibitem{smileFrugalAI}
 {SMILE (EU)}.
 \newblock Frugal ai: sustainable, responsible and high-performance artificial
@@ -196,11 +192,6 @@ Hai Nguyen, Andras Meczner, Krista Burslam-Dawe, and Benedict Hayhoe.
   \url{https://smile.eu/en/publications-and-events/frugal-ai-sustainable-responsible-and-high-performance-artificial},
   2021.
 \newblock [Internet; accedido 29-enero-2026].
-
-\bibitem{snowball_org}
-{Snowball}.
-\newblock El algoritmo de stemming snowball, 2022.
-\newblock [Internet; consultado mayo-2026].
 
 \bibitem{snowflake_pln}
 {Snowflake}.
