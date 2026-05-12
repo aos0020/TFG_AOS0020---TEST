@@ -28,6 +28,13 @@ Joaquín Amat~Rodrigo.
 \newblock \url{https://arxiv.org/abs/2308.04037}, 2023.
 \newblock [Internet; accedido 29-enero-2026].
 
+\bibitem{streamlit_mic_recorder}
+R.~Bapt.
+\newblock streamlit-mic-recorder: Streamlit component for audio recording and
+  speech-to-text.
+\newblock \url{https://pypi.org/project/streamlit-mic-recorder/}, 2024.
+\newblock [Internet; consultado 9-mayo-2026].
+
 \bibitem{edgeVsCloudClarifai}
 {Clarifai}.
 \newblock Edge vs cloud ai: Key differences, benefits \& hybrid future.
@@ -67,6 +74,12 @@ Joaquín Amat~Rodrigo.
   \url{https://www.fiercehealthcare.com/digital-health/babylon-closes-us-business-lays-employees-after-mindmaze-take-private-deal-collapses},
   2023.
 \newblock [Internet; accedido 29-enero-2026].
+
+\bibitem{github_official}
+{GitHub, Inc.}
+\newblock Github: Let's build from here.
+\newblock \url{https://github.com/}, 2026.
+\newblock [Internet; consultado 9-mayo-2026].
 
 \bibitem{google_umbral_clasificacion}
 {Google for Developers}.
@@ -161,6 +174,13 @@ Hai Nguyen, Andras Meczner, Krista Burslam-Dawe, and Benedict Hayhoe.
 \newblock Triage errors in primary and pre--primary care.
 \newblock {\em Journal of Medical Internet Research}, 24(6):e37209, 2022.
 
+\bibitem{snowball_org}
+{NLTK Project}.
+\newblock nltk.stem.snowball: Snowball stemmers for natural language
+  processing.
+\newblock \url{https://www.nltk.org/api/nltk.stem.snowball.html}, 2024.
+\newblock [Internet; consultado 9-mayo-2026].
+
 \bibitem{oxfordJAMIA2025llmLessEffective}
 {Oxford Academic}.
 \newblock Large language models are less effective at clinical prediction tasks
@@ -184,6 +204,25 @@ Hai Nguyen, Andras Meczner, Krista Burslam-Dawe, and Benedict Hayhoe.
   2015.
 \newblock [Internet; accedido 29-enero-2026].
 
+\bibitem{scikit_multiclass}
+{Scikit-learn}.
+\newblock Algoritmos multiclase y multietiqueta, 2024.
+\newblock [Internet; consultado mayo-2026].
+
+\bibitem{scikit_mlp}
+{Scikit-learn}.
+\newblock Neural network models (supervised): Multi-layer perceptron.
+\newblock
+  \url{https://scikit-learn.org/stable/modules/neural_networks_supervised.html},
+  2024.
+\newblock [Internet; consultado 9-mayo-2026].
+
+\bibitem{dergipark_optimization}
+{Scikit-learn}.
+\newblock Tuning the hyper-parameters of an estimator: Gridsearchcv.
+\newblock \url{https://scikit-learn.org/stable/modules/grid_search.html}, 2024.
+\newblock [Internet; consultado 9-mayo-2026].
+
 \bibitem{smileFrugalAI}
 {SMILE (EU)}.
 \newblock Frugal ai: sustainable, responsible and high-performance artificial
@@ -197,6 +236,12 @@ Hai Nguyen, Andras Meczner, Krista Burslam-Dawe, and Benedict Hayhoe.
 {Snowflake}.
 \newblock Fundamentos de procesamiento de lenguaje natural, 2024.
 \newblock [Internet; consultado mayo-2026].
+
+\bibitem{streamlit_official}
+{Snowflake Inc.}
+\newblock Streamlit: A faster way to build and share data apps.
+\newblock \url{https://streamlit.io/}, 2026.
+\newblock [Internet; consultado 9-mayo-2026].
 
 \bibitem{waitTimeUS2025}
 {TechTarget (PatientEngagement)}.
@@ -220,5 +265,11 @@ Hai Nguyen, Andras Meczner, Krista Burslam-Dawe, and Benedict Hayhoe.
 \newblock Tf–idf: Frecuencia de término – frecuencia inversa de documento,
   2025.
 \newblock [Internet; consultado mayo-2026].
+
+\bibitem{zube_official}
+{Zube}.
+\newblock Zube: Agile project management with a seamless github integration.
+\newblock \url{https://zube.io/}, 2026.
+\newblock [Internet; consultado 9-mayo-2026].
 
 \end{thebibliography}

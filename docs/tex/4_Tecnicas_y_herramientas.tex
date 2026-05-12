@@ -1,6 +1,175 @@
 \capitulo{4}{Técnicas y herramientas}
 
-Esta parte de la memoria tiene como objetivo presentar las técnicas metodológicas y las herramientas de desarrollo que se han utilizado para llevar a cabo el proyecto. Si se han estudiado diferentes alternativas de metodologías, herramientas, bibliotecas se puede hacer un resumen de los aspectos más destacados de cada alternativa, incluyendo comparativas entre las distintas opciones y una justificación de las elecciones realizadas. 
-No se pretende que este apartado se convierta en un capítulo de un libro dedicado a cada una de las alternativas, sino comentar los aspectos más destacados de cada opción, con un repaso somero a los fundamentos esenciales y referencias bibliográficas para que el lector pueda ampliar su conocimiento sobre el tema.
+Este capítulo recoge las decisiones técnicas que han sostenido el proyecto: qué se ha usado, por qué se eligió frente a otras alternativas y qué papel ha tenido cada pieza dentro del flujo de trabajo. No se pretende extender cada librería como si fuera un manual, sino explicar su función dentro del sistema y justificar las elecciones realizadas durante el desarrollo.
+
+Las herramientas se han agrupado siguiendo el orden natural en el que aparecen al construir el sistema: lenguaje y entorno de programación, librerías de aprendizaje automático y \gls{pln}, datos utilizados, interfaz de usuario, gestión del proyecto y elaboración de la memoria. La tabla \ref{tabla:resumen-herramientas} resume esta organización.
+
+\tablaSmallSinColores{Herramientas y tecnologías utilizadas en cada parte del proyecto}{l c c c c}{resumen-herramientas}{
+	\textbf{Herramienta} & \textbf{Núcleo IA} & \textbf{Interfaz} & \textbf{Memoria} & \textbf{Gestión}\\
+}{
+	Python 3.11        & X & X & & \\
+	scikit-learn       & X &   & & \\
+	NLTK               & X &   & & \\
+	pandas / numpy     & X & X & & \\
+	joblib             & X &   & & \\
+	Streamlit          &   & X & & \\
+	streamlit-mic-recorder &   & X & & \\
+	Visual Studio Code & X & X & & X \\
+	GitHub Copilot     & X & X & & \\
+	GitHub             & X & X & X & X \\
+	Zube.io            &   &   & & X \\
+	\TeX Studio        &   &   & X & \\
+	\LaTeX{} (\TeX Live) &   &   & X & \\
+}
+
+\section{Lenguaje y entorno de programación}
+
+\subsection{Python}
+
+Toda la aplicación está escrita en Python, en la versión 3.11 utilizada en el entorno de desarrollo. La elección no responde solo a la familiaridad con el lenguaje, sino también a que Python cuenta con un ecosistema muy consolidado para proyectos de procesamiento de lenguaje natural y aprendizaje automático. Bibliotecas como scikit-learn, NLTK, pandas o joblib se integran de forma sencilla y permiten centrarse en el diseño del sistema, sin tener que desarrollar desde cero tareas habituales como la lectura de datos, la vectorización de texto, el entrenamiento de modelos o la serialización de resultados.
+
+Además, Python encaja con el planteamiento del proyecto como aplicación \gls{standalone}. El sistema puede ejecutarse en un equipo local, con los modelos entrenados y los datos necesarios dentro del propio proyecto, sin depender de servidores externos ni de APIs remotas para realizar la clasificación. Esta decisión va en línea con la idea de reducir dependencias y preservar la privacidad de los datos introducidos por el usuario.
+
+\subsection{Visual Studio Code}
+
+Como editor de código se ha utilizado Visual Studio Code. Antes de fijar esta elección se valoró PyCharm Community, conocido por su orientación específica a Python, pero finalmente se optó por VS Code por ser más ligero al arrancar y por integrarse de forma cómoda con GitHub Copilot y con el flujo de trabajo basado en GitHub.
+
+Las extensiones más utilizadas han sido Python, de Microsoft, para ejecutar y depurar el código; Pylance, para el análisis estático y la ayuda durante la escritura; GitLens, para consultar el historial de cambios sin salir del editor; y LaTeX Workshop, utilizada en algunas fases de redacción antes de pasar la edición principal de la memoria a TeXstudio.
+
+\subsection{GitHub Copilot}
+
+GitHub Copilot se incorporó como apoyo durante la programación, aprovechando su disponibilidad para estudiantes dentro del paquete GitHub Education. Su papel ha sido el de asistente de escritura de código, útil sobre todo en tareas repetitivas o con patrones claros: funciones de carga de datos, bloques de preprocesado, formularios de Streamlit o estructuras básicas de entrenamiento.
+
+Su utilidad, sin embargo, ha sido desigual. En fragmentos de código muy estandarizados suele ofrecer propuestas razonables, pero en decisiones específicas del dominio, por ejemplo al interpretar errores de clasificación entre especialidades médicas o al elegir ciertos hiperparámetros, sus sugerencias tienden a ser más genéricas. Por ello, no se ha utilizado como una fuente de decisión técnica, sino como una ayuda puntual para acelerar la escritura de código.
+
+Una lección clara de su uso: las sugerencias generadas deben revisarse siempre. En varias ocasiones el código propuesto era sintácticamente correcto, pero no hacía exactamente lo que se necesitaba. Por ese motivo, cada fragmento aceptado se revisó de la misma forma que se revisaría código escrito por otra persona.
+
+\section{Librerías de aprendizaje automático y procesamiento de lenguaje natural}
+
+El núcleo del sistema está formado por cuatro modelos de clasificación que reciben un texto en español con síntomas y devuelven una especialidad médica junto con un valor de confianza. Las librerías utilizadas para construir este flujo son las siguientes.
+
+\subsection{scikit-learn}
+
+scikit-learn es la librería principal del núcleo de inteligencia artificial \cite{scikit_multiclass}. En este proyecto se ha utilizado para la vectorización del texto, la reducción de dimensionalidad, la clasificación, la validación cruzada y la búsqueda de hiperparámetros. La elección es adecuada porque el proyecto trabaja con modelos clásicos de aprendizaje automático y con un volumen de datos limitado.
+
+Las clases más relevantes utilizadas han sido:
+
+\begin{itemize}
+	\item \texttt{TfidfVectorizer}, para transformar el texto en una representación numérica basada en \gls{tfidf}, utilizando n-gramas y limitación del vocabulario mediante \texttt{max\_features}.
+	
+	\item \texttt{TruncatedSVD}, para reducir la dimensionalidad de la matriz generada por \gls{tfidf}; esta técnica se relaciona con el análisis semántico latente o \gls{lsa}.
+	
+	\item \texttt{LogisticRegression}, como clasificador base en los modelos de \gls{tfidf} y \gls{tfidf} combinado con \gls{svd}.
+	
+	\item \texttt{SVC}, con kernel lineal y \texttt{probability=True}, para el modelo basado en \gls{svm}.
+	
+	\item \texttt{MLPClassifier}, para el modelo de \gls{rna}, probando configuraciones con una o dos capas ocultas y funciones de activación como \texttt{relu} o \texttt{tanh} \cite{scikit_mlp}.
+	
+	\item \texttt{Pipeline}, para encadenar las fases de transformación y clasificación en un único objeto reutilizable.
+	
+	\item \texttt{GridSearchCV} junto con \texttt{StratifiedKFold}, para realizar búsqueda de hiperparámetros mediante validación cruzada estratificada \cite{dergipark_optimization}.
+\end{itemize}
+
+Frente a alternativas como TensorFlow o PyTorch, scikit-learn ofrece una solución más ligera y suficiente para el alcance del TFG. El conjunto de datos utilizado tiene alrededor de 5.000 registros y los modelos seleccionados son modelos clásicos, por lo que introducir un marco de aprendizaje profundo habría aumentado la complejidad del proyecto sin aportar una ventaja clara. Esta decisión también mantiene la aplicación cercana al planteamiento ligero defendido en la introducción.
+
+\subsection{NLTK}
+
+Para el preprocesado lingüístico se ha utilizado NLTK, concretamente el listado de palabras vacías en español y el algoritmo \texttt{SnowballStemmer} para español \cite{snowball_org}. La limpieza aplicada es común a los cuatro modelos: conversión a minúsculas, eliminación de caracteres no alfabéticos manteniendo tildes y la letra ñ, separación del texto en palabras, eliminación de palabras frecuentes sin mucho valor informativo y reducción de las palabras a una raíz aproximada mediante \gls{stemming}.
+
+\subsection{pandas y numpy}
+
+pandas se utiliza para leer y manipular el fichero CSV que contiene los pares de síntomas y especialidades. También aparece en la parte de administración de la aplicación, donde se muestran registros, se calculan identificadores y se consultan las especialidades disponibles. numpy se utiliza principalmente en las operaciones numéricas asociadas a las predicciones, por ejemplo para localizar la clase con mayor probabilidad dentro del resultado de \texttt{predict\_proba}.
+
+En este caso, la elección de ambas bibliotecas es directa: pandas es una herramienta estándar para trabajar con datos tabulares en Python, mientras que numpy proporciona la base para muchas operaciones numéricas utilizadas por las librerías de aprendizaje automático.
+
+\subsection{joblib}
+
+Los modelos entrenados se guardan en disco mediante \texttt{joblib.dump} y se cargan posteriormente con \texttt{joblib.load}. Dependiendo del modelo, se guarda una tupla con el vectorizador y el clasificador, o bien con el vectorizador, la reducción SVD y el clasificador.
+
+\section{Datos y formato}
+
+El conjunto de entrenamiento se almacena en un único fichero CSV denominado \texttt{Dataset.5000.Registros.Marz.ID.Sintomas.Enfermedad.Especialidad.csv}. Este fichero contiene cuatro columnas: \texttt{record\_id}, \texttt{symptoms\_text}, \texttt{disease} y \texttt{specialty}. El separador utilizado es el punto y coma y la codificación empleada es Latin-1.
+
+La decisión de utilizar CSV en lugar de una base de datos relacional se justifica por el tamaño del conjunto de datos y por el carácter local del prototipo. Un fichero plano es fácil de versionar, inspeccionar y modificar, y resulta suficiente para trabajar con unos pocos miles de registros.
+
+Si el proyecto creciera en volumen de datos o necesitara gestionar accesos concurrentes, una evolución razonable sería migrar a SQLite. Esta alternativa mantendría el funcionamiento local, pero añadiría ventajas como transacciones, índices y consultas más robustas.
+
+\section{Interfaz de usuario}
+
+\subsection{Streamlit}
+
+La interfaz de usuario se ha desarrollado con Streamlit \cite{streamlit_official}. La aplicación se organiza en dos partes principales: una vista para el paciente, desde la que se introducen los síntomas y se elige el modelo de clasificación, y una vista de administración, desde la que se pueden consultar y añadir registros al conjunto de datos.
+
+Streamlit se eligió porque permite construir una interfaz funcional directamente en Python, sin necesidad de desarrollar una aplicación web completa con HTML, CSS, JavaScript y un backend separado. Para un prototipo académico, esta sencillez es útil sobre todo porque permite dedicar más tiempo al comportamiento del sistema y menos a la infraestructura web.
+
+Algunos elementos utilizados en la aplicación son:
+
+\begin{itemize}
+	\item \texttt{st.text\_area}, para introducir la descripción de síntomas.
+	
+	\item \texttt{st.selectbox}, para seleccionar el modelo de clasificación.
+	
+	\item \texttt{st.cache\_data}, para evitar recargar el CSV en cada interacción.
+	
+	\item \texttt{st.session\_state}, para conservar información entre recargas automáticas de la interfaz.
+	
+	\item \texttt{st.form}, para controlar el envío de nuevos registros desde la parte de administración.
+	
+	\item \texttt{st.secrets}, junto con variables de entorno, para separar la contraseña de administración del código fuente.
+\end{itemize}
+
+Se valoraron otras alternativas como Flask, Gradio o Dash. Flask habría dado más control, pero también habría obligado a escribir más código de soporte. Gradio está muy orientado a demostraciones rápidas de modelos, pero encaja peor con una aplicación con zona de administración. Dash es potente, aunque más apropiado para cuadros de mando y visualización de datos. Streamlit ofrecía el equilibrio más adecuado para el alcance del proyecto.
+
+\subsection{Entrada por voz}
+
+La aplicación permite introducir los síntomas de dos formas: escribiéndolos manualmente en el cuadro de texto o utilizando un botón de dictado desde la propia interfaz. Esta segunda opción se ha incorporado como apoyo a la entrada de datos, de forma que el usuario pueda pronunciar los síntomas y obtener una transcripción que después se utiliza como texto de entrada para el clasificador.
+
+Para esta funcionalidad se ha utilizado \texttt{streamlit-mic-recorder} \cite{streamlit_mic_recorder}, que facilita la captura de voz desde el navegador y su conversión a texto dentro de la aplicación Streamlit. Su papel se limita a transformar la voz en texto; a partir de ese momento, el flujo del sistema es el mismo que cuando el usuario escribe los síntomas manualmente: el texto se preprocesa, se vectoriza y se envía al modelo seleccionado.
+
+La interacción se mantiene explícita y controlada desde la interfaz: el usuario pulsa el botón de grabación, ve el texto transcrito en el cuadro de síntomas y, solo después, lanza la clasificación. La voz funciona por tanto como una vía alternativa de entrada de texto, equivalente al teclado, no como un canal independiente de comunicación con el sistema. Quedan fuera del alcance del TFG escenarios más complejos, como una conversación completa por voz, la respuesta hablada del sistema o la recepción de síntomas por canales externos, como una llamada telefónica.
+
+\section{Gestión del proyecto}
+
+\subsection{GitHub}
+
+El código y la documentación del proyecto se han mantenido en un repositorio de GitHub \cite{github_official}. Aunque el TFG es un trabajo individual, el uso de un sistema de control de versiones ha sido esencial para conservar un historial fiable de cambios, poder volver a estados anteriores y mantener una copia externa del proyecto.
+
+Durante el desarrollo se han utilizado commits frecuentes y descriptivos, ramas para pruebas puntuales y una rama principal reservada para versiones estables del prototipo. También se han aprovechado varias funciones de GitHub:
+
+\begin{itemize}
+	\item \textbf{Issues}, para registrar tareas pendientes, errores y mejoras.
+	
+	\item \textbf{Releases}, para marcar versiones del prototipo que funcionan como entregables parciales.
+	
+	\item \textbf{README}, para documentar las instrucciones básicas de instalación y ejecución.
+\end{itemize}
+
+\subsection{Zube.io}
+
+La planificación de tareas se ha realizado con Zube.io \cite{zube_official}, integrado con el repositorio de GitHub. Esta herramienta se eligió frente a Trello o GitHub Projects porque permite trabajar con un tablero Kanban sincronizado con los issues del repositorio, evitando duplicar información.
+
+El tablero se ha organizado con columnas como Backlog, Ready, In Progress, In Review y Done. En función de la fase del proyecto, se han utilizado iteraciones semanales o quincenales. Las vistas de seguimiento han servido para detectar retrasos y reajustar prioridades durante el desarrollo.
+
+\section{Documentación y memoria}
+
+\subsection{\LaTeX{} y TeXstudio}
+
+La memoria se ha redactado en \LaTeX{} utilizando la plantilla oficial del grado, basada en la clase \texttt{memoir} y en paquetes como \texttt{babel}, \texttt{hyperref}, \texttt{glossaries}, \texttt{xtab} y \texttt{booktabs}. La distribución utilizada ha sido \TeX Live{} en Windows, junto con TeXstudio como editor principal.
+
+Aunque durante algunas fases se probó la edición desde Visual Studio Code mediante LaTeX Workshop, finalmente se optó por TeXstudio para la redacción principal de la memoria. La razón fue práctica: ofrece un ciclo de edición y compilación cómodo, navegación por referencias y citas, corrector ortográfico en español y previsualización del PDF integrada.
+
+\subsection{Bibliografía y glosario}
+
+Las referencias bibliográficas se gestionan mediante BibTeX en el fichero \texttt{bibliografia.bib}. Las citas se introducen desde el cuerpo del documento con \texttt{\textbackslash cite\{\}}. Para los acrónimos y términos técnicos se utiliza el paquete \texttt{glossaries} junto con \texttt{makenoidxglossaries}, lo que permite generar las listas sin depender de comandos externos adicionales como \texttt{makeglossaries}.
+
+Este enfoque permite mantener separada la redacción del contenido, la bibliografía y las definiciones del glosario, lo que facilita la revisión y evita repetir explicaciones de conceptos técnicos a lo largo de la memoria.
+
+\section{Resumen del flujo de trabajo}
+
+El flujo de trabajo habitual combina todas las herramientas anteriores. El desarrollo comienza en Visual Studio Code, donde se programan los scripts de entrenamiento, preprocesado y aplicación. Cuando es necesario regenerar los modelos, se ejecutan los scripts correspondientes para producir los ficheros \texttt{.joblib}. Después, la interfaz se prueba mediante \texttt{streamlit run app.py}, introduciendo casos reales o sintéticos para comprobar el comportamiento de cada modelo.
+
+Los cambios relevantes se registran en GitHub mediante commits descriptivos. Las tareas pendientes se organizan en Zube.io y, cuando una funcionalidad alcanza un estado estable, se puede marcar una release en GitHub para conservar una versión fija del prototipo. En paralelo, la memoria se redacta en TeXstudio y se mantiene sincronizada con el resto del repositorio.
+
+El conjunto funciona como un único flujo: programar, entrenar, probar, documentar y versionar, sin saltos entre entornos.
 
 

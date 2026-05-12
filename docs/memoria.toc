@@ -34,7 +34,27 @@
 \contentsline {section}{\numberline {3.10}IA Frugal y Edge AI}{18}{section.35}%
 \contentsline {section}{\numberline {3.11}Conclusiones del capítulo}{18}{section.36}%
 \contentsline {chapter}{4.\hskip .5em\relax Técnicas y herramientas}{21}{chapter*.38}%
-\contentsline {chapter}{5.\hskip .5em\relax Aspectos relevantes del desarrollo del proyecto}{23}{chapter*.40}%
-\contentsline {chapter}{6.\hskip .5em\relax Trabajos relacionados}{25}{chapter*.42}%
-\contentsline {chapter}{7.\hskip .5em\relax Conclusiones y Líneas de trabajo futuras}{27}{chapter*.44}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{33}{chapter*.54}%
+\contentsline {section}{\numberline {4.1}Lenguaje y entorno de programación}{22}{section.40}%
+\contentsline {subsection}{Python}{22}{section*.41}%
+\contentsline {subsection}{Visual Studio Code}{23}{section*.42}%
+\contentsline {subsection}{GitHub Copilot}{23}{section*.43}%
+\contentsline {section}{\numberline {4.2}Librerías de aprendizaje automático y procesamiento de lenguaje natural}{23}{section.44}%
+\contentsline {subsection}{scikit-learn}{24}{section*.45}%
+\contentsline {subsection}{NLTK}{25}{section*.46}%
+\contentsline {subsection}{pandas y numpy}{25}{section*.47}%
+\contentsline {subsection}{joblib}{25}{section*.48}%
+\contentsline {section}{\numberline {4.3}Datos y formato}{25}{section.49}%
+\contentsline {section}{\numberline {4.4}Interfaz de usuario}{26}{section.50}%
+\contentsline {subsection}{Streamlit}{26}{section*.51}%
+\contentsline {subsection}{Entrada por voz}{27}{section*.52}%
+\contentsline {section}{\numberline {4.5}Gestión del proyecto}{27}{section.53}%
+\contentsline {subsection}{GitHub}{27}{section*.54}%
+\contentsline {subsection}{Zube.io}{28}{section*.55}%
+\contentsline {section}{\numberline {4.6}Documentación y memoria}{28}{section.56}%
+\contentsline {subsection}{\LaTeX {} y TeXstudio}{28}{section*.57}%
+\contentsline {subsection}{Bibliografía y glosario}{29}{section*.58}%
+\contentsline {section}{\numberline {4.7}Resumen del flujo de trabajo}{29}{section.59}%
+\contentsline {chapter}{5.\hskip .5em\relax Aspectos relevantes del desarrollo del proyecto}{31}{chapter*.61}%
+\contentsline {chapter}{6.\hskip .5em\relax Trabajos relacionados}{33}{chapter*.63}%
+\contentsline {chapter}{7.\hskip .5em\relax Conclusiones y Líneas de trabajo futuras}{35}{chapter*.65}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{41}{chapter*.75}%

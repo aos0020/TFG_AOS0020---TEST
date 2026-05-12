@@ -20,45 +20,45 @@ The style file: plain.bst
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: bibliografia.bib
 Warning--I didn't find a database entry for "mediumSVDNLP"
-You've used 34 entries,
+You've used 42 entries,
             2118 wiz_defined-function locations,
-            657 strings with 9472 characters,
-and the built_in function-call counts, 7444 in all, are:
-= -- 722
-> -- 260
+            687 strings with 10447 characters,
+and the built_in function-call counts, 9169 in all, are:
+= -- 895
+> -- 316
 < -- 0
-+ -- 112
-- -- 76
-* -- 242
-:= -- 1266
-add.period$ -- 121
-call.type$ -- 34
-change.case$ -- 139
++ -- 136
+- -- 92
+* -- 290
+:= -- 1559
+add.period$ -- 152
+call.type$ -- 42
+change.case$ -- 171
 chr.to.int$ -- 0
-cite$ -- 34
-duplicate$ -- 245
-empty$ -- 749
-format.name$ -- 76
-if$ -- 1621
+cite$ -- 42
+duplicate$ -- 301
+empty$ -- 925
+format.name$ -- 92
+if$ -- 2002
 int.to.chr$ -- 0
-int.to.str$ -- 34
+int.to.str$ -- 42
 missing$ -- 2
-newline$ -- 192
-num.names$ -- 68
-pop$ -- 276
+newline$ -- 239
+num.names$ -- 84
+pop$ -- 341
 preamble$ -- 1
-purify$ -- 105
+purify$ -- 129
 quote$ -- 0
-skip$ -- 222
+skip$ -- 271
 stack$ -- 0
-substring$ -- 190
-swap$ -- 34
+substring$ -- 230
+swap$ -- 42
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 136
+type$ -- 168
 warning$ -- 0
-while$ -- 69
-width$ -- 36
-write$ -- 382
+while$ -- 85
+width$ -- 44
+write$ -- 476
 (There was 1 warning)
