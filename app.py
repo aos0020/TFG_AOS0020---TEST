@@ -223,7 +223,6 @@ def guardar_registro(sintomas, especialidad, enfermedad=""):
     return nuevo_id
 
 
-<<<<<<< Updated upstream
 def ejecutar_script_generador(ruta_script):
     if not os.path.exists(ruta_script):
         raise FileNotFoundError(f"No se encontró el script de regeneración: {ruta_script}")
@@ -240,7 +239,6 @@ def ejecutar_script_generador(ruta_script):
         raise RuntimeError(f"Error al ejecutar {os.path.basename(ruta_script)}:\n{salida}")
 
     return resultado.stdout.strip()
-=======
 def registrar_log_fallback(
     sintomas,
     clasificador,
@@ -290,7 +288,6 @@ def reset_estado_triaje():
     ):
         if clave in st.session_state:
             del st.session_state[clave]
->>>>>>> Stashed changes
 
 
 def mostrar_pagina_triaje():
