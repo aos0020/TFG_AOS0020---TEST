@@ -28,6 +28,7 @@ stemmer = SnowballStemmer('spanish')
 stopwords_spanish = stopwords.words('spanish')
 
 CSV_PATH = os.path.join(PROJECT_ROOT, 'Datos', 'Dataset.5000.Registros.Marz.ID.Sintomas.Enfermedad.Especialidad.csv')
+EXTRA_CSV_PATH = os.path.join(PROJECT_ROOT, 'Datos', 'triajes_baja_confianza_revisados.csv')
 MODEL_FILE = os.path.join(ROOT_DIR, 'rna_model.joblib') # Nombre actualizado
 
 def clean_text(text):
@@ -37,12 +38,30 @@ def clean_text(text):
     words = [stemmer.stem(word) for word in words if word not in stopwords_spanish]
     return ' '.join(words)
 
+
+def _cargar_dataset_combinado():
+    df = pd.read_csv(CSV_PATH, encoding='latin1', sep=';')
+    if os.path.exists(EXTRA_CSV_PATH):
+        try:
+            df_extra = pd.read_csv(
+                EXTRA_CSV_PATH, encoding='latin1', engine='python',
+                on_bad_lines='skip', sep=';',
+            )
+            if not df_extra.empty and {'symptoms_text', 'specialty'}.issubset(df_extra.columns):
+                df_extra = df_extra[['symptoms_text', 'specialty']].dropna()
+                df = pd.concat([df, df_extra], ignore_index=True)
+                print(f"Añadidos {len(df_extra)} registros revisados desde {os.path.basename(EXTRA_CSV_PATH)}.")
+        except Exception as error:
+            print(f"Aviso: no se pudieron leer los datos revisados: {error}")
+    return df
+
+
 def ejecutar_entrenamiento():
     if not os.path.exists(CSV_PATH):
         print(f"Error: No se encuentra el archivo en {CSV_PATH}")
         return
 
-    df = pd.read_csv(CSV_PATH, encoding='latin1', sep=';')
+    df = _cargar_dataset_combinado()
     
     print("\nPreprocesando textos...")
     X = df["symptoms_text"].apply(clean_text).values

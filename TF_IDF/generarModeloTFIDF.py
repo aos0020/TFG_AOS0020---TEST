@@ -28,7 +28,25 @@ except LookupError:
     nltk.download('stopwords', quiet=True)
 
 CSV_PATH = os.path.join(PROJECT_ROOT, 'Datos', 'Dataset.5000.Registros.Marz.ID.Sintomas.Enfermedad.Especialidad.csv')
+EXTRA_CSV_PATH = os.path.join(PROJECT_ROOT, 'Datos', 'triajes_baja_confianza_revisados.csv')
 MODEL_FILE = os.path.join(ROOT_DIR, 'tfidf_model.joblib')
+
+
+def _cargar_dataset_combinado():
+    df = pd.read_csv(CSV_PATH, encoding='latin1', engine='python', on_bad_lines='skip', sep=';')
+    if os.path.exists(EXTRA_CSV_PATH):
+        try:
+            df_extra = pd.read_csv(
+                EXTRA_CSV_PATH, encoding='latin1', engine='python',
+                on_bad_lines='skip', sep=';',
+            )
+            if not df_extra.empty and {'symptoms_text', 'specialty'}.issubset(df_extra.columns):
+                df_extra = df_extra[['symptoms_text', 'specialty']].dropna()
+                df = pd.concat([df, df_extra], ignore_index=True)
+                print(f"Añadidos {len(df_extra)} registros revisados desde {os.path.basename(EXTRA_CSV_PATH)}.")
+        except Exception as error:
+            print(f"Aviso: no se pudieron leer los datos revisados: {error}")
+    return df
 
 
 def generar_modelo_tfidf():
@@ -36,7 +54,7 @@ def generar_modelo_tfidf():
     if not os.path.exists(CSV_PATH):
         raise FileNotFoundError(f"No se encontró el archivo de datos: {CSV_PATH}")
 
-    df = pd.read_csv(CSV_PATH, encoding='latin1', engine='python', on_bad_lines='skip', sep=';')
+    df = _cargar_dataset_combinado()
     df['symptoms_processed'] = df['symptoms_text'].apply(preprocess_text)
 
     tfidf_vectorizer = TfidfVectorizer(max_features=5000)

@@ -32,6 +32,18 @@ DATOS_REVISADOS_PATH = os.path.join(
 )
 ESPECIALIDAD_POR_DEFECTO = "MEDICINA GENERAL"
 
+LOG_HEADER = [
+    "timestamp",
+    "clasificador",
+    "rondas_realizadas",
+    "umbral_confianza",
+    "sintomas",
+    "especialidad_sugerida_modelo",
+    "confianza_modelo",
+    "especialidad_elegida_paciente",
+    "motivo",
+]
+
 CONFIG_POR_DEFECTO = {
     "umbral_confianza": 60.0,
     "rondas_extra": 1,
@@ -171,6 +183,9 @@ CLASIFICADORES = {
     "RNA": clasificar_rna,
 }
 
+MODO_TODOS = "Todos (recomendado)"
+OPCIONES_CLASIFICADOR = [MODO_TODOS] + list(CLASIFICADORES.keys())
+
 
 def ejecutar_clasificador(nombre, sintomas):
     funcion = CLASIFICADORES[nombre]
@@ -179,6 +194,29 @@ def ejecutar_clasificador(nombre, sintomas):
         return especialidad, float(confianza), None
     except Exception as error:
         return None, None, str(error)
+
+
+def ejecutar_todos_clasificadores(sintomas):
+    resultados = {}
+    for nombre in CLASIFICADORES:
+        especialidad, confianza, error = ejecutar_clasificador(nombre, sintomas)
+        resultados[nombre] = {
+            "especialidad": especialidad,
+            "confianza": confianza,
+            "error": error,
+        }
+    return resultados
+
+
+def mejor_resultado(resultados):
+    validos = [
+        (n, r) for n, r in resultados.items()
+        if r["error"] is None and r["confianza"] is not None
+    ]
+    if not validos:
+        return None, None, None
+    nombre, datos = max(validos, key=lambda item: item[1]["confianza"])
+    return nombre, datos["especialidad"], datos["confianza"]
 
 
 @st.cache_data
@@ -242,6 +280,36 @@ def ejecutar_script_generador(ruta_script):
         raise RuntimeError(f"Error al ejecutar {os.path.basename(ruta_script)}:\n{salida}")
 
     return resultado.stdout.strip()
+def _asegurar_header_log():
+    if not os.path.exists(LOG_FALLBACK_PATH):
+        with open(LOG_FALLBACK_PATH, "w", newline="", encoding="utf-8") as archivo:
+            writer = csv.writer(archivo, delimiter=";", quoting=csv.QUOTE_MINIMAL)
+            writer.writerow(LOG_HEADER)
+        return
+
+    with open(LOG_FALLBACK_PATH, "r", encoding="utf-8", newline="") as archivo:
+        reader = csv.reader(archivo, delimiter=";")
+        try:
+            cabecera = next(reader)
+        except StopIteration:
+            cabecera = []
+        filas = list(reader)
+
+    if cabecera == LOG_HEADER:
+        return
+
+    if "motivo" not in cabecera:
+        for fila in filas:
+            while len(fila) < len(LOG_HEADER) - 1:
+                fila.append("")
+            fila.append("baja_confianza")
+
+    with open(LOG_FALLBACK_PATH, "w", newline="", encoding="utf-8") as archivo:
+        writer = csv.writer(archivo, delimiter=";", quoting=csv.QUOTE_MINIMAL)
+        writer.writerow(LOG_HEADER)
+        writer.writerows(filas)
+
+
 def registrar_log_fallback(
     sintomas,
     clasificador,
@@ -250,23 +318,13 @@ def registrar_log_fallback(
     especialidad_paciente,
     rondas_realizadas,
     umbral,
+    motivo="baja_confianza",
 ):
     os.makedirs(LOGS_DIR, exist_ok=True)
-    nuevo_archivo = not os.path.exists(LOG_FALLBACK_PATH)
+    _asegurar_header_log()
 
     with open(LOG_FALLBACK_PATH, "a", newline="", encoding="utf-8") as archivo:
         writer = csv.writer(archivo, delimiter=";", quoting=csv.QUOTE_MINIMAL)
-        if nuevo_archivo:
-            writer.writerow([
-                "timestamp",
-                "clasificador",
-                "rondas_realizadas",
-                "umbral_confianza",
-                "sintomas",
-                "especialidad_sugerida_modelo",
-                "confianza_modelo",
-                "especialidad_elegida_paciente",
-            ])
         writer.writerow([
             datetime.now().isoformat(timespec="seconds"),
             clasificador,
@@ -276,6 +334,7 @@ def registrar_log_fallback(
             (especialidad_modelo or "").strip(),
             f"{confianza_modelo:.2f}" if confianza_modelo is not None else "",
             especialidad_paciente.strip().upper(),
+            motivo,
         ])
 
 
@@ -301,6 +360,8 @@ def reset_estado_triaje():
         "triaje_sintomas",
         "triaje_clasificador",
         "triaje_resultado",
+        "triaje_resultados_todos",
+        "triaje_modo",
         "triaje_rondas",
         "texto_voz",
         "texto_voz_extra",
@@ -330,6 +391,10 @@ def mostrar_pagina_triaje():
         st.session_state.triaje_clasificador = "TF-IDF"
     if "triaje_resultado" not in st.session_state:
         st.session_state.triaje_resultado = None
+    if "triaje_resultados_todos" not in st.session_state:
+        st.session_state.triaje_resultados_todos = None
+    if "triaje_modo" not in st.session_state:
+        st.session_state.triaje_modo = MODO_TODOS
     if "triaje_rondas" not in st.session_state:
         st.session_state.triaje_rondas = 0
     if "texto_voz" not in st.session_state:
@@ -345,6 +410,8 @@ def mostrar_pagina_triaje():
         _etapa_fallback(umbral)
     elif etapa == "completado":
         _etapa_completado()
+    elif etapa == "reportar_error":
+        _etapa_reportar_error(umbral)
 
 
 def _etapa_inicio(umbral, rondas_extra):
@@ -368,7 +435,12 @@ def _etapa_inicio(umbral, rondas_extra):
 
     opcion_clasificador = st.selectbox(
         "Selecciona el motor de IA:",
-        list(CLASIFICADORES.keys()),
+        OPCIONES_CLASIFICADOR,
+        index=0,
+        help=(
+            "Por defecto se ejecutan los cuatro modelos y se elige el de mayor "
+            "confianza. Puedes forzar un modelo concreto si lo prefieres."
+        ),
     )
 
     if st.button("Realizar triaje", use_container_width=True):
@@ -376,17 +448,37 @@ def _etapa_inicio(umbral, rondas_extra):
             st.warning("Por favor, introduce o graba algún síntoma.")
             return
 
-        with st.spinner("Analizando cuadro clínico..."):
-            especialidad, confianza, error = ejecutar_clasificador(
-                opcion_clasificador, input_sintomas
-            )
+        if opcion_clasificador == MODO_TODOS:
+            with st.spinner("Analizando cuadro clínico con todos los modelos..."):
+                resultados = ejecutar_todos_clasificadores(input_sintomas)
 
-        if error:
-            st.error(f"Error: {error}")
-            return
+            nombre_mejor, especialidad, confianza = mejor_resultado(resultados)
+            if nombre_mejor is None:
+                errores = "; ".join(
+                    f"{n}: {r['error']}" for n, r in resultados.items() if r["error"]
+                )
+                st.error(
+                    f"Ningún clasificador devolvió un resultado válido. {errores}"
+                )
+                return
+
+            st.session_state.triaje_resultados_todos = resultados
+            st.session_state.triaje_clasificador = nombre_mejor
+        else:
+            with st.spinner("Analizando cuadro clínico..."):
+                especialidad, confianza, error = ejecutar_clasificador(
+                    opcion_clasificador, input_sintomas
+                )
+
+            if error:
+                st.error(f"Error: {error}")
+                return
+
+            st.session_state.triaje_resultados_todos = None
+            st.session_state.triaje_clasificador = opcion_clasificador
 
         st.session_state.triaje_sintomas = input_sintomas.strip()
-        st.session_state.triaje_clasificador = opcion_clasificador
+        st.session_state.triaje_modo = opcion_clasificador
         st.session_state.triaje_resultado = (especialidad, confianza)
         st.session_state.triaje_rondas = 0
 
@@ -464,6 +556,7 @@ def _etapa_ampliando(umbral, rondas_extra):
 
             st.session_state.triaje_sintomas = sintomas_combinados
             st.session_state.triaje_resultado = (nueva_esp, nueva_conf)
+            st.session_state.triaje_resultados_todos = None
             st.session_state.triaje_rondas = rondas_realizadas + 1
             st.session_state.texto_voz_extra = ""
 
@@ -564,32 +657,153 @@ def _finalizar_fallback(especialidad_paciente, especialidad_modelo, confianza_mo
     )
     st.session_state.triaje_etapa = "completado"
     st.session_state.triaje_fallback = True
+    st.session_state.triaje_fallback_motivo = "baja_confianza"
     st.rerun()
 
 
 def _etapa_completado():
     especialidad, confianza = st.session_state.triaje_resultado
     fue_fallback = st.session_state.get("triaje_fallback", False)
+    motivo_fallback = st.session_state.get("triaje_fallback_motivo", "baja_confianza")
 
     st.success("Resultado del análisis:")
     if fue_fallback:
-        st.info(
-            f"Especialidad asignada (selección del paciente): **{especialidad}**.\n\n"
-            f"La sugerencia del modelo {st.session_state.triaje_clasificador} no "
-            f"alcanzó el umbral de confianza. La fila se ha registrado en "
-            f"`{os.path.relpath(LOG_FALLBACK_PATH, BASE_DIR)}`."
-        )
+        if motivo_fallback == "reporte_error":
+            mensaje = (
+                f"Especialidad asignada tras reporte de error: **{especialidad}**.\n\n"
+                f"La sugerencia del modelo {st.session_state.triaje_clasificador} fue "
+                f"marcada como incorrecta y la corrección se ha registrado en "
+                f"`{os.path.relpath(LOG_FALLBACK_PATH, BASE_DIR)}`."
+            )
+        else:
+            mensaje = (
+                f"Especialidad asignada (selección del paciente): **{especialidad}**.\n\n"
+                f"La sugerencia del modelo {st.session_state.triaje_clasificador} no "
+                f"alcanzó el umbral de confianza. La fila se ha registrado en "
+                f"`{os.path.relpath(LOG_FALLBACK_PATH, BASE_DIR)}`."
+            )
+        st.info(mensaje)
     else:
         st.info(
             f"Especialidad sugerida ({st.session_state.triaje_clasificador}): "
             f"**{especialidad}** (Confianza: {confianza:.2f}%)"
         )
 
-    if st.button("Realizar otro triaje", use_container_width=True):
-        if "triaje_fallback" in st.session_state:
-            del st.session_state["triaje_fallback"]
-        reset_estado_triaje()
-        st.rerun()
+    resultados_todos = st.session_state.get("triaje_resultados_todos")
+    if resultados_todos:
+        st.markdown("**Resultados de todos los modelos:**")
+        ganador = st.session_state.triaje_clasificador
+        filas_tabla = []
+        for nombre, r in resultados_todos.items():
+            if r["error"]:
+                estado = "Error"
+                especialidad_celda = "—"
+                confianza_celda = "—"
+            else:
+                estado = "★ Elegido" if nombre == ganador else "OK"
+                especialidad_celda = r["especialidad"]
+                confianza_celda = (
+                    f"{r['confianza']:.2f}" if r["confianza"] is not None else "—"
+                )
+            filas_tabla.append({
+                "Modelo": nombre,
+                "Especialidad": especialidad_celda,
+                "Confianza (%)": confianza_celda,
+                "Estado": estado,
+            })
+        df_resultados = pd.DataFrame(filas_tabla)
+        st.dataframe(df_resultados, hide_index=True, use_container_width=True)
+
+    col_nuevo, col_error = st.columns(2)
+    with col_nuevo:
+        if st.button("Realizar otro triaje", use_container_width=True):
+            for clave in ("triaje_fallback", "triaje_fallback_motivo"):
+                if clave in st.session_state:
+                    del st.session_state[clave]
+            reset_estado_triaje()
+            st.rerun()
+    with col_error:
+        if not fue_fallback:
+            if st.button(
+                "Reportar error",
+                use_container_width=True,
+                key="btn_reportar_error",
+                help="Indica que la especialidad sugerida no es correcta.",
+            ):
+                st.session_state.triaje_etapa = "reportar_error"
+                st.rerun()
+
+
+def _etapa_reportar_error(umbral):
+    especialidad_modelo, confianza_modelo = st.session_state.triaje_resultado
+
+    st.warning(
+        f"Has indicado que el resultado del modelo "
+        f"**{st.session_state.triaje_clasificador}** no es correcto: "
+        f"**{especialidad_modelo}** "
+        f"({confianza_modelo:.2f}% de confianza)."
+    )
+    st.markdown("**Síntomas registrados:**")
+    st.code(st.session_state.triaje_sintomas, language="text")
+
+    st.subheader("Indica la especialidad correcta")
+
+    df = cargar_dataset()
+    especialidades = obtener_especialidades(df)
+    if ESPECIALIDAD_POR_DEFECTO not in especialidades:
+        especialidades = [ESPECIALIDAD_POR_DEFECTO] + especialidades
+
+    indice_defecto = (
+        especialidades.index(ESPECIALIDAD_POR_DEFECTO)
+        if ESPECIALIDAD_POR_DEFECTO in especialidades
+        else 0
+    )
+    seleccion = st.selectbox(
+        "Especialidad correcta según el paciente",
+        especialidades,
+        index=indice_defecto,
+        key="reporte_error_especialidad",
+    )
+
+    col_enviar, col_cancelar = st.columns(2)
+    with col_enviar:
+        if st.button(
+            "Enviar reporte de error",
+            use_container_width=True,
+            key="btn_enviar_reporte_error",
+        ):
+            try:
+                registrar_log_fallback(
+                    sintomas=st.session_state.triaje_sintomas,
+                    clasificador=st.session_state.triaje_clasificador,
+                    especialidad_modelo=especialidad_modelo,
+                    confianza_modelo=confianza_modelo,
+                    especialidad_paciente=seleccion,
+                    rondas_realizadas=st.session_state.triaje_rondas,
+                    umbral=umbral,
+                    motivo="reporte_error",
+                )
+            except OSError as error:
+                st.error(f"No se pudo escribir el log: {error}")
+                return
+
+            st.session_state.triaje_resultado = (
+                seleccion.upper(),
+                confianza_modelo if confianza_modelo is not None else 0.0,
+            )
+            st.session_state.triaje_fallback = True
+            st.session_state.triaje_fallback_motivo = "reporte_error"
+            st.session_state.triaje_etapa = "completado"
+            st.rerun()
+
+    with col_cancelar:
+        if st.button(
+            "Cancelar",
+            use_container_width=True,
+            key="btn_cancelar_reporte_error",
+        ):
+            st.session_state.triaje_etapa = "completado"
+            st.rerun()
 
 
 def mostrar_seccion_configuracion():
@@ -631,9 +845,9 @@ def mostrar_seccion_configuracion():
 
 
 def mostrar_seccion_logs():
-    st.subheader("Registro de triajes de baja confianza")
+    st.subheader("Registro de triajes (baja confianza y reportes de error)")
     if not os.path.exists(LOG_FALLBACK_PATH):
-        st.info("Todavía no hay entradas en el log de fallback.")
+        st.info("Todavía no hay entradas en el log.")
         return
 
     try:
@@ -661,6 +875,8 @@ def mostrar_seccion_logs():
         especialidad_registrada = str(fila.get("especialidad_elegida_paciente", "")).strip().upper()
         timestamp = str(fila.get("timestamp", ""))
         clasificador = str(fila.get("clasificador", ""))
+        motivo = str(fila.get("motivo", "baja_confianza")).strip() or "baja_confianza"
+        etiqueta_motivo = "reporte de error" if motivo == "reporte_error" else "baja confianza"
 
         opciones = list(especialidades)
         if especialidad_registrada and especialidad_registrada not in opciones:
@@ -672,7 +888,7 @@ def mostrar_seccion_logs():
         )
 
         with st.container(border=True):
-            st.markdown(f"**{timestamp}** · _{clasificador}_")
+            st.markdown(f"**{timestamp}** · _{clasificador}_ · `{etiqueta_motivo}`")
             st.text_area(
                 "Síntomas",
                 value=sintomas,
@@ -752,6 +968,10 @@ def mostrar_pagina_administracion():
 
     st.divider()
     st.subheader("Regenerar modelos")
+    st.caption(
+        f"Los modelos se entrenan combinando el dataset principal con los registros de "
+        f"`{os.path.relpath(DATOS_REVISADOS_PATH, BASE_DIR)}`."
+    )
 
     script_paths = {
         "TF-IDF": os.path.join(BASE_DIR, "TF_IDF", "generarModeloTFIDF.py"),
@@ -760,6 +980,30 @@ def mostrar_pagina_administracion():
         "RNA": os.path.join(BASE_DIR, "RNA", "generarModeloRNA.py"),
     }
 
+    if st.button("Regenerar todos los modelos", use_container_width=True, type="primary"):
+        progreso = st.progress(0.0, text="Iniciando regeneración…")
+        errores = []
+        total = len(script_paths)
+        for indice, (nombre, ruta) in enumerate(script_paths.items(), start=1):
+            progreso.progress(
+                (indice - 1) / total,
+                text=f"Regenerando modelo {nombre} ({indice}/{total})…",
+            )
+            try:
+                salida = ejecutar_script_generador(ruta)
+                with st.expander(f"Salida de {nombre}", expanded=False):
+                    st.code(salida or "(sin salida)", language="text")
+            except Exception as e:
+                errores.append((nombre, str(e)))
+        progreso.progress(1.0, text="Regeneración completada.")
+
+        if errores:
+            for nombre, mensaje in errores:
+                st.error(f"No se pudo regenerar {nombre}: {mensaje}")
+        else:
+            st.success("Los 4 modelos se han regenerado correctamente.")
+
+    st.markdown("**Regenerar individualmente:**")
     col1, col2 = st.columns(2)
     acciones = [
         ("TF-IDF", script_paths["TF-IDF"], col1),
