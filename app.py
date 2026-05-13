@@ -27,6 +27,9 @@ DATASET_PATH = os.path.join(
 CONFIG_PATH = os.path.join(BASE_DIR, "config.json")
 LOGS_DIR = os.path.join(BASE_DIR, "logs")
 LOG_FALLBACK_PATH = os.path.join(LOGS_DIR, "triaje_fallback_log.csv")
+DATOS_REVISADOS_PATH = os.path.join(
+    BASE_DIR, "Datos", "triajes_baja_confianza_revisados.csv"
+)
 ESPECIALIDAD_POR_DEFECTO = "MEDICINA GENERAL"
 
 CONFIG_POR_DEFECTO = {
@@ -276,6 +279,22 @@ def registrar_log_fallback(
         ])
 
 
+def agregar_a_datos_revisados(sintomas, especialidad):
+    sintomas_limpios = sintomas.strip()
+    especialidad_limpia = especialidad.strip().upper()
+    if not sintomas_limpios or not especialidad_limpia:
+        raise ValueError("Síntomas y especialidad son obligatorios.")
+
+    os.makedirs(os.path.dirname(DATOS_REVISADOS_PATH), exist_ok=True)
+    nuevo_archivo = not os.path.exists(DATOS_REVISADOS_PATH)
+
+    with open(DATOS_REVISADOS_PATH, "a", newline="", encoding="latin1", errors="replace") as archivo:
+        writer = csv.writer(archivo, delimiter=";", quoting=csv.QUOTE_MINIMAL)
+        if nuevo_archivo:
+            writer.writerow(["symptoms_text", "specialty"])
+        writer.writerow([sintomas_limpios, especialidad_limpia])
+
+
 def reset_estado_triaje():
     for clave in (
         "triaje_etapa",
@@ -480,17 +499,19 @@ def _etapa_fallback(umbral):
     if ESPECIALIDAD_POR_DEFECTO not in especialidades:
         especialidades = [ESPECIALIDAD_POR_DEFECTO] + especialidades
 
+    especialidad_sugerida = (especialidad_modelo or ESPECIALIDAD_POR_DEFECTO).strip().upper()
+
     col_general, col_seleccion = st.columns(2)
 
     with col_general:
-        st.markdown(f"**Opción 1:** asignar **{ESPECIALIDAD_POR_DEFECTO}**.")
+        st.markdown(f"**Opción 1:** aceptar la sugerencia del sistema: **{especialidad_sugerida}**.")
         if st.button(
-            f"Aceptar {ESPECIALIDAD_POR_DEFECTO}",
+            f"Aceptar {especialidad_sugerida}",
             use_container_width=True,
-            key="btn_medicina_general",
+            key="btn_sugerencia_modelo",
         ):
             _finalizar_fallback(
-                ESPECIALIDAD_POR_DEFECTO,
+                especialidad_sugerida,
                 especialidad_modelo,
                 confianza_modelo,
                 umbral,
@@ -498,9 +519,15 @@ def _etapa_fallback(umbral):
 
     with col_seleccion:
         st.markdown("**Opción 2:** elegir manualmente otra especialidad.")
+        indice_defecto = (
+            especialidades.index(ESPECIALIDAD_POR_DEFECTO)
+            if ESPECIALIDAD_POR_DEFECTO in especialidades
+            else 0
+        )
         seleccion = st.selectbox(
             "Especialidad sugerida por el paciente",
             especialidades,
+            index=indice_defecto,
             key="seleccion_paciente",
         )
         if st.button(
@@ -615,8 +642,64 @@ def mostrar_seccion_logs():
         st.error(f"No se pudo leer el log: {error}")
         return
 
-    st.dataframe(df_log.tail(20), use_container_width=True)
-    st.caption(f"Ruta del log: `{os.path.relpath(LOG_FALLBACK_PATH, BASE_DIR)}`")
+    if df_log.empty:
+        st.info("Todavía no hay entradas en el log de fallback.")
+        return
+
+    df_dataset = cargar_dataset()
+    especialidades = obtener_especialidades(df_dataset)
+    if ESPECIALIDAD_POR_DEFECTO not in especialidades:
+        especialidades = [ESPECIALIDAD_POR_DEFECTO] + especialidades
+
+    st.caption(
+        f"Log: `{os.path.relpath(LOG_FALLBACK_PATH, BASE_DIR)}` · "
+        f"Revisados: `{os.path.relpath(DATOS_REVISADOS_PATH, BASE_DIR)}`"
+    )
+
+    for idx, fila in df_log.iloc[::-1].iterrows():
+        sintomas = str(fila.get("sintomas", "")).strip()
+        especialidad_registrada = str(fila.get("especialidad_elegida_paciente", "")).strip().upper()
+        timestamp = str(fila.get("timestamp", ""))
+        clasificador = str(fila.get("clasificador", ""))
+
+        opciones = list(especialidades)
+        if especialidad_registrada and especialidad_registrada not in opciones:
+            opciones = [especialidad_registrada] + opciones
+        indice_defecto = (
+            opciones.index(especialidad_registrada)
+            if especialidad_registrada in opciones
+            else 0
+        )
+
+        with st.container(border=True):
+            st.markdown(f"**{timestamp}** · _{clasificador}_")
+            st.text_area(
+                "Síntomas",
+                value=sintomas,
+                height=80,
+                disabled=True,
+                key=f"log_sintomas_{idx}",
+                label_visibility="collapsed",
+            )
+
+            col_esp, col_btn = st.columns([3, 1])
+            with col_esp:
+                especialidad_elegida = st.selectbox(
+                    "Especialidad",
+                    opciones,
+                    index=indice_defecto,
+                    key=f"log_especialidad_{idx}",
+                )
+            with col_btn:
+                st.write("")
+                if st.button("Añadir a datos", key=f"log_add_{idx}", use_container_width=True):
+                    try:
+                        agregar_a_datos_revisados(sintomas, especialidad_elegida)
+                        st.success(
+                            f"Añadido a {os.path.basename(DATOS_REVISADOS_PATH)}."
+                        )
+                    except (OSError, ValueError) as error:
+                        st.error(f"No se pudo añadir: {error}")
 
 
 def mostrar_pagina_administracion():
@@ -695,17 +778,6 @@ def mostrar_pagina_administracion():
                         st.code(salida, language="text")
                 except Exception as e:
                     st.error(f"No se pudo regenerar {nombre}: {e}")
-
-    st.divider()
-    st.subheader("Últimos registros")
-
-    df_actualizado = cargar_dataset()
-    if df_actualizado.empty:
-        st.info("Todavía no hay registros en el dataset.")
-    else:
-        columnas = ["record_id", "symptoms_text", "disease", "specialty"]
-        columnas_visibles = [col for col in columnas if col in df_actualizado.columns]
-        st.dataframe(df_actualizado[columnas_visibles].tail(10), use_container_width=True)
 
     st.divider()
     mostrar_seccion_logs()
