@@ -1,0 +1,2 @@
+timestamp;clasificador;rondas_realizadas;umbral_confianza;sintomas;especialidad_sugerida_modelo;confianza_modelo;especialidad_elegida_paciente
+2026-05-13T05:02:50;SVM;1;60.00;dolor. dolor de cabeza y nauseas;MEDICINA INTERNA;40.07;MEDICINA GENERAL

@@ -3,7 +3,7 @@
 \newacronym{pln}{PLN}{Procesamiento de Lenguaje Natural}
 \newacronym{rna}{RNA}{Red Neuronal Artificial}
 
-% --- Glosario ---
+% --- Glosario ConceptTeorico
 \newglossaryentry{mlp}{
     name=MLP,
     description={Perceptrón Multicapa (\textit{Multi-layer Perceptron}). Red neuronal artificial feedforward que captura relaciones no lineales mediante capas ocultas y entrenamiento por retropropagación}
