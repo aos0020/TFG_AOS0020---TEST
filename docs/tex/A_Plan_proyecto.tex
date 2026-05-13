@@ -6,7 +6,7 @@ La gestión de este proyecto software ha seguido una metodología ágil, organiz
 
 El seguimiento de tareas se ha realizado mediante un tablero Kanban gestionado a través de la plataforma \textit{Zube.io} \cite{zube_io}, integrada con el repositorio de GitHub. Las tarjetas se organizan en los estados propios de Zube.io: \textit{Inbox} (entrada por defecto), \textit{Backlog}, \textit{Ready}, \textit{In Progress}, \textit{In Review} y \textit{Done}, permitiendo un control visual del avance de cada Sprint. No se han utilizado Epics; en su lugar, los Sprints agrupan directamente las tareas relacionadas con cada componente del sistema.
 
-El proyecto se articula en torno a cuatro bloques técnicos de modelado ---representación \gls{tfidf}, reducción de dimensionalidad \gls{svd}, clasificación \gls{svm} y una red neuronal como cuarto modelo comparativo--- a los que se añaden las fases de configuración inicial, obtención de datos, desarrollo del frontal de usuario y documentación. La memoria y los anexos se han elaborado de forma paralela al desarrollo.
+El proyecto se articula en torno a cuatro bloques técnicos de modelado ---\gls{tfidf} como línea base, \gls{tfidf} con reducción \gls{svd}, un clasificador \gls{svm} y una \gls{rna} de tipo \gls{mlp}--- a los que se añaden las fases de preparación de datos, desarrollo del frontal de usuario, panel de administración y documentación. La memoria y los anexos se han elaborado de forma paralela al desarrollo.
 
 \section{Planificación temporal}
 
@@ -49,7 +49,7 @@ Sprint paralelo al primero, dedicado a la adquisición de competencia en TeXTStu
 
 \textbf{Periodo:} 26 de febrero de 2026 -- 23 de abril de 2026.
 
-Sprint dedicado a la localización, evaluación y transformación del conjunto de datos clínicos, en línea con el objetivo funcional \textbf{F1}. Las tareas realizadas fueron:
+Sprint dedicado a la localización, evaluación y transformación del conjunto de datos clínicos, en línea con el objetivo funcional de \textbf{preparación de los datos}. Los datos de partida consisten en un CSV con tres columnas: descripción de síntomas, enfermedad asociada y especialidad médica. Las tareas realizadas fueron:
 
 \begin{itemize}
 	\item \textit{Búsqueda de Datasheets:} exploración y evaluación de fuentes de datos clínicos públicas con licencia adecuada para el entrenamiento del clasificador.
@@ -63,14 +63,14 @@ Este sprint supuso la mayor desviación temporal del proyecto, cerrándose con c
 
 \textbf{Periodo:} 1 de abril de 2026 -- 23 de abril de 2026.
 
-Sprint centrado en el desarrollo del primer modelo de clasificación, correspondiente a los objetivos funcionales \textbf{F2} y \textbf{F3}. Se utilizó la librería scikit-learn \cite{scikitlearn_docs} como base para la implementación del \textit{pipeline}. Las tareas realizadas fueron:
+Sprint centrado en el desarrollo del primer clasificador, que actúa como línea base dentro del objetivo funcional de \textbf{clasificación con cuatro modelos}. Se utilizó scikit-learn \cite{scikitlearn_docs} como librería principal. Las tareas realizadas fueron:
 
 \begin{itemize}
 	\item \textit{Preparación del Entorno:} configuración del entorno de desarrollo Python con las dependencias necesarias (scikit-learn, pandas, numpy).
-	\item \textit{Pruebas en Google Colab:} validación inicial del \textit{pipeline} de \gls{nlp} y del vectorizador \gls{tfidf} en un entorno de experimentación rápida.
-	\item \textit{Programación:} implementación completa del \textit{pipeline} de preprocesado (normalización, eliminación de \textit{stopwords}, tokenización, n-gramas) y del clasificador supervisado base.
+	\item \textit{Pruebas en Google Colab:} validación inicial del \textit{pipeline} de \gls{pln} y del vectorizador \gls{tfidf} en un entorno de experimentación rápida.
+	\item \textit{Programación:} implementación completa del \textit{pipeline} de preprocesado (normalización, eliminación de \textit{stopwords}, tokenización y generación de bigramas y trigramas) y del clasificador \gls{tfidf} base.
 	\item \textit{A Python y Streamlit tf\_idf:} integración del script de clasificación \gls{tfidf} con el entorno de ejecución local y primeras pruebas con Streamlit \cite{streamlit_docs}.
-	\item \textit{Separar el módulo que genera el modelo:} refactorización del código para desacoplar la generación y persistencia del modelo de la lógica de predicción, en línea con el objetivo no funcional \textbf{NF1}.
+	\item \textit{Separar el módulo que genera el modelo:} refactorización del código para desacoplar la generación y persistencia del modelo de la lógica de predicción, en línea con el objetivo no funcional de \textbf{modularidad}.
 \end{itemize}
 
 El sprint se cerró un día antes de lo planificado.
@@ -79,10 +79,10 @@ El sprint se cerró un día antes de lo planificado.
 
 \textbf{Periodo:} 21 de abril de 2026 -- 23 de abril de 2026.
 
-Sprint dedicado al desarrollo de la interfaz de usuario con Streamlit \cite{streamlit_docs}, en línea con el objetivo funcional \textbf{F6}:
+Sprint dedicado al desarrollo de la interfaz de usuario con Streamlit \cite{streamlit_docs}, en línea con el objetivo funcional de \textbf{predicción a partir de texto libre}:
 
 \begin{itemize}
-	\item \textit{Creación de app.py:} desarrollo del frontal que permite introducir texto libre con la descripción de síntomas y recibir la categoría médica predicha junto con el indicador de confianza.
+	\item \textit{Creación de app.py:} desarrollo del frontal que permite al paciente introducir síntomas por escrito y recibir la especialidad médica predicha junto con el porcentaje de confianza. Se incorporó también la lógica de umbral: cuando la confianza queda por debajo del valor configurado, el sistema solicita al paciente que amplíe la descripción o elige entre las alternativas más probables.
 \end{itemize}
 
 El sprint se cerró con cinco días de antelación respecto a la fecha planificada.
@@ -91,12 +91,12 @@ El sprint se cerró con cinco días de antelación respecto a la fecha planifica
 
 \textbf{Periodo:} 22 de abril de 2026 -- 6 de mayo de 2026.
 
-Sprint dedicado a la integración de \gls{truncatedsvd} sobre la representación \gls{tfidf} mediante scikit-learn \cite{scikitlearn_docs}, correspondiente al objetivo funcional \textbf{F4}. Las tareas realizadas fueron:
+Sprint dedicado al segundo clasificador del objetivo funcional de \textbf{clasificación con cuatro modelos}: \gls{tfidf} combinado con reducción de dimensionalidad mediante \gls{truncatedsvd}, implementado con scikit-learn \cite{scikitlearn_docs}. Las tareas realizadas fueron:
 
 \begin{itemize}
 	\item \textit{Separar generar Módulo:} desacoplamiento del módulo de generación del modelo SVD para garantizar la persistencia de transformaciones y la consistencia entre entrenamiento y predicción.
 	\item \textit{Implementación en el app.py:} integración del modelo \gls{tfidf}+\gls{svd} en el frontal Streamlit, permitiendo seleccionar el modelo de clasificación activo.
-	\item \textit{Creación del Script:} implementación de \gls{truncatedsvd} sobre la matriz \gls{tfidf}, selección del número de componentes mediante validación cruzada y evaluación del rendimiento (F1 macro/micro) frente al modelo base.
+	\item \textit{Creación del Script:} implementación de \gls{truncatedsvd} sobre la matriz \gls{tfidf}, selección del número de componentes mediante validación cruzada y evaluación del rendimiento (F1 macro/micro, tiempo de entrenamiento y consumo de memoria) frente al modelo base.
 \end{itemize}
 
 El sprint se cerró con una semana de retraso sobre lo planificado, debido al tiempo requerido para el análisis sistemático de la varianza explicada en función del número de componentes.
@@ -105,10 +105,10 @@ El sprint se cerró con una semana de retraso sobre lo planificado, debido al ti
 
 \textbf{Periodo:} 26 de abril de 2026 -- 6 de mayo de 2026.
 
-Sprint dedicado a la implementación del clasificador \gls{svm} con scikit-learn \cite{scikitlearn_docs}, correspondiente al objetivo funcional \textbf{F5}. Las tareas realizadas fueron:
+Sprint dedicado al tercer clasificador del objetivo funcional de \textbf{clasificación con cuatro modelos}: un \gls{svm} lineal entrenado con scikit-learn \cite{scikitlearn_docs}. Las tareas realizadas fueron:
 
 \begin{itemize}
-	\item \textit{Creación:} implementación del clasificador \gls{svm} lineal entrenado sobre las representaciones \gls{tfidf} y \gls{tfidf}+\gls{svd}, con búsqueda de hiperparámetros (\texttt{C}, \texttt{class\_weight}) mediante \texttt{GridSearchCV} y validación cruzada estratificada optimizando macro-F1.
+	\item \textit{Creación:} implementación del clasificador \gls{svm} sobre las representaciones \gls{tfidf} y \gls{tfidf}+\gls{svd}, con búsqueda de hiperparámetros (\texttt{C}, \texttt{class\_weight}) mediante \texttt{GridSearchCV} y validación cruzada estratificada optimizando macro-F1.
 	\item \textit{Implementación en el Front End:} integración del modelo \gls{svm} en el frontal Streamlit como opción de clasificación seleccionable.
 	\item \textit{Separar Generar Modelo:} refactorización para desacoplar la generación y persistencia del modelo \gls{svm} del módulo de predicción.
 \end{itemize}
@@ -122,7 +122,7 @@ El sprint se cerró cuatro días antes de la fecha planificada.
 Sprint de larga duración, planificado en paralelo con el desarrollo, que cubre la redacción del cuerpo teórico de la memoria. Las tareas contempladas son:
 
 \begin{itemize}
-	\item \textit{Búsqueda de Teoría en la red:} recopilación y análisis de fuentes bibliográficas sobre \gls{nlp}, clasificación de texto clínico, \gls{tfidf}, \gls{svd} y \gls{svm}.
+	\item \textit{Búsqueda de Teoría en la red:} recopilación y análisis de fuentes bibliográficas sobre \gls{pln}, clasificación de texto clínico, \gls{tfidf}, \gls{svd}, \gls{svm} y \gls{mlp}.
 	\item \textit{Conceptos Teóricos:} redacción del capítulo de fundamentos teóricos de la memoria.
 	\item \textit{Añadir Referencias Teoría:} incorporación y revisión de las referencias bibliográficas al documento.
 	\item \textit{Convertir a \LaTeX:} conversión y maquetación del contenido teórico al formato \LaTeX{} de la plantilla del TFG.
@@ -136,25 +136,25 @@ Sprint de larga duración, planificado en paralelo con el desarrollo, que cubre 
 
 \textbf{Periodo:} 22 de abril de 2026 -- 1 de junio de 2026.
 
-Sprint que extiende el frontal Streamlit \cite{streamlit_docs} con la integración progresiva de los modelos desarrollados y mejoras de usabilidad. Las tareas contempladas son:
+Sprint que extiende el frontal Streamlit \cite{streamlit_docs} con la integración progresiva de los modelos y la mejora de la experiencia de usuario. Las tareas contempladas son:
 
 \begin{itemize}
-	\item \textit{Inclusión TFIDF:} integración del modelo \gls{tfidf} en la interfaz de usuario como opción de clasificación.
+	\item \textit{Inclusión TFIDF:} integración del modelo \gls{tfidf} en la interfaz como opción de clasificación seleccionable.
 	\item \textit{Inclusión SVD:} integración del modelo \gls{tfidf}+\gls{svd} en la interfaz.
 	\item \textit{Inclusión SVM en Front End:} integración del clasificador \gls{svm} en la interfaz.
-	\item \textit{Añadir Síntomas - Especialidad en Front End:} mejora de la interfaz para mostrar la especialidad médica asociada a cada categoría predicha y permitir la entrada guiada de síntomas.
+	\item \textit{Añadir Síntomas - Especialidad en Front End:} mejora de la interfaz para mostrar la especialidad médica asociada a cada predicción, incluyendo el indicador de confianza y la lógica de segunda vuelta cuando la predicción queda por debajo del umbral configurado.
 \end{itemize}
 
 \subsubsection*{Sprint 10 --- Adaptaciones de Código y Nuevas Funcionalidades}
 
 \textbf{Periodo:} 5 de mayo de 2026 -- 1 de junio de 2026.
 
-Sprint que recoge mejoras no previstas en el análisis inicial, incluyendo un cuarto modelo de clasificación basado en red neuronal. Las tareas contempladas son:
+Sprint que incorpora el cuarto clasificador y el panel de administración, completando así los objetivos funcionales de \textbf{clasificación con cuatro modelos} y \textbf{panel de administración}. Las tareas contempladas son:
 
 \begin{itemize}
-	\item \textit{Creación del Módulo Red Neuronal:} implementación de un clasificador basado en red neuronal como cuarto modelo comparativo, añadido a los tres enfoques principales del proyecto (\gls{tfidf}, \gls{svd} y \gls{svm}).
-	\item \textit{Creación Módulo Administrador:} desarrollo de un panel de administración para la gestión del sistema (reentrenamiento de modelos, gestión del catálogo de categorías).
-	\item \textit{Securizar el Módulo Administrador:} implementación de mecanismos de autenticación y control de acceso al panel de administración.
+	\item \textit{Creación del Módulo Red Neuronal:} implementación del cuarto clasificador, una \gls{rna} de tipo \gls{mlp} entrenada con \textit{early stopping} y regularización para evitar sobreajuste. Este modelo completa el conjunto de cuatro enfoques comparados bajo el mismo protocolo de evaluación.
+	\item \textit{Creación Módulo Administrador:} desarrollo del panel de administración con tres herramientas: añadir nuevos pares síntoma-especialidad a un CSV ampliado, revisar y etiquetar el log de consultas no clasificadas con confianza suficiente, y disparar el reentrenamiento de los cuatro modelos con los datos actualizados.
+	\item \textit{Securizar el Módulo Administrador:} implementación de mecanismos de autenticación y control de acceso al panel de administración para restringir su uso al perfil autorizado.
 \end{itemize}
 
 \subsubsection*{Sprint 11 --- Anexos del TFG}
@@ -225,25 +225,25 @@ Aunque el prototipo se desarrolla como TFG sin ánimo de lucro inmediato, se ide
 
 \begin{itemize}
 	\item \textbf{Servicio SaaS para centros de salud:} la aplicación se ofrecería como servicio alojado con tarifas por volumen de consultas clasificadas (p.\,ej., cuota mensual por centro).
-	\item \textbf{Solución \gls{standalone} con soporte:} distribución del sistema empaquetado (p.\,ej., contenedor Docker) con diferentes niveles de soporte técnico y actualización de modelos.
+	\item \textbf{Solución \gls{standalone} con soporte:} distribución del sistema empaquetado (p.\,ej., contenedor Docker) con diferentes niveles de soporte técnico y actualización de modelos con los datos propios de cada centro.
 \end{itemize}
 
 \subsection{Viabilidad legal}
 
-El proyecto se apoya exclusivamente en librerías de código abierto con licencias compatibles entre sí y con el uso académico y comercial:
+El proyecto se apoya exclusivamente en librerías de código abierto con licencias compatibles entre sí y con el uso académico y comercial. Además, al ejecutarse en local sin enviar datos a servicios externos, el sistema es compatible por diseño con los principios de minimización y soberanía del dato del \textbf{Reglamento General de Protección de Datos (RGPD)}.
 
 \tablaSmallSinColores{Licencias de las tecnologías utilizadas}{l l}{licencias}
 {
 	\textbf{Tecnología} & \textbf{Licencia} \\
 }{
-	Python 3.11                      & PSF License (permisiva, uso comercial permitido) \\
+	Python 3.11                                    & PSF License (permisiva, uso comercial permitido) \\
 	scikit-learn, numpy, pandas \cite{scikitlearn_docs} & BSD 3-Clause (permisiva, uso comercial permitido) \\
-	Streamlit \cite{streamlit_docs}  & Apache License 2.0 (permisiva, uso comercial permitido) \\
-	\LaTeX{} / TeXTStudio            & LPPL / GPL (libre para uso académico y personal) \\
-	Zube.io \cite{zube_io}           & Propietaria, plan gratuito para proyectos individuales \\
-	Git                              & GPL v2 (libre) \\
+	Streamlit \cite{streamlit_docs}                & Apache License 2.0 (permisiva, uso comercial permitido) \\
+	\LaTeX{} / TeXTStudio                          & LPPL / GPL (libre para uso académico y personal) \\
+	Zube.io \cite{zube_io}                         & Propietaria, plan gratuito para proyectos individuales \\
+	Git                                            & GPL v2 (libre) \\
 }
 
 La licencia más restrictiva del conjunto es la GPL, presente solo en herramientas de desarrollo que no forman parte del artefacto distribuible. El código fuente de la aplicación puede distribuirse bajo licencia \textbf{MIT}, al no incorporar componentes GPL en el producto final.
 
-En cuanto a los datos, el conjunto utilizado para el entrenamiento procede de fuentes públicas con licencias que permiten su uso en investigación y proyectos académicos. Para un despliegue en producción con datos reales de pacientes, sería necesario cumplir con el \textbf{Reglamento General de Protección de Datos (RGPD)} y la \textbf{Ley Orgánica de Protección de Datos (LOPD-GDD)}, garantizando la minimización de datos, el consentimiento informado y la anonimización de los registros clínicos.
+En cuanto a los datos, el conjunto utilizado para el entrenamiento procede de fuentes públicas con licencias que permiten su uso en investigación y proyectos académicos. Para un despliegue en producción con datos reales de pacientes, sería necesario cumplir adicionalmente con la \textbf{Ley Orgánica de Protección de Datos (LOPD-GDD)}, garantizando el consentimiento informado y la anonimización de los registros clínicos.
