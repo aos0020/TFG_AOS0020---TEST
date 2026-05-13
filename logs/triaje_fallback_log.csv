@@ -1,2 +1,3 @@
 timestamp;clasificador;rondas_realizadas;umbral_confianza;sintomas;especialidad_sugerida_modelo;confianza_modelo;especialidad_elegida_paciente
 2026-05-13T05:02:50;SVM;1;60.00;dolor. dolor de cabeza y nauseas;MEDICINA INTERNA;40.07;MEDICINA GENERAL
+2026-05-13T07:29:51;TF-IDF;1;45.00;dolor. dolor fuerte en el pecho;MEDICINA GENERAL;26.14;MEDICINA GENERAL
