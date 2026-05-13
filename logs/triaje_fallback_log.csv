@@ -3,3 +3,4 @@ timestamp;clasificador;rondas_realizadas;umbral_confianza;sintomas;especialidad_
 2026-05-13T07:29:51;TF-IDF;1;45.00;dolor. dolor fuerte en el pecho;MEDICINA GENERAL;26.14;MEDICINA GENERAL
 2026-05-13T07:38:53;TF-IDF;1;45.00;dolor. dolor en una pierna;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA;29.32;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
 2026-05-13T07:43:56;TF-IDF;1;45.00;dolor en una pierna. dolor en una pierna;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA;31.60;TRAUMATOLOGÍA Y CIRUGÍA ORTOPÉDICA
+2026-05-13T16:46:06;TF-IDF;1;45.00;dolor. dolor de cabeza;MEDICINA INTERNA;34.79;MEDICINA INTERNA

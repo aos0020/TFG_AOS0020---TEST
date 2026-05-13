@@ -3,6 +3,18 @@
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Relaciones lógicas entre entidades del sistema}}{32}{figure.Alph3.1}%
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Diagrama arquitectónico de módulos y dependencias}}{33}{figure.Alph3.2}%
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Arquitectura de despliegue del prototipo}}{35}{figure.Alph3.3}%
+\contentsline {figure}{\numberline {C.4}{\ignorespaces Diagrama de secuencia - Triaje básico de síntomas}}{37}{figure.Alph3.4}%
+\contentsline {figure}{\numberline {C.5}{\ignorespaces Diagrama de secuencia - Añadir síntoma desde administración}}{38}{figure.Alph3.5}%
+\contentsline {figure}{\numberline {C.6}{\ignorespaces Diagrama de secuencia - Regeneración de un modelo}}{39}{figure.Alph3.6}%
+\contentsline {figure}{\numberline {C.7}{\ignorespaces Diagrama de secuencia - Acceso al panel de administración}}{40}{figure.Alph3.7}%
 \addvspace {10pt}
 \addvspace {10pt}
+\contentsline {figure}{\numberline {E.1}{\ignorespaces Pantalla principal del paciente}}{60}{figure.Alph5.1}%
+\contentsline {figure}{\numberline {E.2}{\ignorespaces Ampliación de síntomas tras una predicción de baja confianza}}{62}{figure.Alph5.2}%
+\contentsline {figure}{\numberline {E.3}{\ignorespaces Selección manual de especialidad tras agotar las rondas}}{63}{figure.Alph5.3}%
+\contentsline {figure}{\numberline {E.4}{\ignorespaces Configuración del umbral de confianza y de las rondas de ampliación}}{64}{figure.Alph5.4}%
+\contentsline {figure}{\numberline {E.5}{\ignorespaces Revisión y reasignación manual de casos de baja confianza}}{65}{figure.Alph5.5}%
 \addvspace {10pt}

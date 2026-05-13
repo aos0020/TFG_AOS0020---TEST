@@ -6,12 +6,25 @@
   {IRPF}, 2026.
 \newblock [Internet; consultado mayo-2026].
 
+\bibitem{streamlit_mic_recorder}
+R.~Bapt.
+\newblock streamlit-mic-recorder: Streamlit component for audio recording and
+  speech-to-text.
+\newblock \url{https://pypi.org/project/streamlit-mic-recorder/}, 2024.
+\newblock [Internet; consultado 13-mayo-2026].
+
 \bibitem{boe2023_convenio_informatica}
 {BOE}.
 \newblock {XVIII Convenio Colectivo Estatal de Empresas de Consultoría,
   Tecnologías de la Información y Estudios de Mercado y de la Opinión
   Pública}, 2023.
 \newblock [Internet; consultado mayo-2026].
+
+\bibitem{github_official}
+{GitHub, Inc.}
+\newblock Github: Let's build from here.
+\newblock \url{https://github.com/}, 2026.
+\newblock [Internet; consultado 13-mayo-2026].
 
 \bibitem{scikitlearn_docs}
 {scikit-learn developers}.
@@ -22,6 +35,12 @@
 {Seguridad Social}.
 \newblock Bases y tipos de cotización 2026, 2026.
 \newblock [Internet; consultado mayo-2026].
+
+\bibitem{streamlit_official}
+{Snowflake Inc.}
+\newblock Streamlit: A faster way to build and share data apps.
+\newblock \url{https://streamlit.io/}, 2026.
+\newblock [Internet; consultado 13-mayo-2026].
 
 \bibitem{streamlit_docs}
 {Streamlit Inc.}
