@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.2.18)  13 MAY 2026 17:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.2.18)  14 MAY 2026 15:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -969,8 +969,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks48
 \@floatcapt=\box69
 )
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 39
-5.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 40
+6.
 
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -987,33 +987,33 @@ LaTeX Info: Redefining \% on input line 16.
 /E_Manual_usuario.aux) (tex/F_ODS.aux))
 \openout1 = `anexos.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 395.
-LaTeX Font Info:    ... okay on input line 395.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 395.
-LaTeX Font Info:    ... okay on input line 395.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 395.
-LaTeX Font Info:    ... okay on input line 395.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 395.
-LaTeX Font Info:    ... okay on input line 395.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 395.
-LaTeX Font Info:    ... okay on input line 395.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 395.
-LaTeX Font Info:    ... okay on input line 395.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 395.
-LaTeX Font Info:    ... okay on input line 395.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 395.
-LaTeX Font Info:    ... okay on input line 395.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 395.
-LaTeX Font Info:    ... okay on input line 395.
-LaTeX Info: Redefining \. on input line 395.
-LaTeX Info: Redefining \% on input line 395.
-LaTeX Info: Redefining \microtypecontext on input line 395.
-Package microtype Info: Applying patch `item' on input line 395.
-Package microtype Info: Applying patch `toc' on input line 395.
-Package microtype Info: Applying patch `eqnum' on input line 395.
-Package microtype Info: Applying patch `footnote' on input line 395.
-Package microtype Info: Applying patch `verbatim' on input line 395.
-LaTeX Info: Redefining \microtypesetup on input line 395.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 406.
+LaTeX Font Info:    ... okay on input line 406.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 406.
+LaTeX Font Info:    ... okay on input line 406.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 406.
+LaTeX Font Info:    ... okay on input line 406.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 406.
+LaTeX Font Info:    ... okay on input line 406.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 406.
+LaTeX Font Info:    ... okay on input line 406.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 406.
+LaTeX Font Info:    ... okay on input line 406.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 406.
+LaTeX Font Info:    ... okay on input line 406.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 406.
+LaTeX Font Info:    ... okay on input line 406.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 406.
+LaTeX Font Info:    ... okay on input line 406.
+LaTeX Info: Redefining \. on input line 406.
+LaTeX Info: Redefining \% on input line 406.
+LaTeX Info: Redefining \microtypecontext on input line 406.
+Package microtype Info: Applying patch `item' on input line 406.
+Package microtype Info: Applying patch `toc' on input line 406.
+Package microtype Info: Applying patch `eqnum' on input line 406.
+Package microtype Info: Applying patch `footnote' on input line 406.
+Package microtype Info: Applying patch `verbatim' on input line 406.
+LaTeX Info: Redefining \microtypesetup on input line 406.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1054,7 +1054,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 s.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring ON on input line 395.
+Package hyperref Info: Link coloring ON on input line 406.
  (anexos.out) (anexos.out)
 \@outlinefile=\write4
 \openout4 = `anexos.out'.
@@ -1062,45 +1062,45 @@ Package hyperref Info: Link coloring ON on input line 395.
 <./img/cabecera.pdf, id=131, 617.67549pt x 135.51413pt>
 File: ./img/cabecera.pdf Graphic file (type pdf)
 <use ./img/cabecera.pdf>
-Package pdftex.def Info: ./img/cabecera.pdf  used on input line 397.
+Package pdftex.def Info: ./img/cabecera.pdf  used on input line 408.
 (pdftex.def)             Requested size: 383.0pt x 84.02823pt.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3
-97.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4
+08.
 
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3
-97.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4
+08.
 
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-397.
+408.
 
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-397.
+408.
 
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 397.
+(Font)              <12> on input line 408.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 397.
+(Font)              <8> on input line 408.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 397.
+(Font)              <6> on input line 408.
 <./img/escudoInfor.pdf, id=132, 618.11432pt x 737.07487pt>
 File: ./img/escudoInfor.pdf Graphic file (type pdf)
 <use ./img/escudoInfor.pdf>
-Package pdftex.def Info: ./img/escudoInfor.pdf  used on input line 397.
+Package pdftex.def Info: ./img/escudoInfor.pdf  used on input line 408.
 (pdftex.def)             Requested size: 76.59883pt x 91.3356pt.
 
-Overfull \hbox (27.54143pt too wide) in paragraph at lines 397--397
+Overfull \hbox (27.54143pt too wide) in paragraph at lines 408--408
 [][][][][][][] $[]$ 
  []
 
@@ -1116,7 +1116,7 @@ ple pdfs with page group included in a single page
 
 ]
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 4
-16.
+27.
  (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1142,16 +1142,16 @@ Package microtype Info: Character `029' is missing
 
 
 ])
-LaTeX Info: Redefining \. on input line 417.
-LaTeX Info: Redefining \% on input line 417.
+LaTeX Info: Redefining \. on input line 428.
+LaTeX Info: Redefining \% on input line 428.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 417.
+(babel)             Reported on input line 428.
 
 
 Class memoir Warning: The material used in the headers is too large
 (15.35403pt) for the given head height (14.5pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 417.
+(in both cases you will find help in the memoir manual). on input line 428.
 
 
 Overfull \vbox (0.85403pt too high) has occurred while \output is active []
@@ -1275,14 +1275,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.Alph1.4
                                                   \__shipout_drop_firstpage_...
 l.246 
       ])
-LaTeX Info: Redefining \. on input line 431.
-LaTeX Info: Redefining \% on input line 431.
+LaTeX Info: Redefining \. on input line 442.
+LaTeX Info: Redefining \% on input line 442.
  [10
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph1.5
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.431 \include{./tex/A_Plan_proyecto}
+l.442 \include{./tex/A_Plan_proyecto}
                                      ]
 \openout2 = `./tex/B_Requisitos.aux'.
 
@@ -1294,249 +1294,278 @@ Ap\'{e}ndice B.
 
 
 ]
-LaTeX Info: Redefining \. on input line 34.
-LaTeX Info: Redefining \% on input line 34.
+LaTeX Info: Redefining \. on input line 37.
+LaTeX Info: Redefining \% on input line 37.
  [12]
-LaTeX Info: Redefining \. on input line 47.
-LaTeX Info: Redefining \% on input line 47.
+LaTeX Info: Redefining \. on input line 53.
+LaTeX Info: Redefining \% on input line 53.
  [13]
-LaTeX Info: Redefining \. on input line 69.
-LaTeX Info: Redefining \% on input line 69.
+LaTeX Info: Redefining \. on input line 67.
+LaTeX Info: Redefining \% on input line 67.
  [14]
-LaTeX Info: Redefining \. on input line 84.
-LaTeX Info: Redefining \% on input line 84.
+LaTeX Info: Redefining \. on input line 79.
+LaTeX Info: Redefining \% on input line 79.
  [15]
-Overfull \hbox (24.79257pt too wide) in paragraph at lines 106--106
+Overfull \hbox (24.79257pt too wide) in paragraph at lines 113--113
 []|\T1/lmr/bx/sc/12 (-20) Responsabilidades| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--106
+Underfull \hbox (badness 10000) in paragraph at lines 120--120
 []|\T1/lmr/bx/sc/12 (+20) Relaciones
  []
 
-
-Overfull \hbox (24.79257pt too wide) in paragraph at lines 131--131
+LaTeX Info: Redefining \. on input line 125.
+LaTeX Info: Redefining \% on input line 125.
+[16]
+Overfull \hbox (24.79257pt too wide) in paragraph at lines 137--137
 []|\T1/lmr/bx/sc/12 (-20) Responsabilidades| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--131
+Underfull \hbox (badness 10000) in paragraph at lines 144--144
 []|\T1/lmr/bx/sc/12 (+20) Relaciones
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 134.
-LaTeX Info: Redefining \% on input line 134.
- [16
+LaTeX Info: Redefining \. on input line 149.
+LaTeX Info: Redefining \% on input line 149.
+ [17
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.1
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.134 
+l.149 
       ]
-Overfull \hbox (24.79257pt too wide) in paragraph at lines 155--155
+Overfull \hbox (24.79257pt too wide) in paragraph at lines 161--161
 []|\T1/lmr/bx/sc/12 (-20) Responsabilidades| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--155
+Underfull \hbox (badness 10000) in paragraph at lines 168--168
 []|\T1/lmr/bx/sc/12 (+20) Relaciones
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 158.
-LaTeX Info: Redefining \% on input line 158.
- [17
+LaTeX Info: Redefining \. on input line 173.
+LaTeX Info: Redefining \% on input line 173.
+ [18
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.2
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.158 
+l.173 
       ]
-Overfull \hbox (24.79257pt too wide) in paragraph at lines 179--179
+Overfull \hbox (24.79257pt too wide) in paragraph at lines 185--185
 []|\T1/lmr/bx/sc/12 (-20) Responsabilidades| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--179
+Underfull \hbox (badness 10000) in paragraph at lines 191--191
 []|\T1/lmr/bx/sc/12 (+20) Relaciones
  []
 
 
-Overfull \hbox (24.79257pt too wide) in paragraph at lines 203--203
-[]|\T1/lmr/bx/sc/12 (-20) Responsabilidades| 
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 203--203
-[]|\T1/lmr/bx/sc/12 (+20) Relaciones
- []
-
-LaTeX Info: Redefining \. on input line 206.
-LaTeX Info: Redefining \% on input line 206.
-[18
+LaTeX Info: Redefining \. on input line 196.
+LaTeX Info: Redefining \% on input line 196.
+ [19
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.3
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.206 
-      
+l.196 
+      ]
+<./img/diagrama_casos_uso_paciente.png, id=839, 1307.88625pt x 332.24126pt>
+File: ./img/diagrama_casos_uso_paciente.png Graphic file (type png)
+<use ./img/diagrama_casos_uso_paciente.png>
+Package pdftex.def Info: ./img/diagrama_casos_uso_paciente.png  used on input l
+ine 201.
+(pdftex.def)             Requested size: 344.69766pt x 87.56189pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
+[]|\T1/lmr/bx/sc/12 (+20) Requisitos
+ []
+
+LaTeX Info: Redefining \. on input line 233.
+LaTeX Info: Redefining \% on input line 233.
+[20
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.4
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.206 
-      ]
-Underfull \hbox (badness 10000) in paragraph at lines 241--241
+l.233 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph2.
+1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.233 
+       <./img/diagrama_casos_uso_paciente.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 243--243
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 244.
-LaTeX Info: Redefining \% on input line 244.
- [19
+LaTeX Info: Redefining \. on input line 261.
+LaTeX Info: Redefining \% on input line 261.
+ [21
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.5
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.244 
+l.261 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 272.
-LaTeX Info: Redefining \% on input line 272.
- [20
+LaTeX Info: Redefining \. on input line 292.
+LaTeX Info: Redefining \% on input line 292.
+ [22
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.6
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.272 
+l.292 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 298--298
-[]|\T1/lmr/bx/sc/12 (+20) Requisitos
- []
+Overfull \vbox (32.88422pt too high) has occurred while \output is active []
 
+LaTeX Info: Redefining \. on input line 292.
+LaTeX Info: Redefining \% on input line 292.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 301.
-LaTeX Info: Redefining \% on input line 301.
- [21
+[23
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.7
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.301 
+l.292 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 329--329
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
+<./img/diagrama_casos_uso_administrador.png, id=874, 763.85374pt x 614.295pt>
+File: ./img/diagrama_casos_uso_administrador.png Graphic file (type png)
+<use ./img/diagrama_casos_uso_administrador.png>
+Package pdftex.def Info: ./img/diagrama_casos_uso_administrador.png  used on in
+put line 321.
+(pdftex.def)             Requested size: 344.69766pt x 277.20818pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Info: Redefining \. on input line 332.
-LaTeX Info: Redefining \% on input line 332.
- [22
+LaTeX Info: Redefining \. on input line 321.
+LaTeX Info: Redefining \% on input line 321.
+[24
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.8
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.332 
-      ]
-Underfull \hbox (badness 10000) in paragraph at lines 359--359
+l.321 ...grama de casos de uso del administrador.}
+                                                  ]
+Underfull \hbox (badness 10000) in paragraph at lines 332--332
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 
-Underfull \hbox (badness 4927) in paragraph at lines 359--359
+Overfull \vbox (125.42885pt too high) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 350.
+LaTeX Info: Redefining \% on input line 350.
+
+[25
+pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph2.
+2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.350 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.9
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.350 
+       <./img/diagrama_casos_uso_administrador.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 360--360
+[]|\T1/lmr/bx/sc/12 (+20) Requisitos
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 388--388
+[]|\T1/lmr/bx/sc/12 (+20) Requisitos
+ []
+
+
+Underfull \hbox (badness 2662) in paragraph at lines 389--390
 []|\T1/lmr/m/n/12 (+20) El ad-mi-nis-tra-dor a�a-de nue-vos pa-res s�ntoma--
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 362.
-LaTeX Info: Redefining \% on input line 362.
- [23
-pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.9
-}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.362 
-      ]
-Underfull \hbox (badness 10000) in paragraph at lines 387--387
-[]|\T1/lmr/bx/sc/12 (+20) Requisitos
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 390.
-LaTeX Info: Redefining \% on input line 390.
- [24
+LaTeX Info: Redefining \. on input line 407.
+LaTeX Info: Redefining \% on input line 407.
+ [26
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.1
 0}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.390 
+l.407 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 416--416
+Underfull \hbox (badness 10000) in paragraph at lines 417--417
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 419.
-LaTeX Info: Redefining \% on input line 419.
- [25
+LaTeX Info: Redefining \. on input line 435.
+LaTeX Info: Redefining \% on input line 435.
+ [27
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.1
 1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.419 
+l.435 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 446--446
+Underfull \hbox (badness 10000) in paragraph at lines 445--445
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
-
+)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 449.
-LaTeX Info: Redefining \% on input line 449.
- [26
+LaTeX Info: Redefining \. on input line 443.
+LaTeX Info: Redefining \% on input line 443.
+ [28
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.1
 2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.449 
-      ])
-LaTeX Info: Redefining \. on input line 432.
-LaTeX Info: Redefining \% on input line 432.
- [27
+l.443 \include{./tex/B_Requisitos}
+                                  ]
+LaTeX Info: Redefining \. on input line 443.
+LaTeX Info: Redefining \% on input line 443.
+ [29
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.1
 3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.432 \include{./tex/B_Requisitos}
+l.443 \include{./tex/B_Requisitos}
                                   ]
 \openout2 = `./tex/C_Diseno.aux'.
 
- (tex/C_Diseno.tex [28
+ (tex/C_Diseno.tex [30
 
 
 
@@ -1546,7 +1575,7 @@ Ap\'{e}ndice C.
 
 Underfull \vbox (badness 3623) has occurred while \output is active []
 
- [29]
+ [31]
 Overfull \hbox (73.5565pt too wide) in paragraph at lines 36--36
 []|\T1/lmtt/m/n/12 Datos/Dataset.5000.Registros..csv| 
  []
@@ -1561,8 +1590,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 37.
 LaTeX Info: Redefining \% on input line 37.
- [30]
-<./img/diagrama_entidades.png, id=893, 570.13pt x 498.86375pt>
+ [32]
+<./img/diagrama_entidades.png, id=958, 570.13pt x 498.86375pt>
 File: ./img/diagrama_entidades.png Graphic file (type png)
 <use ./img/diagrama_entidades.png>
 Package pdftex.def Info: ./img/diagrama_entidades.png  used on input line 44.
@@ -1573,14 +1602,14 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Info: Redefining \. on input line 44.
 LaTeX Info: Redefining \% on input line 44.
-[31
+[33
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph3.1
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.44 ...ones lógicas entre entidades del sistema}
                                                   {0.85}]
-<./img/arquitectura_capas.png, id=901, 1462.46375pt x 583.17876pt>
+<./img/arquitectura_capas.png, id=965, 1462.46375pt x 583.17876pt>
 File: ./img/arquitectura_capas.png Graphic file (type png)
 <use ./img/arquitectura_capas.png>
 Package pdftex.def Info: ./img/arquitectura_capas.png  used on input line 52.
@@ -1591,7 +1620,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Info: Redefining \. on input line 52.
 LaTeX Info: Redefining \% on input line 52.
-[32
+[34
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
 1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1603,7 +1632,7 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 57.
 LaTeX Info: Redefining \. on input line 65.
 LaTeX Info: Redefining \% on input line 65.
- [33
+ [35
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
 2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1618,8 +1647,8 @@ Overfull \hbox (0.25069pt too wide) in paragraph at lines 87--88
 
 LaTeX Info: Redefining \. on input line 89.
 LaTeX Info: Redefining \% on input line 89.
-[34]
-<./img/arquitectura_despliegue.png, id=922, 880.28876pt x 748.7975pt>
+[36]
+<./img/arquitectura_despliegue.png, id=986, 880.28876pt x 748.7975pt>
 File: ./img/arquitectura_despliegue.png Graphic file (type png)
 <use ./img/arquitectura_despliegue.png>
 Package pdftex.def Info: ./img/arquitectura_despliegue.png  used on input line 
@@ -1630,7 +1659,7 @@ Underfull \vbox (badness 2213) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 99.
 LaTeX Info: Redefining \% on input line 99.
- [35
+ [37
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
 3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1638,7 +1667,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
 l.99 \subsection
                 *{Introducir síntomas y obtener especialidad (CU-01, CU-02)} <
 ./img/arquitectura_despliegue.png (PNG copy)>]
-<./img/secuencia_triaje.png, id=933, 908.39375pt x 835.12pt>
+<./img/secuencia_triaje.png, id=998, 908.39375pt x 835.12pt>
 File: ./img/secuencia_triaje.png Graphic file (type png)
 <use ./img/secuencia_triaje.png>
 Package pdftex.def Info: ./img/secuencia_triaje.png  used on input line 113.
@@ -1649,8 +1678,8 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Info: Redefining \. on input line 113.
 LaTeX Info: Redefining \% on input line 113.
-[36]
-<./img/secuencia_anadir_sintoma.png, id=944, 635.37375pt x 761.84625pt>
+[38]
+<./img/secuencia_anadir_sintoma.png, id=1009, 635.37375pt x 761.84625pt>
 File: ./img/secuencia_anadir_sintoma.png Graphic file (type png)
 <use ./img/secuencia_anadir_sintoma.png>
 Package pdftex.def Info: ./img/secuencia_anadir_sintoma.png  used on input line
@@ -1662,7 +1691,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Info: Redefining \. on input line 121.
 LaTeX Info: Redefining \% on input line 121.
-[37
+[39
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
 4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1672,14 +1701,14 @@ l.121 ...- Añadir síntoma desde administración}
 e.png>]
 LaTeX Info: Redefining \. on input line 128.
 LaTeX Info: Redefining \% on input line 128.
- [38
+ [40
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
 5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.128 
        <./img/secuencia_anadir_sintoma.png>]
-<./img/secuencia_reentrenamiento.png, id=957, 1202.4925pt x 827.09pt>
+<./img/secuencia_reentrenamiento.png, id=1021, 1202.4925pt x 827.09pt>
 File: ./img/secuencia_reentrenamiento.png Graphic file (type png)
 <use ./img/secuencia_reentrenamiento.png>
 Package pdftex.def Info: ./img/secuencia_reentrenamiento.png  used on input lin
@@ -1687,14 +1716,14 @@ e 129.
 (pdftex.def)             Requested size: 344.69766pt x 237.08609pt.
 LaTeX Info: Redefining \. on input line 141.
 LaTeX Info: Redefining \% on input line 141.
- [39
+ [41
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
 6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.141 
        <./img/secuencia_reentrenamiento.png>]
-<./img/secuencia_login_admin.png, id=968, 1178.4025pt x 927.465pt>
+<./img/secuencia_login_admin.png, id=1032, 1178.4025pt x 927.465pt>
 File: ./img/secuencia_login_admin.png Graphic file (type png)
 <use ./img/secuencia_login_admin.png>
 Package pdftex.def Info: ./img/secuencia_login_admin.png  used on input line 14
@@ -1702,7 +1731,7 @@ Package pdftex.def Info: ./img/secuencia_login_admin.png  used on input line 14
 (pdftex.def)             Requested size: 344.69766pt x 271.29303pt.
 LaTeX Info: Redefining \. on input line 149.
 LaTeX Info: Redefining \% on input line 149.
- [40
+ [42
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
 7}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1720,25 +1749,25 @@ a-sa-do en \T1/lmtt/m/n/12 streamlit-mic-recorder
  []
 
 )
-LaTeX Info: Redefining \. on input line 433.
-LaTeX Info: Redefining \% on input line 433.
- [41
+LaTeX Info: Redefining \. on input line 444.
+LaTeX Info: Redefining \% on input line 444.
+ [43
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph3.2
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.433 \include{./tex/C_Diseno}
+l.444 \include{./tex/C_Diseno}
                               ]
 \openout2 = `./tex/D_Manual_programador.aux'.
 
- (tex/D_Manual_programador.tex [42
+ (tex/D_Manual_programador.tex [44
 
 
 
 
 ]
 Ap\'{e}ndice D.
-[43]
+[45]
 Overfull \hbox (66.30635pt too wide) in paragraph at lines 18--21
 \T1/lmr/m/n/12 (-20) (\T1/lmtt/m/n/12 Dataset.5000.Registros.Marz.ID.Sintomas.E
 nfermedad.Especialidad.csv\T1/lmr/m/n/12 (-20) )
@@ -1746,13 +1775,13 @@ nfermedad.Especialidad.csv\T1/lmr/m/n/12 (-20) )
 
 LaTeX Info: Redefining \. on input line 35.
 LaTeX Info: Redefining \% on input line 35.
-[44]
+[46]
 LaTeX Info: Redefining \. on input line 69.
 LaTeX Info: Redefining \% on input line 69.
- [45]
+ [47]
 LaTeX Info: Redefining \. on input line 109.
 LaTeX Info: Redefining \% on input line 109.
- [46]
+ [48]
 Overfull \hbox (63.3435pt too wide) in paragraph at lines 139--140
 []\T1/lmr/m/n/12 (-20) Para con-fi-gu-rar-lo de for-ma lo-cal, bas-ta con crear
  el fi-che-ro \T1/lmtt/m/n/12 .streamlit/secrets.toml
@@ -1760,10 +1789,10 @@ Overfull \hbox (63.3435pt too wide) in paragraph at lines 139--140
 
 LaTeX Info: Redefining \. on input line 150.
 LaTeX Info: Redefining \% on input line 150.
-[47]
+[49]
 LaTeX Info: Redefining \. on input line 173.
 LaTeX Info: Redefining \% on input line 173.
- [48]
+ [50]
 Overfull \hbox (13.21683pt too wide) in paragraph at lines 192--193
 []\T1/lmr/m/n/12 (-20) La con-fi-gu-ra-ci�n del com-por-ta-mien-to del tria-je 
 se al-ma-ce-na en \T1/lmtt/m/n/12 config.json\T1/lmr/m/n/12 (-20) ,
@@ -1771,10 +1800,10 @@ se al-ma-ce-na en \T1/lmtt/m/n/12 config.json\T1/lmr/m/n/12 (-20) ,
 
 LaTeX Info: Redefining \. on input line 205.
 LaTeX Info: Redefining \% on input line 205.
-[49]
+[51]
 LaTeX Info: Redefining \. on input line 225.
 LaTeX Info: Redefining \% on input line 225.
- [50]
+ [52]
 Overfull \hbox (49.9031pt too wide) in paragraph at lines 228--229
 \T1/lmr/m/n/12 (-20) pro-ce-so de en-tre-na-mien-to. Los scripts \T1/lmtt/m/n/1
 2 generarModeloSVM.py \T1/lmr/m/n/12 (-20) y \T1/lmtt/m/n/12 generarModeloRNA.p
@@ -1783,29 +1812,29 @@ y
 
 LaTeX Info: Redefining \. on input line 243.
 LaTeX Info: Redefining \% on input line 243.
-[51]
+[53]
 LaTeX Info: Redefining \. on input line 265.
 LaTeX Info: Redefining \% on input line 265.
- [52])
-LaTeX Info: Redefining \. on input line 434.
-LaTeX Info: Redefining \% on input line 434.
- [53]
+ [54])
+LaTeX Info: Redefining \. on input line 445.
+LaTeX Info: Redefining \% on input line 445.
+ [55]
 \openout2 = `./tex/E_Manual_usuario.aux'.
 
- (tex/E_Manual_usuario.tex [54
+ (tex/E_Manual_usuario.tex [56
 
 
 
 
 ]
 Ap\'{e}ndice E.
-[55]
+[57]
 LaTeX Info: Redefining \. on input line 37.
 LaTeX Info: Redefining \% on input line 37.
- [56]
+ [58]
 LaTeX Info: Redefining \. on input line 61.
 LaTeX Info: Redefining \% on input line 61.
- [57]
+ [59]
 Overfull \hbox (68.96716pt too wide) in paragraph at lines 72--73
 []\T1/lmr/m/n/12 (-20) En Li-nux o ma-cOS, el se-gun-do co-man-do se sus-ti-tu-
 ye por \T1/lmtt/m/n/12 source .venv/bin/activate\T1/lmr/m/n/12 (-20) .
@@ -1813,18 +1842,18 @@ ye por \T1/lmtt/m/n/12 source .venv/bin/activate\T1/lmr/m/n/12 (-20) .
 
 LaTeX Info: Redefining \. on input line 94.
 LaTeX Info: Redefining \% on input line 94.
-[58]
+[60]
 LaTeX Info: Redefining \. on input line 121.
 LaTeX Info: Redefining \% on input line 121.
- [59]
-<./img/triaje_inicial.png, id=1126, 813.0375pt x 651.43375pt>
+ [61]
+<./img/triaje_inicial.png, id=1190, 813.0375pt x 651.43375pt>
 File: ./img/triaje_inicial.png Graphic file (type png)
 <use ./img/triaje_inicial.png>
 Package pdftex.def Info: ./img/triaje_inicial.png  used on input line 122.
 (pdftex.def)             Requested size: 344.69766pt x 276.18472pt.
 LaTeX Info: Redefining \. on input line 131.
 LaTeX Info: Redefining \% on input line 131.
- [60
+ [62
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph5.
 1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1833,22 +1862,22 @@ l.131 \end{itemize}
                     <./img/triaje_inicial.png>]
 LaTeX Info: Redefining \. on input line 152.
 LaTeX Info: Redefining \% on input line 152.
- [61]
-<./img/triaje_ampliacion.png, id=1149, 780.9175pt x 678.535pt>
+ [63]
+<./img/triaje_ampliacion.png, id=1212, 780.9175pt x 678.535pt>
 File: ./img/triaje_ampliacion.png Graphic file (type png)
 <use ./img/triaje_ampliacion.png>
 Package pdftex.def Info: ./img/triaje_ampliacion.png  used on input line 153.
 (pdftex.def)             Requested size: 344.69766pt x 299.50885pt.
 LaTeX Info: Redefining \. on input line 162.
 LaTeX Info: Redefining \% on input line 162.
- [62
+ [64
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph5.
 2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.162 \end{itemize}
                     <./img/triaje_ampliacion.png>]
-<./img/triaje_seleccion_manual.png, id=1155, 785.93625pt x 663.47874pt>
+<./img/triaje_seleccion_manual.png, id=1218, 785.93625pt x 663.47874pt>
 File: ./img/triaje_seleccion_manual.png Graphic file (type png)
 <use ./img/triaje_seleccion_manual.png>
 Package pdftex.def Info: ./img/triaje_seleccion_manual.png  used on input line 
@@ -1856,7 +1885,7 @@ Package pdftex.def Info: ./img/triaje_seleccion_manual.png  used on input line
 (pdftex.def)             Requested size: 344.69766pt x 291.00015pt.
 LaTeX Info: Redefining \. on input line 176.
 LaTeX Info: Redefining \% on input line 176.
- [63
+ [65
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph5.
 3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1864,7 +1893,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph5.
 l.176 	\item \textbf
                     {Opción 2: elegir manualmente otra especialidad} desde ...
  <./img/triaje_seleccion_manual.png>]
-<./img/admin_configuracion.png, id=1162, 758.835pt x 309.155pt>
+<./img/admin_configuracion.png, id=1225, 758.835pt x 309.155pt>
 File: ./img/admin_configuracion.png Graphic file (type png)
 <use ./img/admin_configuracion.png>
 Package pdftex.def Info: ./img/admin_configuracion.png  used on input line 189.
@@ -1872,7 +1901,7 @@ Package pdftex.def Info: ./img/admin_configuracion.png  used on input line 189.
 (pdftex.def)             Requested size: 344.69766pt x 140.43459pt.
 LaTeX Info: Redefining \. on input line 191.
 LaTeX Info: Redefining \% on input line 191.
- [64
+ [66
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph5.
 4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1880,14 +1909,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph5.
 l.191 L
        os parámetros que se pueden modificar son los siguientes: <./img/admin_
 configuracion.png>]
-<./img/admin_log_revision.png, id=1170, 732.7375pt x 332.24126pt>
+<./img/admin_log_revision.png, id=1233, 732.7375pt x 332.24126pt>
 File: ./img/admin_log_revision.png Graphic file (type png)
 <use ./img/admin_log_revision.png>
 Package pdftex.def Info: ./img/admin_log_revision.png  used on input line 204.
 (pdftex.def)             Requested size: 344.69766pt x 156.29535pt.
 LaTeX Info: Redefining \. on input line 209.
 LaTeX Info: Redefining \% on input line 209.
- [65
+ [67
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph5.
 5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1895,9 +1924,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph5.
 l.209 	\item E
               legir manualmente la especialidad correcta en el desplegable \...
  <./img/admin_log_revision.png>])
-LaTeX Info: Redefining \. on input line 435.
-LaTeX Info: Redefining \% on input line 435.
- [66]
+LaTeX Info: Redefining \. on input line 446.
+LaTeX Info: Redefining \% on input line 446.
+ [68]
 \openout2 = `./tex/F_ODS.aux'.
 
  (tex/F_ODS.tex
@@ -1908,7 +1937,7 @@ Overfull \hbox (19.4857pt too wide) in paragraph at lines 7--8
 dad _ Crue2012 . pdf$[][]\T1/lmr/m/n/12 (-20) . 
  []
 
-) [67
+) [69
 
 
 
@@ -1918,33 +1947,36 @@ dad _ Crue2012 . pdf$[][]\T1/lmr/m/n/12 (-20) .
 Package glossaries Info: Preparing to sort glossary `acronym' (total number of
 (glossaries)             referenced entries: 6)
 
-[68
+[70
 
 
 
 ]
 
 Package glossaries Info: Preparing to sort glossary `main' (total number of
-(glossaries)             referenced entries: 4)
+(glossaries)             referenced entries: 6)
 
-[69
-
-] [70
-
-] (anexos.bbl [71
+[71
 
 ] [72
 
-]
+] [73
+
+] (anexos.bbl
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [74]
 bibitemlist
 )
 
 Class memoir Warning: The material used in the headers is too large
 (15.35403pt) for the given head height (14.5pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 444.
+(in both cases you will find help in the memoir manual). on input line 455.
 
-[73]
+[75
+
+]
 \tf@toc=\write5
 \openout5 = `anexos.toc'.
 
@@ -1974,30 +2006,29 @@ Package rerunfilecheck Info: File `anexos.out' has not changed.
 (rerunfilecheck)             Checksum: 7F83AF77F438FC33A640466507C661E2;5459.
  ) 
 Here is how much of TeX's memory you used:
- 25959 strings out of 467871
- 474955 string characters out of 5416924
- 1003390 words of memory out of 5000000
- 53907 multiletter control sequences out of 15000+600000
- 723106 words of font info for 219 fonts, out of 8000000 for 9000
+ 26055 strings out of 467871
+ 477519 string characters out of 5416924
+ 1005178 words of memory out of 5000000
+ 53996 multiletter control sequences out of 15000+600000
+ 718577 words of font info for 216 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,13n,93p,2496b,890s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12
-.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmb
-xi10.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
-/lmcsc10.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/lm/lmr12.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/lm/lmr17.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/lm/lmr8.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/lm/lmri12.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/lm/lmri8.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/lm/lmro12.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/font
-s/type1/public/lm/lmssbx10.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/lm/lmsso17.pfb><C:/Users/NOR0074M/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/NOR0074M/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on anexos.pdf (79 pages, 1367798 bytes).
+.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmc
+sc10.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmr12.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+lm/lmr17.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/lm/lmr8.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/lm/lmri12.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/lm/lmri8.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/lm/lmro12.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/lm/lmssbx10.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/lm/lmsso17.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/lm/lmtk10.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/lm/lmtt12.pfb>
+Output written on anexos.pdf (81 pages, 1418356 bytes).
 PDF statistics:
- 1422 PDF objects out of 1440 (max. 8388607)
- 297 named destinations out of 1000 (max. 500000)
- 54599 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 1511 PDF objects out of 1728 (max. 8388607)
+ 309 named destinations out of 1000 (max. 500000)
+ 52561 words of extra memory for PDF output out of 61914 (max. 10000000)
 

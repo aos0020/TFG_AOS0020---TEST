@@ -54,6 +54,16 @@
 	name=Stemming,
 	description={Proceso lingüístico de reducción de una palabra a su raíz o tallo (\textit{stem}). Técnica de bajo coste computacional comparada con la lematización}
 }
+
+\newglossaryentry{fallback}{
+	name=fallback,
+	description={Flujo alternativo que se ejecuta cuando la predicción del modelo no alcanza la confianza mínima exigida. El sistema pide más síntomas durante un número configurable de rondas y, agotadas estas, deja que el paciente acepte la sugerencia del modelo o elija manualmente otra especialidad}
+}
+\newglossaryentry{earlystopping}{
+	name={early stopping},
+	description={Técnica de regularización en el entrenamiento de redes neuronales. Consiste en detener el entrenamiento cuando el error de validación deja de mejorar durante un número determinado de épocas, aunque el error de entrenamiento siga bajando. Evita que el modelo memorice los datos de entrenamiento y pierda capacidad de generalizar}
+}
+
 % Ecuaciones
 \usepackage{amsmath}
 
@@ -387,6 +397,7 @@
 
 
 % Datos de portada
+\newcommand{\nombre}{Ángel Ortiz de Lejarazu Sánchez}
 \title{título del TFG \\Documentación Técnica}
 \author{nombre alumno}
 \tutor{nombre tutor}

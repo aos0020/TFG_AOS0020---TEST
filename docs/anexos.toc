@@ -14,42 +14,42 @@
 \contentsline {section}{\numberline {B.2}Objetivos generales}{11}{section.Alph2.2}%
 \contentsline {section}{\numberline {B.3}Catálogo de requisitos}{12}{section.Alph2.3}%
 \contentsline {section}{\numberline {B.4}Especificación de requisitos}{16}{section.Alph2.4}%
-\contentsline {appendix}{\chapternumberline {C}Especificación de diseño}{29}{appendix.Alph3}%
-\contentsline {section}{\numberline {C.1}Introducción}{29}{section.Alph3.1}%
-\contentsline {section}{\numberline {C.2}Diseño de datos}{29}{section.Alph3.2}%
-\contentsline {section}{\numberline {C.3}Diseño arquitectónico}{32}{section.Alph3.3}%
-\contentsline {section}{\numberline {C.4}Diseño procedimental}{36}{section.Alph3.4}%
-\contentsline {section}{\numberline {C.5}Resumen del stack tecnológico}{41}{section.Alph3.5}%
-\contentsline {appendix}{\chapternumberline {D}Documentación técnica de programación}{43}{appendix.Alph4}%
-\contentsline {section}{\numberline {D.1}Introducción}{43}{section.Alph4.1}%
-\contentsline {section}{\numberline {D.2}Estructura de directorios}{43}{section.Alph4.2}%
-\contentsline {section}{\numberline {D.3}Manual del programador}{45}{section.Alph4.3}%
-\contentsline {subsection}{Herramientas necesarias}{45}{section*.39}%
-\contentsline {subsubsection}{Python}{45}{section*.40}%
-\contentsline {subsubsection}{Visual Studio Code}{45}{section*.41}%
-\contentsline {subsubsection}{Git}{46}{section*.42}%
-\contentsline {subsection}{Obtención del código fuente}{46}{section*.43}%
-\contentsline {subsection}{Entorno virtual y dependencias}{46}{section*.44}%
-\contentsline {subsection}{Configuración del acceso de administrador}{47}{section*.45}%
-\contentsline {section}{\numberline {D.4}Compilación, instalación y ejecución del proyecto}{48}{section.Alph4.4}%
-\contentsline {subsection}{Entrenamiento de los modelos}{48}{section*.46}%
-\contentsline {subsection}{Ejecución de la aplicación}{49}{section*.47}%
-\contentsline {subsection}{Configuración del umbral y las rondas}{49}{section*.48}%
-\contentsline {subsection}{Flujo de un triaje}{50}{section*.49}%
-\contentsline {subsection}{Entrada por voz}{50}{section*.50}%
-\contentsline {section}{\numberline {D.5}Pruebas del sistema}{51}{section.Alph4.5}%
-\contentsline {subsection}{Pruebas de los modelos durante el entrenamiento}{51}{section*.51}%
-\contentsline {subsection}{Pruebas manuales sobre la interfaz}{51}{section*.52}%
-\contentsline {subsection}{Validación cruzada con casos reales}{52}{section*.53}%
-\contentsline {subsection}{Pruebas de robustez del log y los CSV}{53}{section*.54}%
-\contentsline {subsection}{Posibles mejoras en las pruebas}{53}{section*.55}%
-\contentsline {appendix}{\chapternumberline {E}Documentación de usuario}{55}{appendix.Alph5}%
-\contentsline {section}{\numberline {E.1}Introducción}{55}{section.Alph5.1}%
-\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{55}{section.Alph5.2}%
-\contentsline {section}{\numberline {E.3}Instalación}{57}{section.Alph5.3}%
-\contentsline {section}{\numberline {E.4}Manual del usuario}{59}{section.Alph5.4}%
-\contentsline {subsection}{Vista del paciente}{60}{section*.66}%
-\contentsline {subsection}{Vista del administrador}{64}{section*.73}%
-\contentsline {appendix}{\chapternumberline {F}Anexo de sostenibilización curricular}{67}{appendix.Alph6}%
-\contentsline {section}{\numberline {F.1}Introducción}{67}{section.Alph6.1}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{73}{chapter*.85}%
+\contentsline {appendix}{\chapternumberline {C}Especificación de diseño}{31}{appendix.Alph3}%
+\contentsline {section}{\numberline {C.1}Introducción}{31}{section.Alph3.1}%
+\contentsline {section}{\numberline {C.2}Diseño de datos}{31}{section.Alph3.2}%
+\contentsline {section}{\numberline {C.3}Diseño arquitectónico}{34}{section.Alph3.3}%
+\contentsline {section}{\numberline {C.4}Diseño procedimental}{38}{section.Alph3.4}%
+\contentsline {section}{\numberline {C.5}Resumen del stack tecnológico}{43}{section.Alph3.5}%
+\contentsline {appendix}{\chapternumberline {D}Documentación técnica de programación}{45}{appendix.Alph4}%
+\contentsline {section}{\numberline {D.1}Introducción}{45}{section.Alph4.1}%
+\contentsline {section}{\numberline {D.2}Estructura de directorios}{45}{section.Alph4.2}%
+\contentsline {section}{\numberline {D.3}Manual del programador}{47}{section.Alph4.3}%
+\contentsline {subsection}{Herramientas necesarias}{47}{section*.39}%
+\contentsline {subsubsection}{Python}{47}{section*.40}%
+\contentsline {subsubsection}{Visual Studio Code}{47}{section*.41}%
+\contentsline {subsubsection}{Git}{48}{section*.42}%
+\contentsline {subsection}{Obtención del código fuente}{48}{section*.43}%
+\contentsline {subsection}{Entorno virtual y dependencias}{48}{section*.44}%
+\contentsline {subsection}{Configuración del acceso de administrador}{49}{section*.45}%
+\contentsline {section}{\numberline {D.4}Compilación, instalación y ejecución del proyecto}{50}{section.Alph4.4}%
+\contentsline {subsection}{Entrenamiento de los modelos}{50}{section*.46}%
+\contentsline {subsection}{Ejecución de la aplicación}{51}{section*.47}%
+\contentsline {subsection}{Configuración del umbral y las rondas}{51}{section*.48}%
+\contentsline {subsection}{Flujo de un triaje}{52}{section*.49}%
+\contentsline {subsection}{Entrada por voz}{52}{section*.50}%
+\contentsline {section}{\numberline {D.5}Pruebas del sistema}{53}{section.Alph4.5}%
+\contentsline {subsection}{Pruebas de los modelos durante el entrenamiento}{53}{section*.51}%
+\contentsline {subsection}{Pruebas manuales sobre la interfaz}{53}{section*.52}%
+\contentsline {subsection}{Validación cruzada con casos reales}{54}{section*.53}%
+\contentsline {subsection}{Pruebas de robustez del log y los CSV}{55}{section*.54}%
+\contentsline {subsection}{Posibles mejoras en las pruebas}{55}{section*.55}%
+\contentsline {appendix}{\chapternumberline {E}Documentación de usuario}{57}{appendix.Alph5}%
+\contentsline {section}{\numberline {E.1}Introducción}{57}{section.Alph5.1}%
+\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{57}{section.Alph5.2}%
+\contentsline {section}{\numberline {E.3}Instalación}{59}{section.Alph5.3}%
+\contentsline {section}{\numberline {E.4}Manual del usuario}{61}{section.Alph5.4}%
+\contentsline {subsection}{Vista del paciente}{62}{section*.66}%
+\contentsline {subsection}{Vista del administrador}{66}{section*.73}%
+\contentsline {appendix}{\chapternumberline {F}Anexo de sostenibilización curricular}{69}{appendix.Alph6}%
+\contentsline {section}{\numberline {F.1}Introducción}{69}{section.Alph6.1}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{75}{chapter*.85}%
