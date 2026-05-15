@@ -64,6 +64,16 @@
 	description={Técnica de regularización en el entrenamiento de redes neuronales. Consiste en detener el entrenamiento cuando el error de validación deja de mejorar durante un número determinado de épocas, aunque el error de entrenamiento siga bajando. Evita que el modelo memorice los datos de entrenamiento y pierda capacidad de generalizar}
 }
 
+\newglossaryentry{regularizacion_l2}{
+	name={Regularización L2},
+	description={Técnica utilizada durante el entrenamiento de una red neuronal para evitar el sobreajuste. Añade una penalización proporcional al cuadrado de los pesos de la red, lo que obliga al modelo a mantener pesos pequeños y, por tanto, a aprender patrones más generales en lugar de memorizar los datos de entrenamiento. En \texttt{MLPClassifier} de scikit-learn se controla mediante el parámetro \texttt{alpha}}
+}
+
+\newglossaryentry{perceptron}{
+	name={Perceptrón},
+	description={Modelo más sencillo de red neuronal, formado por una sola neurona que combina los datos de entrada mediante una suma ponderada y devuelve un resultado binario. Solo puede resolver problemas separables linealmente. El Perceptrón Multicapa (\gls{mlp}) es una extensión que añade varias capas de neuronas y permite resolver problemas más complejos}
+}
+
 % Ecuaciones
 \usepackage{amsmath}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.2.18)  12 MAY 2026 15:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.2.18)  15 MAY 2026 13:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -984,8 +984,8 @@ Package graphics Info: Driver file: pdftex.def on input line 106.
 \Gin@req@height=\dimen294
 \Gin@req@width=\dimen295
 )
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 46
-9.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 47
+3.
  (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (memoria.aux
@@ -1004,33 +1004,33 @@ LaTeX Info: Redefining \% on input line 16.
 (tex/7_Conclusiones_Lineas_de_trabajo_futuras.aux))
 \openout1 = `memoria.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 469.
-LaTeX Font Info:    ... okay on input line 469.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 469.
-LaTeX Font Info:    ... okay on input line 469.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 469.
-LaTeX Font Info:    ... okay on input line 469.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 469.
-LaTeX Font Info:    ... okay on input line 469.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 469.
-LaTeX Font Info:    ... okay on input line 469.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 469.
-LaTeX Font Info:    ... okay on input line 469.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 469.
-LaTeX Font Info:    ... okay on input line 469.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 469.
-LaTeX Font Info:    ... okay on input line 469.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 469.
-LaTeX Font Info:    ... okay on input line 469.
-LaTeX Info: Redefining \. on input line 469.
-LaTeX Info: Redefining \% on input line 469.
-LaTeX Info: Redefining \microtypecontext on input line 469.
-Package microtype Info: Applying patch `item' on input line 469.
-Package microtype Info: Applying patch `toc' on input line 469.
-Package microtype Info: Applying patch `eqnum' on input line 469.
-Package microtype Info: Applying patch `footnote' on input line 469.
-Package microtype Info: Applying patch `verbatim' on input line 469.
-LaTeX Info: Redefining \microtypesetup on input line 469.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 473.
+LaTeX Font Info:    ... okay on input line 473.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 473.
+LaTeX Font Info:    ... okay on input line 473.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 473.
+LaTeX Font Info:    ... okay on input line 473.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 473.
+LaTeX Font Info:    ... okay on input line 473.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 473.
+LaTeX Font Info:    ... okay on input line 473.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 473.
+LaTeX Font Info:    ... okay on input line 473.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 473.
+LaTeX Font Info:    ... okay on input line 473.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 473.
+LaTeX Font Info:    ... okay on input line 473.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 473.
+LaTeX Font Info:    ... okay on input line 473.
+LaTeX Info: Redefining \. on input line 473.
+LaTeX Info: Redefining \% on input line 473.
+LaTeX Info: Redefining \microtypecontext on input line 473.
+Package microtype Info: Applying patch `item' on input line 473.
+Package microtype Info: Applying patch `toc' on input line 473.
+Package microtype Info: Applying patch `eqnum' on input line 473.
+Package microtype Info: Applying patch `footnote' on input line 473.
+Package microtype Info: Applying patch `verbatim' on input line 473.
+LaTeX Info: Redefining \microtypesetup on input line 473.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1071,7 +1071,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 s.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring ON on input line 469.
+Package hyperref Info: Link coloring ON on input line 473.
  (memoria.out) (memoria.out)
 \@outlinefile=\write4
 \openout4 = `memoria.out'.
@@ -1079,39 +1079,39 @@ Package hyperref Info: Link coloring ON on input line 469.
 <./img/cabecera.pdf, id=147, 617.67549pt x 135.51413pt>
 File: ./img/cabecera.pdf Graphic file (type pdf)
 <use ./img/cabecera.pdf>
-Package pdftex.def Info: ./img/cabecera.pdf  used on input line 471.
+Package pdftex.def Info: ./img/cabecera.pdf  used on input line 475.
 (pdftex.def)             Requested size: 383.0pt x 84.02823pt.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4
-71.
+75.
 
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4
-71.
+75.
 
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-471.
+475.
 
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-471.
+475.
 
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 471.
+(Font)              <12> on input line 475.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 471.
+(Font)              <8> on input line 475.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 471.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 471
+(Font)              <6> on input line 475.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 475
 .
 
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -1120,7 +1120,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 471
+LaTeX Font Info:    Trying to load font information for U+msb on input line 475
 .
  (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1131,10 +1131,10 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 <./img/escudoInfor.pdf, id=148, 618.11432pt x 737.07487pt>
 File: ./img/escudoInfor.pdf Graphic file (type pdf)
 <use ./img/escudoInfor.pdf>
-Package pdftex.def Info: ./img/escudoInfor.pdf  used on input line 471.
+Package pdftex.def Info: ./img/escudoInfor.pdf  used on input line 475.
 (pdftex.def)             Requested size: 76.59883pt x 91.3356pt.
 
-Overfull \hbox (27.54143pt too wide) in paragraph at lines 471--471
+Overfull \hbox (27.54143pt too wide) in paragraph at lines 475--475
 [][][][][][][] $[]$ 
  []
 
@@ -1151,10 +1151,10 @@ ple pdfs with page group included in a single page
 ] [3]
 File: ./img/cabecera.pdf Graphic file (type pdf)
 <use ./img/cabecera.pdf>
-Package pdftex.def Info: ./img/cabecera.pdf  used on input line 481.
+Package pdftex.def Info: ./img/cabecera.pdf  used on input line 485.
 (pdftex.def)             Requested size: 383.0pt x 84.02823pt.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
-01.
+05.
 
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1170,7 +1170,7 @@ Package microtype Info: Character `029' is missing
 
 ]
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 5
-57.
+61.
 
 (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1193,10 +1193,10 @@ LaTeX Font Warning: Font shape `T1/lmr/bx/sc' undefined
 [3
 
 ])
-LaTeX Info: Redefining \. on input line 558.
-LaTeX Info: Redefining \% on input line 558.
+LaTeX Info: Redefining \. on input line 562.
+LaTeX Info: Redefining \% on input line 562.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 558.
+(babel)             Reported on input line 562.
  [4] (memoria.lof
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -1233,8 +1233,8 @@ LaTeX Info: Redefining \% on input line 24.
 LaTeX Warning: Citation `mediumSVDNLP' on page 3 undefined on input line 27.
 
 )
-LaTeX Info: Redefining \. on input line 568.
-LaTeX Info: Redefining \% on input line 568.
+LaTeX Info: Redefining \. on input line 572.
+LaTeX Info: Redefining \% on input line 572.
  [3]
 \openout2 = `./tex/2_Objetivos_del_proyecto.aux'.
 
@@ -1259,8 +1259,8 @@ LaTeX Info: Redefining \% on input line 54.
 LaTeX Info: Redefining \. on input line 69.
 LaTeX Info: Redefining \% on input line 69.
  [8])
-LaTeX Info: Redefining \. on input line 569.
-LaTeX Info: Redefining \% on input line 569.
+LaTeX Info: Redefining \. on input line 573.
+LaTeX Info: Redefining \% on input line 573.
  [9]
 \openout2 = `./tex/3_Conceptos_teoricos.aux'.
 
@@ -1274,6 +1274,17 @@ LaTeX Info: Redefining \% on input line 569.
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \hskip 5.87491pt
 (hyperref)                replaced by space on input line 1.
+
+
+! Package glossaries Error: Glossary entry `perceptron' has not been defined.
+
+See the glossaries package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 ...ncilla, concretamente un \gls{perceptron} 
+                                                  Multicapa o \gls{mlp}.
+You need to define a glossary entry before you can use it.
 
 [11]
 LaTeX Info: Redefining \. on input line 34.
@@ -1308,8 +1319,8 @@ LaTeX Info: Redefining \% on input line 111.
 LaTeX Info: Redefining \. on input line 125.
 LaTeX Info: Redefining \% on input line 125.
  [18])
-LaTeX Info: Redefining \. on input line 570.
-LaTeX Info: Redefining \% on input line 570.
+LaTeX Info: Redefining \. on input line 574.
+LaTeX Info: Redefining \% on input line 574.
  [19]
 \openout2 = `./tex/4_Tecnicas_y_herramientas.aux'.
 
@@ -1368,8 +1379,8 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Info: Redefining \. on input line 164.
 LaTeX Info: Redefining \% on input line 164.
  [28])
-LaTeX Info: Redefining \. on input line 571.
-LaTeX Info: Redefining \% on input line 571.
+LaTeX Info: Redefining \. on input line 575.
+LaTeX Info: Redefining \% on input line 575.
  [29]
 \openout2 = `./tex/5_Aspectos_relevantes_del_desarrollo_del_proyecto.aux'.
 
@@ -1430,7 +1441,7 @@ Package glossaries Info: Preparing to sort glossary `acronym' (total number of
 ]
 
 Package glossaries Info: Preparing to sort glossary `main' (total number of
-(glossaries)             referenced entries: 8)
+(glossaries)             referenced entries: 9)
 
 [39
 
@@ -1453,10 +1464,10 @@ LaTeX Info: Redefining \% on input line 206.
 Class memoir Warning: The material used in the headers is too large
 (29.85403pt) for the given head height (16.0pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 594.
+(in both cases you will find help in the memoir manual). on input line 598.
 
-LaTeX Info: Redefining \. on input line 594.
-LaTeX Info: Redefining \% on input line 594.
+LaTeX Info: Redefining \. on input line 598.
+LaTeX Info: Redefining \% on input line 598.
 [44]
 \tf@toc=\write5
 \openout5 = `memoria.toc'.
@@ -1492,10 +1503,10 @@ Package rerunfilecheck Info: File `memoria.out' has not changed.
 (rerunfilecheck)             Checksum: 5300C5DF704FD9F1AD614136FF750E37;7781.
  ) 
 Here is how much of TeX's memory you used:
- 26478 strings out of 467871
- 483908 string characters out of 5416924
- 1007419 words of memory out of 5000000
- 54566 multiletter control sequences out of 15000+600000
+ 26512 strings out of 467871
+ 484891 string characters out of 5416924
+ 1008603 words of memory out of 5000000
+ 54599 multiletter control sequences out of 15000+600000
  731003 words of font info for 206 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,12n,93p,2497b,888s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1512,9 +1523,9 @@ ype1/public/lm/lmri12.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/font
 s/type1/public/lm/lmro12.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/lm/lmssbx10.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on memoria.pdf (56 pages, 859606 bytes).
+Output written on memoria.pdf (56 pages, 860915 bytes).
 PDF statistics:
- 1217 PDF objects out of 1440 (max. 8388607)
- 188 named destinations out of 1000 (max. 500000)
+ 1220 PDF objects out of 1440 (max. 8388607)
+ 189 named destinations out of 1000 (max. 500000)
  58155 words of extra memory for PDF output out of 61914 (max. 10000000)
 

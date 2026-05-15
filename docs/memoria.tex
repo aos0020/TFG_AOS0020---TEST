@@ -88,7 +88,7 @@
 % --- Glosario ConceptTeorico
 \newglossaryentry{mlp}{
 	name=MLP,
-	description={Perceptrón Multicapa (\textit{Multi-layer Perceptron}). Red neuronal artificial feedforward que captura relaciones no lineales mediante capas ocultas y entrenamiento por retropropagación}
+	description={Tipo de red neuronal artificial organizada en varias capas de neuronas conectadas entre sí. Cada capa transforma la información que recibe y se la pasa a la siguiente, lo que permite aprender relaciones complejas entre los datos de entrada y la salida. Es uno de los modelos de red neuronal más utilizados en tareas de clasificación}
 }
 
 \newglossaryentry{gscv}{
@@ -106,6 +106,14 @@
 	description={Análisis Semántico Latente (\textit{Latent Semantic Analysis}). Técnica de procesamiento de lenguaje natural que utiliza SVD para identificar patrones en las relaciones entre términos y conceptos}
 }
 
+\newglossaryentry{regularizacion_l2}{
+	name={Regularización L2},
+	description={Técnica utilizada durante el entrenamiento de una red neuronal para evitar el sobreajuste. Añade una penalización proporcional al cuadrado de los pesos de la red, lo que obliga al modelo a mantener pesos pequeños y, por tanto, a aprender patrones más generales en lugar de memorizar los datos de entrenamiento. En \texttt{MLPClassifier} de scikit-learn se controla mediante el parámetro \texttt{alpha}}
+}
+\newglossaryentry{perceptron}{
+	name={Perceptrón},
+	description={Modelo más sencillo de red neuronal, formado por una sola neurona que combina los datos de entrada mediante una suma ponderada y devuelve un resultado binario. Solo puede resolver problemas separables linealmente. El Perceptrón Multicapa (\gls{mlp}) es una extensión que añade varias capas de neuronas y permite resolver problemas más complejos}
+}
 % Ecuaciones
 \usepackage{amsmath}
 \usepackage{amssymb}

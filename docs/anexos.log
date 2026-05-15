@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.20)  15 MAY 2026 08:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.2.18)  15 MAY 2026 14:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,25 +6,26 @@ entering extended mode
 (anexos.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/memoir\memoir.cls
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/memoir\memoir.cls
 Document Class: memoir 2025/11/04 v3.8.4b configurable book, report, article do
 cument class
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
 Package: expl3 2025-12-29 L3 programming layer (loader) 
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
-tex.def
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-
+pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count275
 ))
 Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
-e.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xp
+arse.sty
 Package: xparse 2025-10-09 L3 Experimental document command parser
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.st
+y
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count276
 ))
@@ -33,13 +34,14 @@ Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \xlvchars=\skip51
 \@memcnta=\count277
 \c@@memmarkcntra=\count278
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 )
 \trimtop=\skip52
 \trimedge=\skip53
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/memoir\mem12.clo
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/memoir\mem12.clo
 File: mem12.clo 2022/07/29 v0.5 memoir class 12pt size option
 )
 \binding=\skip54
@@ -130,7 +132,7 @@ File: mem12.clo 2022/07/29 v0.5 memoir class 12pt size option
 \midPoemTitleskip=\skip115
 \afterPoemTitleskip=\skip116
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \col@sep=\dimen153
 \ar@mcellbox=\box53
@@ -140,13 +142,13 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \backup@length=\skip118
 \ar@cellbox=\box54
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/tools\dcolumn.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/tools\dcolumn.sty
 Package: dcolumn 2025/10/21 v1.06 decimal alignment package (DPC)
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/tools\delarray.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/tools\delarray.sty
 Package: delarray 2014/10/28 v1.01 array delimiter package (DPC)
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
 Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@col@width=\dimen155
 \TX@old@table=\dimen156
@@ -156,7 +158,8 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@cols=\count297
 \TX@ftn=\toks19
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.st
+y
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen160
 \lightrulewidth=\dimen161
@@ -211,30 +214,35 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \epigraphwidth=\skip132
 \epigraphrule=\skip133
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.st
+y
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.st
+y
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
-ty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarer
+r.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 ))
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
-lestring.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\get
+titlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.
+sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks21
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.
+sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 )))
 \c@section@level=\count308
@@ -307,7 +315,8 @@ LaTeX Info: Redefining \flushbottom on input line 8099.
 \c@pagenote=\count312
 \c@pagenoteshadow=\count313
 \mem@pn@lastkern=\skip181
- (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
 Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks23
 \verbatim@line=\toks24
@@ -315,7 +324,8 @@ Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
 )
 \verbatimindent=\skip182
 \verbatim@out=\write3
- (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/base\shortvrb.sty
+
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/base\shortvrb.sty
 Package: shortvrb 2024/12/25 v3.0q Standard LaTeX documentation package V3 (FMi
 )
 )
@@ -380,7 +390,7 @@ Package tocloft [2008/07/23] emulated by memoir.
 Package tocvsec2 [2008/07/23] emulated by memoir.
 Package verse [2008/07/23] emulated by memoir.
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
 Package: babel 2025/12/30 v25.18 The multilingual framework for LuaLaTeX, pdfLa
 TeX and XeLaTeX
 \babel@savecnt=\count335
@@ -401,7 +411,8 @@ on input line 2101.
 \U@D=\dimen193
 \l@unhyphenated=\language79
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def
+)
 \bbl@readstream=\read3
 \bbl@dirlevel=\count336
 Package babel Info: Configuration files are deprecated, as
@@ -411,17 +422,17 @@ Package babel Info: Configuration files are deprecated, as
 *************************************
 * Local config file bblopts.cfg used
 *
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/es\babel
--spanish.tex)
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/es\ba
+bel-spanish.tex)
 Package babel Info: Importing font and identification data for spanish
 (babel)             from babel-es.ini. Reported on input line 4321.
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/babel-spanish\spanish.l
-df
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/babel-spanish\spanis
+h.ldf
 Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
 \es@quottoks=\toks25
 \es@quotdepth=\count337
@@ -438,14 +449,16 @@ LaTeX Info: Redefining \. on input line 5.
 LaTeX Info: Redefining \% on input line 5.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
 (babel)             Reported on input line 5.
- (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks26
 \inpenc@posthook=\toks27
-) (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+)
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
 Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -480,7 +493,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.
+sty
 Package: microtype 2025/07/09 v3.2b Micro-typographical refinements (RS)
 \MT@toks=\toks28
 \MT@tempbox=\box58
@@ -495,8 +509,8 @@ LaTeX Info: Redefining \microtypecontext on input line 2053.
 LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
 \MT@listname@count=\count339
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdf
-tex.def
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-
+pdftex.def
 File: microtype-pdftex.def 2025/07/09 v3.2b Definitions specific to pdftex (RS)
 
 LaTeX Info: Redefining \lsstyle on input line 944.
@@ -505,26 +519,30 @@ LaTeX Info: Redefining \lslig on input line 944.
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.
+cfg
 File: microtype.cfg 2025/07/09 v3.2b microtype main configuration file (RS)
 )
 LaTeX Info: Redefining \microtypesetup on input line 3065.
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.st
+y
 Package: placeins 2005/04/18  v 2.2
-)
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+) (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.c
+fg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.
+def
 File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.l
+tx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -534,12 +552,14 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-) (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty
+)
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.st
+y
 Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
 \everycr=\toks30
 \minrowclearance=\skip192
 \rownum=\count340
-) (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/xtab\xtab.sty
+) (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/xtab\xtab.sty
 Package: xtab 2011/07/31 v2.3f Extended supertabular package
 \c@tracingst=\count341
 \PWSTcapht=\dimen195
@@ -568,52 +588,58 @@ Package: xtab 2011/07/31 v2.3f Extended supertabular package
 \ST@dimen=\dimen265
 \ST@pbox=\box59
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.st
+y
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip196
 \multirow@cntb=\count348
 \multirow@dima=\skip197
 \bigstrutjot=\dimen266
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.st
+y
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
-keys.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdef
+inekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
-ty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescap
+e.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
-.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexc
+mds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 ))
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
-ty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringen
+c.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
 \@linkdim=\dimen267
 \Hy@linkcounter=\count349
 \Hy@pagecounter=\count350
- (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-) (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+)
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.st
+y
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count351
- (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
@@ -628,18 +654,18 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
 \c@Hy@tempcnt=\count352
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4801.
 \XeTeXLinkMargin=\dimen268
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
-.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintc
+alc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
@@ -659,17 +685,17 @@ Package hyperref Info: PDF/A mode OFF on input line 6108.
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
 \Fld@listcount=\count357
 \c@bookmark@seq@number=\count358
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
-echeck.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerun
+filecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
-ounter.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniq
+uecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
@@ -677,75 +703,80 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip198
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/memoir\memhfixc.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/memoir\memhfixc.sty
 Package: memhfixc 2025/09/16 v1.24 hyperref package fixes for memoir class
 \c@memhycontfloat=\count359
 \c@mem@Hpagenote=\count360
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/base\glossar
-ies.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/base\glos
+saries.sty
 Package: glossaries 2025/11/09 v4.9 (NLCT)
- (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
-) (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+)
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.te
+x
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.t
+ex
 \XKV@toks=\toks31
 \XKV@tempa@toks=\toks32
 )
 \XKV@depth=\count361
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/mfirstuc\mfirstuc.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/mfirstuc\mfirstuc.st
+y
 Package: mfirstuc 2025/04/03 v2.09 (NLCT)
 \@glsmfirst=\toks33
 \@glsmrest=\toks34
-)
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/xfor\xfor.sty
+) (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/xfor\xfor.sty
 Package: xfor 2009/02/05 v1.05 (NLCT)
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks35
 \ex@=\dimen271
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/tracklang\tracklang.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/tracklang\tracklang.
+sty
 Package: tracklang 2025/03/11 v1.6.6 (NLCT) Track Languages
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/generic/tracklang\tracklang.t
-ex)
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/generic/tracklang\tracklan
+g.tex)
 Package tracklang Info: Tracking dialect `spanish' (language `spanish') on inpu
 t line 264.
 Package tracklang Info: Tracking dialect `spanish' (language `spanish') on inpu
 t line 264.
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator.s
-ty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/translator\translato
+r.sty
 Package: translator 2021-05-31 v1.12d Easy translation of strings in LaTeX
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/glossaries-spanish\glos
-saries-spanish.ldf
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/glossaries-spanish\g
+lossaries-spanish.ldf
 File: glossaries-spanish.ldf 2014/11/23 v1.0
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/glossaries-spanish\glos
-saries-spanish-utf8.ldf))
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-base.
-sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/glossaries-spanish\g
+lossaries-spanish-utf8.ldf))
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-ba
+se.sty
 Package: datatool-base 2025/12/04 v3.4.3 (NLCT)
- (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2025/07/09 v2.17z AMS math features
 \@mathmargin=\skip199
+
 For additional information on amsmath, use the `?' option.
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
-)
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+) (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen272
-)
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+) (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count362
@@ -805,8 +836,8 @@ LaTeX Info: Redefining \] on input line 2951.
 \l__datatool_tmpa_dim=\dimen280
 \l__datatool_tmpb_dim=\dimen281
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-l3fp.
-def
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-l3
+fp.def
 File: datatool-l3fp.def 2025/12/04 v3.4.3 (NLCT)
 )
 \@dtl@toks=\toks40
@@ -815,8 +846,8 @@ File: datatool-l3fp.def 2025/12/04 v3.4.3 (NLCT)
 \l__datatool_measure_box=\box62
 \dtl@sortresult=\count381
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-utf8.
-ldf
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-ut
+f8.ldf
 File: datatool-utf8.ldf 2025/12/04 v3.4.3 (NLCT)
 )
 \@dtl@datatype=\count382
@@ -860,20 +891,20 @@ Package glossaries Warning: Overriding `theglossary' environment on input line
 \glsshorttok=\toks44
 \glslongtok=\toks45
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
-ary-hypernav.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gl
+ossary-hypernav.sty
 Package: glossary-hypernav 2025/11/09 v4.9 (NLCT)
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
-ary-list.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gl
+ossary-list.sty
 Package: glossary-list 2025/11/09 v4.9 (NLCT)
 \glslistdottedwidth=\skip260
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
-ary-long.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gl
+ossary-long.sty
 Package: glossary-long 2025/11/09 v4.9 (NLCT)
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \LTleft=\skip261
 \LTright=\skip262
@@ -895,8 +926,8 @@ Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \glsdescwidth=\skip265
 \glspagelistwidth=\skip266
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
-ary-tree.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gl
+ossary-tree.sty
 Package: glossary-tree 2025/11/09 v4.9 (NLCT)
 \l__glossaries_tree_max_known_level_int=\count405
 \l__glossaries_tree_offset_dim=\dimen285
@@ -911,24 +942,26 @@ Package: glossary-tree 2025/11/09 v4.9 (NLCT)
 \l__glossaries_tree_level_int=\count406
 \glstreeindent=\skip267
 ))
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.st
+y
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.st
+y
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
-
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+ (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
-fg
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphic
+s.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
 )
 \Gin@req@height=\dimen294
 \Gin@req@width=\dimen295
-) (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+)
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count407
 \float@exts=\toks47
@@ -936,14 +969,14 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks48
 \@floatcapt=\box69
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/seqsplit\seqsplit.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/seqsplit\seqsplit.st
+y
 Package: seqsplit 2006/08/07 v0.1 Splitting long sequences (DNA, RNA, proteins,
  etc.) 
 )
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 41
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 42
 1.
-
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+ (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 (anexos.aux
@@ -958,33 +991,33 @@ LaTeX Info: Redefining \% on input line 16.
 /E_Manual_usuario.aux) (tex/F_ODS.aux))
 \openout1 = `anexos.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 411.
-LaTeX Font Info:    ... okay on input line 411.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 411.
-LaTeX Font Info:    ... okay on input line 411.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 411.
-LaTeX Font Info:    ... okay on input line 411.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 411.
-LaTeX Font Info:    ... okay on input line 411.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 411.
-LaTeX Font Info:    ... okay on input line 411.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 411.
-LaTeX Font Info:    ... okay on input line 411.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 411.
-LaTeX Font Info:    ... okay on input line 411.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 411.
-LaTeX Font Info:    ... okay on input line 411.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 411.
-LaTeX Font Info:    ... okay on input line 411.
-LaTeX Info: Redefining \. on input line 411.
-LaTeX Info: Redefining \% on input line 411.
-LaTeX Info: Redefining \microtypecontext on input line 411.
-Package microtype Info: Applying patch `item' on input line 411.
-Package microtype Info: Applying patch `toc' on input line 411.
-Package microtype Info: Applying patch `eqnum' on input line 411.
-Package microtype Info: Applying patch `footnote' on input line 411.
-Package microtype Info: Applying patch `verbatim' on input line 411.
-LaTeX Info: Redefining \microtypesetup on input line 411.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 421.
+LaTeX Font Info:    ... okay on input line 421.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 421.
+LaTeX Font Info:    ... okay on input line 421.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 421.
+LaTeX Font Info:    ... okay on input line 421.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 421.
+LaTeX Font Info:    ... okay on input line 421.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 421.
+LaTeX Font Info:    ... okay on input line 421.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 421.
+LaTeX Font Info:    ... okay on input line 421.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 421.
+LaTeX Font Info:    ... okay on input line 421.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 421.
+LaTeX Font Info:    ... okay on input line 421.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 421.
+LaTeX Font Info:    ... okay on input line 421.
+LaTeX Info: Redefining \. on input line 421.
+LaTeX Info: Redefining \% on input line 421.
+LaTeX Info: Redefining \microtypecontext on input line 421.
+Package microtype Info: Applying patch `item' on input line 421.
+Package microtype Info: Applying patch `toc' on input line 421.
+Package microtype Info: Applying patch `eqnum' on input line 421.
+Package microtype Info: Applying patch `footnote' on input line 421.
+Package microtype Info: Applying patch `verbatim' on input line 421.
+LaTeX Info: Redefining \microtypesetup on input line 421.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -996,12 +1029,12 @@ Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
-ii
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf
+.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count410
 \scratchdimen=\dimen296
@@ -1015,17 +1048,17 @@ ii
 \makeMPintoPDFobject=\count415
 \everyMPtoPDFconversion=\toks50
 )
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
-ase.sty
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopd
+f-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
-fg
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sy
+s.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring ON on input line 411.
+Package hyperref Info: Link coloring ON on input line 421.
  (anexos.out) (anexos.out)
 \@outlinefile=\write4
 \openout4 = `anexos.out'.
@@ -1033,53 +1066,53 @@ Package hyperref Info: Link coloring ON on input line 411.
 <./img/cabecera.pdf, id=127, 617.67549pt x 135.51413pt>
 File: ./img/cabecera.pdf Graphic file (type pdf)
 <use ./img/cabecera.pdf>
-Package pdftex.def Info: ./img/cabecera.pdf  used on input line 413.
+Package pdftex.def Info: ./img/cabecera.pdf  used on input line 423.
 (pdftex.def)             Requested size: 383.0pt x 84.02823pt.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4
-13.
+23.
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4
-13.
+23.
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-413.
+423.
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-413.
+423.
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 413.
+(Font)              <12> on input line 423.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 413.
+(Font)              <8> on input line 423.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 413.
+(Font)              <6> on input line 423.
 <./img/escudoInfor.pdf, id=128, 618.11432pt x 737.07487pt>
 File: ./img/escudoInfor.pdf Graphic file (type pdf)
 <use ./img/escudoInfor.pdf>
-Package pdftex.def Info: ./img/escudoInfor.pdf  used on input line 413.
+Package pdftex.def Info: ./img/escudoInfor.pdf  used on input line 423.
 (pdftex.def)             Requested size: 76.59883pt x 91.3356pt.
 
-Overfull \hbox (27.54143pt too wide) in paragraph at lines 413--413
+Overfull \hbox (27.54143pt too wide) in paragraph at lines 423--423
 [][][][][][][] $[]$ 
  []
 
 [1
 
-{C:/Users/hellc/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/hell
-c/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <./img/cabecera.p
-df> <./img/escudoInfor.pdf
+{C:/Users/NOR0074M/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/N
+OR0074M/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <./img/cabe
+cera.pdf> <./img/escudoInfor.pdf
 
 pdfTeX warning: pdflatex.exe (file ./img/escudoInfor.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
@@ -1087,15 +1120,14 @@ ple pdfs with page group included in a single page
 
 ]
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 4
-32.
- (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
+42.
+ (C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
 (anexos.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -1114,16 +1146,16 @@ Package microtype Info: Character `029' is missing
 
 
 ])
-LaTeX Info: Redefining \. on input line 433.
-LaTeX Info: Redefining \% on input line 433.
+LaTeX Info: Redefining \. on input line 443.
+LaTeX Info: Redefining \% on input line 443.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 433.
+(babel)             Reported on input line 443.
 
 
 Class memoir Warning: The material used in the headers is too large
 (15.35403pt) for the given head height (14.5pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 433.
+(in both cases you will find help in the memoir manual). on input line 443.
 
 
 Overfull \vbox (0.85403pt too high) has occurred while \output is active []
@@ -1194,7 +1226,7 @@ LaTeX Info: Redefining \% on input line 98.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
 11.
 
-(C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1203,23 +1235,25 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 LaTeX Info: Redefining \. on input line 125.
 LaTeX Info: Redefining \% on input line 125.
- [5]
+
+[5]
 LaTeX Info: Redefining \. on input line 146.
 LaTeX Info: Redefining \% on input line 146.
-
-[6]
+ [6]
 LaTeX Info: Redefining \. on input line 171.
 LaTeX Info: Redefining \% on input line 171.
  [7]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 94.
- (C:\Users\hellc\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+
+(C:\Users\NOR0074M\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Info: Redefining \. on input line 209.
 LaTeX Info: Redefining \% on input line 209.
 
-[8{C:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}
+[8{C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.en
+c}
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph1.2
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1245,14 +1279,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.Alph1.4
                                                   \__shipout_drop_firstpage_...
 l.246 
       ])
-LaTeX Info: Redefining \. on input line 447.
-LaTeX Info: Redefining \% on input line 447.
+LaTeX Info: Redefining \. on input line 457.
+LaTeX Info: Redefining \% on input line 457.
  [10
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph1.5
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.447 \include{./tex/A_Plan_proyecto}
+l.457 \include{./tex/A_Plan_proyecto}
                                      ]
 \openout2 = `./tex/B_Requisitos.aux'.
 
@@ -1267,248 +1301,251 @@ Ap\'{e}ndice B.
 LaTeX Info: Redefining \. on input line 37.
 LaTeX Info: Redefining \% on input line 37.
  [12]
-LaTeX Info: Redefining \. on input line 53.
-LaTeX Info: Redefining \% on input line 53.
+LaTeX Info: Redefining \. on input line 54.
+LaTeX Info: Redefining \% on input line 54.
  [13]
 LaTeX Info: Redefining \. on input line 67.
 LaTeX Info: Redefining \% on input line 67.
  [14]
-LaTeX Info: Redefining \. on input line 79.
-LaTeX Info: Redefining \% on input line 79.
+LaTeX Info: Redefining \. on input line 85.
+LaTeX Info: Redefining \% on input line 85.
  [15]
-Overfull \hbox (24.79257pt too wide) in paragraph at lines 113--113
+Overfull \hbox (24.79257pt too wide) in paragraph at lines 110--110
 []|\T1/lmr/bx/sc/12 (-20) Responsabilidades| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--120
+Underfull \hbox (badness 10000) in paragraph at lines 117--117
 []|\T1/lmr/bx/sc/12 (+20) Relaciones
  []
 
-LaTeX Info: Redefining \. on input line 125.
-LaTeX Info: Redefining \% on input line 125.
-[16]
-Overfull \hbox (24.79257pt too wide) in paragraph at lines 137--137
+
+Underfull \vbox (badness 1199) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 122.
+LaTeX Info: Redefining \% on input line 122.
+ [16]
+Overfull \hbox (24.79257pt too wide) in paragraph at lines 134--134
 []|\T1/lmr/bx/sc/12 (-20) Responsabilidades| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--144
+Underfull \hbox (badness 10000) in paragraph at lines 141--141
 []|\T1/lmr/bx/sc/12 (+20) Relaciones
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 149.
-LaTeX Info: Redefining \% on input line 149.
+LaTeX Info: Redefining \. on input line 146.
+LaTeX Info: Redefining \% on input line 146.
  [17
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.1
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.149 
+l.146 
       ]
-Overfull \hbox (24.79257pt too wide) in paragraph at lines 161--161
+Overfull \hbox (24.79257pt too wide) in paragraph at lines 158--158
 []|\T1/lmr/bx/sc/12 (-20) Responsabilidades| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--168
+Underfull \hbox (badness 10000) in paragraph at lines 165--165
 []|\T1/lmr/bx/sc/12 (+20) Relaciones
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 173.
-LaTeX Info: Redefining \% on input line 173.
+LaTeX Info: Redefining \. on input line 170.
+LaTeX Info: Redefining \% on input line 170.
  [18
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.2
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.173 
+l.170 
       ]
-Overfull \hbox (24.79257pt too wide) in paragraph at lines 185--185
+Overfull \hbox (24.79257pt too wide) in paragraph at lines 182--182
 []|\T1/lmr/bx/sc/12 (-20) Responsabilidades| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--191
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
 []|\T1/lmr/bx/sc/12 (+20) Relaciones
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 196.
-LaTeX Info: Redefining \% on input line 196.
+LaTeX Info: Redefining \. on input line 193.
+LaTeX Info: Redefining \% on input line 193.
  [19
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.3
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.196 
+l.193 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 216--216
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 234.
-LaTeX Info: Redefining \% on input line 234.
+LaTeX Info: Redefining \. on input line 231.
+LaTeX Info: Redefining \% on input line 231.
  [20
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.4
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.234 
+l.231 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 244--244
+Underfull \hbox (badness 10000) in paragraph at lines 241--241
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 262.
-LaTeX Info: Redefining \% on input line 262.
+LaTeX Info: Redefining \. on input line 259.
+LaTeX Info: Redefining \% on input line 259.
  [21
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.5
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.262 
+l.259 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 272--272
+Underfull \hbox (badness 10000) in paragraph at lines 269--269
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 293.
-LaTeX Info: Redefining \% on input line 293.
+LaTeX Info: Redefining \. on input line 290.
+LaTeX Info: Redefining \% on input line 290.
  [22
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.6
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.293 
+l.290 
       ]
 Overfull \vbox (32.88422pt too high) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 293.
-LaTeX Info: Redefining \% on input line 293.
+LaTeX Info: Redefining \. on input line 290.
+LaTeX Info: Redefining \% on input line 290.
 
 [23
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.7
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.293 
+l.290 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 300--300
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--331
+Underfull \hbox (badness 10000) in paragraph at lines 328--328
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 349.
-LaTeX Info: Redefining \% on input line 349.
+LaTeX Info: Redefining \. on input line 346.
+LaTeX Info: Redefining \% on input line 346.
  [24
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.8
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.349 
+l.346 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 359--359
+Underfull \hbox (badness 10000) in paragraph at lines 356--356
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 377.
-LaTeX Info: Redefining \% on input line 377.
+LaTeX Info: Redefining \. on input line 374.
+LaTeX Info: Redefining \% on input line 374.
  [25
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.9
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.377 
+l.374 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 387--387
+Underfull \hbox (badness 10000) in paragraph at lines 384--384
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 
-Underfull \hbox (badness 2662) in paragraph at lines 388--389
+Underfull \hbox (badness 2662) in paragraph at lines 385--386
 []|\T1/lmr/m/n/12 (+20) El ad-mi-nis-tra-dor a馻-de nue-vos pa-res s韓toma--
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 406.
-LaTeX Info: Redefining \% on input line 406.
+LaTeX Info: Redefining \. on input line 403.
+LaTeX Info: Redefining \% on input line 403.
  [26
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.1
 0}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.406 
+l.403 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 416--416
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 434.
-LaTeX Info: Redefining \% on input line 434.
+LaTeX Info: Redefining \. on input line 431.
+LaTeX Info: Redefining \% on input line 431.
  [27
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.1
 1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.434 
+l.431 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 444--444
+Underfull \hbox (badness 10000) in paragraph at lines 441--441
 []|\T1/lmr/bx/sc/12 (+20) Requisitos
  []
 
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 448.
-LaTeX Info: Redefining \% on input line 448.
+LaTeX Info: Redefining \. on input line 458.
+LaTeX Info: Redefining \% on input line 458.
  [28
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.1
 2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.448 \include{./tex/B_Requisitos}
+l.458 \include{./tex/B_Requisitos}
                                   ]
-LaTeX Info: Redefining \. on input line 448.
-LaTeX Info: Redefining \% on input line 448.
+LaTeX Info: Redefining \. on input line 458.
+LaTeX Info: Redefining \% on input line 458.
  [29
 pdfTeX warning (ext4): destination with the same identifier (name{table.Alph2.1
 3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.448 \include{./tex/B_Requisitos}
+l.458 \include{./tex/B_Requisitos}
                                   ]
 \openout2 = `./tex/C_Diseno.aux'.
 
@@ -1523,7 +1560,7 @@ Ap\'{e}ndice C.
 LaTeX Info: Redefining \. on input line 31.
 LaTeX Info: Redefining \% on input line 31.
  [32]
-<./img/diagrama_entidades.png, id=948, 659.46375pt x 959.585pt>
+<./img/diagrama_entidades.png, id=942, 659.46375pt x 959.585pt>
 File: ./img/diagrama_entidades.png Graphic file (type png)
 <use ./img/diagrama_entidades.png>
 Package pdftex.def Info: ./img/diagrama_entidades.png  used on input line 32.
@@ -1537,7 +1574,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
                                                   \__shipout_drop_firstpage_...
 l.39 
       <./img/diagrama_entidades.png (PNG copy)>]
-<./img/arquitectura_capas.png, id=954, 1218.5525pt x 765.86125pt>
+<./img/arquitectura_capas.png, id=948, 1218.5525pt x 765.86125pt>
 File: ./img/arquitectura_capas.png Graphic file (type png)
 <use ./img/arquitectura_capas.png>
 Package pdftex.def Info: ./img/arquitectura_capas.png  used on input line 40.
@@ -1562,7 +1599,7 @@ lo con-cre-to del \T1/lmtt/m/n/12 selectbox\T1/lmr/m/n/12 (-20) ,
 LaTeX Info: Redefining \. on input line 70.
 LaTeX Info: Redefining \% on input line 70.
 [35]
-<./img/arquitectura_despliegue.png, id=969, 1141.26375pt x 778.91pt>
+<./img/arquitectura_despliegue.png, id=963, 1141.26375pt x 778.91pt>
 File: ./img/arquitectura_despliegue.png Graphic file (type png)
 <use ./img/arquitectura_despliegue.png>
 Package pdftex.def Info: ./img/arquitectura_despliegue.png  used on input line 
@@ -1577,7 +1614,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
                                                   \__shipout_drop_firstpage_...
 l.85 
       <./img/arquitectura_despliegue.png (PNG copy)>]
-<./img/secuencia_triaje.png, id=976, 898.35625pt x 1176.395pt>
+<./img/secuencia_triaje.png, id=970, 898.35625pt x 1176.395pt>
 File: ./img/secuencia_triaje.png Graphic file (type png)
 <use ./img/secuencia_triaje.png>
 Package pdftex.def Info: ./img/secuencia_triaje.png  used on input line 98.
@@ -1599,7 +1636,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
 l.105 	\item C
               ada m贸dulo carga su modelo serializado con \texttt{joblib}, p...
  <./img/secuencia_triaje.png (PNG copy)>]
-<./img/secuencia_ampliacion.png, id=991, 685.56125pt x 1094.0875pt>
+<./img/secuencia_ampliacion.png, id=985, 685.56125pt x 1094.0875pt>
 File: ./img/secuencia_ampliacion.png Graphic file (type png)
 <use ./img/secuencia_ampliacion.png>
 Package pdftex.def Info: ./img/secuencia_ampliacion.png  used on input line 114
@@ -1622,7 +1659,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
 l.114 ... de secuencia - Ampliaci贸n de s铆ntomas}
                                                    <./img/secuencia_ampliacion.
 png (PNG copy)>]
-<./img/secuencia_fallback.png, id=1006, 919.435pt x 949.5475pt>
+<./img/secuencia_fallback.png, id=1000, 919.435pt x 949.5475pt>
 File: ./img/secuencia_fallback.png Graphic file (type png)
 <use ./img/secuencia_fallback.png>
 Package pdftex.def Info: ./img/secuencia_fallback.png  used on input line 130.
@@ -1653,7 +1690,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
                                                   \__shipout_drop_firstpage_...
 l.139 
        <./img/secuencia_fallback.png (PNG copy)>]
-<./img/secuencia_anadir_sintoma.png, id=1016, 702.625pt x 810.02625pt>
+<./img/secuencia_anadir_sintoma.png, id=1010, 702.625pt x 810.02625pt>
 File: ./img/secuencia_anadir_sintoma.png Graphic file (type png)
 <use ./img/secuencia_anadir_sintoma.png>
 Package pdftex.def Info: ./img/secuencia_anadir_sintoma.png  used on input line
@@ -1677,7 +1714,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
                                                   \__shipout_drop_firstpage_...
 l.153 
        <./img/secuencia_anadir_sintoma.png (PNG copy)>]
-<./img/secuencia_revisar_log.png, id=1028, 1083.04625pt x 974.64125pt>
+<./img/secuencia_revisar_log.png, id=1022, 1083.04625pt x 974.64125pt>
 File: ./img/secuencia_revisar_log.png Graphic file (type png)
 <use ./img/secuencia_revisar_log.png>
 Package pdftex.def Info: ./img/secuencia_revisar_log.png  used on input line 15
@@ -1702,7 +1739,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
                                                   \__shipout_drop_firstpage_...
 l.161 
        <./img/secuencia_revisar_log.png (PNG copy)>]
-<./img/secuencia_reentrenamiento.png, id=1034, 1164.35pt x 1156.32pt>
+<./img/secuencia_reentrenamiento.png, id=1028, 1164.35pt x 1156.32pt>
 File: ./img/secuencia_reentrenamiento.png Graphic file (type png)
 <use ./img/secuencia_reentrenamiento.png>
 Package pdftex.def Info: ./img/secuencia_reentrenamiento.png  used on input lin
@@ -1718,24 +1755,24 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
 l.169 	\item C
               aptura la salida est谩ndar y la de error; si el c贸digo de ret...
  <./img/secuencia_reentrenamiento.png (PNG copy)>]
-<./img/secuencia_login_admin.png, id=1041, 1179.40625pt x 981.6675pt>
+<./img/secuencia_login_admin.png, id=1035, 1179.40625pt x 981.6675pt>
 File: ./img/secuencia_login_admin.png Graphic file (type png)
 <use ./img/secuencia_login_admin.png>
 Package pdftex.def Info: ./img/secuencia_login_admin.png  used on input line 17
 8.
 (pdftex.def)             Requested size: 344.69766pt x 286.90816pt.
 )
-LaTeX Info: Redefining \. on input line 449.
-LaTeX Info: Redefining \% on input line 449.
+LaTeX Info: Redefining \. on input line 459.
+LaTeX Info: Redefining \% on input line 459.
  [47
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph3.
 10}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.449 \include{./tex/C_Diseno}
+l.459 \include{./tex/C_Diseno}
                                <./img/secuencia_login_admin.png (PNG copy)>]
-LaTeX Info: Redefining \. on input line 449.
-LaTeX Info: Redefining \% on input line 449.
+LaTeX Info: Redefining \. on input line 459.
+LaTeX Info: Redefining \% on input line 459.
 
 [48]
 \openout2 = `./tex/D_Manual_programador.aux'.
@@ -1809,8 +1846,8 @@ T1/lmr/m/n/12 (-20) . La fun-ci髇 \T1/lmtt/m/n/12 _asegurar_header_log()
  []
 
 )
-LaTeX Info: Redefining \. on input line 450.
-LaTeX Info: Redefining \% on input line 450.
+LaTeX Info: Redefining \. on input line 460.
+LaTeX Info: Redefining \% on input line 460.
  [60]
 \openout2 = `./tex/E_Manual_usuario.aux'.
 
@@ -1844,7 +1881,7 @@ LaTeX Info: Redefining \% on input line 107.
 LaTeX Warning: Reference `fig:sidebar_navegacion' on page 65 undefined on input
  line 119.
 
-<./img/AnexoE/sidebar_navegacion.png, id=1192, 304.13625pt x 546.04pt>
+<./img/AnexoE/sidebar_navegacion.png, id=1186, 304.13625pt x 546.04pt>
 File: ./img/AnexoE/sidebar_navegacion.png Graphic file (type png)
 <use ./img/AnexoE/sidebar_navegacion.png>
 Package pdftex.def Info: ./img/AnexoE/sidebar_navegacion.png  used on input lin
@@ -1869,7 +1906,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph5.
 l.121 ...l con la sesi贸n de administrador activa}
                                                   {0.45} <./img/AnexoE/sidebar_
 navegacion.png>]
-<./img/AnexoE/triaje_inicial.png, id=1202, 969.6225pt x 648.4225pt>
+<./img/AnexoE/triaje_inicial.png, id=1196, 969.6225pt x 648.4225pt>
 File: ./img/AnexoE/triaje_inicial.png Graphic file (type png)
 <use ./img/AnexoE/triaje_inicial.png>
 Package pdftex.def Info: ./img/AnexoE/triaje_inicial.png  used on input line 12
@@ -1893,9 +1930,9 @@ line 160.
 
 LaTeX Info: Redefining \. on input line 161.
 LaTeX Info: Redefining \% on input line 161.
-[68{C:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
-nc}]
-<./img/AnexoE/triaje_ampliacion.png, id=1223, 742.775pt x 756.8275pt>
+[68{C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathi
+t.enc}]
+<./img/AnexoE/triaje_ampliacion.png, id=1217, 742.775pt x 756.8275pt>
 File: ./img/AnexoE/triaje_ampliacion.png Graphic file (type png)
 <use ./img/AnexoE/triaje_ampliacion.png>
 Package pdftex.def Info: ./img/AnexoE/triaje_ampliacion.png  used on input line
@@ -1915,7 +1952,7 @@ l.169 	\item P
 LaTeX Warning: Reference `fig:triaje_seleccion_manual' on page 70 undefined on 
 input line 177.
 
-<./img/AnexoE/triaje_seleccion_manual.png, id=1229, 853.1875pt x 649.42625pt>
+<./img/AnexoE/triaje_seleccion_manual.png, id=1223, 853.1875pt x 649.42625pt>
 File: ./img/AnexoE/triaje_seleccion_manual.png Graphic file (type png)
 <use ./img/AnexoE/triaje_seleccion_manual.png>
 Package pdftex.def Info: ./img/AnexoE/triaje_seleccion_manual.png  used on inpu
@@ -1935,7 +1972,7 @@ l.185 	\item \textbf
 LaTeX Warning: Reference `fig:admin_configuracion' on page 71 undefined on inpu
 t line 198.
 
-<./img/AnexoE/admin_configuracion.png, id=1235, 828.09375pt x 416.55624pt>
+<./img/AnexoE/admin_configuracion.png, id=1229, 828.09375pt x 416.55624pt>
 File: ./img/AnexoE/admin_configuracion.png Graphic file (type png)
 <use ./img/AnexoE/admin_configuracion.png>
 Package pdftex.def Info: ./img/AnexoE/admin_configuracion.png  used on input li
@@ -1957,7 +1994,7 @@ i髇 \T1/lmr/m/n/12 (-20) los nue-vos va-lo-res se es-cri-ben en \T1/lmtt/m/n/12
 LaTeX Warning: Reference `fig:admin_anadir_registros' on page 72 undefined on i
 nput line 213.
 
-<./img/AnexoE/admin_anadir_registros.png, id=1242, 786.94pt x 579.16376pt>
+<./img/AnexoE/admin_anadir_registros.png, id=1236, 786.94pt x 579.16376pt>
 File: ./img/AnexoE/admin_anadir_registros.png Graphic file (type png)
 <use ./img/AnexoE/admin_anadir_registros.png>
 Package pdftex.def Info: ./img/AnexoE/admin_anadir_registros.png  used on input
@@ -1996,7 +2033,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph5.
                                                   \__shipout_drop_firstpage_...
 l.231 
        <./img/AnexoE/admin_anadir_registros.png>]
-<./img/AnexoE/admin_regenerar_modelos.png, id=1253, 805.0075pt x 359.3425pt>
+<./img/AnexoE/admin_regenerar_modelos.png, id=1247, 805.0075pt x 359.3425pt>
 File: ./img/AnexoE/admin_regenerar_modelos.png Graphic file (type png)
 <use ./img/AnexoE/admin_regenerar_modelos.png>
 Package pdftex.def Info: ./img/AnexoE/admin_regenerar_modelos.png  used on inpu
@@ -2016,7 +2053,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph5.
                                                   \__shipout_drop_firstpage_...
 l.246 
        <./img/AnexoE/admin_regenerar_modelos.png>]
-<./img/AnexoE/admin_log_revision.png, id=1265, 770.88pt x 894.34125pt>
+<./img/AnexoE/admin_log_revision.png, id=1259, 770.88pt x 894.34125pt>
 File: ./img/AnexoE/admin_log_revision.png Graphic file (type png)
 <use ./img/AnexoE/admin_log_revision.png>
 Package pdftex.def Info: ./img/AnexoE/admin_log_revision.png  used on input lin
@@ -2039,8 +2076,8 @@ _baja_confianza_revisados.csv\T1/lmr/m/n/12 (-20) .
  []
 
 )
-LaTeX Info: Redefining \. on input line 451.
-LaTeX Info: Redefining \% on input line 451.
+LaTeX Info: Redefining \. on input line 461.
+LaTeX Info: Redefining \% on input line 461.
  [76]
 \openout2 = `./tex/F_ODS.aux'.
 
@@ -2069,7 +2106,7 @@ Package glossaries Info: Preparing to sort glossary `acronym' (total number of
 ]
 
 Package glossaries Info: Preparing to sort glossary `main' (total number of
-(glossaries)             referenced entries: 6)
+(glossaries)             referenced entries: 7)
 
 [79
 
@@ -2087,7 +2124,7 @@ bibitemlist
 Class memoir Warning: The material used in the headers is too large
 (15.35403pt) for the given head height (14.5pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 460.
+(in both cases you will find help in the memoir manual). on input line 470.
 
 [83
 
@@ -2124,37 +2161,30 @@ Package rerunfilecheck Info: File `anexos.out' has not changed.
 (rerunfilecheck)             Checksum: 3AAB93D06606A97D0CB504F7509E610F;5238.
  ) 
 Here is how much of TeX's memory you used:
- 26181 strings out of 467870
- 480845 string characters out of 5418355
- 1006304 words of memory out of 5000000
- 54081 multiletter control sequences out of 15000+600000
- 719384 words of font info for 223 fonts, out of 8000000 for 9000
+ 26239 strings out of 467871
+ 482564 string characters out of 5416924
+ 1008203 words of memory out of 5000000
+ 54141 multiletter control sequences out of 15000+600000
+ 719287 words of font info for 222 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,13n,93p,2496b,890s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{figure.Alph2.2} has been referenced but does not ex
-ist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{figure.Alph2.1} has been referenced but does not ex
-ist, replaced by a fixed one
-
-<C:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb>
-<C:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb
-><C:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb
-><C:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb>
-<C:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><
-C:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:
-/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:
-/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri8.pfb><C:/
-Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/
-Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C
-:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso17.pfb><
-C:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><
-C:/Users/hellc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on anexos.pdf (89 pages, 1961942 bytes).
+<C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12
+.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmc
+sc10.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmmi12.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/lm/lmr12.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/lm/lmr17.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/lm/lmr8.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/lm/lmri12.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/lm/lmri8.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/lm/lmro12.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/lm/lmssbx10.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/lm/lmsso17.pfb><C:/Users/NOR0074M/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/NOR0074M/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
+Output written on anexos.pdf (89 pages, 1960520 bytes).
 PDF statistics:
- 1527 PDF objects out of 1728 (max. 8388607)
- 332 named destinations out of 1000 (max. 500000)
+ 1521 PDF objects out of 1728 (max. 8388607)
+ 331 named destinations out of 1000 (max. 500000)
  52573 words of extra memory for PDF output out of 61914 (max. 10000000)
 

@@ -1,0 +1,53 @@
+@startuml diagrama_casos_uso_administrador
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam ArrowColor #555555
+skinparam ActorBorderColor #333333
+skinparam UsecaseBorderColor #333333
+skinparam UsecaseBackgroundColor #FFFFFF
+
+' --- Actores ---
+:A02 - Administrador: as Admin
+:A03 - Motor de clasificación: as Motor
+:A04 - Almacenamiento local: as Storage
+
+' --- Nota explicativa ---
+note as N1
+  El administrador mantiene los
+  datos, ajusta la configuración
+  del triaje y reentrena los
+  modelos cuando es necesario.
+end note
+
+' --- Casos de uso ---
+usecase "CU-05\nAcceder a la pestaña\nde administración" as CU05
+usecase "CU-06\nConfigurar el flujo\nde triaje" as CU06
+usecase "CU-07\nAñadir síntomas\ny especialidad" as CU07
+usecase "CU-08\nRevisar y resolver\ncasos del log" as CU08
+usecase "CU-09\nRegenerar modelos" as CU09
+
+' --- Asociaciones actor-CU ---
+Admin --> CU05
+Admin --> CU06
+Admin --> CU07
+Admin --> CU08
+Admin --> CU09
+
+' --- Relaciones include ---
+CU06 ..> CU05 : <<include>>
+CU07 ..> CU05 : <<include>>
+CU08 ..> CU05 : <<include>>
+CU09 ..> CU05 : <<include>>
+
+' --- Sistemas a la derecha ---
+CU06 --> Storage
+CU07 --> Storage
+CU08 --> Storage
+CU09 --> Storage
+CU09 --> Motor
+
+' --- Nota anclada ---
+N1 .. CU05
+
+@enduml

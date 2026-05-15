@@ -6,8 +6,6 @@ Este anexo recoge la especificación de requisitos del prototipo \gls{standalone
 
 El documento sirve como referencia funcional durante el análisis y el diseño, y también como base para comprobar el cumplimiento de los requisitos en las fases de validación y pruebas.
 
-La aplicación tiene dos pestañas. La del \textbf{paciente} permite escribir los síntomas en texto libre y devuelve la especialidad predicha junto con un indicador de confianza. La del \textbf{administrador}, protegida por contraseña, sirve para gestionar el catálogo de síntomas, ajustar la configuración del triaje, revisar los casos no resueltos y reentrenar los cuatro modelos: \gls{tfidf}, \gls{tfidf} con reducción mediante \gls{svd}, \gls{svm} y una \gls{rna} de tipo \gls{mlp}.
-
 \section{Objetivos generales}
 
 Los objetivos generales del proyecto se recogen en el capítulo 2 de la memoria y son los que han guiado los requisitos de este anexo:
@@ -15,10 +13,10 @@ Los objetivos generales del proyecto se recogen en el capítulo 2 de la memoria 
 \begin{itemize}
 	\item \textbf{Clasificación automática de síntomas en lenguaje natural:} a partir de la descripción libre del paciente, devolver la especialidad médica más adecuada y un indicador de confianza.
 	\item \textbf{Flujo completo de \gls{pln}:} cubrir en un único ejecutable la validación de datos, el preprocesado y la predicción.
-	\item \textbf{Comparativa de cuatro modelos:} entrenar y evaluar \gls{tfidf} como línea base, \gls{tfidf} con reducción mediante \gls{svd}, \gls{svm} y un Perceptrón Multicapa, midiendo el acierto y también el coste en tiempo y memoria.
+	\item \textbf{Comparativa de cuatro modelos:} entrenar y evaluar \gls{tfidf} como línea base, \gls{tfidf} con reducción mediante \gls{svd}, \gls{svm} y una \gls{rna}, midiendo el acierto.
 	\item \textbf{Estrategia multimodelo en producción:} ejecutar los cuatro modelos en paralelo y elegir automáticamente el de mayor confianza, con la opción de forzar uno concreto.
-	\item \textbf{Gestión administrativa:} el administrador puede ampliar el catálogo de datos con nuevos pares síntoma--especialidad, ajustar el umbral de confianza y los intentos de reintento, revisar los casos pendientes en el \textit{log} de \gls{fallback} y ejecutar el reentrenamiento de los modelos.
-	\item \textbf{Ejecución local y privacidad por diseño:} todo (datos, modelos y predicción) se ejecuta en el equipo del usuario. Sin servicios cloud y sin modelos de IA propietarios de terceros.
+	\item \textbf{Gestión administrativa:} el administrador puede ampliar el catálogo de datos con nuevos pares síntoma--especialidad, ajustar el umbral de confianza y las rondas de reintento, revisar los casos pendientes en el \textit{log} de \gls{fallback} y ejecutar el reentrenamiento de los modelos.
+	\item \textbf{Ejecución local y privacidad por diseño:} todo (datos, modelos y predicción) se ejecuta en el equipo del usuario. 
 	\item \textbf{Modularidad:} arquitectura por módulos para facilitar el mantenimiento y poder añadir más adelante nuevos canales de entrada o modelos.
 \end{itemize}
 
@@ -31,27 +29,27 @@ Los requisitos se agrupan en dos bloques: funcionales y no funcionales.
 \begin{itemize}
 	\item \textbf{RF-1 Gestión de datos:} la aplicación debe gestionar el conjunto de datos de entrenamiento de forma persistente.
 	\begin{itemize}
-		\item \textbf{RF-1.1 Carga del dataset principal:} el sistema debe cargar un CSV de partida con cuatro columnas (identificador de registro, descripción de síntomas, enfermedad asociada y especialidad médica), codificado en Latin-1 y separado por punto y coma.
+		\item \textbf{RF-1.1 Carga del dataset principal:} el sistema debe cargar un CSV de partida con cuatro columnas (identificador de registro, descripción de síntomas, enfermedad asociada y especialidad médica).
 		\item \textbf{RF-1.2 Validación del dataset:} antes del entrenamiento, el sistema descarta valores nulos, líneas malformadas y registros incompletos.
 		\item \textbf{RF-1.3 Mantenimiento de un CSV de revisados:} las aportaciones generadas a partir del \textit{log} de baja confianza se almacenan en un CSV adicional, independiente del dataset principal.
 		\item \textbf{RF-1.4 Incorporación directa al dataset principal:} el administrador debe poder añadir nuevos pares síntoma--especialidad directamente al dataset principal con un identificador correlativo único.
 		\item \textbf{RF-1.5 Combinación de fuentes para entrenamiento:} en el reentrenamiento, el sistema debe combinar el dataset principal y el CSV de revisados como conjunto de datos único.
 	\end{itemize}
-	\item \textbf{RF-2 Preprocesado del texto:} el sistema aplica el mismo pipeline de \gls{pln} en entrenamiento y en predicción.
+	\item \textbf{RF-2 Preprocesado del texto:} Se aplican las mismas tareas de \gls{pln} en entrenamiento y en predicción.
 	\begin{itemize}
 		\item \textbf{RF-2.1 Limpieza y normalización:} el sistema debe convertir el texto a minúsculas, eliminar caracteres no alfabéticos preservando tildes y la letra ñ, y tokenizar el resultado.
 		\item \textbf{RF-2.2 Eliminación de palabras vacías:} se deben eliminar las \textit{stopwords} del español antes de la vectorización.
 		\item \textbf{RF-2.3 Reducción morfológica (\gls{stemming}):} se debe aplicar el algoritmo Snowball para español sobre los \textit{tokens} resultantes.
-		\item \textbf{RF-2.4 Generación de n-gramas:} la vectorización debe contemplar al menos unigramas y bigramas para captar expresiones clínicas compuestas como ``dolor torácico'' o ``falta de aire''.
-		\item \textbf{RF-2.5 Coherencia entrenamiento/predicción:} el preprocesado aplicado al texto introducido por el paciente debe ser el mismo que el utilizado durante el entrenamiento.
+		\item \textbf{RF-2.4 Generación de n-gramas:} la vectorización debe generar al menos unigramas (palabras sueltas) y bigramas (pares de palabras consecutivas), para reconocer expresiones clínicas como ``dolor torácico'' o ``falta de aire''.
+		\item \textbf{RF-2.5 Coherencia entrenamiento/predicción:} el preprocesado aplicado al texto introducido debe ser el mismo que el utilizado durante el entrenamiento.
 	\end{itemize}
-	\item \textbf{RF-3 Modelos de clasificación:} la aplicación integra los cuatro modelos del proyecto, con una interfaz común para entrenarlos, persistirlos y consultarlos.
+	\item \textbf{RF-3 Modelos de clasificación:} 
 	\begin{itemize}
 		\item \textbf{RF-3.1 Modelo \gls{tfidf}:} el sistema debe disponer de un clasificador basado en representación \gls{tfidf} combinado con regresión logística como línea base.
 		\item \textbf{RF-3.2 Modelo \gls{tfidf} + \gls{svd}:} el sistema debe disponer de un modelo que aplique reducción de dimensionalidad mediante \gls{truncatedsvd} sobre la representación \gls{tfidf} antes de la clasificación.
-		\item \textbf{RF-3.3 Modelo \gls{svm}:} el sistema debe disponer de un clasificador \gls{svm} con kernel lineal y \texttt{probability=True} entrenado sobre la representación \gls{tfidf}.
-		\item \textbf{RF-3.4 Modelo \gls{rna} (\gls{mlp}):} el sistema debe disponer de un Perceptrón Multicapa entrenado con \gls{earlystopping} y regularización L2 (penalización proporcional al cuadrado de los pesos de la red) para evitar el sobreajuste.
-		\item \textbf{RF-3.5 Persistencia de modelos:} los modelos entrenados deben serializarse en disco con \texttt{joblib} para evitar el reentrenamiento en cada arranque.
+		\item \textbf{RF-3.3 Modelo \gls{svm}:} el sistema debe incluir un clasificador \gls{svm} entrenado sobre la representación \gls{tfidf}
+		\item \textbf{RF-3.4 Modelo \gls{rna} (\gls{mlp}):} el sistema debe disponer de un Perceptrón Multicapa o \gls{mlp} entrenado con \gls{earlystopping} y \gls{regularizacion_l2} para evitar el sobreajuste.
+		\item \textbf{RF-3.5 Persistencia de modelos:} los modelos entrenados deben grabarse en disco con \texttt{joblib} para evitar el reentrenamiento en cada arranque.
 		\item \textbf{RF-3.6 Estimación de probabilidades:} cada modelo debe devolver, junto con la especialidad predicha, una puntuación de confianza expresada como porcentaje.
 	\end{itemize}
 	\item \textbf{RF-4 Pestaña del paciente:} la aplicación debe ofrecer una pestaña destinada al paciente que permita la introducción de síntomas y la consulta de la especialidad asignada.
@@ -59,7 +57,7 @@ Los requisitos se agrupan en dos bloques: funcionales y no funcionales.
 		\item \textbf{RF-4.1 Entrada de síntomas por texto:} el paciente debe poder introducir sus síntomas escribiéndolos en un campo de texto libre.
 		\item \textbf{RF-4.2 Modo multimodelo (por defecto):} por defecto, el sistema debe ejecutar los cuatro modelos en paralelo y seleccionar automáticamente la predicción del modelo con mayor confianza.
 		\item \textbf{RF-4.3 Selección manual de modelo:} el paciente debe poder elegir alternativamente un modelo concreto entre \gls{tfidf}, \gls{svd}, \gls{svm} o \gls{rna}.
-		\item \textbf{RF-4.4 Predicción de especialidad:} el sistema debe devolver la especialidad médica recomendada junto con la confianza asociada.
+		\item \textbf{RF-4.4 Predicción de especialidad:} el sistema debe devolver la especialidad médica recomendada junto con la confianza.
 		\item \textbf{RF-4.5 Visualización comparativa:} cuando se utilice el modo multimodelo, el sistema debe mostrar al paciente una tabla con los resultados de los cuatro modelos, identificando el modelo elegido.
 		\item \textbf{RF-4.6 Umbral de confianza configurable:} debe existir un umbral configurable por debajo del cual la predicción se considere dudosa.
 		\item \textbf{RF-4.7 Intentos extra configurables:} debe poderse configurar el número de intentos en los que se pide al paciente ampliar la descripción de los síntomas cuando la confianza es insuficiente.
@@ -86,7 +84,7 @@ Los requisitos se agrupan en dos bloques: funcionales y no funcionales.
 	\item \textbf{RNF-1 Ejecución \gls{standalone}:} la aplicación debe ejecutarse de forma totalmente local, sin depender de APIs externas, servicios en la nube ni conexión a internet para la operativa principal.
 	\item \textbf{RNF-2 Sin dependencia de IA propiedad de terceros:} el sistema no debe apoyarse en LLMs comerciales ni en servicios externos de clasificación clínica.
 	\item \textbf{RNF-3 Privacidad por diseño:} los datos clínicos manipulados (síntomas, log de incidencias, dataset) deben permanecer en el equipo en el que se ejecuta la aplicación.
-	\item \textbf{RNF-4 Ejecución sobre CPU:} los modelos deben ser lo bastante ligeros como para entrenarse y ejecutarse en un equipo modesto.
+	\item \textbf{RNF-4 Ejecución sobre CPU:} los modelos deben ser lo bastante ligeros como para entrenarse y ejecutarse en un equipo de capacidades normales.
 	\item \textbf{RNF-5 Rendimiento razonable:} los tiempos de respuesta de predicción y reentrenamiento deben de completarse en un plazo asumible.
 	\item \textbf{RNF-6 Usabilidad:} la interfaz debe ser intuitiva, con una curva de aprendizaje baja.
 	\item \textbf{RNF-7 Modularidad:} el código debe estar separado en módulos con responsabilidades bien delimitadas (carga de datos, preprocesado, vectorización, modelos, evaluación e interfaz).
@@ -98,7 +96,6 @@ Los requisitos se agrupan en dos bloques: funcionales y no funcionales.
 Esta sección recoge los actores del sistema, el diagrama general de casos de uso y la descripción de cada caso.
 
 \subsection*{Actores del sistema}
-
 \begin{table}[H]
 	\centering
 	\begin{tabular}{ p{0.21\linewidth} p{0.71\linewidth} }

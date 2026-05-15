@@ -13,7 +13,7 @@ El sistema trabaja con cuatro modelos principales:
 	
 	\item \textbf{TF-IDF con SVM.} Utiliza la representación \gls{tfidf} y la conecta directamente con una Máquina de Vectores de Soporte, o \gls{svm}, con kernel lineal.
 	
-	\item \textbf{TF-IDF con RNA.} Utiliza \gls{tfidf} como entrada de una red neuronal artificial sencilla, concretamente un Perceptrón Multicapa o \gls{mlp}.
+	\item \textbf{TF-IDF con RNA.} Utiliza \gls{tfidf} como entrada de una red neuronal artificial sencilla, concretamente un \gls{perceptron} Multicapa o \gls{mlp}.
 \end{itemize}
 
 Comparar estos cuatro modelos permite observar si realmente compensa utilizar técnicas más complejas o si un modelo más sencillo puede ofrecer resultados suficientemente buenos. Esta comparación es importante porque el objetivo no es construir el sistema más pesado posible, sino uno que funcione bien con recursos limitados.
@@ -80,7 +80,7 @@ La ventaja de una red neuronal es que puede capturar relaciones más complejas q
 
 Además, se aplica parada temprana o \textit{early stopping}. Esta técnica detiene el entrenamiento cuando el modelo deja de mejorar sobre un conjunto de validación. Así se evita seguir entrenando sin obtener mejoras reales y se reduce el riesgo de sobreajuste~\cite{aws_sobreajuste}.
 
-También se utiliza regularización mediante el parámetro \texttt{alpha}, que ayuda a controlar la complejidad de la red~\cite{interactive_chaos_reg}. En conjunto, estas decisiones permiten probar una técnica más flexible que los modelos lineales, pero manteniendo el sistema dentro de unos límites razonables de coste y simplicidad.
+También se aplica \gls{regularizacion_l2}, que en scikit-learn se controla mediante el parámetro \texttt{alpha} y ayuda a mantener la complejidad de la red bajo control~\cite{interactive_chaos_reg}. En conjunto, estas decisiones permiten probar una técnica más flexible que los modelos lineales, pero manteniendo el sistema dentro de unos límites razonables de coste y simplicidad.
 
 \section{Optimización y evaluación de los modelos}
 
