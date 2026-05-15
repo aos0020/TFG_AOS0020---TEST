@@ -1,0 +1,65 @@
+@startuml arquitectura_despliegue
+' ============================================================
+'  Anexo C - Diagrama de despliegue (stand alone)
+'  TFG: Sistema de clasificación de síntomas para triaje médico
+' ============================================================
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam ArrowColor #2C3E50
+
+skinparam node {
+  BackgroundColor #F4F6FA
+  BorderColor #2C3E50
+}
+skinparam component {
+  BackgroundColor #D6E0F0
+  BorderColor #2C3E50
+}
+skinparam database {
+  BackgroundColor #FBE5C5
+  BorderColor #8B5A2B
+}
+skinparam folder {
+  BackgroundColor #FBE5C5
+  BorderColor #8B5A2B
+}
+
+title Arquitectura de despliegue stand alone
+
+node "Equipo local del usuario" {
+
+  node "Navegador web" as BROWSER {
+    [Interfaz Streamlit] as UI
+  }
+
+  node "Proceso Python\n(localhost:8501)" as PY {
+    [app.py] as APP
+    [Módulos\nTF_IDF / SVD / SVM / RNA] as MOD
+  }
+
+  folder "Sistema de ficheros" {
+    database "Datos/\nDataset.csv\n+ revisados.csv" as CSV
+    database "logs/\ntriaje_fallback_log.csv" as LOG
+    database "config.json" as CFG
+    database "Modelos\nentrenados\n*.joblib" as JOB
+    database ".streamlit/\nsecrets.toml.aos006" as SEC
+  }
+
+  UI <--> APP : HTTP local
+  APP --> MOD : invoca
+  MOD --> JOB : carga
+  APP --> CSV : lee / añade
+  APP --> LOG : append (fallback)
+  APP --> CFG : read / write
+  APP --> SEC : lee contraseña
+}
+
+note right of PY
+  Sin conexiones de red salientes.
+  Todos los datos del paciente
+  permanecen en el equipo.
+end note
+
+@enduml

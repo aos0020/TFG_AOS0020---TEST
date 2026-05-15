@@ -1,0 +1,74 @@
+@startuml secuencia_revisar_log
+' ============================================================
+'  Anexo C - Diagrama de secuencia: Revisión del log y promoción (CU-05)
+'  TFG: Sistema de clasificación de síntomas para triaje médico
+' ============================================================
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam sequenceMessageAlign center
+skinparam ArrowColor #2C3E50
+
+skinparam sequence {
+  ActorBackgroundColor #F4F6FA
+  ActorBorderColor #2C3E50
+  ParticipantBackgroundColor #D6E0F0
+  ParticipantBorderColor #2C3E50
+  LifeLineBorderColor #2C3E50
+  GroupBorderColor #2C3E50
+}
+
+title Revisión del log y promoción al CSV de revisados (CU-05)
+
+actor Administrador as A
+participant "app.py\n(pestaña admin)" as APP
+participant "mostrar_\nseccion_logs()" as ML
+participant "cargar_dataset()" as DS
+participant "agregar_a_datos_\nrevisados()" as ADD
+database "logs/\ntriaje_fallback_log.csv" as LOG
+database "Datos/\nrevisados.csv" as REV
+
+A -> APP : abre pestaña\nadministración
+activate APP
+
+APP -> ML : mostrar_seccion_logs()
+activate ML
+ML -> LOG : read_csv()
+LOG --> ML : DataFrame del log
+
+ML -> DS : obtener_especialidades()
+DS --> ML : lista de especialidades
+
+loop para cada fila del log
+  ML -> A : tarjeta con\nsíntomas + desplegable\nde especialidades
+end
+deactivate ML
+
+A -> APP : ajusta especialidad\nen una tarjeta concreta
+A -> APP : pulsa "Añadir a datos"
+
+APP -> ADD : agregar_a_datos_revisados(\n  sintomas, especialidad)
+activate ADD
+ADD -> ADD : valida campos
+
+alt el fichero no existe
+  ADD -> REV : crea fichero con cabecera\n[symptoms_text;specialty]
+end
+
+ADD -> REV : append fila
+REV --> ADD : OK
+ADD --> APP : OK
+deactivate ADD
+
+APP -> A : "Añadido a revisados.csv"
+
+note right of LOG
+  La entrada del log NO se borra:
+  el log conserva todo el histórico
+  para auditoría.
+end note
+
+deactivate APP
+
+@enduml

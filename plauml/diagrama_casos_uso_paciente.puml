@@ -1,0 +1,49 @@
+@startuml diagrama_casos_uso_paciente
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam ArrowColor #555555
+skinparam ActorBorderColor #333333
+skinparam UsecaseBorderColor #333333
+skinparam UsecaseBackgroundColor #FFFFFF
+
+' --- Actores ---
+:A01 - Paciente: as Paciente
+:A03 - Motor de clasificación: as Motor
+:A04 - Almacenamiento local: as Storage
+
+' --- Nota explicativa ---
+note as N1
+  El paciente describe sus
+  síntomas en lenguaje natural
+  y el sistema le propone una
+  especialidad médica.
+end note
+
+' --- Casos de uso ---
+usecase "CU-01\nIntroducir síntomas" as CU01
+usecase "CU-02\nObtener especialidad\nrecomendada" as CU02
+usecase "CU-03\nResolver caso de\nbaja confianza" as CU03
+usecase "CU-04\nReportar error\nsobre predicción" as CU04
+
+' --- Asociaciones actor-CU ---
+Paciente --> CU01
+Paciente --> CU02
+Paciente --> CU03
+Paciente --> CU04
+
+' --- Relaciones include / extend ---
+CU01 ..> CU02 : <<include>>
+CU02 <.. CU03 : <<extend>>
+CU02 <.. CU04 : <<extend>>
+
+' --- Sistemas a la derecha ---
+CU02 --> Motor
+CU03 --> Motor
+CU03 --> Storage
+CU04 --> Storage
+
+' --- Nota anclada ---
+N1 .. CU01
+
+@enduml

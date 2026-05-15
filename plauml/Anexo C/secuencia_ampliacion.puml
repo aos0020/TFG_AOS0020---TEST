@@ -1,0 +1,75 @@
+@startuml secuencia_ampliacion
+' ============================================================
+'  Anexo C - Diagrama de secuencia: Ampliación de síntomas (CU-02)
+'  TFG: Sistema de clasificación de síntomas para triaje médico
+' ============================================================
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam sequenceMessageAlign center
+skinparam ArrowColor #2C3E50
+
+skinparam sequence {
+  ActorBackgroundColor #F4F6FA
+  ActorBorderColor #2C3E50
+  ParticipantBackgroundColor #D6E0F0
+  ParticipantBorderColor #2C3E50
+  LifeLineBorderColor #2C3E50
+  GroupBorderColor #2C3E50
+}
+
+title Ampliación de síntomas (CU-02)
+
+actor Paciente as P
+participant "app.py\n(estado: ampliando)" as APP
+participant "streamlit-\nmic-recorder" as MIC
+participant "Clasificador\nactivo" as MOD
+participant "st.session_state" as SS
+
+note over APP
+  Estado anterior: confianza < umbral
+  y todavía quedan rondas extra.
+end note
+
+APP -> P : avisa de baja confianza\ny rondas restantes
+APP -> P : muestra síntomas\nrecogidos hasta ahora
+
+alt entrada por teclado
+  P -> APP : teclea síntomas adicionales
+else entrada por voz (opcional)
+  P -> MIC : pulsa botón de dictado
+  activate MIC
+  MIC --> APP : texto transcrito
+  deactivate MIC
+end
+
+alt el paciente reintenta
+  P -> APP : pulsa "Reintentar triaje"
+  activate APP
+  APP -> APP : concatena síntomas\noriginales + nuevos
+  APP -> MOD : función(texto_combinado)
+  activate MOD
+  MOD --> APP : (especialidad, confianza)
+  deactivate MOD
+  APP -> SS : triaje_rondas += 1
+
+  alt confianza >= umbral
+    APP -> SS : etapa = "completado"
+    APP -> P : resultado final
+  else aún quedan rondas
+    APP -> SS : sigue en "ampliando"
+    APP -> P : pide más síntomas
+  else rondas agotadas
+    APP -> SS : etapa = "fallback"
+    APP -> P : transición al fallback
+  end
+  deactivate APP
+
+else el paciente cancela
+  P -> APP : pulsa "Cancelar y\nempezar de nuevo"
+  APP -> SS : reset_estado_triaje()
+  APP -> P : vuelve al estado "inicio"
+end
+
+@enduml

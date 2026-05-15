@@ -1,0 +1,72 @@
+@startuml secuencia_reportar_error
+' ============================================================
+'  Anexo C - Diagrama de secuencia: Reporte de error (CU-03b)
+'  TFG: Sistema de clasificación de síntomas para triaje médico
+' ============================================================
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam sequenceMessageAlign center
+skinparam ArrowColor #2C3E50
+
+skinparam sequence {
+  ActorBackgroundColor #F4F6FA
+  ActorBorderColor #2C3E50
+  ParticipantBackgroundColor #D6E0F0
+  ParticipantBorderColor #2C3E50
+  LifeLineBorderColor #2C3E50
+  GroupBorderColor #2C3E50
+}
+
+title Reporte de error tras un acierto aparente (CU-03b)
+
+actor Paciente as P
+participant "app.py" as APP
+participant "cargar_dataset()" as DS
+participant "registrar_log_\nfallback()" as REG
+database "logs/\ntriaje_fallback_log.csv" as LOG
+participant "st.session_state" as SS
+
+note over APP
+  Estado anterior: "completado".
+  El modelo predijo por encima del
+  umbral, pero el paciente cree
+  que la especialidad no es correcta.
+end note
+
+P -> APP : pulsa "Reportar error"
+activate APP
+APP -> SS : etapa = "reportar_error"
+
+APP -> DS : obtener_especialidades()
+DS --> APP : lista de especialidades
+
+APP -> P : pantalla de reporte:\n- síntomas registrados\n- desplegable con todas\n  las especialidades\n  (Medicina General por defecto)
+
+alt el paciente envía el reporte
+  P -> APP : selecciona especialidad\ny pulsa "Enviar reporte"
+
+  APP -> REG : registrar_log_fallback(\n  ...,\n  motivo="reporte_error")
+  activate REG
+  REG -> LOG : append fila\n(motivo: reporte_error)
+  LOG --> REG : OK
+  REG --> APP : OK
+  deactivate REG
+
+  APP -> SS : triaje_resultado = (esp_paciente, conf)
+  APP -> SS : etapa = "completado"
+  APP -> SS : triaje_fallback = True
+  APP -> SS : triaje_fallback_motivo\n        = "reporte_error"
+
+  APP -> P : muestra nueva especialidad\ny confirma envío del reporte
+
+else el paciente cancela
+  P -> APP : pulsa "Cancelar"
+  APP -> SS : etapa = "completado"
+  APP -> P : vuelve al resultado anterior
+end
+
+deactivate APP
+
+@enduml

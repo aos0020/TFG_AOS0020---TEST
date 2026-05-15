@@ -1,0 +1,55 @@
+@startuml secuencia_anadir_sintoma
+' ============================================================
+'  Anexo C - Diagrama de secuencia: Añadir síntoma desde admin (CU-04)
+'  TFG: Sistema de clasificación de síntomas para triaje médico
+' ============================================================
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam sequenceMessageAlign center
+skinparam ArrowColor #2C3E50
+
+skinparam sequence {
+  ActorBackgroundColor #F4F6FA
+  ActorBorderColor #2C3E50
+  ParticipantBackgroundColor #D6E0F0
+  ParticipantBorderColor #2C3E50
+  LifeLineBorderColor #2C3E50
+  GroupBorderColor #2C3E50
+}
+
+title Añadir nuevo síntoma desde administración (CU-04)
+
+actor Administrador as A
+participant "app.py\n(pestaña admin)" as APP
+participant "guardar_\nregistro()" as GR
+participant "cargar_dataset()\n(@st.cache_data)" as CACHE
+database "Datos/\nDataset.csv" as CSV
+
+A -> APP : rellena formulario\n(síntomas, especialidad,\nenfermedad opcional)
+activate APP
+
+A -> APP : pulsa "Guardar registro"
+APP -> APP : valida campos\nobligatorios
+
+alt validación correcta
+  APP -> GR : guardar_registro(...)
+  activate GR
+  GR -> CACHE : cargar_dataset()
+  CACHE --> GR : DataFrame
+  GR -> GR : obtener_siguiente_id()
+  GR -> CSV : append fila\n(sep=";", encoding="latin1")
+  CSV --> GR : OK
+  GR -> CACHE : cargar_dataset.clear()
+  GR --> APP : nuevo_id
+  deactivate GR
+
+  APP -> A : mensaje de éxito\n(st.success)
+else falta algún campo
+  APP -> A : aviso de error\n(st.warning)
+end
+
+deactivate APP
+
+@enduml

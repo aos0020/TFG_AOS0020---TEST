@@ -1,0 +1,97 @@
+@startuml diagrama_entidades
+' ============================================================
+'  Anexo C - Diagrama de entidades lógicas
+'  TFG: Sistema de clasificación de síntomas para triaje médico
+' ============================================================
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam classFontSize 12
+skinparam classAttributeFontSize 11
+skinparam defaultFontName "Helvetica"
+
+skinparam class {
+  BackgroundColor #F4F6FA
+  BorderColor #2C3E50
+  ArrowColor #2C3E50
+  HeaderBackgroundColor #D6E0F0
+}
+
+title Entidades lógicas del sistema
+
+class RegistroSintoma {
+  + record_id : int
+  + symptoms_text : str
+  + disease : str
+  + specialty : str
+}
+
+class PrediccionTriaje {
+  + especialidad : str
+  + confianza : float
+  + modelo_origen : str
+}
+
+class EntradaLog {
+  + timestamp : str
+  + clasificador : str
+  + rondas_realizadas : int
+  + umbral_confianza : float
+  + sintomas : str
+  + especialidad_sugerida_modelo : str
+  + confianza_modelo : float
+  + especialidad_elegida_paciente : str
+  + motivo : str
+}
+
+class RegistroRevisado {
+  + symptoms_text : str
+  + specialty : str
+}
+
+class Configuracion {
+  + umbral_confianza : float
+  + rondas_extra : int
+}
+
+class ModeloEntrenado {
+  + vectorizador : TfidfVectorizer
+  + reductor : TruncatedSVD
+  + clasificador : Estimator
+  + etiquetas : list<str>
+}
+
+note right of RegistroSintoma
+  Dataset principal
+  (Datos/Dataset.5000...csv)
+end note
+
+note right of EntradaLog
+  logs/triaje_fallback_log.csv
+  motivo: baja_confianza
+         | reporte_error
+end note
+
+note right of RegistroRevisado
+  Datos/triajes_baja_
+  confianza_revisados.csv
+end note
+
+note left of Configuracion
+  config.json
+end note
+
+note right of ModeloEntrenado
+  Serializado con joblib
+  en TF_IDF/, SVD/,
+  SVM/ y RNA/
+end note
+
+RegistroSintoma "1..*" --> "1" ModeloEntrenado : entrena
+RegistroRevisado "0..*" --> "1" ModeloEntrenado : entrena (extra)
+ModeloEntrenado "1" --> "0..*" PrediccionTriaje : produce
+PrediccionTriaje ..> EntradaLog : si baja confianza\n o reporte de error
+EntradaLog ..> RegistroRevisado : promoción\n desde admin
+Configuracion ..> PrediccionTriaje : umbral y\n rondas
+
+@enduml

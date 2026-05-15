@@ -403,6 +403,11 @@
 \tutor{nombre tutor}
 \date{\today}
 
+% Comando para rutas largas dentro de tablas: permite cortes.
+\usepackage{seqsplit}
+\newcommand{\rutatt}[1]{\texttt{\seqsplit{#1}}}
+
+
 \begin{document}
 
 \maketitle

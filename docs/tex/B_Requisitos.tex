@@ -14,12 +14,12 @@ Los objetivos generales del proyecto se recogen en el capítulo 2 de la memoria 
 
 \begin{itemize}
 	\item \textbf{Clasificación automática de síntomas en lenguaje natural:} a partir de la descripción libre del paciente, devolver la especialidad médica más adecuada y un indicador de confianza.
-	\item \textbf{Flujo de \gls{pln} de principio a fin:} cubrir en un único ejecutable la validación de datos, el preprocesado y la predicción.
+	\item \textbf{Flujo completo de \gls{pln}:} cubrir en un único ejecutable la validación de datos, el preprocesado y la predicción.
 	\item \textbf{Comparativa de cuatro modelos:} entrenar y evaluar \gls{tfidf} como línea base, \gls{tfidf} con reducción mediante \gls{svd}, \gls{svm} y un Perceptrón Multicapa, midiendo el acierto y también el coste en tiempo y memoria.
 	\item \textbf{Estrategia multimodelo en producción:} ejecutar los cuatro modelos en paralelo y elegir automáticamente el de mayor confianza, con la opción de forzar uno concreto.
 	\item \textbf{Gestión administrativa:} el administrador puede ampliar el catálogo de datos con nuevos pares síntoma--especialidad, ajustar el umbral de confianza y los intentos de reintento, revisar los casos pendientes en el \textit{log} de \gls{fallback} y ejecutar el reentrenamiento de los modelos.
 	\item \textbf{Ejecución local y privacidad por diseño:} todo (datos, modelos y predicción) se ejecuta en el equipo del usuario. Sin servicios cloud y sin modelos de IA propietarios de terceros.
-	\item \textbf{Modularidad:} arquitectura por módulos para facilitar el mantenimiento y dejar la puerta abierta a nuevos canales de entrada o modelos adicionales.
+	\item \textbf{Modularidad:} arquitectura por módulos para facilitar el mantenimiento y poder añadir más adelante nuevos canales de entrada o modelos.
 \end{itemize}
 
 \section{Catálogo de requisitos}
@@ -198,8 +198,9 @@ Esta sección recoge los actores del sistema, el diagrama general de casos de us
 
 A continuación se muestran dos diagramas separados para mejorar la legibilidad: uno con los casos de uso del paciente y otro con los del administrador.
 
-\imagen{diagrama_casos_uso_paciente}{Diagrama de casos de uso del paciente.}
+% \imagen{diagrama_casos_uso_paciente}{Diagrama de casos de uso del paciente.}
 
+% \imagen{diagrama_casos_uso_administrador}{Diagrama de casos de uso del administrador.}
 
 \subsection*{Casos de uso}
 
@@ -249,7 +250,7 @@ A continuación se muestran dos diagramas separados para mejorar la legibilidad:
 			\item El sistema aplica el preprocesado sobre el texto introducido.
 			\item Ejecuta los cuatro modelos (modo multimodelo) o el modelo seleccionado.
 			\item En modo multimodelo, escoge la predicción con mayor confianza.
-			\item Muestra al paciente la especialidad recomendada, la confianza y la tabla comparativa cuando proceda.
+			\item Muestra al paciente la especialidad recomendada y la confianza; en modo multimodelo, también la tabla comparativa.
 		\end{enumerate} \\
 		\textbf{Postcondición}        & El paciente conoce la especialidad recomendada y, en su caso, el desempeño de cada modelo. \\
 		\textbf{Excepciones}          & Modelos no disponibles o corruptos; ningún modelo devuelve un resultado válido. \\
@@ -317,8 +318,6 @@ A continuación se muestran dos diagramas separados para mejorar la legibilidad:
 	\end{tabular}
 	\caption{CU-04 Reportar error sobre predicción aceptada.}
 \end{table}
-
-\imagen{diagrama_casos_uso_administrador}{Diagrama de casos de uso del administrador.}
 
 \begin{table}[H]
 	\centering
@@ -393,7 +392,7 @@ A continuación se muestran dos diagramas separados para mejorar la legibilidad:
 			\def\labelenumi{\arabic{enumi}.}
 			\item El administrador introduce la descripción de los síntomas.
 			\item Selecciona una especialidad existente o escribe una nueva.
-			\item Opcionalmente, indica la enfermedad asociada.
+			\item Si quiere, indica la enfermedad asociada.
 			\item Pulsa ``Guardar registro''.
 			\item El sistema asigna un identificador correlativo y añade la fila al dataset principal.
 		\end{enumerate} \\
@@ -454,7 +453,7 @@ A continuación se muestran dos diagramas separados para mejorar la legibilidad:
 			\item El script entrena el modelo y persiste el resultado en disco.
 			\item El sistema notifica al administrador el resultado de cada regeneración.
 		\end{enumerate} \\
-		\textbf{Postcondición}        & Los modelos persistidos reflejan los datos actualizados, incluyendo las aportaciones del administrador. \\
+		\textbf{Postcondición}        & Los modelos persistidos reflejan los datos actualizados y las aportaciones del administrador. \\
 		\textbf{Excepciones}          & Datos corruptos; error durante el entrenamiento; fallo de escritura; script no encontrado. \\
 		\textbf{Importancia}          & Alta \\
 		\bottomrule

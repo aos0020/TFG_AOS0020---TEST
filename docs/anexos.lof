@@ -2,21 +2,25 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Diagrama de casos de uso del paciente.}}{20}{figure.Alph2.1}%
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Diagrama de casos de uso del administrador.}}{25}{figure.Alph2.2}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Relaciones lógicas entre entidades del sistema}}{34}{figure.Alph3.1}%
-\contentsline {figure}{\numberline {C.2}{\ignorespaces Diagrama arquitectónico de módulos y dependencias}}{35}{figure.Alph3.2}%
-\contentsline {figure}{\numberline {C.3}{\ignorespaces Arquitectura de despliegue del prototipo}}{37}{figure.Alph3.3}%
-\contentsline {figure}{\numberline {C.4}{\ignorespaces Diagrama de secuencia - Triaje básico de síntomas}}{39}{figure.Alph3.4}%
-\contentsline {figure}{\numberline {C.5}{\ignorespaces Diagrama de secuencia - Añadir síntoma desde administración}}{40}{figure.Alph3.5}%
-\contentsline {figure}{\numberline {C.6}{\ignorespaces Diagrama de secuencia - Regeneración de un modelo}}{41}{figure.Alph3.6}%
-\contentsline {figure}{\numberline {C.7}{\ignorespaces Diagrama de secuencia - Acceso al panel de administración}}{42}{figure.Alph3.7}%
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Relaciones lógicas entre entidades del sistema}}{33}{figure.Alph3.1}%
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Diagrama arquitectónico de módulos y dependencias}}{34}{figure.Alph3.2}%
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Arquitectura de despliegue del prototipo}}{36}{figure.Alph3.3}%
+\contentsline {figure}{\numberline {C.4}{\ignorespaces Diagrama de secuencia - Triaje con confianza suficiente}}{38}{figure.Alph3.4}%
+\contentsline {figure}{\numberline {C.5}{\ignorespaces Diagrama de secuencia - Ampliación de síntomas}}{40}{figure.Alph3.5}%
+\contentsline {figure}{\numberline {C.6}{\ignorespaces Diagrama de secuencia - Fallback y selección manual}}{42}{figure.Alph3.6}%
+\contentsline {figure}{\numberline {C.7}{\ignorespaces Diagrama de secuencia - Añadir síntoma desde administración}}{44}{figure.Alph3.7}%
+\contentsline {figure}{\numberline {C.8}{\ignorespaces Diagrama de secuencia - Revisión del log y promoción al CSV de revisados}}{45}{figure.Alph3.8}%
+\contentsline {figure}{\numberline {C.9}{\ignorespaces Diagrama de secuencia - Regeneración de los modelos}}{46}{figure.Alph3.9}%
+\contentsline {figure}{\numberline {C.10}{\ignorespaces Diagrama de secuencia - Acceso al panel de administración}}{47}{figure.Alph3.10}%
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {E.1}{\ignorespaces Pantalla principal del paciente}}{62}{figure.Alph5.1}%
-\contentsline {figure}{\numberline {E.2}{\ignorespaces Ampliación de síntomas tras una predicción de baja confianza}}{64}{figure.Alph5.2}%
-\contentsline {figure}{\numberline {E.3}{\ignorespaces Selección manual de especialidad tras agotar las rondas}}{65}{figure.Alph5.3}%
-\contentsline {figure}{\numberline {E.4}{\ignorespaces Configuración del umbral de confianza y de las rondas de ampliación}}{66}{figure.Alph5.4}%
-\contentsline {figure}{\numberline {E.5}{\ignorespaces Revisión y reasignación manual de casos de baja confianza}}{67}{figure.Alph5.5}%
+\contentsline {figure}{\numberline {E.1}{\ignorespaces Barra lateral con la sesión de administrador activa}}{66}{figure.Alph5.1}%
+\contentsline {figure}{\numberline {E.2}{\ignorespaces Pantalla principal del paciente}}{67}{figure.Alph5.2}%
+\contentsline {figure}{\numberline {E.3}{\ignorespaces Ampliación de síntomas tras una predicción de baja confianza}}{69}{figure.Alph5.3}%
+\contentsline {figure}{\numberline {E.4}{\ignorespaces Selección manual de especialidad tras agotar las rondas}}{70}{figure.Alph5.4}%
+\contentsline {figure}{\numberline {E.5}{\ignorespaces Configuración del umbral de confianza y de las rondas de ampliación}}{72}{figure.Alph5.5}%
+\contentsline {figure}{\numberline {E.6}{\ignorespaces Formulario para añadir nuevos pares de síntomas y especialidad}}{73}{figure.Alph5.6}%
+\contentsline {figure}{\numberline {E.7}{\ignorespaces Botones para regenerar todos los modelos o uno solo}}{74}{figure.Alph5.7}%
+\contentsline {figure}{\numberline {E.8}{\ignorespaces Revisión y reasignación manual de casos de baja confianza o reportados como erróneos}}{75}{figure.Alph5.8}%
 \addvspace {10pt}

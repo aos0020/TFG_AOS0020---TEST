@@ -2,225 +2,255 @@
 
 \section{Introducción}
 
-Este apéndice está pensado para quien va a utilizar la aplicación, no para quien la programa o la mantiene. Su propósito es doble: explicar qué hace falta tener en el equipo antes de empezar y, una vez instalada, mostrar paso a paso cómo se trabaja con ella.
+Este apéndice no es para quien va a tocar el código, sino para quien va a usar la aplicación. Cubre dos cosas: lo que hace falta tener instalado para arrancarla y cómo se trabaja con ella una vez en marcha.
 
-La aplicación es un prototipo de triaje médico que recibe síntomas escritos o dictados por voz y devuelve la especialidad médica que mejor encaja con la descripción del paciente. Funciona en local, dentro del navegador, y no envía datos a ningún servicio externo. Cuenta con dos vistas diferenciadas: una para el paciente, en la que se introducen los síntomas y se obtiene la especialidad recomendada, y otra para el administrador, en la que se ajusta el comportamiento del sistema, se revisan los casos dudosos y se reentrenan los modelos.
+La aplicación es un prototipo de triaje médico. Recibe síntomas escritos o dictados por voz y devuelve la especialidad que mejor encaja con la descripción. Todo el proceso ocurre en el equipo del usuario; los síntomas no salen del navegador. Tiene dos vistas: la del paciente, donde se introducen los síntomas y se obtiene la especialidad, y la del administrador, donde se ajustan los parámetros del clasificador, se revisan los casos dudosos y se reentrenan los modelos.
 
-A lo largo del apéndice se describen primero los requisitos que debe cumplir el equipo, después el procedimiento de instalación y, por último, el manual propiamente dicho, organizado por pantallas para que sea fácil seguirlo con la aplicación abierta delante.
+El apéndice sigue ese mismo orden: requisitos, instalación y, por último, el manual organizado por pantallas. La idea es que pueda leerse con la aplicación abierta delante.
 
 \section{Requisitos de usuarios}
 
-La aplicación se ha pensado para ejecutarse en un equipo personal sin necesidad de servidores externos ni conexión permanente a internet, aunque sí hace falta tener instaladas algunas herramientas básicas. Quien la utilice como paciente solo necesita un navegador y, opcionalmente, un micrófono si quiere dictar los síntomas en lugar de escribirlos. La parte de administración no requiere nada adicional, más allá de conocer la contraseña configurada en el equipo.
+La aplicación se ejecuta en un equipo personal sin necesidad de servidores externos ni conexión permanente a internet, aunque hay que tener instaladas algunas herramientas. El paciente solo necesita un navegador y, si quiere dictar los síntomas, un micrófono. El administrador no necesita nada adicional aparte de la contraseña configurada en el equipo.
 
 \subsection*{Requisitos del sistema operativo}
 
-La aplicación se ha probado en Windows 10 y Windows 11, pero también funciona en distribuciones recientes de Linux y en macOS, ya que toda la pila tecnológica (Python, Streamlit, scikit-learn) es multiplataforma. No se requiere ninguna versión concreta del sistema operativo más allá de tener soporte para Python 3.10 o superior.
+El prototipo se ha probado sobre Windows 10 y Windows 11, pero funciona igual en Linux y en macOS recientes, porque toda la pila (Python, Streamlit, scikit-learn) es multiplataforma. No hay una versión mínima del sistema operativo más allá de poder instalar Python 3.10 o superior.
 
 \subsection*{Requisitos de software}
 
-Para poder ejecutar el prototipo en el equipo es necesario disponer del siguiente software previamente instalado:
+Antes de instalar el proyecto hay que tener:
 
 \begin{itemize}
-	\item \textbf{Python 3.10 o superior}. Durante el desarrollo se ha trabajado con la versión 3.11. Se puede descargar desde \url{https://www.python.org/downloads/}. En Windows conviene marcar la opción \textit{Add Python to PATH} durante la instalación.
-	\item \textbf{Pip}, el gestor de paquetes de Python, que viene incluido en la instalación estándar y servirá para instalar las dependencias de la aplicación.
-	\item \textbf{Git}, opcional pero recomendable, para descargar el código desde GitHub. Si no se quiere instalar Git, también es posible descargar el proyecto como un archivo ZIP desde la propia interfaz web del repositorio.
-	\item \textbf{Un navegador web moderno}: Google Chrome, Mozilla Firefox o Microsoft Edge en versiones recientes. La aplicación se abre automáticamente como una pestaña dentro del navegador.
+	\item \textbf{Python 3.10 o superior}. El desarrollo se ha hecho con la 3.11. Se descarga desde \url{https://www.python.org/downloads/}. En Windows conviene marcar \textit{Add Python to PATH} durante la instalación, porque luego ahorra problemas con los comandos.
+	\item \textbf{Pip}, que viene incluido con la instalación estándar de Python y se usa para instalar las dependencias.
+	\item \textbf{Git}, opcional. Es la forma cómoda de bajarse el código, pero también se puede descargar el repositorio como ZIP desde la web de GitHub.
+	\item \textbf{Un navegador moderno}: Chrome, Firefox o Edge en una versión razonablemente actual. La aplicación se abre como una pestaña normal.
 \end{itemize}
 
 \subsection*{Requisitos de hardware}
 
-El prototipo está diseñado siguiendo el enfoque de IA Frugal, lo que significa que no necesita una máquina potente para funcionar. Los requisitos mínimos recomendados son los siguientes:
+El prototipo sigue la filosofía de IA Frugal, así que no pide gran cosa. Como referencia:
 
 \begin{itemize}
-	\item Procesador x86\_64 de 64 bits, equivalente a un Intel Core i3 o superior.
-	\item Memoria RAM de 4 GB como mínimo, recomendable 8 GB cuando se vayan a reentrenar los cuatro modelos en una sola sesión.
-	\item Espacio en disco de aproximadamente 500 MB, contando el código fuente, las dependencias instaladas y los ficheros con los modelos entrenados.
-	\item Micrófono integrado o externo, solo si se desea utilizar la entrada por voz. La aplicación funciona igualmente sin él, escribiendo los síntomas directamente.
+	\item Procesador x86\_64 de 64 bits, tipo Intel Core i3 o equivalente.
+	\item 4 GB de RAM como mínimo. Con 8 GB el reentrenamiento de los cuatro modelos en una misma sesión va más holgado.
+	\item Unos 500 MB de disco entre código, dependencias y los ficheros con los modelos.
+	\item Micrófono, solo si se quiere usar la entrada por voz. Sin él, la aplicación funciona escribiendo.
 \end{itemize}
 
-No es necesaria una tarjeta gráfica dedicada ni soporte para CUDA, ya que los modelos utilizados (\acrshort{tfidf}, \acrshort{svd}, \acrshort{svm} y \acrshort{mlp}) se entrenan y ejecutan sobre CPU sin problemas.
+No hace falta tarjeta gráfica dedicada ni CUDA. Los cuatro modelos (\acrshort{tfidf}, \acrshort{svd}, \acrshort{svm} y \acrshort{mlp}) se entrenan y ejecutan sobre CPU.
 
 \subsection*{Requisitos de red}
 
-La aplicación no necesita conexión a internet para funcionar una vez instalada. La conexión es necesaria únicamente en dos momentos puntuales: la primera descarga del repositorio desde GitHub y la instalación inicial de las dependencias de Python con \texttt{pip install}. A partir de ese momento, todo se ejecuta en local y los síntomas del paciente no salen del equipo.
+Una vez instalada, la aplicación no necesita internet. La conexión solo hace falta dos veces: para clonar el repositorio y para instalar las dependencias con \texttt{pip install}. A partir de ahí todo es local y los síntomas del paciente no viajan a ningún servidor.
 
 \section{Instalación}
 
-La instalación se compone de cuatro pasos: descargar el código, preparar un entorno virtual de Python, instalar las dependencias y comprobar que los modelos están disponibles. El procedimiento es similar en Windows, Linux y macOS, aunque los comandos varían ligeramente. En este manual se utilizan los comandos de Windows, que son los habituales del entorno de desarrollo.
+La instalación tiene cuatro pasos: bajar el código, crear un entorno virtual, instalar dependencias y comprobar que los modelos están en su sitio. Los comandos que aparecen a continuación son los de Windows, que es donde se ha desarrollado el prototipo. En Linux y macOS los cambios son mínimos y se indican cuando aparecen.
 
 \subsection*{Descarga del código}
 
-El proyecto está alojado en un repositorio público de GitHub. Para descargarlo, basta con clonar el repositorio mediante el comando:
+El proyecto está en un repositorio público de GitHub. Con Git basta:
 
 \begin{verbatim}
 	git clone https://github.com/aos0020/TFG_AOS0020---TEST.git
 \end{verbatim}
 
-Alternativamente, si no se tiene Git instalado, se puede descargar el código como un archivo ZIP desde la propia página del repositorio, pulsando en el botón \textit{Code} y eligiendo la opción \textit{Download ZIP}. Una vez descargado el ZIP, hay que descomprimirlo en una carpeta accesible del equipo.
-
-Para el resto del manual se asume que el código está disponible en una carpeta llamada \texttt{TFG\_AOS0020---TEST}.
+Si no hay Git instalado, se puede bajar el ZIP desde el botón \textit{Code} de la página del repositorio y descomprimirlo en cualquier carpeta del equipo. Para el resto del manual se asume que el código está en una carpeta llamada \texttt{TFG\_AOS0020---TEST}.
 
 \subsection*{Creación del entorno virtual}
 
-Es muy recomendable crear un entorno virtual de Python para no mezclar las dependencias del proyecto con las del resto del sistema. Desde la línea de comandos, situándose dentro de la carpeta del proyecto, se ejecuta:
+Conviene crear un entorno virtual de Python para que las librerías del proyecto no se mezclen con las del sistema. Desde la carpeta del proyecto:
 
 \begin{verbatim}
 	python -m venv .venv
 	.\.venv\Scripts\activate
 \end{verbatim}
 
-En Linux o macOS, el segundo comando se sustituye por \texttt{source .venv/bin/activate}. Cuando el entorno está activo, el indicador de la consola muestra el prefijo \texttt{(.venv)}, lo que confirma que cualquier paquete que se instale a partir de ese momento queda dentro del entorno.
+En Linux o macOS la segunda línea se sustituye por \texttt{source .venv/bin/activate}. Si el entorno se ha activado bien, la consola muestra el prefijo \texttt{(.venv)} delante del prompt.
 
 \subsection*{Instalación de dependencias}
 
-Con el entorno virtual activo, se instalan todas las librerías necesarias mediante:
+Con el entorno activo:
 
 \begin{verbatim}
 	pip install -r requirements.txt
 \end{verbatim}
 
-Este paso descarga e instala scikit-learn, pandas, numpy, Streamlit, NLTK, joblib y streamlit-mic-recorder, entre otras. Dependiendo de la conexión y de si las dependencias ya estaban cacheadas, puede llevar entre uno y cinco minutos.
+Esto instala scikit-learn, pandas, numpy, Streamlit, NLTK, joblib y streamlit-mic-recorder. La primera vez puede tardar entre uno y cinco minutos, dependiendo de la conexión.
 
-\subsection*{Configuración de la contraseña de administración}
+\subsection*{Configuración de las credenciales de administración}
 
-La pestaña de administración está protegida por contraseña. Esta contraseña no se distribuye junto con el código, sino que cada usuario debe configurarla en su propio equipo. Para ello, hay que crear el fichero \texttt{.streamlit/secrets.toml} dentro de la carpeta del proyecto, con el siguiente contenido:
+La vista de administración pide usuario y contraseña. El usuario es siempre \texttt{admin}; la contraseña la pone cada instalación en su propio equipo. La aplicación la busca en tres sitios, en este orden:
 
-\begin{verbatim}
-	admin_password = "la_contraseña_que_se_quiera"
-\end{verbatim}
+\begin{enumerate}
+	\item En los \textit{secrets} de Streamlit, bajo la clave \texttt{admin\_password}. Para usar esta vía hay que crear el fichero \texttt{.streamlit/secrets.toml} con:
+	\begin{verbatim}
+		admin_password = "la_contraseña_que_se_quiera"
+	\end{verbatim}
+	\item En el fichero \texttt{.streamlit/secrets.toml.aos006}, con la misma clave \texttt{admin\_password}. Esta variante existe para entornos en los que el \textit{secrets} estándar no está disponible.
+	\item En la variable de entorno \texttt{TRIAJE\_ADMIN\_PASSWORD}.
+\end{enumerate}
 
-Si este fichero no existe, la aplicación arranca igualmente, pero la pestaña de administración no será accesible. El detalle técnico del mecanismo se explica en el Apéndice D.
+Si ninguno de los tres está definido, al entrar en la pestaña de administración aparece un aviso y no se permite el acceso. El detalle técnico se explica en el Apéndice D.
 
 \subsection*{Verificación de los modelos entrenados}
 
-El repositorio incluye los cuatro modelos ya entrenados como ficheros \texttt{.joblib} dentro de las carpetas \texttt{TF\_IDF/}, \texttt{SVD/}, \texttt{SVM/} y \texttt{RNA/}. Si por algún motivo se quisiera regenerar alguno de ellos antes del primer arranque, basta con ejecutar el script de generación correspondiente, por ejemplo:
+El repositorio incluye los cuatro modelos ya entrenados como ficheros \texttt{.joblib}, uno por carpeta (\texttt{TF\_IDF/}, \texttt{SVD/}, \texttt{SVM/} y \texttt{RNA/}). En una instalación nueva no hace falta tocarlos. Si por alguna razón se quiere regenerar alguno antes del primer arranque, se ejecuta su script correspondiente, por ejemplo:
 
 \begin{verbatim}
 	python TF_IDF\generarModeloTFIDF.py
 \end{verbatim}
 
-Este paso no es obligatorio en una instalación nueva. Su utilidad principal aparece cuando el administrador, desde la propia aplicación, decide reentrenar los modelos tras haber añadido nuevos casos al conjunto de datos.
+Lo normal, sin embargo, es regenerar los modelos desde la propia aplicación, una vez se han añadido nuevos casos al conjunto de datos.
 
 \subsection*{Arranque de la aplicación}
 
-Una vez instaladas las dependencias y configurada la contraseña, la aplicación se arranca desde la raíz del proyecto con el comando:
+Con todo lo anterior listo, desde la raíz del proyecto:
 
 \begin{verbatim}
 	streamlit run app.py
 \end{verbatim}
 
-Streamlit abre automáticamente el navegador por defecto en la dirección \url{http://localhost:8501}. Si no lo hace, basta con copiar esa dirección manualmente en la barra del navegador. Para detener la aplicación, se cierra la pestaña del navegador y se pulsa \texttt{Ctrl + C} en la consola donde se está ejecutando Streamlit.
+Streamlit abre el navegador en \url{http://localhost:8501}. Si no se abre solo, se puede pegar esa URL manualmente. Para parar la aplicación, se cierra la pestaña y se pulsa \texttt{Ctrl + C} en la consola donde estaba corriendo Streamlit.
 
 \section{Manual del usuario}
 
-Una vez arrancada la aplicación, la barra lateral izquierda ofrece dos vistas: \textit{Paciente} y \textit{Administrador}. La primera es la que utilizan los usuarios finales para obtener una especialidad a partir de sus síntomas. La segunda es de uso interno y queda reservada al perfil que mantiene el sistema.
+Al arrancar, la barra lateral muestra un selector \textit{radio} bajo el título \textit{Navegación}, con dos opciones: \textit{Triaje} y \textit{Administración}. La primera es la que ve el usuario final; la segunda, protegida con login, queda para quien mantiene el sistema. La figura~\ref{fig:sidebar_navegacion} muestra el aspecto de la barra lateral con la sesión de administrador abierta.
+
+\imagen{AnexoE/sidebar_navegacion}{Barra lateral con la sesión de administrador activa}{0.45}
 
 \subsection{Vista del paciente}
 
-La pantalla principal de la vista del paciente es la puerta de entrada al triaje. En ella aparece el título \textit{Triaje médico inteligente}, un recordatorio del umbral de confianza y de las rondas de ampliación configuradas, y los controles necesarios para introducir los síntomas y elegir el modelo de clasificación.
+La pantalla de triaje es la puerta de entrada. Aparece el título \textit{Triaje médico inteligente}, una línea de información con el umbral de confianza y las rondas configuradas, y los controles para introducir los síntomas y elegir cómo se realiza la clasificación.
 
-\imagen{triaje_inicial}{Pantalla principal del paciente}{0.85}
+\imagen{AnexoE/triaje_inicial}{Pantalla principal del paciente}{0.85}
 
 \subsubsection*{Introducción de síntomas}
 
-El paciente dispone de dos formas equivalentes de introducir su descripción:
+Hay dos formas de meter los síntomas:
 
 \begin{itemize}
-	\item \textbf{Por escrito}, utilizando el cuadro de texto \textit{Introduce los síntomas del paciente}. Es la opción habitual y no requiere ningún hardware adicional. El texto admite frases completas en lenguaje natural, como \textit{me duele mucho la cabeza desde ayer y tengo náuseas}.
-	\item \textbf{Por voz}, pulsando el botón \textit{Hacer clic para grabar} situado bajo el icono del micrófono. Al pulsarlo, el navegador solicita permiso para acceder al micrófono. Cuando el usuario habla, la grabación se transcribe automáticamente a texto y se inserta en el mismo cuadro de síntomas, donde puede revisarse antes de continuar.
+	\item \textbf{Por escrito}, en el cuadro \textit{Introduce los síntomas del paciente}. Admite frases tal cual las escribiría el paciente, sin formato especial. Por ejemplo, ``me duele mucho la cabeza desde ayer y tengo náuseas''.
+	\item \textbf{Por voz}, pulsando el botón \textit{Hacer clic para grabar}. La primera vez el navegador pide permiso para usar el micrófono; después, la grabación se transcribe sola y el texto aparece en el mismo cuadro, donde se puede revisar o corregir antes de seguir.
 \end{itemize}
 
-Las dos vías conducen al mismo punto: el contenido del cuadro de texto es lo que la aplicación utiliza para realizar la clasificación. El dictado por voz es simplemente una alternativa al teclado.
+Las dos vías acaban en el mismo sitio: lo que la aplicación clasifica es siempre el contenido del cuadro de texto. La voz es solo una alternativa al teclado.
 
 \subsubsection*{Selección del motor de clasificación}
 
-Antes de lanzar el triaje, el paciente puede elegir el modelo de inteligencia artificial que realizará la clasificación. El desplegable \textit{Selecciona el motor de IA} ofrece las cuatro opciones disponibles: \acrshort{tfidf}, \acrshort{svd}, \acrshort{svm} y \acrshort{rna}. La opción por defecto es \acrshort{tfidf}, que es la más rápida y se utiliza como línea base.
+El desplegable \textit{Selecciona el motor de IA} tiene cinco opciones: \textit{Todos (recomendado)}, \acrshort{tfidf}, \acrshort{svd}, \acrshort{svm} y \acrshort{rna}. Por defecto está \textit{Todos (recomendado)}, que ejecuta los cuatro modelos sobre el mismo texto y se queda con el de mayor confianza. Es la opción más razonable para un uso real.
 
-En un uso normal de la aplicación, esta elección es transparente para el paciente. Sin embargo, durante las pruebas y la evaluación del prototipo resulta muy útil poder cambiar de modelo sobre el mismo texto y comparar las respuestas.
+Las otras cuatro fuerzan un modelo concreto. No tienen sentido en un uso normal, pero durante las pruebas o la evaluación del prototipo permiten comparar las respuestas de cada modelo sobre el mismo texto, que es justo lo que interesa para entender sus diferencias.
 
 \subsubsection*{Lanzamiento del triaje}
 
-Cuando el texto está introducido y el modelo seleccionado, basta con pulsar el botón \textit{Realizar triaje}. La aplicación procesa internamente la entrada (limpieza, vectorización y clasificación) y muestra el resultado en la misma pantalla. Pueden darse tres situaciones distintas, que se describen a continuación.
+Con el texto escrito y el modelo elegido, el botón \textit{Realizar triaje} dispara la clasificación. La aplicación limpia el texto, lo vectoriza y lo pasa al clasificador. El resultado aparece en la misma pantalla, y puede caer en uno de tres casos.
 
 \subsubsection*{Caso 1: confianza suficiente}
 
-Cuando la confianza del modelo supera el umbral configurado (por defecto, 45\,\%), la aplicación muestra directamente la especialidad recomendada junto con el porcentaje de acierto estimado. Este es el caso más habitual y resuelve el triaje en un único paso.
+Cuando la confianza supera el umbral configurado (45\,\% por defecto), aparece la especialidad sugerida con su porcentaje de confianza y el nombre del modelo que la ha producido. Es lo que ocurre la mayoría de las veces y resuelve el triaje en un solo paso.
+
+Si el motor era \textit{Todos (recomendado)}, debajo del resultado aparece una tabla con lo que ha sugerido cada uno de los cuatro modelos: su especialidad, su confianza y un marcador ($\star$ Elegido) sobre el ganador. Sirve para ver de un vistazo si los modelos están de acuerdo o se contradicen.
+
+Bajo el resultado hay dos botones. \textit{Realizar otro triaje} reinicia el flujo. \textit{Reportar error} se usa cuando el paciente cree que la especialidad sugerida no es la que toca; al pulsarlo, la aplicación pide la especialidad correcta y guarda la corrección en el log para que el administrador la revise. Es la otra vía por la que el sistema aprende: además de los casos en los que el modelo no estaba seguro, también se aprovechan los casos en los que estaba seguro y se equivocó.
 
 \subsubsection*{Caso 2: confianza insuficiente y ampliación de síntomas}
 
-Si el modelo no alcanza el umbral, la aplicación no descarta el caso. En su lugar, avisa al paciente de que la confianza es baja y le pide que añada más información sobre lo que está sintiendo. La figura~\ref{fig:triaje_ampliacion} muestra esta situación con un ejemplo: el modelo \acrshort{tfidf} sugiere \textit{Medicina Interna} con un 27,75\,\% de confianza, por debajo del umbral del 45\,\%, y el sistema solicita una ronda adicional.
+Si el modelo no llega al umbral, la aplicación no abandona. Avisa de que la confianza es baja y pide más información. La figura~\ref{fig:triaje_ampliacion} muestra un ejemplo: el modelo \acrshort{svd} sugiere \textit{Medicina Interna} con un 28,52\,\% de confianza, por debajo del umbral del 45\,\%, y el sistema pide una ronda extra.
 
-\imagen{triaje_ampliacion}{Ampliación de síntomas tras una predicción de baja confianza}{0.85}
+\imagen{AnexoE/triaje_ampliacion}{Ampliación de síntomas tras una predicción de baja confianza}{0.85}
 
 En esta pantalla, el paciente puede:
 
 \begin{itemize}
-	\item Consultar los \textit{síntomas recogidos hasta ahora}, que se muestran en la parte superior para que pueda ver qué ha entendido el sistema.
-	\item Añadir más síntomas en el cuadro \textit{Síntomas adicionales}, escribiéndolos o dictándolos con el mismo botón de grabación que en la pantalla inicial.
-	\item Pulsar \textit{Reintentar triaje} para volver a lanzar la clasificación con la descripción ampliada.
-	\item Pulsar \textit{Cancelar y empezar de nuevo} si prefiere descartar el caso actual y comenzar desde cero.
+	\item Ver los \textit{síntomas recogidos hasta ahora}, en la parte superior, para repasar lo que ya ha dicho.
+	\item Escribir o dictar más síntomas en el cuadro \textit{Síntomas adicionales}.
+	\item Pulsar \textit{Reintentar triaje} para volver a clasificar con la descripción ampliada.
+	\item Pulsar \textit{Cancelar y empezar de nuevo} si prefiere descartar lo introducido y arrancar desde cero.
 \end{itemize}
 
-El número de rondas de ampliación permitidas se configura desde la vista del administrador. En el caso por defecto se realiza una única ronda.
+Cuántas rondas de ampliación se permiten se configura desde la vista del administrador. Por defecto se hace una sola.
 
 \subsubsection*{Caso 3: confianza insuficiente tras las rondas de ampliación}
 
-Si después de agotar las rondas de ampliación la confianza sigue por debajo del umbral, la aplicación deja la decisión final en manos del paciente. La figura~\ref{fig:triaje_seleccion_manual} muestra este desenlace.
+Si después de gastar todas las rondas la confianza sigue por debajo del umbral, la aplicación deja que decida el paciente. La figura~\ref{fig:triaje_seleccion_manual} muestra ese desenlace.
 
-\imagen{triaje_seleccion_manual}{Selección manual de especialidad tras agotar las rondas}{0.85}
+\imagen{AnexoE/triaje_seleccion_manual}{Selección manual de especialidad tras agotar las rondas}{0.85}
 
-El paciente recibe un mensaje en el que se indica que el modelo no ha conseguido alcanzar la confianza necesaria, junto con la última especialidad sugerida y su porcentaje. A continuación, dispone de dos opciones equivalentes:
+Aparece un aviso indicando que el modelo no ha llegado a la confianza necesaria, junto con la última sugerencia y su porcentaje. Después se ofrecen dos opciones:
 
 \begin{itemize}
-	\item \textbf{Opción 1: aceptar la sugerencia del sistema}, pulsando el botón \textit{Aceptar} seguido del nombre de la especialidad propuesta. Es la opción rápida cuando el paciente cree que la sugerencia es razonable.
-	\item \textbf{Opción 2: elegir manualmente otra especialidad} desde el desplegable \textit{Especialidad sugerida por el paciente}. La opción por defecto es \textit{Medicina General}, que actúa como derivación a atención general cuando no hay una orientación clara.
+	\item \textbf{Opción 1}: aceptar la sugerencia del sistema, pulsando el botón \textit{Aceptar} seguido del nombre de la especialidad. Es la opción rápida cuando la sugerencia parece razonable.
+	\item \textbf{Opción 2}: elegir manualmente otra especialidad desde el desplegable. La opción por defecto es \textit{Medicina General}, que funciona como derivación a atención general cuando no hay nada más claro.
 \end{itemize}
 
-Una vez confirmada la selección con el botón \textit{Confirmar selección}, el caso se registra en un fichero de log para que el administrador pueda revisarlo después. Este registro es la base del mecanismo de aprendizaje continuo del sistema: las consultas que el modelo no ha sabido resolver con seguridad se convierten en nuevos ejemplos de entrenamiento.
+Al pulsar \textit{Confirmar selección}, el caso se guarda en el log para que el administrador lo revise después. Las consultas que el modelo no ha sabido resolver con seguridad son justo las que más interesa revisar y reincorporar al entrenamiento.
 
 \subsection{Vista del administrador}
 
-La pestaña de administración requiere introducir la contraseña configurada en \texttt{secrets.toml} durante la instalación. Una vez autenticado, el administrador accede a un conjunto de herramientas pensadas para mantener el sistema y mejorar su comportamiento con el tiempo.
+Antes de entrar, la aplicación pide usuario y contraseña en un formulario. El usuario es \texttt{admin}; la contraseña es la que se haya configurado durante la instalación. Mientras la sesión esté abierta, la barra lateral muestra un botón \textit{Cerrar sesión admin} para salir de la zona privada.
+
+Dentro, la página se titula \textit{Administración de datos} y agrupa cuatro bloques, en este orden: configuración del triaje, alta de nuevos registros, regeneración de los modelos y registro de triajes con baja confianza o reportes de error.
 
 \subsubsection*{Configuración del triaje}
 
-Desde esta sección se ajustan los dos parámetros que controlan el comportamiento del clasificador frente a casos dudosos. La figura~\ref{fig:admin_configuracion} muestra los controles disponibles.
+Aquí se ajustan los dos parámetros que controlan cómo responde el sistema ante casos dudosos. La figura~\ref{fig:admin_configuracion} muestra los controles.
 
-\imagen{admin_configuracion}{Configuración del umbral de confianza y de las rondas de ampliación}{0.7}
+\imagen{AnexoE/admin_configuracion}{Configuración del umbral de confianza y de las rondas de ampliación}{0.7}
 
-Los parámetros que se pueden modificar son los siguientes:
-
-\begin{itemize}
-	\item \textbf{Umbral mínimo de confianza (\%)}, ajustable mediante un deslizador con valores entre 0 y 100. Es el porcentaje mínimo que debe alcanzar el modelo para que su predicción se acepte directamente, sin pedir más información al paciente. Un valor alto hace al sistema más prudente, ya que pasa por la ampliación más casos; un valor bajo lo hace más resolutivo, pero también más arriesgado.
-	\item \textbf{Rondas extra de ampliación de síntomas}, que indica cuántas veces se pedirá al paciente que añada información antes de derivar el caso a selección manual. Por defecto se realiza una única ronda.
-\end{itemize}
-
-Los cambios se aplican pulsando el botón \textit{Guardar configuración} y afectan a todas las consultas posteriores.
-
-\subsubsection*{Registro de triajes de baja confianza}
-
-Esta sección es probablemente la más importante de la pestaña de administración. En ella se muestran los casos en los que el sistema no ha conseguido clasificar con suficiente confianza y que han quedado registrados en el fichero \texttt{logs/triaje\_fallback\_log.csv}. La figura~\ref{fig:admin_log_revision} muestra un ejemplo de la pantalla.
-
-\imagen{admin_log_revision}{Revisión y reasignación manual de casos de baja confianza}{0.85}
-
-Para cada caso registrado, se muestra la fecha y hora, el modelo utilizado y el texto completo de síntomas tal como lo introdujo el paciente. El administrador puede entonces:
+Los parámetros son:
 
 \begin{itemize}
-	\item Elegir manualmente la especialidad correcta en el desplegable \textit{Especialidad}.
-	\item Pulsar el botón \textit{Añadir a datos} para volcar ese caso, ya etiquetado, al fichero ampliado \texttt{Datos/triajes\_baja\_confianza\_revisados.csv}.
+	\item \textbf{Umbral mínimo de confianza (\%)}, un deslizador de 0 a 100. Es el porcentaje mínimo que debe alcanzar el modelo para que su predicción se acepte sin pedir más información. Cuanto más alto, más prudente es el sistema, pero también pasa por la ampliación más casos. Cuanto más bajo, más resolutivo, pero también más arriesgado.
+	\item \textbf{Rondas extra de ampliación de síntomas}, un contador entre 0 y 10 que indica cuántas veces se pedirá al paciente que añada información antes de pasar a selección manual. Por defecto, una sola ronda.
 \end{itemize}
 
-Así, los casos que en su momento fueron problemáticos para el clasificador se convierten en nuevos ejemplos de entrenamiento que servirán para mejorar el sistema cuando se reentrene. Especialidades poco representadas en el conjunto original van ganando ejemplos a medida que se revisan, lo que ayuda a corregir el desequilibrio inicial entre clases.
+Al pulsar \textit{Guardar configuración} los nuevos valores se escriben en \texttt{config.json}, en la raíz del proyecto, y se aplican a todas las consultas siguientes.
 
-\subsubsection*{Alta de nuevos casos}
+\subsubsection*{Añadir síntomas y especialidad}
 
-Además del flujo basado en el log, el administrador puede añadir manualmente nuevos pares de síntomas y especialidad. Esta funcionalidad resulta útil cuando se quieren incorporar casos extraídos de fuentes externas, por ejemplo un manual clínico o un protocolo asistencial, sin necesidad de pasar por la vista del paciente.
+Esta sección sirve para añadir manualmente pares de síntomas y especialidad. Es útil cuando se quieren incorporar casos sacados de fuentes externas (un manual clínico, un protocolo asistencial) sin tener que pasar por la vista del paciente. La figura~\ref{fig:admin_anadir_registros} muestra el formulario.
 
-Los nuevos registros se almacenan en el mismo CSV ampliado que los casos revisados desde el log, manteniendo intacto el dataset original. Esta separación es importante: el fichero base nunca se modifica, lo que permite reproducir cualquier experimento sobre los datos iniciales.
+\imagen{AnexoE/admin_anadir_registros}{Formulario para añadir nuevos pares de síntomas y especialidad}{0.7}
 
-\subsubsection*{Reentrenamiento de los modelos}
+Los campos son:
 
-Cuando se han añadido suficientes casos nuevos, el administrador puede lanzar el reentrenamiento de los cuatro modelos desde la propia interfaz, sin tocar la línea de comandos. Esta operación lee el CSV original junto con el CSV ampliado, reentrena los cuatro clasificadores (\acrshort{tfidf}, \acrshort{svd}, \acrshort{svm} y \acrshort{mlp}) y sobrescribe los ficheros \texttt{.joblib} de cada carpeta de modelo.
+\begin{itemize}
+	\item \textbf{Síntomas}: un cuadro de texto multilínea para describir el caso.
+	\item \textbf{Especialidad existente}: un desplegable con las especialidades que ya están en el dataset.
+	\item \textbf{Nueva especialidad}: un campo libre que solo se usa si la especialidad no aparece todavía en la lista anterior.
+	\item \textbf{Enfermedad o diagnóstico asociado}: opcional, para dejar constancia del diagnóstico concreto cuando se conoce.
+\end{itemize}
 
-Hay que tener en cuenta que el reentrenamiento, especialmente del \acrshort{mlp}, puede tardar varios minutos en función del equipo y del tamaño del conjunto ampliado. Durante ese tiempo, la aplicación sigue siendo utilizable, pero los nuevos modelos no estarán activos hasta que el proceso termine y se recargue la página.
+Al pulsar \textit{Guardar registro}, el caso se añade al fichero principal \texttt{Datos/Dataset.5000.Registros.Marz.ID.Sintomas.Enfermedad.Especialidad.csv}, con el siguiente \texttt{record\_id} libre. La aplicación devuelve un mensaje confirmando el identificador asignado.
 
+\subsubsection*{Regenerar modelos}
+
+Cuando ya hay casos nuevos suficientes, el administrador puede reentrenar los modelos sin salir de la interfaz. La figura~\ref{fig:admin_regenerar_modelos} muestra los controles. La regeneración combina el dataset principal con los casos revisados de \texttt{Datos/triajes\_baja\_confianza\_revisados.csv} y sobrescribe los \texttt{.joblib} de cada carpeta de modelo.
+
+\imagen{AnexoE/admin_regenerar_modelos}{Botones para regenerar todos los modelos o uno solo}{0.7}
+
+Hay dos formas de hacerlo:
+
+\begin{itemize}
+	\item \textbf{Regenerar todos los modelos}: el botón rojo lanza los cuatro scripts uno detrás de otro (\acrshort{tfidf}, \acrshort{svd}, \acrshort{svm} y \acrshort{rna}). Una barra de progreso indica en qué modelo va y, al terminar, aparece un resumen con el resultado de cada uno.
+	\item \textbf{Regenerar individualmente}: cuatro botones separados, uno por modelo. Útil cuando solo interesa actualizar uno concreto, por ejemplo durante las pruebas.
+\end{itemize}
+
+El reentrenamiento del \acrshort{mlp} es el más lento y puede llevar varios minutos según el equipo. Mientras dura, la aplicación sigue siendo usable, pero los modelos nuevos no entran en juego hasta que el proceso acaba.
+
+\subsubsection*{Registro de triajes (baja confianza y reportes de error)}
+
+En la parte inferior de la página se muestran los casos guardados en \texttt{logs/triaje\_fallback\_log.csv}. Allí se acumulan dos tipos de incidencias: triajes que no alcanzaron el umbral tras agotar las rondas, y reportes de error generados por el paciente desde la pantalla de resultado. La figura~\ref{fig:admin_log_revision} muestra el aspecto de la pantalla.
+
+\imagen{AnexoE/admin_log_revision}{Revisión y reasignación manual de casos de baja confianza o reportados como erróneos}{0.85}
+
+Para cada caso, se muestra la fecha y hora, el modelo que clasificó, el motivo de la incidencia (\textit{baja confianza} o \textit{reporte de error}) y el texto completo de los síntomas. Desde ahí, el administrador puede:
+
+\begin{itemize}
+	\item Elegir la especialidad correcta en el desplegable \textit{Especialidad}, que parte con la que el paciente había marcado en su momento.
+	\item Pulsar \textit{Añadir a datos} para volcar el caso etiquetado a \texttt{Datos/triajes\_baja\_confianza\_revisados.csv}.
+\end{itemize}
+
+Los casos que el clasificador no resolvió bien (porque la confianza fue baja o porque el paciente discrepó) se convierten en ejemplos nuevos para el próximo entrenamiento. Las especialidades poco representadas en el dataset original van ganando ejemplos a medida que se revisan, lo que compensa poco a poco el desequilibrio inicial entre clases.

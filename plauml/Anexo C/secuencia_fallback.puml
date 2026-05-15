@@ -1,0 +1,65 @@
+@startuml secuencia_fallback
+' ============================================================
+'  Anexo C - Diagrama de secuencia: Fallback y selección manual (CU-03)
+'  TFG: Sistema de clasificación de síntomas para triaje médico
+' ============================================================
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam sequenceMessageAlign center
+skinparam ArrowColor #2C3E50
+
+skinparam sequence {
+  ActorBackgroundColor #F4F6FA
+  ActorBorderColor #2C3E50
+  ParticipantBackgroundColor #D6E0F0
+  ParticipantBorderColor #2C3E50
+  LifeLineBorderColor #2C3E50
+  GroupBorderColor #2C3E50
+}
+
+title Fallback y selección manual del paciente (CU-03)
+
+actor Paciente as P
+participant "app.py\n(estado: fallback)" as APP
+participant "cargar_dataset()" as DS
+participant "registrar_log_\nfallback()" as REG
+database "logs/\ntriaje_fallback_log.csv" as LOG
+participant "st.session_state" as SS
+
+note over APP
+  Estado anterior: se agotaron las
+  rondas y la confianza sigue bajo
+  el umbral.
+end note
+
+APP -> P : muestra última predicción\ndel modelo y rondas realizadas
+
+APP -> DS : obtener_especialidades()
+DS --> APP : lista de especialidades
+
+APP -> P : muestra dos opciones:\n1) aceptar sugerencia modelo\n2) elegir manualmente\n   (Medicina General por defecto)
+
+alt acepta la sugerencia del modelo
+  P -> APP : pulsa "Aceptar <especialidad>"
+else elige manualmente
+  P -> APP : selecciona del desplegable\ny pulsa "Confirmar"
+end
+
+activate APP
+APP -> REG : registrar_log_fallback(\n  sintomas, clasificador,\n  esp_modelo, confianza,\n  esp_paciente, rondas,\n  umbral, motivo="baja_confianza")
+activate REG
+REG -> LOG : append fila (9 campos)
+LOG --> REG : OK
+REG --> APP : OK
+deactivate REG
+
+APP -> SS : triaje_resultado = (esp_paciente, conf)
+APP -> SS : etapa = "completado"
+APP -> SS : triaje_fallback = True
+
+APP -> P : muestra especialidad elegida\ny avisa de registro en log
+deactivate APP
+
+@enduml

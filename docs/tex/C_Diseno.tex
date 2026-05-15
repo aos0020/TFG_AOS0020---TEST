@@ -4,168 +4,177 @@
 
 Este anexo recoge las decisiones de diseño del prototipo de triaje clínico desarrollado en el TFG, organizadas en tres planos. El diseño de datos describe qué información maneja la aplicación y cómo se guarda en el sistema de ficheros. El diseño arquitectónico explica cómo se reparte el software en módulos y cómo \texttt{app.py} orquesta al resto. Y el diseño procedimental, ya con diagramas de secuencia, sigue los casos de uso del anexo~B paso a paso.
 
-Hay dos decisiones tomadas al inicio que merece la pena aclarar antes de entrar en detalle, porque condicionan todo lo demás. La primera fue prescindir de una base de datos relacional: por filosofía \gls{standalone} y para evitar dependencias, los datos viven en un único archivo CSV en disco. La segunda fue integrar cuatro motores de clasificación distintos --- \gls{tfidf}, \gls{tfidf} con reducción \gls{svd}, un \gls{svm} y una \gls{rna} de tipo \gls{mlp}---, lo que obliga a un diseño donde cada modelo tiene su propio módulo y la aplicación puede invocarlos de forma uniforme.
 
 \section{Diseño de datos}
 
-El prototipo no usa una base de datos. Trabaja sobre un fichero plano que se carga en memoria al arrancar. Para un corpus de unos miles de filas, estable y de un solo usuario, un CSV es suficiente y mucho más fácil de versionar e inspeccionar que un motor SQL.
+El prototipo no usa una base de datos.Trabaja con varios ficheros planos. Algunos se cargan en memoria al arrancar y otros se leen solo cuando se necesitan. Para un conjunto de unos pocos miles de filas, que apenas varía y que utiliza un único usuario, los CSV cumplen sin problema y resultan más cómodos de versionar y revisar que un motor SQL.
 
 \subsection*{Entidades del sistema}
 
-Aunque no haya un esquema relacional formal, sí se pueden distinguir tres entidades lógicas que estructuran la información:
+No hay esquema relacional formal, pero sí cinco entidades lógicas que estructuran la información:
 
 \begin{itemize}
-	\item \textbf{RegistroSintoma}: una fila del dataset principal. Contiene el identificador (\textit{record\_id}), el texto libre con los síntomas (\textit{symptoms\_text}), la enfermedad asociada cuando se conoce (\textit{disease}, opcional) y la especialidad médica de destino (\textit{specialty}), que es la clase objetivo del clasificador.
-	\item \textbf{PrediccionTriaje}: el resultado de una consulta del paciente. Vive solo en memoria, no se guarda. Lleva la \textit{especialidad} devuelta, la \textit{confianza} asociada y el \textit{modelo\_origen} que la produjo (\acrshort{tfidf}, \acrshort{svd}, \acrshort{svm} o \acrshort{rna}).
-	\item \textbf{ModeloEntrenado}: la versión serializada de un clasificador con todo lo que necesita para volver a predecir tras un reinicio: el vectorizador, el reductor de dimensionalidad (cuando aplica), el clasificador y la codificación de etiquetas. Se guarda en uno o varios ficheros \texttt{.joblib} dentro de la carpeta del modelo correspondiente, y se carga con la misma librería \texttt{joblib} al invocar la función de predicción.
+	\item \textbf{RegistroSintoma}: una fila del dataset principal. Lleva el identificador (\textit{record\_id}), el texto libre con los síntomas (\textit{symptoms\_text}), la enfermedad asociada cuando se conoce (\textit{disease}, opcional) y la especialidad médica de destino (\textit{specialty}), que es la clase objetivo del clasificador.
+	\item \textbf{PrediccionTriaje}: el resultado de una consulta del paciente. Vive solo en memoria. Lleva la \textit{especialidad} devuelta, la \textit{confianza} asociada y el \textit{modelo\_origen} que la produjo (\acrshort{tfidf}, \acrshort{svd}, \acrshort{svm} o \acrshort{rna}). Cuando se ejecuta el modo \textit{Todos}, la aplicación construye un diccionario con una predicción por modelo y se queda con la de mayor confianza.
+	\item \textbf{EntradaLog}: una fila del log de fallback. Se persiste en
+	
+	\texttt{triaje\_fallback\_log} cuando el sistema agota las rondas de ampliación sin alcanzar el umbral, o cuando el paciente reporta que la sugerencia recibida no era correcta. Tiene nueve campos: marca temporal, clasificador empleado, rondas realizadas, umbral aplicado, síntomas registrados, especialidad sugerida por el modelo, confianza del modelo, especialidad finalmente elegida por el paciente y motivo (\texttt{baja\_confianza} o \texttt{reporte\_error}).
+	\item \textbf{RegistroRevisado}: una fila promovida desde el log al CSV de revisados (\texttt{Datos/triajes\_baja\_confianza\_revisados.csv}). Solo guarda dos campos: \textit{symptoms\_text} y \textit{specialty}, los mínimos para que los scripts de regeneración puedan usarla como ejemplo extra de entrenamiento.
+	\item \textbf{Configuracion}: dos parámetros que controlan el comportamiento del triaje y que pueden cambiarse desde el panel de administración. El \textit{umbral\_confianza} marca a partir de qué porcentaje la predicción se considera buena (45\% por defecto). Las \textit{rondas\_extra} fijan cuántas veces se pedirá al paciente ampliar los síntomas antes de pasar al fallback (1 por defecto). Se guarda en \texttt{config.json}.
+	\item \textbf{ModeloEntrenado}: representa un clasificador ya entrenado y guardado en disco, listo para volver a usarse sin tener que entrenarlo de nuevo. Incluye todas las piezas necesarias para predecir: el vectorizador, el reductor de dimensionalidad si lo utiliza, el clasificador y la codificación de etiquetas. Toda esa información se guarda en uno o varios ficheros \texttt{.joblib} dentro de la carpeta del modelo, y se recupera con la misma librería \texttt{joblib} en el momento de hacer una predicción.
 \end{itemize}
 
-\subsection*{Organización del almacenamiento}
-
-La persistencia se reparte en un CSV de datos y varias carpetas que contienen tanto el código de cada modelo como los ficheros \texttt{.joblib} con el modelo entrenado. La tabla~\ref{tabla:ficheros_datos} lo resume.
-
-\tablaSmallSinColores{Ficheros y carpetas con datos persistentes}{p{0.34\textwidth} p{0.56\textwidth}}{ficheros_datos}{
-	\textbf{Ruta} & \textbf{Uso} \\
-}{
-	\texttt{Datos/Dataset.5000.Registros..csv} & Dataset principal con 5\,000 registros etiquetados; el nombre completo incluye la fecha de generación. \\
-	\texttt{TF\_IDF/} & Módulo del clasificador \acrshort{tfidf} y ficheros \texttt{.joblib} con el modelo entrenado. \\
-	\texttt{SVD/} & Módulo del clasificador con reducción \acrshort{svd} y sus ficheros \texttt{.joblib}. \\
-	\texttt{SVM/} & Módulo del clasificador \acrshort{svm} y sus ficheros \texttt{.joblib}. \\
-	\texttt{RNA/} & Módulo de la red neuronal y sus ficheros \texttt{.joblib}. \\
-	\texttt{.streamlit/secrets.toml} & Contraseña del administrador, bajo la clave \texttt{admin\_password}. \\
-}
-
-El dataset usa \texttt{;} como separador y \texttt{latin1} como codificación. La elección de \texttt{latin1} no fue caprichosa: el UTF-8 daba problemas con los acentos en algunas de las herramientas de edición con las que probé el fichero, y \texttt{latin1} resolvió el tema sin más. La lectura se hace con \texttt{pandas} y se cachea en sesión con \texttt{@st.cache\_data}, de modo que el coste de E/S solo se paga al arrancar.
 
 \subsection*{Relaciones entre entidades}
 
-La figura~\ref{fig:diagrama_entidades} resume las relaciones entre las entidades anteriores. El dataset alimenta el entrenamiento de los cuatro modelos. Cada modelo produce sus propios ficheros \texttt{.joblib}. Y, cuando el administrador añade nuevos registros, el ciclo se reinicia con un reentrenamiento que vuelve a leer el CSV y reescribe esos ficheros.
+La figura~\ref{fig:diagrama_entidades} resume las relaciones entre las entidades anteriores. El dataset base y el CSV de revisados alimentan, juntos, el entrenamiento de los cuatro modelos. Cada modelo produce sus propios ficheros \texttt{.joblib}. El paciente genera predicciones que normalmente se quedan en memoria, salvo cuando entran en el log de fallback. Y, desde el panel de administración, las entradas del log pueden promoverse al CSV de revisados, cerrando el ciclo: lo que un paciente no consiguió clasificar bien hoy puede acabar mejorando los modelos mañana.
 
-\imagen{diagrama_entidades}{Relaciones lógicas entre entidades del sistema}{0.85}
+\imagen{diagrama_entidades}{Relaciones lógicas entre entidades del sistema}
 
 \section{Diseño arquitectónico}
 
 \subsection*{Visión general por módulos}
 
-La aplicación gira alrededor de \texttt{app.py}, que es el punto de entrada de Streamlit y el que orquesta al resto. A su alrededor hay cuatro módulos independientes, uno por cada modelo, y una capa de datos compartida. La figura~\ref{fig:arquitectura_capas} lo dibuja.
+La aplicación se organiza alrededor de \texttt{app.py}, el punto de entrada de Streamlit y el módulo que orquesta a los demás. A su alrededor hay cuatro módulos independientes, uno por modelo, y una capa de datos compartida. La figura~\ref{fig:arquitectura_capas} lo dibuja.
 
-\imagen{arquitectura_capas}{Diagrama arquitectónico de módulos y dependencias}{0.9}
+\imagen{arquitectura_capas}{Diagrama arquitectónico de módulos y dependencias}
 
 Las responsabilidades se reparten así:
 
 \begin{itemize}
-	\item \textbf{Interfaz (\texttt{app.py})}: tiene las dos páginas de la aplicación Streamlit ---triaje y administración---, que se conmutan desde la barra lateral con un \texttt{st.sidebar.radio}. Aquí también vive el formulario de \textit{login} del administrador, la captura de síntomas por voz con \texttt{streamlit-mic-recorder} y la presentación de los resultados.
-	\item \textbf{Módulos de clasificación} (\texttt{TF\_IDF/}, \texttt{SVD/}, \texttt{SVM/}, \texttt{RNA/}): cada uno expone una función pública con el mismo nombre que el módulo (\texttt{tf\_idf}, \texttt{svd}, \texttt{svm}, \texttt{rna}). La función recibe un texto y devuelve la tupla \texttt{(especialidad, confianza)}. Por dentro carga el modelo serializado con \texttt{joblib} (vectorizador TF-IDF, transformación SVD cuando aplica y clasificador entrenado), preprocesa el texto y predice.
-	\item \textbf{Scripts de regeneración}: cada carpeta de modelo lleva además un script \texttt{generarModelo<NOMBRE>.py} que se ejecuta por separado, lee el dataset, entrena el modelo y lo vuelve a guardar en disco con \texttt{joblib}. \texttt{app.py} los lanza con \texttt{subprocess} cuando el administrador pulsa el botón correspondiente.
-	\item \textbf{Datos compartidos} (\texttt{Datos/}): el corpus, en un único sitio. Lo leen los módulos de clasificación y los scripts de regeneración, y la pestaña de administración añade filas al mismo fichero.
+	\item \textbf{Interfaz y orquestación (\texttt{app.py})}: tiene las dos páginas de la aplicación Streamlit ---triaje y administración---, que se conmutan desde la barra lateral con un \texttt{st.sidebar.radio}. Aquí vive también la máquina de estados del triaje, el formulario de \textit{login} del administrador, la captura de síntomas por voz con \texttt{streamlit-mic-recorder}, la lectura y escritura de \texttt{config.json}, el log de fallback y la presentación de los resultados.
+	\item \textbf{Módulos de clasificación} (\texttt{TF\_IDF/}, \texttt{SVD/}, \texttt{SVM/}, \texttt{RNA/}) con una función que recibe un texto y devuelve la tupla \texttt{(especialidad, confianza)}. 
+	\item \textbf{Scripts de regeneración}: cada carpeta de modelo lleva además un script \texttt{generarModelo<NOMBRE>.py} que se ejecuta por separado, lee el dataset base concatenado con el CSV de revisados, entrena el modelo y lo vuelve a guardar en disco con \texttt{joblib}.
+	\item \textbf{Datos compartidos} (\texttt{Datos/}, \texttt{logs/}, \texttt{config.json}): los datos, las correcciones revisadas, el log de fallback y la configuración del triaje. Lo leen y escriben tanto \texttt{app.py} como los scripts de regeneración.
 \end{itemize}
 
-Una aclaración sobre los modelos. Las cuatro funciones de predicción comparten firma, pero el proyecto no usa una clase abstracta común ni un patrón \textit{Strategy} formal. \texttt{app.py} importa las cuatro funciones y elige entre ellas con un \texttt{if/elif} sobre el valor del \texttt{selectbox}.
 
-Lo hice así a propósito. Mantiene el orquestador legible y deja a cada módulo libertad para implementar su preprocesado y su política de confianza como mejor le venga. El precio es claro: añadir un quinto modelo obliga a tocar \texttt{app.py} y el listado del \texttt{selectbox}, en lugar de bastar con registrar una clase nueva.
+\subsection*{Modo Todos: ejecutar los cuatro modelos a la vez}
 
-\subsection*{Estructura de directorios}
+Por defecto, el paciente no escoge un modelo concreto: la interfaz ofrece la opción \textit{Todos (recomendado)}, que ejecuta los cuatro clasificadores sobre los mismos síntomas y se queda con la predicción de mayor confianza. La función \texttt{ejecutar\_todos\_clasificadores} recorre el diccionario \texttt{CLASIFICADORES}, llama a cada uno y construye un diccionario de resultados; \texttt{mejor\_resultado} se queda con el más confiado entre los que no han devuelto error.
 
-Trasladado a la estructura real del repositorio:
+El paciente conserva la opción de forzar un modelo concreto del \texttt{selectbox}, lo cual resulta útil durante la validación: permite ver qué pasa con cada motor por separado sobre los mismos síntomas.
 
-\begin{itemize}
-	\item \texttt{app.py}: punto de entrada de Streamlit y orquestador.
-	\item \texttt{TF\_IDF/}: módulo del clasificador \acrshort{tfidf}, con la función \texttt{tf\_idf()} y \texttt{generarModeloTFIDF.py}.
-	\item \texttt{SVD/}: variante con reducción \acrshort{svd} y \texttt{generarModeloSVD.py}.
-	\item \texttt{SVM/}: clasificador \acrshort{svm} y \texttt{generarModeloSVM.py}.
-	\item \texttt{RNA/}: red neuronal y \texttt{generarModeloRNA.py}.
-	\item \texttt{Datos/}: dataset principal y datasets auxiliares cuando los hay.
-	\item \texttt{.streamlit/}: configuración de Streamlit y la contraseña de administración.
-	\item \texttt{scripts/}: utilidades sueltas para preparar y verificar datos.
-	\item \texttt{docs/}: documentación complementaria del proyecto.
-	\item \texttt{vozATexto1.py} y \texttt{vozATexto2.py}: pruebas iniciales del componente de voz, conservadas como referencia.
-	\item \texttt{requirements.txt}: dependencias del proyecto.
-\end{itemize}
+\subsection*{Configuración persistente del triaje}
+
+Dos parámetros son configurables y se persisten en \texttt{config.json}: el umbral de confianza (45\% por defecto) y el número de rondas extra de ampliación (1 por defecto). La pestaña de administración expone un formulario para cambiarlos y al guardar invoca \texttt{guardar\_config}, que sobrescribe el JSON.
+
+Si el fichero no existe o está corrupto, \texttt{cargar\_config} aplica los valores por defecto sin abortar la aplicación. 
+
+
 
 \subsection*{Autenticación de la pestaña de administración}
 
-La pestaña de administración está protegida por un mecanismo de autenticación sencillo, todo él dentro de \texttt{app.py}. La contraseña esperada se busca, por este orden, en \texttt{st.secrets}, después en un fichero \texttt{secrets.toml} dentro de \texttt{.streamlit/} y, si no aparece en ninguno de los dos, en la variable de entorno \texttt{TRIAJE\_ADMIN\_PASSWORD}. La comparación usa \texttt{hmac.compare\_digest} en vez de un \texttt{==} normal, para no ser vulnerable a ataques por tiempo. El estado de sesión se guarda en \texttt{st.session\_state.admin\_autenticado} y se puede cerrar desde un botón \textit{Cerrar sesión} en la barra lateral.
+La pestaña de administración está protegida por un mecanismo de autenticación sencillo, implementado por completo dentro de \texttt{app.py}. La contraseña esperada se busca, por este orden, en \texttt{st.secrets}, después en el fichero \texttt{.streamlit/secrets.toml.aos006} y, si no aparece en ninguno de los dos, en la variable de entorno \texttt{TRIAJE\_ADMIN\_PASSWORD}. La comparación se hace tanto sobre el nombre de usuario como sobre la contraseña, usando \texttt{hmac.compare\_digest} en vez de un \texttt{==} normal, para no ser vulnerable a ataques por tiempo. El estado de sesión se guarda en \texttt{st.session\_state.admin\_autenticado} y se puede cerrar desde un botón \textit{Cerrar sesión} en la barra lateral.
 
 \subsection*{Arquitectura de despliegue}
 
-El despliegue es muy simple: un único proceso Python ejecuta Streamlit, que sirve la interfaz en un puerto local (por defecto el 8501). Los modelos se cargan cuando hace falta y la aplicación trabaja contra el CSV alojado en una carpeta del propio equipo. Sin servicios externos, sin conexiones de red salientes, sin nada en la nube: los datos del paciente no salen de la máquina, que es la idea \gls{standalone} planteada en la memoria y la condición no funcional del anexo~B.
+El despliegue es muy simple: un único proceso Python ejecuta Streamlit, que sirve la interfaz en un puerto local (por defecto el 8501). Los modelos se cargan cuando hace falta y la aplicación trabaja con los CSV alojados en una carpeta del propio equipo. Sin servicios externos, sin conexiones de red salientes, sin nada en la nube: los datos del paciente no salen de la máquina, que es la idea \gls{standalone} planteada en la memoria y la condición no funcional del anexo~B.
 
-\imagen{arquitectura_despliegue}{Arquitectura de despliegue del prototipo}{0.7}
+\imagen{arquitectura_despliegue}{Arquitectura de despliegue del prototipo}
+
+
 
 \section{Diseño procedimental}
 
-Los apartados que siguen describen los flujos más representativos con diagramas de secuencia, cada uno asociado a su caso de uso del anexo~B.
+Lo que sigue son diagramas de secuencia de los flujos más representativos: primero el triaje, que es el más complejo, y después las operaciones del panel de administración.
 
-\subsection*{Introducir síntomas y obtener especialidad (CU-01, CU-02)}
+\subsection*{Máquina de estados del triaje}
 
-Es el flujo principal. El paciente teclea sus síntomas en la pestaña de triaje, elige el motor de IA y obtiene una especialidad con su porcentaje de confianza. Por defecto la entrada es por teclado; la interfaz también ofrece un botón de dictado para transcribir por voz. La secuencia completa está en la figura~\ref{fig:secuencia_triaje}.
+El flujo de triaje no es lineal: una predicción puede cumplir el umbral a la primera, requerir una o varias rondas de ampliación, terminar en fallback con selección manual del paciente, o pasar por un reporte de error tras un resultado aparentemente bueno. Para que todo esto encaje, \texttt{app.py} implementa el triaje como una pequeña máquina de estados sobre \texttt{st.session\_state.triaje\_etapa}, con cinco estados:
 
+\begin{itemize}
+	\item \texttt{inicio}: el paciente introduce los síntomas y elige modelo (o \textit{Todos}).
+	\item \texttt{ampliando}: la confianza está por debajo del umbral y todavía quedan rondas; la interfaz pide más síntomas.
+	\item \texttt{fallback}: se han agotado las rondas; el paciente acepta la sugerencia del modelo o elige manualmente la especialidad.
+	\item \texttt{completado}: se muestra el resultado final y, si procede, se ofrece la opción de reportar error.
+	\item \texttt{reportar\_error}: el paciente indica que la sugerencia no era correcta y aporta la especialidad real.
+\end{itemize}
+
+\subsection*{Triaje con confianza suficiente (CU-01)}
+
+Es el caso ideal: el paciente introduce síntomas, el modelo predice por encima del umbral y todo termina en una sola pasada. La figura~\ref{fig:secuencia_triaje} muestra la secuencia.
+
+\imagen{secuencia_triaje}{Diagrama de secuencia - Triaje con confianza suficiente}
 Los pasos son estos:
 
 \begin{enumerate}
-	\item El paciente entra en la página de triaje y teclea los síntomas. Si lo prefiere, puede pulsar el botón de dictado: \texttt{streamlit-mic-recorder} graba en el navegador, transcribe y vuelca el texto en el mismo campo, donde el paciente todavía puede corregirlo antes de seguir.
-	\item Revisa el texto, elige el motor en el \texttt{selectbox} (\acrshort{tfidf}, \acrshort{svd}, \acrshort{svm} o \acrshort{rna}) y pulsa el botón de triaje.
-	\item \texttt{app.py} comprueba que el campo no esté vacío y, según la opción elegida, invoca la función del módulo correspondiente.
-	\item El módulo preprocesa el texto, predice y devuelve la tupla con la especialidad y la confianza.
-	\item \texttt{app.py} construye el mensaje de salida y lo muestra al paciente con \texttt{st.success} y \texttt{st.info}.
+	\item El paciente entra en la página de triaje e introduce los síntomas. 
+	\item Elige el motor en el \texttt{selectbox}. Por defecto está seleccionado \textit{Todos (recomendado)}.
+	\item Pulsa el botón \textit{Realizar triaje}. \texttt{app.py} comprueba que el campo no esté vacío y, según la opción, invoca un único modelo o los cuatro a la vez.
+	\item Cada módulo carga su modelo serializado con \texttt{joblib}, preprocesa el texto y devuelve \texttt{(especialidad, confianza)}.
+	\item \texttt{app.py} compara la confianza con el umbral configurado. Si lo supera, transita al estado \texttt{completado}.
+	\item En \texttt{completado}, se muestra la especialidad sugerida con su porcentaje de confianza. Si el modo era \textit{Todos}, se muestra además la tabla comparativa de los cuatro modelos. La pantalla ofrece dos botones: \textit{Realizar otro triaje} y \textit{Reportar error}.
 \end{enumerate}
 
-\imagen{secuencia_triaje}{Diagrama de secuencia - Triaje básico de síntomas}{0.95}
+\subsection*{Triaje con ampliación de síntomas (CU-02)}
 
-Un matiz sobre el alcance actual: \texttt{app.py} muestra el porcentaje de confianza, pero el código revisado todavía no aplica un umbral de derivación ni encadena una segunda ronda de preguntas. La ampliación de síntomas y la derivación automática a atención general aparecen como objetivo en la memoria, pero por ahora son evolución prevista; cuando entren en producción se documentarán aquí.
+Cuando la confianza de la primera predicción está por debajo del umbral y quedan rondas extra disponibles, la máquina de estados transita a \texttt{ampliando}. La figura~\ref{fig:secuencia_ampliacion} muestra el flujo.
+
+\imagen{secuencia_ampliacion}{Diagrama de secuencia - Ampliación de síntomas}
+
+En este estado, \texttt{app.py} avisa al paciente de que la confianza fue insuficiente, le indica cuántas rondas le quedan y pide síntomas adicionales. Al pulsar \textit{Reintentar triaje}, la aplicación concatena los síntomas originales con los nuevos, vuelve a invocar al mismo clasificador y compara de nuevo:
+
+\begin{itemize}
+	\item Si la confianza ya supera el umbral, transita a \texttt{completado}.
+	\item Si todavía no lo supera pero quedan rondas, sigue en \texttt{ampliando}.
+	\item Si se agotan las rondas, pasa al estado \texttt{fallback}.
+\end{itemize}
+
+En cualquier momento, el paciente puede pulsar \textit{Cancelar y empezar de nuevo}, que resetea el estado y vuelve a \texttt{inicio}.
+
+\subsection*{Fallback con selección manual del paciente (CU-03)}
+
+Cuando se agotan las rondas sin alcanzar el umbral, la aplicación entra en el estado \texttt{fallback}. En este punto deja de intentar una predicción automática y pasa la decisión al paciente. La figura~\ref{fig:secuencia_fallback} muestra el flujo.
+
+\imagen{secuencia_fallback}{Diagrama de secuencia - Fallback y selección manual}
+
+La interfaz ofrece dos opciones. La primera es aceptar la sugerencia del modelo aunque no haya llegado al umbral. La segunda es elegir manualmente la especialidad desde un desplegable con todas las que ya existen en el dataset; por defecto aparece \textit{Medicina General}.
+
+Al confirmar cualquiera de las dos opciones, \texttt{app.py} invoca \texttt{registrar\_log \_fallback}, que añade una fila al log con todos los datos del intento: marca temporal, clasificador, rondas realizadas, umbral aplicado, síntomas, especialidad del modelo, confianza, especialidad elegida por el paciente y motivo \texttt{baja\_confianza}. Después transita al estado \texttt{completado}, que muestra la especialidad elegida y avisa de que el caso ha quedado registrado para revisión.
+
+\subsection*{Reporte de error tras un acierto aparente (CU-03b)}
+
+Hay un escenario que el umbral por sí solo no cubre: el modelo predice con alta confianza una especialidad equivocada. Para esos casos, el estado \texttt{completado} ofrece un botón \textit{Reportar error} que transita al estado \texttt{reportar\_error}.
+
+La interfaz funciona como la del fallback: desplegable con todas las especialidades y botones de enviar y cancelar. Lo que cambia es que la fila que se añade al log lleva motivo \texttt{reporte\_error}, para diferenciar en la revisión posterior los casos en los que el modelo predijo bajo de confianza de los casos en los que predijo seguro pero falló.
 
 \subsection*{Añadir nuevos síntomas desde administración (CU-04)}
 
-La pestaña de administración deja al usuario autenticado incorporar nuevos pares de síntomas y especialidad al corpus. El flujo arranca con un formulario que tiene un campo de texto libre para los síntomas, dos vías para fijar la especialidad ---elegirla del \texttt{selectbox} de las ya existentes o teclear una nueva--- y un campo opcional para la enfermedad asociada.
+La pestaña de administración deja al usuario autenticado incorporar nuevos pares de síntomas y especialidad los datos de base.Es un formulario que tiene un campo de texto libre para los síntomas, dos vías para fijar la especialidad ---elegirla del \texttt{selectbox} de las ya existentes o teclear una nueva--- y un campo opcional para la enfermedad asociada.
 
-\imagen{secuencia_anadir_sintoma}{Diagrama de secuencia - Añadir síntoma desde administración}{0.95}
+\imagen{secuencia_anadir_sintoma}{Diagrama de secuencia - Añadir síntoma desde administración}
 
-Al pulsar Guardar, \texttt{app.py} valida los campos obligatorios, calcula el siguiente identificador a partir del máximo actual de \texttt{record\_id} y anexa la fila al CSV usando el módulo \texttt{csv} estándar, respetando el separador y la codificación originales. A continuación invalida la caché de \texttt{cargar\_dataset} con \texttt{cargar\_dataset.clear()}, para que la tabla de últimos registros que se ve al final de la pestaña se refresque al instante. Los modelos en memoria no se enteran de este cambio; solo lo notarán cuando se reentrene explícitamente.
+Al pulsar \textit{Guardar registro}, \texttt{app.py} valida los campos obligatorios, calcula el siguiente identificador a partir del máximo actual de \texttt{record\_id} y anexa la fila directamente al CSV base usando el módulo \texttt{csv} estándar, respetando el separador y la codificación originales. 
+
+\subsection*{Revisar el log y promover casos al CSV de revisados (CU-05)}
+
+Una sección del panel de administración muestra el log de fallback como una lista de tarjetas. Cada tarjeta corresponde a un triaje fallido o reportado como erróneo, y permite al administrador revisar los síntomas, ajustar la especialidad propuesta si lo cree conveniente y, con un solo botón, promover ese caso al CSV de revisados.
+
+\imagen{secuencia_revisar_log}{Diagrama de secuencia - Revisión del log y promoción al CSV de revisados}
+
+La actualización la hace \texttt{agregar\_a\_datos\_revisados}, que añade una fila con solo \textit{symptoms\_text} y \textit{specialty} al fichero \texttt{Datos/triajes\_baja\_confianza\_re\-visados.csv}. La entrada del log no se borra: el log conserva el historial completo para auditoría.
 
 \subsection*{Regeneración de modelos (CU-06)}
 
-Esta es la operación más costosa de la aplicación: vuelve a entrenar cada modelo sobre el corpus actualizado. La pestaña de administración tiene cuatro botones independientes, uno por modelo, repartidos en dos columnas. Cada botón lanza el script de regeneración correspondiente como subproceso del intérprete Python actual.
+Es la operación más costosa de la aplicación: vuelve a entrenar cada modelo sobre el corpus actualizado. La pestaña de administración ofrece dos vías. Un botón principal \textit{Regenerar todos los modelos} dispara los cuatro scripts en secuencia, mostrando una barra de progreso o cuatro botones individuales.
 
-\imagen{secuencia_reentrenamiento}{Diagrama de secuencia - Regeneración de un modelo}{0.95}
+\imagen{secuencia_reentrenamiento}{Diagrama de secuencia - Regeneración de los modelos}
 
-Todo el proceso vive en la función \texttt{ejecutar\_script\_generador}, que hace lo siguiente:
+Todo el lanzamiento vive en la función \texttt{ejecutar\_script\_generador}:
 
 \begin{enumerate}
 	\item Comprueba que el script existe en la ruta esperada (por ejemplo, \texttt{TF\_IDF/gen\-erar\-Mo\-de\-lo\-TFIDF.py}).
-	\item Lo lanza con \texttt{sub\-process.run}, fijando \texttt{cwd} en la raíz del proyecto para que las rutas relativas dentro del script funcionen.
+	\item Lo lanza con \texttt{sub\-process.run} usando \texttt{sys.executable}, fijando \texttt{cwd} en la raíz del proyecto para que las rutas relativas dentro del script funcionen.
 	\item Captura la salida estándar y la de error; si el código de retorno no es cero, lanza una excepción con el contenido capturado.
 	\item Si todo va bien, devuelve la salida estándar para que \texttt{app.py} la pinte en un bloque \texttt{st.code}.
 \end{enumerate}
 
-Sacar el entrenamiento a un subproceso tiene un par de ventajas prácticas. Por un lado, aísla la memoria: el modelo recién entrenado no convive con la aplicación en el mismo intérprete, así que no hay choques de estado ni de bibliotecas. Por otro, si un entrenamiento se cuelga puedo matar el subproceso sin tumbar la aplicación. Y como bonus, los mismos scripts se pueden ejecutar desde la línea de comandos, fuera de Streamlit, lo que viene bien durante el desarrollo y las validaciones.
 
 \subsection*{Acceso autenticado al panel de administración (CU-07)}
 
-La autenticación se ejecuta antes de pintar nada del panel de administración. Cuando el usuario elige \texttt{Administración} en la barra lateral, \texttt{app.py} mira \texttt{st.ses\-sion\_state.admin\_autenticado}; si la sesión todavía no está autenticada, sale el formulario con usuario y contraseña.
+La autenticación se ejecuta antes de pintar nada del panel. Cuando el usuario elige \texttt{Administración} en la barra lateral, \texttt{app.py} mira \texttt{st.ses\-sion\_state.admin\_autenticado}; si la sesión todavía no está autenticada, aparece el formulario con usuario y contraseña.
 
-\imagen{secuencia_login_admin}{Diagrama de secuencia - Acceso al panel de administración}{0.95}
+\imagen{secuencia_login_admin}{Diagrama de secuencia - Acceso al panel de administración}
 
-Al enviar el formulario, la función \texttt{credenciales\_admin\_validas} compara con \texttt{hmac.com\-pare\_digest}. Si coincide, marca la sesión como autenticada y llama a \texttt{st.rerun} para repintar la página, ya con el contenido administrativo. Si no, muestra error y el formulario sigue visible. Y si la contraseña no está configurada en ningún sitio, la aplicación avisa expresamente, para que un despliegue mal configurado no deje el panel abierto.
-
-\section{Resumen del stack tecnológico}
-
-La tabla~\ref{tabla:stack_tecnologico} resume las tecnologías que hay detrás de cada parte del prototipo, para emparejar cada bloque del diseño con la librería o herramienta concreta que lo implementa.
-
-\tablaSmallSinColores{Resumen del stack tecnológico del prototipo}{p{0.32\textwidth} p{0.58\textwidth}}{stack_tecnologico}{
-	\textbf{Componente} & \textbf{Tecnología} \\
-}{
-	Interfaz de usuario & Streamlit (\texttt{app.py}) \\
-	Preprocesado y NLP & TF-IDF (\texttt{TfidfVectorizer} de scikit-learn) \\
-	Reducción de dimensionalidad & \gls{truncatedsvd} (scikit-learn) \\
-	Modelos de clasificación & Logistic Regression, SVM y \gls{mlp} (scikit-learn) \\
-	Serialización de modelos & \texttt{joblib} \\
-	Manejo del dataset & \texttt{pandas} + módulo \texttt{csv} estándar \\
-	Persistencia & Archivos CSV en disco (carpeta \texttt{Datos/}) \\
-	Autenticación admin & \texttt{hmac.compare\_digest} + \texttt{st.secrets} \\
-	Regeneración de modelos & \texttt{subprocess} sobre scripts \texttt{generarModelo<NOMBRE>.py} \\
-}
-
-La tabla reúne los componentes del flujo principal de clasificación. Aparte de ellos, la interfaz incluye un botón de dictado basado en \texttt{streamlit-mic-recorder} que sirve como vía de entrada alternativa al teclado. No le he dedicado fila propia porque su papel es secundario: traduce voz a texto y el resto del sistema sigue funcionando como si lo hubiera tecleado el paciente.
-
-% Cuando se implementen los flujos de ampliación de síntomas y revisión del log,
-% se documentarán aquí como nuevos diagramas de secuencia asociados a sus casos de uso.
+Al enviar el formulario, la función \texttt{credenciales\_admin\_validas} compara con \texttt{hmac.compare\_digest} tanto el nombre de usuario como la contraseña. Si ambos coinciden, marca la sesión como autenticada y llama a \texttt{st.rerun} para repintar la página, ya con el contenido administrativo. Si no, muestra error y el formulario sigue visible. Y si la contraseña no está configurada en ningún sitio, la aplicación avisa expresamente, para que un despliegue mal configurado no deje el panel abierto.

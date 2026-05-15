@@ -2,56 +2,56 @@
 
 \section{Introducción}
 
-Este apéndice está pensado para cualquier persona que quiera entender cómo está organizado el código del proyecto, ponerlo en marcha en su propio equipo y modificarlo. No es un manual de uso (eso queda para el apéndice de usuario), sino una guía técnica para programadores.
+Este apéndice está dirigido a quien quiera entender cómo está montado el proyecto por dentro, ponerlo a funcionar en su propio equipo y, si llega el caso, modificarlo. No es un manual de uso; eso queda para el apéndice del usuario.
 
-La aplicación es un prototipo de triaje médico escrito en Python que se ejecuta de forma local con \href{https://streamlit.io/}{Streamlit} \cite{streamlit_official}. Recibe síntomas en lenguaje natural (escritos o dictados por voz) y devuelve la especialidad médica más adecuada, utilizando para ello cuatro modelos distintos: TF-IDF, TF-IDF combinado con SVD, SVM y una red neuronal de tipo MLP. Cada modelo se entrena por separado y se guarda en disco como un fichero \texttt{.joblib} mediante \texttt{joblib.dump}, de manera que la aplicación pueda cargarlo en memoria cuando lo necesite sin tener que volver a entrenar nada.
+La aplicación es un prototipo de triaje médico escrito en Python que corre en local sobre \href{https://streamlit.io/}{Streamlit} \cite{streamlit_official}. Recibe síntomas en lenguaje natural (escritos a mano o dictados por voz) y devuelve una especialidad médica. Por debajo trabajan cuatro modelos en paralelo: TF-IDF con Regresión Logística, TF-IDF combinado con SVD, SVM y una red neuronal de tipo MLP. Por defecto, los cuatro se ejecutan sobre los mismos síntomas y la predicción que se muestra al paciente es la del que devuelve mayor confianza, junto con una tabla comparativa de los cuatro. Cada modelo se entrena por separado y se guarda en disco como un fichero \texttt{.joblib}, así la aplicación lo carga en memoria cuando lo necesita sin tener que reentrenar nada.
 
-A lo largo del apéndice se explica cómo está repartido el código entre carpetas, qué herramientas hacen falta para montar el entorno, cómo se obtiene el proyecto desde GitHub, cómo se entrenan los modelos y se arranca la aplicación, y por último cómo se ha probado el sistema.
+En las páginas siguientes se explica cómo está repartido el código, qué herramientas hacen falta para preparar el entorno, cómo se descarga el proyecto desde GitHub, cómo se entrenan los modelos y se arranca la aplicación, y por último qué pruebas se han hecho.
 
 \section{Estructura de directorios}
 
-El proyecto sigue una organización sencilla, con una carpeta por modelo y los datos y los logs separados del código. Esta separación facilita modificar un modelo sin tocar el resto y mantener limpios los ficheros que genera la aplicación durante su uso.
+El proyecto está organizado con una carpeta por modelo y los datos y los logs separados del código. Así se puede tocar un modelo sin afectar a los demás y los ficheros que la propia aplicación genera durante su uso quedan recogidos en su sitio.
 
 \begin{itemize}
-	\item \texttt{/}: en la raíz se encuentra el fichero \texttt{app.py}, que es el punto de entrada de la aplicación Streamlit, el fichero \texttt{config.json} con la configuración del umbral de confianza y las rondas de ampliación, el \texttt{README.md} y el \texttt{.gitignore}.
+	\item \texttt{/}: en la raíz están \texttt{app.py}, que es el punto de entrada de la aplicación Streamlit; \texttt{config.json}, con el umbral de confianza y las rondas de ampliación; \texttt{requirements.txt}, con las dependencias; el \texttt{README.md} y el \texttt{.gitignore}.
 	
 	\item \texttt{/Datos}: contiene el conjunto de entrenamiento principal\\
 	(\texttt{Dataset.5000.Registros.Marz.ID.Sintomas.Enfermedad.Especialidad.csv}) y el CSV ampliado\\
-	(\texttt{triajes\_baja\_confianza\_revisados.csv}) que se genera cuando el administrador revisa entradas del log y las añade al dataset.
+	(\texttt{triajes\_baja\_confianza\_revisados.csv}), que va recogiendo los síntomas revisados desde el panel de administración (los que llegan por baja confianza y también los reportes de error del paciente). Cuando se vuelven a entrenar los modelos, los scripts concatenan ambos ficheros, así las correcciones entran en el siguiente entrenamiento sin tocar el dataset original.
 	
-	\item \texttt{/TF\_IDF}: incluye el módulo \texttt{tf\_idf.py}, con la función de inferencia, y el script \texttt{generarModeloTFIDF.py}, que entrena el modelo base de \gls{tfidf} con Regresión Logística. El modelo entrenado se guarda como \texttt{tfidf\_model.joblib} dentro de la misma carpeta.
+	\item \texttt{/TF\_IDF}: contiene \texttt{tf\_idf.py} con la función de inferencia y \texttt{generarModeloTFIDF.py}, que entrena el modelo base de \gls{tfidf} con Regresión Logística. El modelo entrenado se guarda como \texttt{tfidf\_model.joblib} en la misma carpeta.
 	
-	\item \texttt{/SVD}: contiene \texttt{SVD.py} y \texttt{generarModeloSVD.py}. El script de entrenamiento aplica \gls{tfidf} seguido de \gls{truncatedsvd} con 100 componentes y, finalmente, un clasificador de Regresión Logística. El modelo resultante se almacena en \texttt{svd\_model.joblib}.
+	\item \texttt{/SVD}: contiene \texttt{SVD.py} y \texttt{generarModeloSVD.py}. El entrenamiento aplica \gls{tfidf}, luego \gls{truncatedsvd} con 100 componentes y, al final, un clasificador de Regresión Logística. El resultado queda en \texttt{svd\_model.joblib}.
 	
-	\item \texttt{/SVM}: contiene \texttt{SVM.py} y \texttt{generarModeloSVM.py}. El entrenamiento utiliza \texttt{Pipeline} de scikit-learn junto con \texttt{GridSearchCV} para ajustar el parámetro \texttt{C} y el tamaño del vocabulario. El modelo se guarda en \texttt{svm\_model.joblib}.
+	\item \texttt{/SVM}: contiene \texttt{SVM.py} y \texttt{generarModeloSVM.py}. El entrenamiento monta un \texttt{Pipeline} de scikit-learn con \texttt{GridSearchCV} para ajustar el parámetro \texttt{C} y el tamaño del vocabulario. El modelo se guarda en \texttt{svm\_model.joblib}.
 	
-	\item \texttt{/RNA}: contiene \texttt{RNA.py} y \texttt{generarModeloRNA.py}. El entrenamiento utiliza un \gls{mlp} con \textit{early stopping}, sobre el que también se aplica \texttt{GridSearchCV} para probar arquitecturas y funciones de activación. El modelo final queda en \texttt{rna\_model.joblib}.
+	\item \texttt{/RNA}: contiene \texttt{RNA.py} y \texttt{generarModeloRNA.py}. El entrenamiento utiliza un \gls{mlp} con \textit{early stopping} y también pasa por \texttt{GridSearchCV} para probar varias arquitecturas y funciones de activación. El modelo final queda en \texttt{rna\_model.joblib}.
 	
-	\item \texttt{/logs}: directorio donde se almacena \texttt{triaje\_fallback\_log.csv}. Aquí se registran las consultas que el sistema no ha podido clasificar con suficiente confianza, junto con el modelo utilizado, los síntomas, la especialidad sugerida por el modelo y la especialidad finalmente elegida por el paciente.
+	\item \texttt{/logs}: aquí se guarda \texttt{triaje\_fallback\_log.csv}, donde acaban tanto las consultas que el sistema no ha clasificado con confianza suficiente como los reportes de error que envía el paciente cuando considera que la especialidad sugerida no era correcta. Cada fila guarda el modelo usado, los síntomas, la especialidad sugerida por el modelo, la que finalmente eligió el paciente y un campo \texttt{motivo} para distinguir un caso del otro.
 	
-	\item \texttt{/.streamlit}: contiene la configuración de Streamlit y el fichero de \textit{secrets}, donde se guarda la contraseña del administrador. Este fichero está excluido del control de versiones.
+	\item \texttt{/.streamlit}: contiene la configuración de Streamlit y el fichero de \textit{secrets} con la contraseña del administrador. Este fichero queda fuera del control de versiones.
 	
-	\item \texttt{/tex} y \texttt{/img}: contienen los ficheros \LaTeX{} y las imágenes utilizados para la redacción de la memoria y los anexos.
+	\item \texttt{/tex} y \texttt{/img}: contienen los ficheros \LaTeX{} y las imágenes de la memoria y los anexos.
 \end{itemize}
 
 \section{Manual del programador}
 
 \subsection{Herramientas necesarias}
 
-Para preparar un entorno de desarrollo equivalente al utilizado durante el TFG, hace falta instalar los siguientes elementos:
+Para montar un entorno de desarrollo equivalente al que he utilizado durante el TFG hace falta lo siguiente:
 
 \begin{itemize}
 	\item \textbf{Python 3.11 o superior}. Es el lenguaje en el que está escrito todo el código.
-	\item \textbf{Git}, para clonar el repositorio y mantener el control de versiones.
-	\item \textbf{Visual Studio Code} (recomendado) u otro editor con soporte para Python.
-	\item \textbf{Una cuenta de GitHub}, opcional, si se quiere contribuir al repositorio o utilizar \textit{GitHub Copilot} como ayuda durante la programación.
+	\item \textbf{Git}, para clonar el repositorio y llevar el control de versiones.
+	\item \textbf{Visual Studio Code} (recomendado), aunque sirve cualquier otro editor con soporte para Python.
+	\item \textbf{Una cuenta de GitHub}, opcional, si se quiere contribuir al repositorio o usar \textit{GitHub Copilot} como ayuda durante la programación.
 \end{itemize}
 
 \subsubsection{Python}
 
-Toda la aplicación se ha desarrollado en Python 3.11. Se puede descargar desde \href{https://www.python.org/downloads/}{python.org/downloads}. Durante la instalación en Windows conviene marcar la opción \textit{Add Python to PATH}, para poder ejecutar \texttt{python} y \texttt{pip} desde cualquier terminal.
+Toda la aplicación se ha desarrollado en Python 3.11. Se puede descargar desde \href{https://www.python.org/downloads/}{python.org/downloads}. En Windows conviene marcar durante la instalación la opción \textit{Add Python to PATH}, así se pueden ejecutar \texttt{python} y \texttt{pip} desde cualquier terminal.
 
-Tras la instalación se puede comprobar la versión abriendo una terminal y ejecutando:
+Una vez instalado, conviene comprobar la versión:
 
 \begin{verbatim}
 	python --version
@@ -60,39 +60,39 @@ Tras la instalación se puede comprobar la versión abriendo una terminal y ejec
 
 \subsubsection{Visual Studio Code}
 
-Como editor se ha utilizado \href{https://code.visualstudio.com/}{Visual Studio Code}. Una vez instalado, se recomienda añadir desde el panel de extensiones (\texttt{Ctrl+Shift+X}) las siguientes:
+Como editor he usado \href{https://code.visualstudio.com/}{Visual Studio Code}. Una vez instalado, desde el panel de extensiones (\texttt{Ctrl+Shift+X}) conviene añadir:
 
 \begin{itemize}
-	\item \textbf{Python} (Microsoft): proporciona el intérprete, el depurador y la integración con entornos virtuales.
+	\item \textbf{Python} (Microsoft): aporta el intérprete, el depurador y la integración con entornos virtuales.
 	\item \textbf{Pylance}: análisis estático y autocompletado.
-	\item \textbf{GitLens}: facilita la consulta del historial de cambios sin salir del editor.
-	\item \textbf{GitHub Copilot} (opcional): ayuda durante la escritura de código. Es gratuito para estudiantes a través del programa \textit{GitHub Education}.
+	\item \textbf{GitLens}: para consultar el historial de cambios sin salir del editor.
+	\item \textbf{GitHub Copilot} (opcional): asistencia durante la escritura del código. Es gratuito para estudiantes a través de \textit{GitHub Education}.
 \end{itemize}
 
 \subsubsection{Git}
 
-Git puede descargarse desde \href{https://git-scm.com/}{git-scm.com}. En Windows se recomienda dejar las opciones por defecto del asistente, ya que permite trabajar tanto con \textit{Git Bash} como con la terminal de Windows.
+Git se descarga desde \href{https://git-scm.com/}{git-scm.com}. En Windows lo más cómodo es dejar las opciones por defecto del asistente, ya que deja preparados tanto \textit{Git Bash} como la terminal de Windows.
 
 \subsection{Obtención del código fuente}
 
-El código se aloja en un repositorio público de GitHub \cite{github_official}. Para descargarlo, basta con abrir una terminal y ejecutar:
+El código está en un repositorio público de GitHub \cite{github_official}. Para descargarlo basta con:
 
 \begin{verbatim}
 	git clone https://github.com/<usuario>/<repositorio>.git
 	cd <repositorio>
 \end{verbatim}
 
-Tras el clonado se obtiene la estructura de directorios descrita en la sección anterior.
+Tras el clonado aparece la estructura de directorios descrita más arriba.
 
 \subsection{Entorno virtual y dependencias}
 
-Para evitar interferencias con otros proyectos de Python instalados en el equipo, se recomienda crear un entorno virtual antes de instalar las dependencias. Desde la raíz del proyecto:
+Para no interferir con otros proyectos de Python que pueda haber en el equipo, conviene crear un entorno virtual antes de instalar nada. Desde la raíz del proyecto:
 
 \begin{verbatim}
 	python -m venv .venv
 \end{verbatim}
 
-A continuación, se activa el entorno. En Windows, desde \textit{PowerShell}:
+Luego se activa. En Windows, desde \textit{PowerShell}:
 
 \begin{verbatim}
 	.venv\Scripts\Activate.ps1
@@ -104,53 +104,46 @@ Y en Linux o macOS:
 	source .venv/bin/activate
 \end{verbatim}
 
-Una vez activo el entorno (el prompt mostrará \texttt{(.venv)} al inicio), se instalan las librerías necesarias. Si el repositorio incluye un fichero \texttt{requirements.txt}, basta con:
+Una vez activo el entorno (el prompt mostrará \texttt{(.venv)} al inicio), se instalan las librerías. El repositorio incluye un \texttt{requirements.txt} con las dependencias mínimas (\texttt{streamlit}, \texttt{streamlit-mic-recorder}, \texttt{scikit-learn}, \texttt{pandas}, \texttt{nltk} y \texttt{joblib}):
 
 \begin{verbatim}
 	pip install -r requirements.txt
 \end{verbatim}
 
-Si no, las dependencias mínimas que utiliza el proyecto son las siguientes:
-
-\begin{verbatim}
-	pip install streamlit pandas numpy scikit-learn nltk joblib
-	pip install streamlit-mic-recorder
-\end{verbatim}
-
-La primera vez que se ejecute el código de los modelos, NLTK descargará automáticamente el corpus de palabras vacías en español:
+La primera vez que se ejecute el código de los modelos, NLTK descargará el corpus de palabras vacías en español:
 
 \begin{verbatim}
 	import nltk
 	nltk.download('stopwords')
 \end{verbatim}
 
-Esta descarga solo se realiza una vez por equipo y se gestiona internamente desde los propios módulos.
+La descarga se hace una sola vez por equipo y la lanzan los propios módulos.
 
 \subsection{Configuración del acceso de administrador}
 
-La pestaña de administración está protegida por una contraseña que se lee desde un fichero de \textit{secrets} de Streamlit o desde una variable de entorno. La aplicación busca, por este orden:
+La pestaña de administración está protegida con contraseña. La aplicación la busca por este orden:
 
 \begin{enumerate}
-	\item El valor \texttt{admin\_password} en los \textit{secrets} de Streamlit.
-	\item El fichero \texttt{.streamlit/secrets.toml.aos006}.
-	\item La variable de entorno \texttt{TRIAJE\_ADMIN\_PASSWORD}.
+	\item En el valor \texttt{admin\_password} de los \textit{secrets} de Streamlit.
+	\item En el fichero \texttt{.streamlit/secrets.toml.aos006}.
+	\item En la variable de entorno \texttt{TRIAJE\_ADMIN\_PASSWORD}.
 \end{enumerate}
 
-Para configurarlo de forma local, basta con crear el fichero \texttt{.streamlit/secrets.toml} en la raíz del proyecto con el siguiente contenido:
+Lo más sencillo para una instalación local es crear el fichero \texttt{.streamlit/secrets.toml} con:
 
 \begin{verbatim}
 	admin_password = "tu_contraseña"
 \end{verbatim}
 
-Este fichero está excluido del repositorio mediante \texttt{.gitignore}, por lo que la contraseña nunca se sube a GitHub. El usuario de administración es \texttt{admin}.
+Este fichero está en el \texttt{.gitignore}, así que la contraseña no sube nunca a GitHub. El usuario es siempre \texttt{admin}.
 
 \section{Compilación, instalación y ejecución del proyecto}
 
-Al tratarse de una aplicación Python interpretada, no hay una fase de compilación propiamente dicha. El proceso para tener la aplicación en marcha consiste en preparar los datos, entrenar los modelos y arrancar la interfaz Streamlit.
+Python no tiene fase de compilación, así que poner la aplicación en marcha consiste en preparar los datos, entrenar los modelos y arrancar Streamlit.
 
 \subsection{Entrenamiento de los modelos}
 
-Antes de poder utilizar la aplicación, deben existir los cuatro ficheros \texttt{.joblib} con los modelos entrenados. Cada modelo tiene su propio script de entrenamiento, que se ejecuta de forma independiente. Desde la raíz del proyecto y con el entorno virtual activo:
+Antes de usar la aplicación tienen que existir los cuatro ficheros \texttt{.joblib}. Cada modelo tiene su propio script de entrenamiento que se lanza por separado. Desde la raíz del proyecto y con el entorno virtual activo:
 
 \begin{verbatim}
 	python TF_IDF/generarModeloTFIDF.py
@@ -159,37 +152,37 @@ Antes de poder utilizar la aplicación, deben existir los cuatro ficheros \textt
 	python RNA/generarModeloRNA.py
 \end{verbatim}
 
-Los dos primeros scripts (TF-IDF y SVD) terminan en pocos segundos, ya que utilizan únicamente Regresión Logística sin búsqueda de hiperparámetros. Los scripts de \gls{svm} y de la red neuronal son más lentos, porque aplican \gls{gscv} sobre validación cruzada estratificada con cinco particiones. En un equipo modesto, el entrenamiento de la red neuronal puede tardar varios minutos.
+Los dos primeros (TF-IDF y SVD) terminan en pocos segundos, porque utilizan Regresión Logística sin búsqueda de hiperparámetros. Los de \gls{svm} y red neuronal son más lentos, porque pasan por \gls{gscv} sobre validación cruzada estratificada de cinco particiones. En un equipo modesto, el entrenamiento de la red neuronal puede tardar varios minutos.
 
-Si solo se quieren regenerar los modelos sin entrar a línea de comandos, la propia aplicación incluye un botón por modelo dentro de la pestaña de administración. Este botón ejecuta internamente el script correspondiente mediante \texttt{subprocess.run} y muestra la salida en la interfaz si la regeneración tiene éxito.
+Quien prefiera no entrar a la línea de comandos puede usar la pestaña de administración: hay un botón individual por modelo y un botón \textit{Regenerar todos los modelos} que lanza los cuatro scripts en secuencia con una barra de progreso. Por dentro, los botones lanzan el mismo script con \texttt{subprocess.run} y muestran su salida en la interfaz.
 
-Cada script de entrenamiento sigue el mismo esquema:
+Los cuatro scripts hacen lo mismo:
 
 \begin{enumerate}
-	\item Carga el CSV de entrenamiento con \texttt{pandas.read\_csv}.
-	\item Aplica el preprocesado de texto (paso a minúsculas, eliminación de caracteres no alfabéticos, eliminación de palabras vacías y \gls{stemming} con \texttt{SnowballStemmer}).
-	\item Entrena el modelo correspondiente.
-	\item Serializa el resultado con \texttt{joblib.dump}, guardando una tupla con el vectorizador y el clasificador (o vectorizador, SVD y clasificador en el caso del modelo SVD).
+	\item Cargan el CSV principal con \texttt{pandas.read\_csv} y, si existe, lo concatenan con el ampliado \texttt{triajes\_baja\_confianza\_revisados.csv}. Así los registros revisados desde la administración entran en el entrenamiento sin tocar el dataset original.
+	\item Aplican el preprocesado de texto: paso a minúsculas, eliminación de caracteres no alfabéticos, retirada de palabras vacías y \gls{stemming} con \texttt{SnowballStemmer}.
+	\item Entrenan el modelo correspondiente.
+	\item Guardan el resultado con \texttt{joblib.dump}, en forma de tupla (vectorizador, clasificador) o, en el caso de SVD, (vectorizador, SVD, clasificador).
 \end{enumerate}
 
 \subsection{Ejecución de la aplicación}
 
-Una vez generados los modelos, se lanza la aplicación con:
+Una vez generados los modelos, la aplicación se lanza con:
 
 \begin{verbatim}
 	streamlit run app.py
 \end{verbatim}
 
-Streamlit arranca un servidor local y abre el navegador por defecto en \texttt{http://localhost:8501}. La aplicación tiene dos pestañas, accesibles desde la barra lateral:
+Streamlit arranca un servidor local y abre el navegador por defecto en \texttt{http://localhost:8501}. Hay dos pestañas, accesibles desde la barra lateral:
 
 \begin{itemize}
-	\item \textbf{Triaje}: vista del paciente. Permite introducir síntomas por escrito o por voz y elegir el modelo con el que se quiere realizar la clasificación.
-	\item \textbf{Administración}: protegida por contraseña. Permite añadir nuevos registros al dataset ampliado, revisar el log de consultas no clasificadas con confianza suficiente, ajustar el umbral de confianza y las rondas de ampliación, y regenerar los modelos.
+	\item \textbf{Triaje}: la vista del paciente. Permite escribir o dictar síntomas. Por defecto, la opción del desplegable es \textit{Todos (recomendado)}: la aplicación lanza los cuatro modelos sobre la misma descripción y muestra una tabla comparativa con sus predicciones, marcando al de mayor confianza. Como alternativa, se puede elegir un modelo concreto y prescindir de la comparativa.
+	\item \textbf{Administración}: protegida por contraseña. Sirve para añadir registros al dataset ampliado, revisar el log de consultas problemáticas (baja confianza y reportes de error), ajustar el umbral y las rondas de ampliación, y regenerar los modelos uno a uno o todos a la vez.
 \end{itemize}
 
 \subsection{Configuración del umbral y las rondas}
 
-La configuración del comportamiento del triaje se almacena en \texttt{config.json}, en la raíz del proyecto. Su contenido por defecto es:
+El comportamiento del triaje se controla desde \texttt{config.json}, en la raíz del proyecto. El contenido por defecto es:
 
 \begin{verbatim}
 	{
@@ -198,91 +191,109 @@ La configuración del comportamiento del triaje se almacena en \texttt{config.js
 	}
 \end{verbatim}
 
-El parámetro \texttt{umbral\_confianza} indica el porcentaje mínimo de confianza que debe devolver el modelo para considerar válida la predicción. El parámetro \texttt{rondas\_extra} indica cuántas veces se permite al paciente ampliar sus síntomas antes de pasar al fallback (selección manual o derivación a Medicina General).
+\texttt{umbral\_confianza} es el porcentaje mínimo de confianza para dar por buena la predicción. \texttt{rondas\_extra} dice cuántas veces se le va a pedir al paciente que añada más síntomas antes de pasar al fallback (selección manual o derivación a Medicina General).
 
-Ambos valores se pueden modificar desde la pestaña de administración mediante un formulario, y los cambios se aplican sin necesidad de reiniciar la aplicación.
+Los dos valores se cambian desde la pestaña de administración con un formulario, y el cambio se aplica sin reiniciar la aplicación.
 
 \subsection{Flujo de un triaje}
 
-Cuando el paciente introduce sus síntomas y pulsa el botón de clasificación, el flujo interno es el siguiente:
+El desplegable de selección de motor de IA arranca en \textit{Todos (recomendado)}, así que el comportamiento por defecto cuando el paciente pulsa el botón de triaje es el siguiente:
 
 \begin{enumerate}
-	\item La aplicación llama a la función del modelo seleccionado (\texttt{tf\_idf}, \texttt{svd}, \texttt{svm} o \texttt{rna}). Estas funciones cargan el fichero \texttt{.joblib} correspondiente con \texttt{joblib.load} y devuelven una tupla \texttt{(especialidad, confianza)}.
-	\item Si la confianza supera el umbral configurado, se muestra el resultado directamente.
-	\item Si la confianza es inferior y todavía quedan rondas de ampliación, la aplicación pide al paciente que añada más síntomas y vuelve a invocar al mismo modelo con la nueva descripción.
-	\item Si tras agotar las rondas la confianza sigue siendo insuficiente, se entra en la fase de \textit{fallback}: el paciente puede aceptar la sugerencia del modelo, seleccionar manualmente otra especialidad de la lista o quedarse con Medicina General como opción por defecto. En todos los casos, la entrada queda registrada en \texttt{logs/triaje\_fallback\_log.csv}.
+	\item La función \texttt{ejecutar\_todos\_clasificadores} llama una vez a cada uno de los cuatro modelos (\texttt{tf\_idf}, \texttt{svd}, \texttt{svm} y \texttt{rna}) con los mismos síntomas. Cada función carga su \texttt{.joblib} con \texttt{joblib.load} y devuelve una tupla \texttt{(especialidad, confianza)}.
+	
+	\item \texttt{mejor\_resultado} se queda con el modelo que ha devuelto mayor confianza. Ese es el que se muestra como predicción principal.
+	
+	\item En la pantalla de resultado aparece una tabla generada con \texttt{pd.DataFrame} que recoge la predicción y la confianza de los cuatro modelos. El ganador queda marcado con un asterisco y la etiqueta \textit{Elegido}. Si alguno de los modelos falla, su fila aparece con estado \textit{Error}.
+	
+	\item Si la confianza del ganador supera el umbral configurado, el resultado se da por bueno.
+	
+	\item Si queda por debajo y todavía hay rondas de ampliación disponibles, la aplicación pide al paciente que añada más síntomas. En la ampliación ya no se vuelven a ejecutar los cuatro modelos: solo se reintenta con el que había ganado en la primera ronda, hasta que su confianza supere el umbral o se agoten las rondas.
+	
+	\item Si tras agotar las rondas la confianza sigue siendo baja, se entra en \textit{fallback}: el paciente puede aceptar la sugerencia del modelo, elegir manualmente otra especialidad de la lista o quedarse con Medicina General. En cualquiera de los tres casos, la consulta se registra en \texttt{logs/triaje\_fallback\_log.csv} con motivo \texttt{baja\_confianza}.
+	
+	\item Aunque la confianza del ganador haya superado el umbral, en la pantalla de resultado siempre aparece un botón \textit{Reportar error}. Si el paciente lo pulsa, indica la especialidad que considera correcta y la consulta se añade al mismo log, esta vez con motivo \texttt{reporte\_error}. Así se recogen correcciones incluso cuando el sistema estaba seguro de su predicción.
 \end{enumerate}
+
+El desplegable también ofrece los cuatro modelos por separado como opción minoritaria, pensada para hacer pruebas o comparar comportamientos puntuales. En ese caso la lógica es la misma, pero solo se invoca el modelo elegido y la tabla comparativa no aparece.
+
+Las entradas del log (por baja confianza o por reporte de error) se revisan después desde la administración. Cuando el administrador asigna una especialidad y pulsa \textit{Añadir a datos}, el par síntomas-especialidad se vuelca en \texttt{triajes\_baja\_confianza\_revisados.csv}, que es el CSV que se concatena con el principal al reentrenar.
 
 \subsection{Entrada por voz}
 
-La aplicación permite dictar los síntomas en lugar de escribirlos. Para ello se utiliza el componente \texttt{streamlit-mic-recorder} \cite{streamlit_mic_recorder}, que captura el audio desde el navegador y devuelve una transcripción de texto en español. Esa transcripción se inserta automáticamente en el campo de síntomas, de manera que el flujo posterior es exactamente el mismo que si el paciente hubiera escrito el texto.
+Como alternativa al teclado, el paciente puede dictar los síntomas. La captura del audio la hace el componente \texttt{streamlit-mic-recorder} \cite{streamlit_mic_recorder} directamente en el navegador, y la transcripción que devuelve se inserta en el cuadro de síntomas. De ahí en adelante, el flujo es idéntico al de un texto escrito a mano.
 
-El uso del micrófono requiere que el navegador conceda permiso de acceso. La primera vez que se utiliza, se muestra una ventana de confirmación. En Chrome y en Firefox el permiso queda guardado para futuras sesiones siempre que se acceda desde \texttt{localhost}.
+Para que funcione, el navegador tiene que dar permiso al micrófono. La primera vez aparece una ventana de confirmación; Chrome y Firefox lo recuerdan en sesiones posteriores siempre que se entre desde \texttt{localhost}.
 
 \section{Pruebas del sistema}
 
-Dado que el proyecto es un prototipo académico que se ejecuta en local y cuya interfaz cambia con frecuencia durante el desarrollo, se ha optado por una estrategia de pruebas mixta: pruebas manuales sobre la interfaz Streamlit y pruebas funcionales sobre los modelos. No se ha implementado una batería de tests automatizados con \texttt{pytest} dentro del alcance del TFG, aunque se considera una mejora futura natural.
+El proyecto es un prototipo académico que corre en local y cuya interfaz ha cambiado bastante durante el desarrollo, así que las pruebas se han hecho de forma mixta: pruebas manuales sobre la interfaz Streamlit y validación de los modelos durante el entrenamiento. No se ha montado una batería de tests automatizados con \texttt{pytest} dentro del alcance del TFG, aunque es uno de los puntos pendientes.
 
 \subsection{Pruebas de los modelos durante el entrenamiento}
 
-La evaluación principal de los cuatro modelos se realiza durante el propio proceso de entrenamiento. Los scripts \texttt{generarModeloSVM.py} y \texttt{generarModeloRNA.py} utilizan \gls{gscv} con validación cruzada estratificada de cinco particiones, lo que ofrece una estimación robusta del rendimiento de cada combinación de hiperparámetros sin necesidad de mantener un conjunto de test fijo.
+La evaluación principal de los cuatro modelos se hace dentro del propio entrenamiento. Los scripts \texttt{generarModeloSVM.py} y \texttt{generarModeloRNA.py} usan \gls{gscv} con validación cruzada estratificada de cinco particiones, que da una estimación razonable del rendimiento de cada combinación de hiperparámetros sin tener que reservar un conjunto de test fijo.
 
-Las métricas calculadas son las habituales en clasificación supervisada multiclase: \textit{accuracy}, \textit{precision}, \textit{recall} y \textit{F1-macro}. La elección de la versión macro frente a la versión micro responde al desequilibrio entre clases del dataset: hay muchos más ejemplos de atención general y medicina interna que de especialidades concretas como dermatología o neurología, y el macro da el mismo peso a todas las clases.
+Las métricas son las habituales en clasificación supervisada multiclase: \textit{accuracy}, \textit{precision}, \textit{recall} y \textit{F1-macro}. La versión macro se usa en lugar de la micro porque el dataset está desequilibrado: hay muchos más ejemplos de atención general y medicina interna que de especialidades como dermatología o neurología, y el macro da a todas las clases el mismo peso.
 
-Los modelos TF-IDF base y SVD se utilizan como referencia. Por eso se entrenan con una configuración fija, sin búsqueda exhaustiva, y se evalúan únicamente con la división entrenamiento/test que aplica \texttt{train\_test\_split} con un 20\% de datos reservados.
+Los modelos TF-IDF base y SVD funcionan como referencia. Por eso se entrenan con una configuración fija, sin búsqueda exhaustiva, y se evalúan con la división entrenamiento/test que hace \texttt{train\_test\_split} reservando un 20\% para test.
 
 \subsection{Pruebas manuales sobre la interfaz}
 
-Las funcionalidades de la aplicación se han probado de forma manual a lo largo de todo el desarrollo, siguiendo una serie de escenarios representativos:
+A lo largo del desarrollo he ido probando manualmente los escenarios que más se repiten:
 
 \begin{itemize}
-	\item \textbf{Triaje con confianza alta}: introducción de descripciones claras (por ejemplo, \textit{``dolor torácico opresivo que irradia al brazo izquierdo''}) para verificar que el sistema devuelve la especialidad esperada por encima del umbral.
+	\item \textbf{Triaje en modo conjunto (escenario por defecto)}: con el desplegable en \textit{Todos (recomendado)}, lanzar descripciones de distinto tipo y comprobar que la tabla muestra los cuatro modelos, que el asterisco recae sobre el de mayor confianza y que la predicción que se muestra arriba coincide con la fila marcada como elegida.
 	
-	\item \textbf{Triaje con confianza baja}: introducción de descripciones genéricas o ambiguas (\textit{``me encuentro mal''}, \textit{``dolor''}) para comprobar que la aplicación entra correctamente en la fase de ampliación de síntomas y, después, en la fase de \textit{fallback}.
+	\item \textbf{Confianza alta}: descripciones claras como \textit{``dolor torácico opresivo que irradia al brazo izquierdo''}, para ver que al menos uno de los cuatro modelos supera el umbral y el flujo termina sin pasar por ampliación.
 	
-	\item \textbf{Cambio de modelo}: ejecución de la misma descripción con los cuatro modelos para verificar que cada uno devuelve su propia predicción y porcentaje de confianza.
+	\item \textbf{Confianza baja}: descripciones vagas como \textit{``me encuentro mal''} o \textit{``dolor''}, para comprobar que ningún modelo supera el umbral, que entra la ronda de ampliación y que en esa ronda solo se reintenta con el ganador de la primera vuelta.
 	
-	\item \textbf{Entrada por voz}: dictado de síntomas en español para comprobar que la transcripción se inserta en el campo de texto y que el flujo posterior funciona igual que con entrada por teclado.
+	\item \textbf{Modelo individual}: forzar cada uno de los cuatro modelos por separado desde el desplegable, sobre la misma descripción, para comparar predicciones puntuales. En este modo la tabla comparativa no aparece, lo cual también se ha verificado.
 	
-	\item \textbf{Acceso de administrador}: intentos de acceso con credenciales correctas e incorrectas, comprobando que la pestaña permanece bloqueada hasta validar la contraseña.
+	\item \textbf{Reporte de error}: en un triaje con confianza alta, pulsar \textit{Reportar error}, indicar otra especialidad y comprobar que la entrada queda en el log con motivo \texttt{reporte\_error}, mientras que las del fallback aparecen con motivo \texttt{baja\_confianza}.
 	
-	\item \textbf{Añadir un nuevo registro}: alta de pares síntoma-especialidad desde la pestaña de administración, verificando que se asigna el siguiente \texttt{record\_id} disponible y que el registro queda en el CSV ampliado.
+	\item \textbf{Entrada por voz}: dictar síntomas en español, ver que la transcripción se inserta en el cuadro de texto y que el resto del flujo funciona igual que escribiendo a mano.
 	
-	\item \textbf{Revisión del log}: lectura del log de fallback, asignación manual de una especialidad a una entrada y volcado al CSV ampliado. Se ha comprobado que las entradas revisadas se incorporan correctamente al fichero \texttt{triajes\_baja\_confianza\_revisados.csv}.
+	\item \textbf{Acceso de administrador}: intentos con credenciales correctas e incorrectas, comprobando que la pestaña no se desbloquea hasta validar la contraseña.
 	
-	\item \textbf{Regeneración de modelos}: ejecución de los cuatro botones de regenerado desde la pestaña de administración, verificando que cada script termina correctamente y que la aplicación carga los nuevos \texttt{.joblib} sin necesidad de reiniciarse.
+	\item \textbf{Alta de un registro nuevo}: añadir pares síntoma-especialidad desde la administración, comprobando que se asigna el siguiente \texttt{record\_id} disponible y que el registro aparece en el CSV ampliado.
+	
+	\item \textbf{Revisión del log}: leer el log, asignar manualmente una especialidad a una entrada (tanto de baja confianza como de reporte de error) y volcarla al CSV ampliado. He comprobado que las entradas revisadas entran luego en el siguiente reentrenamiento.
+	
+	\item \textbf{Regeneración de modelos}: pulsar los botones individuales y el botón \textit{Regenerar todos los modelos}, comprobando que cada script termina sin error, que la barra de progreso avanza y que la aplicación carga los nuevos \texttt{.joblib} sin reiniciarse.
 \end{itemize}
 
-\subsection{Validación cruzada con casos reales}
+\subsection{Validación con casos reales}
 
-Además de los escenarios anteriores, durante el desarrollo se ha utilizado un pequeño conjunto de descripciones recogidas a partir de testimonios reales (familiares, amigos y consultas habituales) para comprobar el comportamiento del sistema frente a lenguaje coloquial, faltas de ortografía y expresiones poco precisas. Estos casos no forman parte del conjunto de entrenamiento y permiten valorar de forma más realista la capacidad de generalización de los modelos.
+Aparte de los escenarios anteriores, he ido recogiendo descripciones reales de familiares, amigos y consultas habituales. Son casos que no están en el conjunto de entrenamiento, así que sirven para ver cómo se porta el sistema cuando el lenguaje es coloquial, hay faltas de ortografía o las expresiones son poco precisas.
 
-Algunas observaciones recogidas durante estas pruebas:
+Algunas cosas que he ido viendo:
 
 \begin{itemize}
-	\item Las descripciones cortas o muy genéricas tienden a obtener una confianza baja, lo que activa correctamente la ronda de ampliación.
-	\item Los modelos basados en bigramas (\gls{svm} y \gls{mlp}) suelen comportarse algo mejor frente a expresiones clínicas como \textit{``dolor de cabeza intenso''} o \textit{``falta de aire al subir escaleras''}.
-	\item Las negaciones (\textit{``no tengo fiebre''}) no siempre se interpretan bien, ya que la representación de bolsa de palabras no captura ese matiz. Esta limitación es conocida y se asume como parte del alcance del proyecto.
+	\item Las descripciones cortas o demasiado genéricas dan confianza baja y la aplicación entra en la ronda de ampliación, que es la reacción que se busca.
+	\item Los modelos con bigramas (\gls{svm} y \gls{mlp}) se manejan algo mejor con expresiones del tipo \textit{``dolor de cabeza intenso''} o \textit{``falta de aire al subir escaleras''}.
+	\item Las negaciones (\textit{``no tengo fiebre''}) no se interpretan bien. La representación en bolsa de palabras no captura ese matiz, y es algo que asumo como una limitación del enfoque.
 \end{itemize}
 
 \subsection{Pruebas de robustez del log y los CSV}
 
-También se han probado situaciones límite relacionadas con la gestión de ficheros:
+También he provocado a propósito algunas situaciones límite para ver cómo reacciona la aplicación:
 
 \begin{itemize}
-	\item Ejecución de la aplicación con el log de fallback vacío o inexistente. La aplicación debe crearlo con su cabecera al registrar la primera entrada.
-	\item Síntomas con caracteres no ASCII (tildes, ñ, signos de puntuación). Se ha utilizado codificación Latin-1 al escribir en el dataset y UTF-8 en el log de fallback, comprobando que los caracteres se conservan correctamente en ambos casos.
-	\item Sustitución del fichero \texttt{config.json} por un valor mal formado o ausente. La aplicación recurre a los valores por defecto (\texttt{umbral\_confianza = 60.0}, \texttt{rondas\_extra = 1}) sin lanzar excepciones.
+	\item Arrancar la aplicación con el log vacío o sin que exista. La aplicación lo crea con su cabecera la primera vez que registra una entrada.
+	\item Logs antiguos sin la columna \texttt{motivo}. La función \texttt{\_asegurar\_header\_log()} los detecta y los reescribe en disco con la cabecera nueva, rellenando las filas existentes con \texttt{baja\_confianza}. La migración se ejecuta una sola vez y deja el fichero en un estado consistente.
+	\item Síntomas con tildes, ñ o signos de puntuación. El dataset se escribe en Latin-1 y el log de fallback en UTF-8. En ambos casos los caracteres se conservan bien.
+	\item Borrar o estropear \texttt{config.json}. La aplicación vuelve a los valores por defecto (\texttt{umbral\_confianza = 60.0}, \texttt{rondas\_extra = 1}) sin lanzar excepciones.
 \end{itemize}
 
-\subsection{Posibles mejoras en las pruebas}
+\subsection{Mejoras pendientes en las pruebas}
 
-Como línea de trabajo futura, sería razonable incorporar:
+Hay tres cosas que se quedan sin hacer y que tendría sentido incorporar más adelante:
 
 \begin{itemize}
-	\item Una batería de tests automatizados con \texttt{pytest} sobre las funciones de preprocesado y carga de modelos, que son fácilmente aislables del resto de la aplicación.
-	\item Un script de evaluación que mantenga un conjunto de test fijo y genere una matriz de confusión por modelo, de manera que la comparación entre versiones del dataset sea reproducible.
-	\item Integración con un servicio externo de análisis estático como \href{https://sonarcloud.io/}{SonarCloud} para revisar la calidad del código en cada \textit{push} al repositorio.
+	\item Una batería de tests automatizados con \texttt{pytest} sobre las funciones de preprocesado y de carga de modelos. Son las partes más fáciles de aislar.
+	\item Un script de evaluación con un conjunto de test fijo que genere una matriz de confusión por modelo, para poder comparar versiones del dataset de forma reproducible.
+	\item Integración con \href{https://sonarcloud.io/}{SonarCloud} u otro servicio de análisis estático, para revisar la calidad del código en cada \textit{push} al repositorio.
 \end{itemize}
 
-Estas mejoras no se han incluido en el alcance del TFG por motivos de tiempo, pero el código está estructurado de manera que su incorporación posterior no requiere refactorizaciones importantes.
+No las he incluido por tiempo, pero el código está pensado para que añadirlas más adelante no obligue a una refactorización importante.

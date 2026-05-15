@@ -1,0 +1,73 @@
+@startuml secuencia_login_admin
+' ============================================================
+'  Anexo C - Diagrama de secuencia: Acceso al panel de admin (CU-07)
+'  TFG: Sistema de clasificación de síntomas para triaje médico
+' ============================================================
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam sequenceMessageAlign center
+skinparam ArrowColor #2C3E50
+
+hide footbox
+
+skinparam sequence {
+  ActorBackgroundColor #F4F6FA
+  ActorBorderColor #2C3E50
+  ParticipantBackgroundColor #D6E0F0
+  ParticipantBorderColor #2C3E50
+  LifeLineBorderColor #2C3E50
+  GroupBorderColor #2C3E50
+}
+
+title Acceso autenticado al panel de administración (CU-07)
+
+actor Administrador as A
+participant "app.py" as APP
+participant "obtener_password_\nadmin()" as PWD
+participant "st.secrets /\nsecrets.toml.aos006 /\nvar. entorno" as SRC
+participant "credenciales_\nadmin_validas()" as VAL
+participant "hmac.compare_\ndigest" as HMAC
+participant "st.session_state" as SS
+
+A -> APP : selecciona "Administración"\n(barra lateral)
+activate APP
+
+APP -> SS : ¿admin_autenticado?
+SS --> APP : False
+
+APP -> A : muestra formulario\n(usuario + contraseña)
+
+A -> APP : envía credenciales
+APP -> PWD : obtener_password_admin()
+activate PWD
+PWD -> SRC : lee en cascada
+SRC --> PWD : password esperada\n(o None)
+PWD --> APP : password
+deactivate PWD
+
+alt password configurada
+  APP -> VAL : credenciales_admin_validas(usuario, pass)
+  activate VAL
+  VAL -> HMAC : compare_digest(usuario, "admin")
+  HMAC --> VAL : True / False
+  VAL -> HMAC : compare_digest(pass, esperada)
+  HMAC --> VAL : True / False
+  VAL --> APP : ambos True ?
+  deactivate VAL
+
+  alt credenciales correctas
+    APP -> SS : admin_autenticado = True
+    APP -> APP : st.rerun()
+    APP -> A : muestra panel de\nadministración
+  else credenciales incorrectas
+    APP -> A : st.error\n("Usuario o contraseña\nincorrectos")
+  end
+else password no configurada
+  APP -> A : st.error\n("Configura la contraseña")
+end
+
+deactivate APP
+
+@enduml

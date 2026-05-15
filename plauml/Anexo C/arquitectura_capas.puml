@@ -1,0 +1,77 @@
+@startuml arquitectura_capas
+' ============================================================
+'  Anexo C - Diagrama arquitectónico de módulos y dependencias
+'  TFG: Sistema de clasificación de síntomas para triaje médico
+' ============================================================
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam componentFontSize 12
+skinparam packageFontSize 13
+skinparam ArrowColor #2C3E50
+
+skinparam package {
+  BackgroundColor #F4F6FA
+  BorderColor #2C3E50
+}
+
+skinparam component {
+  BackgroundColor #D6E0F0
+  BorderColor #2C3E50
+}
+
+skinparam database {
+  BackgroundColor #FBE5C5
+  BorderColor #8B5A2B
+}
+
+title Arquitectura de módulos y dependencias
+
+top to bottom direction
+
+actor "Paciente" as P
+actor "Administrador" as A
+
+package "Interfaz y orquestación" {
+  [app.py\n(Streamlit)] as APP
+  [CLASIFICADORES\n(dict)] as DICT
+  [Máquina de estados\ntriaje_etapa] as FSM
+}
+
+package "Clasificador" {
+  [Clasificador] as M
+}
+
+package "Scripts de regeneración" {
+  [generarModelos.py] as G
+}
+
+database "Datos/\nDataset.5000...csv" as DATA
+database "Datos/\nrevisados.csv" as REV
+database "logs/\ntriaje_fallback_log.csv" as LOG
+database "config.json" as CFG
+database "Modelos\nentrenados\n.joblib" as ART
+
+P --> APP : síntomas
+A --> APP : panel admin
+
+APP --> DICT : selecciona modelo
+APP --> FSM : transiciones
+
+DICT --> M : classify(texto)
+
+APP ..> G : subprocess
+
+M ..> ART : load
+
+G --> DATA : read
+G --> REV : read (si existe)
+G --> ART : write
+
+APP --> DATA : append (admin)
+APP --> REV  : append (promoción)
+APP --> LOG  : append (fallback)
+APP --> CFG  : read/write
+
+@enduml

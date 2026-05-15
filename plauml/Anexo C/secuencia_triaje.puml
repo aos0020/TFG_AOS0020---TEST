@@ -1,0 +1,80 @@
+@startuml secuencia_triaje
+' ============================================================
+'  Anexo C - Diagrama de secuencia: Triaje con confianza suficiente (CU-01)
+'  TFG: Sistema de clasificación de síntomas para triaje médico
+' ============================================================
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam sequenceMessageAlign center
+skinparam ArrowColor #2C3E50
+
+skinparam sequence {
+  ActorBackgroundColor #F4F6FA
+  ActorBorderColor #2C3E50
+  ParticipantBackgroundColor #D6E0F0
+  ParticipantBorderColor #2C3E50
+  LifeLineBorderColor #2C3E50
+  GroupBorderColor #2C3E50
+}
+
+title Triaje con confianza suficiente (CU-01)
+
+actor Paciente as P
+participant "app.py\n(Streamlit)" as APP
+participant "streamlit-\nmic-recorder" as MIC
+participant "CLASIFICADORES\n(dict)" as DICT
+participant "Módulos\nTF-IDF / SVD /\nSVM / RNA" as MOD
+database "Modelos\nentrenados\n.joblib" as ART
+database "config.json" as CFG
+
+P -> APP : abre página de triaje
+activate APP
+
+APP -> CFG : cargar_config()
+CFG --> APP : umbral, rondas_extra
+
+alt entrada por teclado
+  P -> APP : teclea síntomas
+else entrada por voz (opcional)
+  P -> MIC : pulsa botón de dictado
+  activate MIC
+  MIC --> APP : texto transcrito
+  deactivate MIC
+end
+
+P -> APP : selecciona modelo\n(o "Todos") y\npulsa "Realizar triaje"
+
+alt modo "Todos (recomendado)"
+  loop para cada modelo
+    APP -> DICT : ejecutar_clasificador(nombre)
+    DICT -> MOD : función(texto)
+    activate MOD
+    MOD -> ART : load
+    ART --> MOD : modelo cargado
+    MOD --> DICT : (especialidad, confianza)
+    deactivate MOD
+  end
+  APP -> APP : mejor_resultado()
+else modo único
+  APP -> DICT : ejecutar_clasificador(elegido)
+  DICT -> MOD : función(texto)
+  activate MOD
+  MOD -> ART : load
+  ART --> MOD : modelo cargado
+  MOD --> DICT : (especialidad, confianza)
+  deactivate MOD
+end
+
+APP -> APP : compara confianza\ncon umbral
+
+note right of APP
+  confianza >= umbral
+  → estado "completado"
+end note
+
+APP -> P : especialidad + confianza\n(+ tabla comparativa\n  si era "Todos")
+deactivate APP
+
+@enduml

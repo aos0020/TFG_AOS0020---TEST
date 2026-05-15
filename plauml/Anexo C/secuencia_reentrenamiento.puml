@@ -1,0 +1,72 @@
+@startuml secuencia_reentrenamiento
+' ============================================================
+'  Anexo C - Diagrama de secuencia: Regeneración de modelos (CU-06)
+'  TFG: Sistema de clasificación de síntomas para triaje médico
+' ============================================================
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam sequenceMessageAlign center
+skinparam ArrowColor #2C3E50
+
+skinparam sequence {
+  ActorBackgroundColor #F4F6FA
+  ActorBorderColor #2C3E50
+  ParticipantBackgroundColor #D6E0F0
+  ParticipantBorderColor #2C3E50
+  LifeLineBorderColor #2C3E50
+  GroupBorderColor #2C3E50
+}
+
+title Regeneración de modelos (CU-06)
+
+actor Administrador as A
+participant "app.py\n(pestaña admin)" as APP
+participant "ejecutar_script_\ngenerador()" as EJ
+participant "subprocess" as SUB
+participant "generarModelo\n<NOMBRE>.py" as SCRIPT
+database "Datos/\nDataset.csv\n+ revisados.csv" as CSV
+database "Modelos\nentrenados\n.joblib" as ART
+
+alt regenerar todos (botón principal)
+  A -> APP : pulsa "Regenerar\ntodos los modelos"
+  activate APP
+  APP -> A : barra de progreso
+  loop para cada uno de los 4 modelos
+    APP -> EJ : ejecutar_script_generador(ruta)
+    activate EJ
+    EJ -> SUB : subprocess.run(...)\ncwd = raíz del proyecto
+    activate SUB
+    SUB -> SCRIPT : python <script>
+    activate SCRIPT
+    SCRIPT -> CSV : read dataset\n(+ revisados si existe)
+    CSV --> SCRIPT : DataFrame
+    SCRIPT -> SCRIPT : preprocesa,\nentrena\n(GridSearchCV en SVM/RNA)
+    SCRIPT -> ART : dump(*.joblib)
+    SCRIPT --> SUB : stdout + código 0
+    deactivate SCRIPT
+    SUB --> EJ : (returncode, stdout, stderr)
+    deactivate SUB
+    EJ --> APP : stdout (o excepción)
+    deactivate EJ
+    APP -> A : actualiza progreso
+  end
+  APP -> A : "Los 4 modelos se han\nregenerado correctamente"
+  deactivate APP
+else regenerar solo uno (botón individual)
+  A -> APP : pulsa "Regenerar <modelo>"
+  activate APP
+  APP -> EJ : ejecutar_script_generador(ruta)
+  activate EJ
+  EJ -> SUB : subprocess.run(...)
+  SUB -> SCRIPT : python <script>
+  SCRIPT --> SUB : stdout
+  SUB --> EJ : (returncode, stdout, stderr)
+  EJ --> APP : stdout
+  deactivate EJ
+  APP -> A : muestra resultado\n(st.code)
+  deactivate APP
+end
+
+@enduml
